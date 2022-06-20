@@ -6,7 +6,7 @@ package trafikinfo
 // one Query.
 type Request struct {
 	XMLName string   `xml:"REQUEST"`
-	Login   login    `xml:"LOGIN"`
+	Login   *login   `xml:"LOGIN"`
 	Queries []*Query `xml:"QUERY"`
 }
 
@@ -19,7 +19,7 @@ func (r *Request) Query(query *Query, rest ...*Query) *Request {
 
 // APIKey sets the API key to use for this request
 func (r *Request) APIKey(key string) *Request {
-	r.Login = login{AuthenticationKey: key}
+	r.Login = &login{AuthenticationKey: key}
 	return r
 }
 
