@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	req := trafikinfo.NewRequest().
+	req, err := trafikinfo.NewRequest().
 		APIKey("YOUR_API_KEY").
 		Query(
 			trafikinfo.NewQuery(
@@ -42,27 +42,14 @@ func main() {
 			).Filter(
 				trafikinfo.Equal("Id", "YOUR_STATION_ID"),
 			),
-		)
+		).Build()
 
-	body, err := xml.Marshal(req)
 	if err != nil {
 		panic(err)
 	}
 
-	httpReq, err := http.NewRequest(http.MethodPost, trafikinfo.Endpoint, bytes.NewBuffer(body))
-	if err != nil {
-		panic(err)
-	}
-
-	httpReq.Header.Set("content-type", "text/xml")
-
-	resp, err := http.DefaultClient.Do(httpReq)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
-
-	// Rest of the code here, handle non-200 error responses etc.
+	// Rest of the code here to do the request, handle non-200 error
+	// responses etc.
 }
 ```
 
