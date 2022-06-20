@@ -1,5 +1,7 @@
 package trafikinfo
 
+import "encoding/xml"
+
 // Request tells the API what we're interested in
 //
 // It must include the Login information and at least
@@ -21,6 +23,16 @@ func (r *Request) Query(query *Query, rest ...*Query) *Request {
 func (r *Request) APIKey(key string) *Request {
 	r.Login = &login{AuthenticationKey: key}
 	return r
+}
+
+// Build returns the XML encoded request as an array of bytes. It
+// can be passed directly as http.NewRequest's body
+//
+// The Build() method is final when used in a fluent API style,
+// you can't chain additional methods on it that continue to modify
+// the request.
+func (r *Request) Build() ([]byte, error) {
+	return xml.Marshal(r)
 }
 
 // login holds the API authentication key

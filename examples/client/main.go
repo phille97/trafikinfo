@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"encoding/xml"
 	"fmt"
 	"io"
 	"net/http"
@@ -13,7 +12,7 @@ import (
 )
 
 func main() {
-	req := trafikinfo.NewRequest().
+	req, err := trafikinfo.NewRequest().
 		APIKey("YOUR_API_KEY").
 		Query(
 			trafikinfo.NewQuery(
@@ -22,14 +21,13 @@ func main() {
 			).Filter(
 				trafikinfo.Equal("Id", "YOUR_STATION_ID"),
 			),
-		)
+		).Build()
 
-	body, err := xml.Marshal(req)
 	if err != nil {
 		panic(err)
 	}
 
-	httpReq, err := http.NewRequest(http.MethodPost, trafikinfo.Endpoint, bytes.NewBuffer(body))
+	httpReq, err := http.NewRequest(http.MethodPost, trafikinfo.Endpoint, bytes.NewBuffer(req))
 	if err != nil {
 		panic(err)
 	}

@@ -48,3 +48,15 @@ func TestRequestLogin(t *testing.T) {
 		t.Fatalf("Failed to set API credential, expected: test, got: %s", key)
 	}
 }
+
+func TestRequestBuild(t *testing.T) {
+	r, err := NewRequest().Build()
+	if err != nil {
+		t.Fatalf("Expected success, got: %v", err)
+	}
+
+	exp := `<REQUEST></REQUEST>`
+	if res := string(r); res != exp {
+		t.Fatalf("Expected: %s, got: %s", exp, res)
+	}
+}
