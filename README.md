@@ -4,6 +4,7 @@
 <h4 align="center">A Go library for the <a href="https://api.trafikinfo.trafikverket.se/">Trafikinfo API</a> from <a href="https://www.trafikverket.se/">Trafikverket</a></h4>
 <p align="center">
     <a href="https://github.com/daenney/trafikinfo/actions/workflows/ci.yml"><img src="https://github.com/daenney/trafikinfo/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
+	<a href="https://github.com/daenney/trafikinfo/releases"><img src="https://img.shields.io/github/release/daenney/trafikinfo.svg" alt="Release"></a>
     <a href="https://codecov.io/gh/daenney/trafikinfo"><img src="https://codecov.io/gh/daenney/trafikinfo/branch/main/graph/badge.svg" alt="Coverage Status"></a>
     <a href="https://goreportcard.com/report/code.dny.dev/trafikinfo"><img src="https://goreportcard.com/badge/code.dny.dev/trafikinfo" alt="Go report card"></a>
     <a href="https://pkg.go.dev/code.dny.dev/trafikinfo"><img src="https://pkg.go.dev/badge/code.dny.dev/trafikinfo.svg" alt="GoDoc"></a>
