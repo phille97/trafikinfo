@@ -23,7 +23,7 @@ type query struct {
 	OrderBy               string     `xml:"orderby,attr,omitempty"`
 	Skip                  int        `xml:"skip,attr,omitempty"`
 	LastModified          bool       `xml:"lastmodified,attr,omitempty"`
-	ChangeID              *int       `xml:"changeid,attr"`
+	ChangeID              *string    `xml:"changeid,attr"`
 	Filter                *Filter    `xml:"FILTER"`
 	Include               []string   `xml:"INCLUDE"`
 	Exclude               []string   `xml:"EXCLUDE"`
@@ -92,13 +92,12 @@ func (q *Query) LastModified(opt bool) *Query {
 // 0 to request all data, and then be set to the value of the change ID in
 // the response to only get updated/deleted objects since the previous change
 // ID.
-//
-// Note that setting a ChangeID of 0 does not cause the Change ID to be
-// ommitted from the request. This is harmless, the only difference being
-// that without having a Change ID set at all there won't be a Change ID
-// returned in the response.
-func (q *Query) ChangeID(opt int) *Query {
-	q.query.ChangeID = &opt
+func (q *Query) ChangeID(opt string) *Query {
+	if opt == "" {
+		q.query.ChangeID = nil
+	} else {
+		q.query.ChangeID = &opt
+	}
 	return q
 }
 

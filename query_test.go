@@ -153,9 +153,9 @@ func TestQueryLastModified(t *testing.T) {
 }
 
 func TestQueryChangeID(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).ChangeID(1)
-	if res := q.query.ChangeID; *res != 1 {
-		t.Fatalf("Expected query with changeid=1, got: %d", res)
+	q := NewQuery(WeatherStation, 1.0).ChangeID("1")
+	if res := q.query.ChangeID; res != nil && *res != "1" {
+		t.Fatalf("Expected query with changeid=1, got: %s", *res)
 	}
 
 	res, err := xml.Marshal(&q)
@@ -166,16 +166,16 @@ func TestQueryChangeID(t *testing.T) {
 		t.Fatalf("Expected changeid attribute is missing in serialised query: %s", string(res))
 	}
 
-	q.ChangeID(0)
-	if res := q.query.ChangeID; *res != 0 {
-		t.Fatalf("Expected query with changeid=0, got: %d", res)
+	q.ChangeID("")
+	if res := q.query.ChangeID; res != nil {
+		t.Fatalf("Expected query without changeid, got: %s", *res)
 	}
 	res, err = xml.Marshal(&q)
 	if err != nil {
 		t.Fatalf("Got error: %v", err)
 	}
-	if !strings.Contains(string(res), `changeid="0"`) {
-		t.Fatalf("Expected changeid attribute is missing in serialised query: %s", string(res))
+	if strings.Contains(string(res), `changeid=`) {
+		t.Fatalf("Expected changeid attribute to be missing in serialised query: %s", string(res))
 	}
 }
 
