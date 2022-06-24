@@ -106,7 +106,7 @@ type TrainStation1Dot4 struct {
 	OfficialLocationName *string `json:"OfficialLocationName,omitempty"`
 }
 
-type trainMessageCommon struct {
+type TrainMessageCommon struct {
 	CountyNo            []CountyNumber `json:"CountyNo,omitempty"`
 	Deleted             *bool          `json:"Deleted,omitempty"`
 	EventID             *string        `json:"EventId,omitempty"`
@@ -118,7 +118,7 @@ type trainMessageCommon struct {
 }
 
 type TrainMessage1Dot0 struct {
-	trainMessageCommon
+	TrainMessageCommon
 	AffectedLocation []string `json:"AffectedLocation,omitempty"`
 	ReasonCodeText   *string  `json:"ReasonCodeText,omitempty"`
 }
@@ -141,13 +141,13 @@ type TrainMessage1Dot4 struct {
 }
 
 type TrainMessage1Dot5 struct {
-	trainMessageCommon
+	TrainMessageCommon
 	AffectedLocation                       []string        `json:"AffectedLocation,omitempty"`
 	EndDateTime                            *time.Time      `json:"EndDateTime,omitempty"`
 	ExpectTrafficImpact                    *bool           `jsno:"ExpectTrafficImpact,omitempty"`
 	Header                                 *string         `json:"Header,omitempty"`
 	PrognosticatedEndDateTimeTrafficImpact *time.Time      `json:"PrognosticatedEndDateTimeTrafficImpact,omitempty"`
-	ReasonCode                             *trainCodeDescr `json:"ReasonCodeText,omitempty"`
+	ReasonCode                             *TrainCodeDescr `json:"ReasonCodeText,omitempty"`
 	TrafficImpact                          *struct {
 		AffectedLocation []string `json:"AffectedLocation,omitempty"`
 		FromLocation     []string `json:"FromLocation,omitempty"`
@@ -156,11 +156,11 @@ type TrainMessage1Dot5 struct {
 }
 
 type TrainMessage1Dot6 struct {
-	trainMessageCommon
+	TrainMessageCommon
 	EndDateTime                            *time.Time      `json:"EndDateTime,omitempty"`
 	Header                                 *string         `json:"Header,omitempty"`
 	PrognosticatedEndDateTimeTrafficImpact *time.Time      `json:"PrognosticatedEndDateTimeTrafficImpact,omitempty"`
-	ReasonCode                             *trainCodeDescr `json:"ReasonCodeText,omitempty"`
+	ReasonCode                             *TrainCodeDescr `json:"ReasonCodeText,omitempty"`
 	TrafficImpact                          *struct {
 		AffectedLocation []string `json:"AffectedLocation,omitempty"`
 		FromLocation     []string `json:"FromLocation,omitempty"`
@@ -170,11 +170,11 @@ type TrainMessage1Dot6 struct {
 }
 
 type TrainMessage1Dot7 struct {
-	trainMessageCommon
+	TrainMessageCommon
 	EndDateTime                            *time.Time      `json:"EndDateTime,omitempty"`
 	Header                                 *string         `json:"Header,omitempty"`
 	PrognosticatedEndDateTimeTrafficImpact *time.Time      `json:"PrognosticatedEndDateTimeTrafficImpact,omitempty"`
-	ReasonCode                             *trainCodeDescr `json:"ReasonCodeText,omitempty"`
+	ReasonCode                             *TrainCodeDescr `json:"ReasonCodeText,omitempty"`
 	TrafficImpact                          *struct {
 		AffectedLocation []struct {
 			LocationSignature       *string `json:"LocationSignature,omitempty"`
@@ -222,7 +222,7 @@ type TrainAnnouncement1Dot0 struct {
 	WebLink                    *string       `json:"WebLink,omitempty"`
 }
 
-type trainAnnouncementLocation struct {
+type TrainAnnouncementLocation struct {
 	LocationName *string `json:"LocationName,omitempty"`
 	Priority     *int    `json:"Priority,omitempty"`
 	Order        *int    `json:"Order,omitempty"`
@@ -240,7 +240,7 @@ type TrainAnnouncement1Dot3 struct {
 	Deviation                             []string                    `json:"Deviation,omitempty"`
 	EstimatedTimeAtLocation               *time.Time                  `json:"EstimatedTimeAtLocation,omitempty"`
 	EstimatedTimeIsPreliminary            *bool                       `json:"EstimatedTimeIsPreliminary,omitempty"`
-	FromLocation                          []trainAnnouncementLocation `json:"FromLocation,omitempty"`
+	FromLocation                          []TrainAnnouncementLocation `json:"FromLocation,omitempty"`
 	InformationOwner                      *string                     `json:"InformationOwner,omitempty"`
 	LocationSignature                     *string                     `json:"LocationSignature,omitempty"`
 	MobileWebLink                         *string                     `json:"MobileWebLink,omitempty"`
@@ -254,12 +254,12 @@ type TrainAnnouncement1Dot3 struct {
 	Service                               []string                    `json:"Service,omitempty"`
 	TechnicalTrainIdent                   *string                     `json:"TechnicalTrainIdent,omitempty"`
 	TimeAtLocation                        *time.Time                  `json:"TimeAtLocation,omitempty"`
-	ToLocation                            []trainAnnouncementLocation `json:"ToLocation,omitempty"`
+	ToLocation                            []TrainAnnouncementLocation `json:"ToLocation,omitempty"`
 	TrackAtLocation                       *string                     `json:"TrackAtLocation,omitempty"`
 	TrainComposition                      []string                    `json:"TrainComposition,omitempty"`
 	TypeOfTraffic                         *string                     `json:"TypeOfTraffic,omitempty"`
-	ViaFromLocation                       []trainAnnouncementLocation `json:"ViaFromLocation,omitempty"`
-	ViaToLocation                         []trainAnnouncementLocation `json:"ViaToLocation,omitempty"`
+	ViaFromLocation                       []TrainAnnouncementLocation `json:"ViaFromLocation,omitempty"`
+	ViaToLocation                         []TrainAnnouncementLocation `json:"ViaToLocation,omitempty"`
 	WebLink                               *string                     `json:"WebLink,omitempty"`
 	WebLinkName                           *string                     `json:"WebLinkName,omitempty"`
 }
@@ -272,7 +272,7 @@ type TrainAnnouncement1Dot4 struct {
 	TrainOwner                *string    `json:"TrainOwner,omitempty"`
 }
 
-type trainCodeDescr struct {
+type TrainCodeDescr struct {
 	Code        *string `json:"Code,omitempty"`
 	Description *string `json:"Description,omitempty"`
 }
@@ -283,36 +283,36 @@ type TrainAnnouncement1Dot5 struct {
 	Advertised                            *bool                       `json:"Advertised,omitempty"`
 	AdvertisedTimeAtLocation              *time.Time                  `json:"AdvertisedTimeAtLocation,omitempty"`
 	AdvertisedTrainIdent                  *string                     `json:"AdvertisedTrainIdent,omitempty"`
-	Booking                               []trainCodeDescr            `json:"Booking,omitempty"`
+	Booking                               []TrainCodeDescr            `json:"Booking,omitempty"`
 	Canceled                              *bool                       `json:"Canceled,omitempty"`
 	Deleted                               *bool                       `json:"Deleted,omitempty"`
-	Deviation                             []trainCodeDescr            `json:"Deviation,omitempty"`
+	Deviation                             []TrainCodeDescr            `json:"Deviation,omitempty"`
 	EstimatedTimeAtLocation               *time.Time                  `json:"EstimatedTimeAtLocation,omitempty"`
 	EstimatedTimeIsPreliminary            *bool                       `json:"EstimatedTimeIsPreliminary,omitempty"`
-	FromLocation                          []trainAnnouncementLocation `json:"FromLocation,omitempty"`
+	FromLocation                          []TrainAnnouncementLocation `json:"FromLocation,omitempty"`
 	InformationOwner                      *string                     `json:"InformationOwner,omitempty"`
 	LocationSignature                     *string                     `json:"LocationSignature,omitempty"`
 	MobileWebLink                         *string                     `json:"MobileWebLink,omitempty"`
 	ModifiedTime                          *time.Time                  `json:"ModifiedTime,omitempty"`
 	NewEquipment                          *int                        `json:"NewEquipment,omitempty"`
 	Operator                              *string                     `json:"Operator,omitempty"`
-	OtherInformation                      []trainCodeDescr            `json:"OtherInformation,omitempty"`
+	OtherInformation                      []TrainCodeDescr            `json:"OtherInformation,omitempty"`
 	PlannedEstimatedTimeAtLocation        *time.Time                  `json:"PlannedEstimatedTimeAtLocation,omitempty"`
 	PlannedEstimatedTimeAtLocationIsValid *bool                       `json:"PlannedEstimatedTimeAtLocationIsValid,omitempty"`
-	ProductInformation                    []trainCodeDescr            `json:"ProductInformation,omitempty"`
+	ProductInformation                    []TrainCodeDescr            `json:"ProductInformation,omitempty"`
 	ScheduledDepartureDateTime            *time.Time                  `json:"ScheduledDepartureDateTime,omitempty"`
-	Service                               []trainCodeDescr            `json:"Service,omitempty"`
+	Service                               []TrainCodeDescr            `json:"Service,omitempty"`
 	TechnicalDateTime                     *time.Time                  `json:"TechnicalDateTime,omitempty"`
 	TechnicalTrainIdent                   *string                     `json:"TechnicalTrainIdent,omitempty"`
 	TimeAtLocation                        *time.Time                  `json:"TimeAtLocation,omitempty"`
 	TimeAtLocationWithSeconds             *time.Time                  `json:"TimeAtLocationWithSeconds,omitempty"`
-	ToLocation                            []trainAnnouncementLocation `json:"ToLocation,omitempty"`
+	ToLocation                            []TrainAnnouncementLocation `json:"ToLocation,omitempty"`
 	TrackAtLocation                       *string                     `json:"TrackAtLocation,omitempty"`
-	TrainComposition                      []trainCodeDescr            `json:"TrainComposition,omitempty"`
+	TrainComposition                      []TrainCodeDescr            `json:"TrainComposition,omitempty"`
 	TrainOwner                            *string                     `json:"TrainOwner,omitempty"`
 	TypeOfTraffic                         *string                     `json:"TypeOfTraffic,omitempty"`
-	ViaFromLocation                       []trainAnnouncementLocation `json:"ViaFromLocation,omitempty"`
-	ViaToLocation                         []trainAnnouncementLocation `json:"ViaToLocation,omitempty"`
+	ViaFromLocation                       []TrainAnnouncementLocation `json:"ViaFromLocation,omitempty"`
+	ViaToLocation                         []TrainAnnouncementLocation `json:"ViaToLocation,omitempty"`
 	WebLink                               *string                     `json:"WebLink,omitempty"`
 	WebLinkName                           *string                     `json:"WebLinkName,omitempty"`
 }
@@ -323,36 +323,36 @@ type TrainAnnouncement1Dot6 struct {
 	Advertised                            *bool                       `json:"Advertised,omitempty"`
 	AdvertisedTimeAtLocation              *time.Time                  `json:"AdvertisedTimeAtLocation,omitempty"`
 	AdvertisedTrainIdent                  *string                     `json:"AdvertisedTrainIdent,omitempty"`
-	Booking                               []trainCodeDescr            `json:"Booking,omitempty"`
+	Booking                               []TrainCodeDescr            `json:"Booking,omitempty"`
 	Canceled                              *bool                       `json:"Canceled,omitempty"`
 	Deleted                               *bool                       `json:"Deleted,omitempty"`
-	Deviation                             []trainCodeDescr            `json:"Deviation,omitempty"`
+	Deviation                             []TrainCodeDescr            `json:"Deviation,omitempty"`
 	EstimatedTimeAtLocation               *time.Time                  `json:"EstimatedTimeAtLocation,omitempty"`
 	EstimatedTimeIsPreliminary            *bool                       `json:"EstimatedTimeIsPreliminary,omitempty"`
-	FromLocation                          []trainAnnouncementLocation `json:"FromLocation,omitempty"`
+	FromLocation                          []TrainAnnouncementLocation `json:"FromLocation,omitempty"`
 	InformationOwner                      *string                     `json:"InformationOwner,omitempty"`
 	LocationSignature                     *string                     `json:"LocationSignature,omitempty"`
 	MobileWebLink                         *string                     `json:"MobileWebLink,omitempty"`
 	ModifiedTime                          *time.Time                  `json:"ModifiedTime,omitempty"`
 	NewEquipment                          *int                        `json:"NewEquipment,omitempty"`
 	Operator                              *string                     `json:"Operator,omitempty"`
-	OtherInformation                      []trainCodeDescr            `json:"OtherInformation,omitempty"`
+	OtherInformation                      []TrainCodeDescr            `json:"OtherInformation,omitempty"`
 	PlannedEstimatedTimeAtLocation        *time.Time                  `json:"PlannedEstimatedTimeAtLocation,omitempty"`
 	PlannedEstimatedTimeAtLocationIsValid *bool                       `json:"PlannedEstimatedTimeAtLocationIsValid,omitempty"`
-	ProductInformation                    []trainCodeDescr            `json:"ProductInformation,omitempty"`
+	ProductInformation                    []TrainCodeDescr            `json:"ProductInformation,omitempty"`
 	ScheduledDepartureDateTime            *time.Time                  `json:"ScheduledDepartureDateTime,omitempty"`
-	Service                               []trainCodeDescr            `json:"Service,omitempty"`
+	Service                               []TrainCodeDescr            `json:"Service,omitempty"`
 	TechnicalDateTime                     *time.Time                  `json:"TechnicalDateTime,omitempty"`
 	TechnicalTrainIdent                   *string                     `json:"TechnicalTrainIdent,omitempty"`
 	TimeAtLocation                        *time.Time                  `json:"TimeAtLocation,omitempty"`
 	TimeAtLocationWithSeconds             *time.Time                  `json:"TimeAtLocationWithSeconds,omitempty"`
-	ToLocation                            []trainAnnouncementLocation `json:"ToLocation,omitempty"`
+	ToLocation                            []TrainAnnouncementLocation `json:"ToLocation,omitempty"`
 	TrackAtLocation                       *string                     `json:"TrackAtLocation,omitempty"`
-	TrainComposition                      []trainCodeDescr            `json:"TrainComposition,omitempty"`
+	TrainComposition                      []TrainCodeDescr            `json:"TrainComposition,omitempty"`
 	TrainOwner                            *string                     `json:"TrainOwner,omitempty"`
-	TypeOfTraffic                         []trainCodeDescr            `json:"TypeOfTraffic,omitempty"`
-	ViaFromLocation                       []trainAnnouncementLocation `json:"ViaFromLocation,omitempty"`
-	ViaToLocation                         []trainAnnouncementLocation `json:"ViaToLocation,omitempty"`
+	TypeOfTraffic                         []TrainCodeDescr            `json:"TypeOfTraffic,omitempty"`
+	ViaFromLocation                       []TrainAnnouncementLocation `json:"ViaFromLocation,omitempty"`
+	ViaToLocation                         []TrainAnnouncementLocation `json:"ViaToLocation,omitempty"`
 	WebLink                               *string                     `json:"WebLink,omitempty"`
 	WebLinkName                           *string                     `json:"WebLinkName,omitempty"`
 }
@@ -380,8 +380,8 @@ type RailCrossing1Dot5 struct {
 	RoadProfileCrest       *int             `json:"RoadProfileCrest,omitempty"`
 	RoadProfileCrossCurve  *int             `json:"RoadProfileCrossCurve,omitempty"`
 	RoadProfileSteepSlope  *int             `json:"RoadProfileSteepSlope,omitempty"`
-	RoadProtectionAddition []trainCodeDescr `json:"RoadProtectionAddition,omitempty"`
-	RoadProtectionBase     []trainCodeDescr `json:"RoadProtectionBase,omitempty"`
+	RoadProtectionAddition []TrainCodeDescr `json:"RoadProtectionAddition,omitempty"`
+	RoadProtectionBase     []TrainCodeDescr `json:"RoadProtectionBase,omitempty"`
 	RoadRouteID            *string          `json:"RoadRouteId,omitempty"`
 	TrackPortion           *int             `json:"TrackPortion,omitempty"`
 	TrainFlow              *int             `json:"TrainFlow,omitempty"`
