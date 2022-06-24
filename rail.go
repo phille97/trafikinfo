@@ -105,3 +105,92 @@ type TrainStation1Dot4 struct {
 	TrainStation1Dot0
 	OfficialLocationName *string `json:"OfficialLocationName,omitempty"`
 }
+
+type trainMessageCommon struct {
+	CountyNo            []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted             *bool          `json:"Deleted,omitempty"`
+	EventID             *string        `json:"EventId,omitempty"`
+	ExternalDescription *string        `json:"ExternalDescription,omitempty"`
+	Geometry            *Geometry      `json:"Geometry,omitempty"`
+	LastUpdateDateTime  *time.Time     `json:"LastUpdateDateTime,omitempty"`
+	ModifiedTime        *time.Time     `json:"ModifiedTime,omitempty"`
+	StartDateTime       *time.Time     `json:"StartDateTime,omitempty"`
+}
+
+type TrainMessage1Dot0 struct {
+	trainMessageCommon
+	AffectedLocation []string `json:"AffectedLocation,omitempty"`
+	ReasonCodeText   *string  `json:"ReasonCodeText,omitempty"`
+}
+
+type TrainMessage1Dot3 struct {
+	TrainMessage1Dot0
+	Header        *string `json:"Header,omitempty"`
+	TrafficImpact *struct {
+		AffectedLocation []string `json:"AffectedLocation,omitempty"`
+		FromLocation     []string `json:"FromLocation,omitempty"`
+		ToLocation       []string `json:"ToLocation,omitempty"`
+	} `json:"TrafficImpact,omitempty"`
+	EndDateTime *time.Time `json:"EndDateTime,omitempty"`
+}
+
+type TrainMessage1Dot4 struct {
+	TrainMessage1Dot3
+	PrognosticatedEndDateTimeTrafficImpact *time.Time `json:"PrognosticatedEndDateTimeTrafficImpact,omitempty"`
+	ExpectTrafficImpact                    *bool      `jsno:"ExpectTrafficImpact,omitempty"`
+}
+
+type TrainMessage1Dot5 struct {
+	trainMessageCommon
+	AffectedLocation                       []string   `json:"AffectedLocation,omitempty"`
+	EndDateTime                            *time.Time `json:"EndDateTime,omitempty"`
+	ExpectTrafficImpact                    *bool      `jsno:"ExpectTrafficImpact,omitempty"`
+	Header                                 *string    `json:"Header,omitempty"`
+	PrognosticatedEndDateTimeTrafficImpact *time.Time `json:"PrognosticatedEndDateTimeTrafficImpact,omitempty"`
+	ReasonCode                             *struct {
+		Code        *string `json:"Code,omitempty"`
+		Description *string `json:"Description,omitempty"`
+	} `json:"ReasonCodeText,omitempty"`
+	TrafficImpact *struct {
+		AffectedLocation []string `json:"AffectedLocation,omitempty"`
+		FromLocation     []string `json:"FromLocation,omitempty"`
+		ToLocation       []string `json:"ToLocation,omitempty"`
+	} `json:"TrafficImpact,omitempty"`
+}
+
+type TrainMessage1Dot6 struct {
+	trainMessageCommon
+	EndDateTime                            *time.Time `json:"EndDateTime,omitempty"`
+	Header                                 *string    `json:"Header,omitempty"`
+	PrognosticatedEndDateTimeTrafficImpact *time.Time `json:"PrognosticatedEndDateTimeTrafficImpact,omitempty"`
+	ReasonCode                             *struct {
+		Code        *string `json:"Code,omitempty"`
+		Description *string `json:"Description,omitempty"`
+	} `json:"ReasonCodeText,omitempty"`
+	TrafficImpact *struct {
+		AffectedLocation []string `json:"AffectedLocation,omitempty"`
+		FromLocation     []string `json:"FromLocation,omitempty"`
+		IsConfirmed      *bool    `json:"IsConfirmed,omitempty"`
+		ToLocation       []string `json:"ToLocation,omitempty"`
+	} `json:"TrafficImpact,omitempty"`
+}
+
+type TrainMessage1Dot7 struct {
+	trainMessageCommon
+	EndDateTime                            *time.Time `json:"EndDateTime,omitempty"`
+	Header                                 *string    `json:"Header,omitempty"`
+	PrognosticatedEndDateTimeTrafficImpact *time.Time `json:"PrognosticatedEndDateTimeTrafficImpact,omitempty"`
+	ReasonCode                             *struct {
+		Code        *string `json:"Code,omitempty"`
+		Description *string `json:"Description,omitempty"`
+	} `json:"ReasonCodeText,omitempty"`
+	TrafficImpact *struct {
+		AffectedLocation []struct {
+			LocationSignature       *string `json:"LocationSignature,omitempty"`
+			ShouldBeTrafficInformed *bool   `json:"ShouldBeTrafficInformed,omitempty"`
+		} `json:"AffectedLocation,omitempty"`
+		FromLocation []string `json:"FromLocation,omitempty"`
+		IsConfirmed  *bool    `json:"IsConfirmed,omitempty"`
+		ToLocation   []string `json:"ToLocation,omitempty"`
+	} `json:"TrafficImpact,omitempty"`
+}
