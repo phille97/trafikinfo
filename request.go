@@ -26,7 +26,8 @@ func (r *Request) APIKey(key string) *Request {
 }
 
 // Build returns the XML encoded request as an array of bytes. It
-// can be passed directly as http.NewRequest's body
+// can be passed as http.NewRequest's body by wrapping it in a call
+// to bytes.NewBuffer().
 //
 // The Build() method is final when used in a fluent API style,
 // you can't chain additional methods on it that continue to modify
