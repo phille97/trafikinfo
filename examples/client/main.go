@@ -72,10 +72,21 @@ func main() {
 		os.Exit(1)
 	}
 
-	c, err := io.ReadAll(resp.Body)
+	type respMsg struct {
+		Resonpse struct {
+			Result []struct {
+				WeatherStation []trafikinfo.WeatherStation1Dot0 `json:"WeatherStation"`
+				Info           trafikinfo.Info                  `json:"INFO"`
+			}
+		} `json:"RESPONSE"`
+	}
+
+	var c respMsg
+	d := json.NewDecoder(resp.Body)
+	err = d.Decode(&c)
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Println(string(c))
+	fmt.Printf("%+v\n", c)
 }

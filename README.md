@@ -42,6 +42,25 @@ if err != nil {
 
 // Rest of the code here to do the request, handle non-200 error
 // responses etc.
+
+type respMsg struct {
+	Resonpse struct {
+		Result []struct {
+			WeatherStation []trafikinfo.WeatherStation1Dot0 `json:"WeatherStation"`
+			Info           trafikinfo.Info                  `json:"INFO"`
+		}
+	} `json:"RESPONSE"`
+}
+
+var c respMsg
+d := json.NewDecoder(resp.Body)
+err = d.Decode(&c)
+
+if err != nil {
+	panic(err)
+}
+
+// Enjoy your struct!
 ```
 
 More complete code can be found in the `examples/` directory.
@@ -82,4 +101,4 @@ types and versions.
 `TravelTimeRoute` | 1.0: ❌ 1.3: ❌ 1.4: ❌ 1.5
 `WeatherMeasurepoint` | 1.0: ❌ 2.0: ❌
 `WeatherObservation` | 1.0: ❌ 2.0: ❌
-`WeatherStation` | 1.0: ❌
+`WeatherStation` | 1.0: ✅
