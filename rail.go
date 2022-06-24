@@ -365,3 +365,39 @@ type TrainAnnouncement1Dot6 struct {
 	WebLink                               *string                      `json:"WebLink,omitempty"`
 	WebLinkName                           *string                      `json:"WebLinkName,omitempty"`
 }
+
+type RailCrossing1Dot4 struct {
+	ObjectID *int `json:"ObjectId,omitempty"`
+	RailCrossing1Dot5
+}
+
+type RailCrossing1Dot5 struct {
+	DataLastUpdated        *time.Time `json:"DataLastUpdated,omitempty"`
+	Deleted                *bool      `json:"Deleted,omitempty"`
+	Geometry               *Geometry  `json:"Geometry,omitempty"`
+	Kilometer              *int       `json:"Kilometer,omitempty"`
+	LevelCrossingID        *int       `json:"LevelCrossingId,omitempty"`
+	Meter                  *int       `json:"Meter,omitempty"`
+	ModifiedTime           *time.Time `json:"ModifiedTime,omitempty"`
+	NumberOfTracks         *int       `json:"NumberOfTracks,omitempty"`
+	OperatingMode          *string    `json:"OperatingMode,omitempty"`
+	PortalHeightLeft       *float64   `json:"PortalHeightLeft,omitempty"`
+	PortalHeightRight      *float64   `json:"PortalHeightRight,omitempty"`
+	RailwayRouteID         *string    `json:"RailwayRouteId,omitempty"`
+	RoadNameAlternative    *string    `json:"RoadNameAlternative,omitempty"`
+	RoadNameOfficial       *string    `json:"RoadNameOfficial,omitempty"`
+	RoadProfileCrest       *int       `json:"RoadProfileCrest,omitempty"`
+	RoadProfileCrossCurve  *int       `json:"RoadProfileCrossCurve,omitempty"`
+	RoadProfileSteepSlope  *int       `json:"RoadProfileSteepSlope,omitempty"`
+	RoadProtectionAddition []struct {
+		Code        *string `json:"Code,omitempty"`
+		Description *string `json:"Description,omitempty"`
+	} `json:"RoadProtectionAddition,omitempty"`
+	RoadProtectionBase []struct {
+		Code        *string `json:"Code,omitempty"`
+		Description *string `json:"Description,omitempty"`
+	} `json:"RoadProtectionBase,omitempty"`
+	RoadRouteID  *string `json:"RoadRouteId,omitempty"`
+	TrackPortion *int    `json:"TrackPortion,omitempty"`
+	TrainFlow    *int    `json:"TrainFlow,omitempty"`
+}
