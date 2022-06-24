@@ -4,10 +4,180 @@ import (
 	"encoding/xml"
 	"fmt"
 	"reflect"
+	"strings"
 	"testing"
 )
 
-func TestNewQUery(t *testing.T) {}
+func TestQueryID(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).ID("test")
+	if res := q.query.ID; res != "test" {
+		t.Fatalf("Expected query with id=test, got: %s", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `id="test"`) {
+		t.Fatalf("Expected id attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.ID("")
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if strings.Contains(string(res), `id=`) {
+		t.Fatalf("Expected id attribute to be missing in serialised query: %s", string(res))
+	}
+}
+
+func TestQueryIncludeDeletedObjects(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).IncludeDeletedObjects(true)
+	if res := q.query.IncludeDeletedObjects; !res {
+		t.Fatalf("Expected query with includedeletedobjects=true, got: %t", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `includedeletedobjects="true"`) {
+		t.Fatalf("Expected includedeletedobjects attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.IncludeDeletedObjects(false)
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if strings.Contains(string(res), `includedeletedobjects=`) {
+		t.Fatalf("Expected includedeletedobjects attribute to be missing in serialised query: %s", string(res))
+	}
+}
+
+func TestQueryLimit(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).Limit(1)
+	if res := q.query.Limit; res != 1 {
+		t.Fatalf("Expected query with limit=1, got: %d", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `limit="1"`) {
+		t.Fatalf("Expected limit attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.Limit(0)
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if strings.Contains(string(res), `limit=`) {
+		t.Fatalf("Expected limit attribute to be missing in serialised query: %s", string(res))
+	}
+}
+
+func TestQueryOrderBy(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).OrderBy("attr asc, attr desc")
+	if res := q.query.OrderBy; res != "attr asc, attr desc" {
+		t.Fatalf("Expected query with orderby=attr asc, attr desc, got: %s", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `orderby="attr asc, attr desc"`) {
+		t.Fatalf("Expected orderby attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.OrderBy("")
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if strings.Contains(string(res), `orderby=`) {
+		t.Fatalf("Expected orderby attribute to be missing in serialised query: %s", string(res))
+	}
+}
+
+func TestQuerySkip(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).Skip(1)
+	if res := q.query.Skip; res != 1 {
+		t.Fatalf("Expected query with skip=1, got: %d", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `skip="1"`) {
+		t.Fatalf("Expected skip attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.Skip(0)
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if strings.Contains(string(res), `skip=`) {
+		t.Fatalf("Expected skip attribute to be missing in serialised query: %s", string(res))
+	}
+}
+
+func TestQueryLastModified(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).LastModified(true)
+	if res := q.query.LastModified; !res {
+		t.Fatalf("Expected query with lastmodified=true, got: %t", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `lastmodified="true"`) {
+		t.Fatalf("Expected lastmodified attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.LastModified(false)
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if strings.Contains(string(res), `lastmodified=`) {
+		t.Fatalf("Expected lastmodified attribute to be missing in serialised query: %s", string(res))
+	}
+}
+
+func TestQueryChangeID(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).ChangeID(1)
+	if res := q.query.ChangeID; *res != 1 {
+		t.Fatalf("Expected query with changeid=1, got: %d", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `changeid="1"`) {
+		t.Fatalf("Expected changeid attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.ChangeID(0)
+	if res := q.query.ChangeID; *res != 0 {
+		t.Fatalf("Expected query with changeid=0, got: %d", res)
+	}
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `changeid="0"`) {
+		t.Fatalf("Expected changeid attribute is missing in serialised query: %s", string(res))
+	}
+}
 
 func TestQueryDistinct(t *testing.T) {
 	q := NewQuery(WeatherStation, 1.0).Distinct("test")

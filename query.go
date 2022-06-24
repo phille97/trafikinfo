@@ -15,15 +15,23 @@ func (q *Query) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 }
 
 type query struct {
-	ObjectType    ObjectType `xml:"objecttype,attr"`
-	SchemaVersion float64    `xml:"schemaversion,attr"`
-	Filter        *Filter    `xml:"FILTER"`
-	Include       []string   `xml:"INCLUDE"`
-	Exclude       []string   `xml:"EXCLUDE"`
-	Distinct      string     `xml:"DISTINCT,omitempty"`
+	ObjectType            ObjectType `xml:"objecttype,attr"`
+	SchemaVersion         float64    `xml:"schemaversion,attr"`
+	ID                    string     `xml:"id,attr,omitempty"`
+	IncludeDeletedObjects bool       `xml:"includedeletedobjects,attr,omitempty"`
+	Limit                 int        `xml:"limit,attr,omitempty"`
+	OrderBy               string     `xml:"orderby,attr,omitempty"`
+	Skip                  int        `xml:"skip,attr,omitempty"`
+	LastModified          bool       `xml:"lastmodified,attr,omitempty"`
+	ChangeID              *int       `xml:"changeid,attr"`
+	Filter                *Filter    `xml:"FILTER"`
+	Include               []string   `xml:"INCLUDE"`
+	Exclude               []string   `xml:"EXCLUDE"`
+	Distinct              string     `xml:"DISTINCT,omitempty"`
 }
 
-// NewQuery returns a query with the provided filters
+// NewQuery returns a query that other methods can be chained on to further
+// customise the request.
 func NewQuery(objectType ObjectType, schemaVersion float64) *Query {
 	return &Query{
 		query: query{
@@ -31,6 +39,67 @@ func NewQuery(objectType ObjectType, schemaVersion float64) *Query {
 			SchemaVersion: schemaVersion,
 		},
 	}
+}
+
+// ID is an arbitrary value which will be echoed in the response. It can
+// be used to associate queries with responses, especially when a request
+// includes multiple queries.
+func (q *Query) ID(opt string) *Query {
+	q.query.ID = opt
+	return q
+}
+
+// IncludeDeletedObjects requests that deleted objects also be returned.
+// This defaults to false.
+func (q *Query) IncludeDeletedObjects(opt bool) *Query {
+	q.query.IncludeDeletedObjects = opt
+	return q
+}
+
+// Limit sets the limit for the amount of items to be returned. This can be
+// used together with Skip to implement pagination. A Limit of 0 means no
+// limit at all, i.e return everything.
+func (q *Query) Limit(opt int) *Query {
+	q.query.Limit = opt
+	return q
+}
+
+// OrderBy takes a sorting expression the items in the response will be
+// sorted by.
+//
+// For example:
+//    OrderBy("SomeData.Name desc, SomeData.Description asc")
+func (q *Query) OrderBy(opt string) *Query {
+	q.query.OrderBy = opt
+	return q
+}
+
+// Skip sets how many items to skip/exclude from the response. This can be
+// used together with Limit to implement pagination.
+func (q *Query) Skip(opt int) *Query {
+	q.query.Skip = opt
+	return q
+}
+
+// LastModified results in a lastmodified timestamp being included in the
+// response.
+func (q *Query) LastModified(opt bool) *Query {
+	q.query.LastModified = opt
+	return q
+}
+
+// ChangeID sets the change ID for the request. This should initially be
+// 0 to request all data, and then be set to the value of the change ID in
+// the response to only get updated/deleted objects since the previous change
+// ID.
+//
+// Note that setting a ChangeID of 0 does not cause the Change ID to be
+// ommitted from the request. This is harmless, the only difference being
+// that without having a Change ID set at all there won't be a Change ID
+// returned in the response.
+func (q *Query) ChangeID(opt int) *Query {
+	q.query.ChangeID = &opt
+	return q
 }
 
 func (q *Query) Filter(filters ...Filter) *Query {
