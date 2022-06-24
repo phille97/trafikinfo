@@ -76,3 +76,32 @@ type TrainStationMessage1Dot0 struct {
 	Status              *MessageStatus `json:"Status,omitempty"`
 	VersionNumber       *int           `json:"VersionNumber,omitempty"`
 }
+
+type CountryCode string
+
+const (
+	CountryCodeGermany CountryCode = "DE"
+	CountryCodeDenmark CountryCode = "DK"
+	CountryCodeNorway  CountryCode = "NO"
+	CountryCodeSweden  CountryCode = "SE"
+)
+
+type TrainStation1Dot0 struct {
+	Advertised                  *bool          `json:"Advertised,omitempty"`
+	AdvertisedLocationName      *string        `json:"AdvertisedLocationName,omitempty"`
+	AdvertisedShortLocationName *string        `json:"AdvertisedShortLocationName,omitempty"`
+	CountryCode                 *CountryCode   `json:"CountryCode,omitempty"`
+	CountyNo                    []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted                     *bool          `json:"Deleted,omitempty"`
+	Geometry                    *Geometry      `json:"Geometry,omitempty"`
+	LocationInformationText     *string        `json:"LocationInformationText,omitempty"`
+	LocationSignature           *string        `json:"LocationSignature,omitempty"`
+	ModifiedTime                *time.Time     `json:"ModifiedTime,omitempty"`
+	PlatformLine                []string       `json:"PlatformLine,omitempty"`
+	Prognosticated              *bool          `json:"Prognosticated,omitempty"`
+}
+
+type TrainStation1Dot4 struct {
+	TrainStation1Dot0
+	OfficialLocationName *string `json:"OfficialLocationName,omitempty"`
+}
