@@ -67,3 +67,26 @@ func TestRegionString(t *testing.T) {
 		})
 	}
 }
+
+func TestConditionCodeString(t *testing.T) {
+	tests := []struct {
+		In  ConditionCode
+		Out string
+	}{
+		{In: 1000, Out: "Okänd väglagskod (1000)"},
+		{In: ConditionCodeDifficult, Out: "besvärligt (risk för)"},
+		{In: ConditionCodeVeryDifficult, Out: "mycket besvärligt"},
+		{In: ConditionCodeNormal, Out: "normalt"},
+		{In: ConditionCodeIceAndSnow, Out: "is- och snövägbana"},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.In.String(), func(t *testing.T) {
+			t.Parallel()
+			if tt.In.String() != tt.Out {
+				t.Fatalf("Expected: %s, got: %s", tt.Out, tt.In.String())
+			}
+		})
+	}
+}

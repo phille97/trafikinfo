@@ -10,6 +10,11 @@ type Geometry struct {
 	WGS84      *string `json:"WGS84,omitempty"`
 }
 
+type GeometryWithMod struct {
+	Geometry
+	ModifiedTime *time.Time `json:"ModifiedTime,omitempty"`
+}
+
 type Road struct {
 	Temperature       *float64 `json:"Temp,omitempty"`
 	TemperatureIconID *string  `json:"TempIconId,omitempty"`
@@ -270,4 +275,64 @@ const (
 
 	FacilityUnknown Facility = "unknown"
 	FacilityOther   Facility = "other"
+)
+
+type Cause string
+
+const (
+	CauseFog                 Cause = "Dimma"
+	CauseFallingTemperatures Cause = "Fallande temperatur"
+	CauseFrost               Cause = "Frost"
+	CauseRain                Cause = "Regn"
+	CauseMeltedWater         Cause = "Smältvatten"
+	CauseSnowdrift           Cause = "Snödrev"
+	CauseSnow                Cause = "Snöfall"
+	CauseFreezingRain        Cause = "Underkylt regn"
+)
+
+type ConditionCode uint
+
+const (
+	ConditionCodeNormal ConditionCode = iota + 1
+	ConditionCodeDifficult
+	ConditionCodeVeryDifficult
+	ConditionCodeIceAndSnow
+)
+
+func (c ConditionCode) String() string {
+	switch c {
+	case ConditionCodeNormal:
+		return "normalt"
+	case ConditionCodeDifficult:
+		return "besvärligt (risk för)"
+	case ConditionCodeVeryDifficult:
+		return "mycket besvärligt"
+	case ConditionCodeIceAndSnow:
+		return "is- och snövägbana"
+	default:
+		return fmt.Sprintf("Okänd väglagskod (%d)", c)
+	}
+}
+
+type Measurement string
+
+const (
+	MeasurementPreventiveAntiSlip Measurement = "Förebyggande halkbekämpning"
+	MeasurementAntiSlip           Measurement = "Halkbekämpning"
+	MeasurementIcePlowing         Measurement = "Ishyvling"
+	MeasurementSnowPlowing        Measurement = "Plogning"
+	MeasurementSanding            Measurement = "Sandning"
+	MeasurementOther              Measurement = "Annat"
+)
+
+type Warning string
+
+const (
+	WarningSlippingRisk Warning = "Risk för halka"
+	WarningSlipping     Warning = "Halka"
+	WarningSnowSmoke    Warning = "Snörök"
+	WarningSnowdrift    Warning = "Snödrev"
+	WarningHarshWind    Warning = "Hård vind"
+	WarningSnow         Warning = "Snöfall"
+	WarningOther        Warning = "Annat"
 )
