@@ -74,3 +74,34 @@ type MeasurementData201Dot0 struct {
 	Timestamp               *time.Time `json:"TimeStamp,omitempty"`
 	WaterArea               *float64   `json:"WaterArea,omitempty"`
 }
+
+type PavementData1Dot0 struct {
+	BallMillValue *float64      `json:"BallMillValue,omitempty"`
+	Binder        *string       `json:"Binder,omitempty"`
+	Contractor    *string       `json:"Contractor,omitempty"`
+	County        *CountyNumber `json:"County,omitempty"`
+	Coverage      *string       `json:"Coverage,omitempty"`
+	Deleted       *bool         `json:"Deleted,omitempty"`
+	Direction     *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"Direction,omitempty"`
+	EndContinuousLength   *int       `json:"EndContinuousLength,omitempty"`
+	FinalInspectionDate   *time.Time `json:"FinalInspectionDate,omitempty"`
+	Lane                  *int       `json:"Lane,omitempty"`
+	Length                *int       `json:"Length,omitempty"`
+	ManufacturingMethod   *string    `json:"ManufacturingMethod,omitempty"`
+	MaxStoneSize          *int       `json:"MaxStoneSize,omitempty"`
+	ModifiedTime          *time.Time `json:"ModifiedTime,omitempty"`
+	PavementDate          *time.Time `json:"PavementDate,omitempty"`
+	PavementType          *string    `json:"PavementType,omitempty"`
+	PavingMethod          *string    `json:"PavingMethod,omitempty"`
+	RoadMainNumber        *int       `json:"RoadMainNumber,omitempty"`
+	RoadSubNumber         *int       `json:"RoadSubNumber,omitempty"`
+	StartContinuousLength *int       `json:"StartContinuousLength,omitempty"`
+	Thickness             *float64   `json:"Thickness,omitempty"`
+	Timestamp             *time.Time `json:"TimeStamp,omitempty"`
+	TreatmentCategory     *string    `json:"TreatmentCategory,omitempty"`
+	Warranty              *int       `json:"Warranty,omitempty"`
+	WarrantyIsDue         *time.Time `json:"WarrantyIsDue,omitempty"`
+}
