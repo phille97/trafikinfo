@@ -105,3 +105,12 @@ func (c CountyNumber) String() string {
 		return fmt.Sprintf("Okänt län (%d)", c)
 	}
 }
+
+type Icon1Dot0 struct {
+	Base64       *string    `json:"Base64,omitempty"`
+	Deleted      *bool      `json:"Deleted,omitempty"`
+	Description  *string    `json:"Description,omitempty"`
+	ID           *string    `json:"Id,omitempty"`
+	ModifiedTime *time.Time `json:"ModifiedTime,omitempty"`
+	URL          *string    `json:"Url,omitempty"`
+}
