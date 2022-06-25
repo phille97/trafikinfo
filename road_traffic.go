@@ -55,3 +55,35 @@ type RoadConditionOverview1Dot0 struct {
 	Text                    *string        `json:"Text,omitempty"`
 	ValidUntilFurtherNotice *bool          `json:"ValidUntilFurtherNotice,omitempty"`
 }
+
+type TrafficFlow1Dot0 struct {
+	AverageVehicleSpeed            *int           `json:"AverageVehicleSpeed,omitempty"`
+	CountyNo                       []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted                        *bool          `json:"Deleted,omitempty"`
+	Geometry                       *Geometry      `json:"Geometry,omitempty"`
+	MeasurementOrCalculationPeriod *int           `json:"MeasurementOrCalculationPeriod,omitempty"`
+	MeasurementSide                *string        `json:"MeasurementSide,omitempty"`
+	MeasurementTime                *time.Time     `json:"MeasurementTime,omitempty"`
+	ModifiedTime                   *time.Time     `json:"ModifiedTime,omitempty"`
+	RegionID                       *Region        `json:"RegionId,omitempty"`
+	SiteID                         *int           `json:"SiteId,omitempty"`
+	SpecificLane                   *string        `json:"SpecificLane,omitempty"`
+	VehicleFlowRate                *int           `json:"VehicleFlowRate,omitempty"`
+	VehicleType                    *Vehicle       `json:"VehicleType,omitempty"`
+}
+
+type TrafficFlow1Dot4 struct {
+	AverageVehicleSpeed            *float64       `json:"AverageVehicleSpeed,omitempty"`
+	CountyNo                       []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted                        *bool          `json:"Deleted,omitempty"`
+	Geometry                       *Geometry      `json:"Geometry,omitempty"`
+	MeasurementOrCalculationPeriod *int           `json:"MeasurementOrCalculationPeriod,omitempty"`
+	MeasurementSide                *string        `json:"MeasurementSide,omitempty"`
+	MeasurementTime                *time.Time     `json:"MeasurementTime,omitempty"`
+	ModifiedTime                   *time.Time     `json:"ModifiedTime,omitempty"`
+	RegionID                       *Region        `json:"RegionId,omitempty"`
+	SiteID                         *int           `json:"SiteId,omitempty"`
+	SpecificLane                   *string        `json:"SpecificLane,omitempty"`
+	VehicleFlowRate                *int           `json:"VehicleFlowRate,omitempty"`
+	VehicleType                    *Vehicle       `json:"VehicleType,omitempty"`
+}

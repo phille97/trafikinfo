@@ -42,3 +42,28 @@ func TestCountyNumberString(t *testing.T) {
 		})
 	}
 }
+
+func TestRegionString(t *testing.T) {
+	tests := []struct {
+		In  Region
+		Out string
+	}{
+		{In: 1000, Out: "Okänd region (1000)"},
+		{In: RegionNorth, Out: "Region Norr"},
+		{In: RegionMiddle, Out: "Region Mitt"},
+		{In: RegionEast, Out: "Region Öst"},
+		{In: RegionStockholm, Out: "Region Stockholm"},
+		{In: RegionWest, Out: "Region Väst"},
+		{In: RegionSouth, Out: "Region Syd"},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.In.String(), func(t *testing.T) {
+			t.Parallel()
+			if tt.In.String() != tt.Out {
+				t.Fatalf("Expected: %s, got: %s", tt.Out, tt.In.String())
+			}
+		})
+	}
+}

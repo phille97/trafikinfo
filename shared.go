@@ -114,3 +114,69 @@ type Icon1Dot0 struct {
 	ModifiedTime *time.Time `json:"ModifiedTime,omitempty"`
 	URL          *string    `json:"Url,omitempty"`
 }
+
+type Region uint
+
+const (
+	RegionNorth Region = iota + 1
+	RegionMiddle
+	RegionEast
+	RegionStockholm
+	RegionWest
+	RegionSouth
+)
+
+func (r Region) String() string {
+	switch r {
+	case RegionNorth:
+		return "Region Norr"
+	case RegionMiddle:
+		return "Region Mitt"
+	case RegionEast:
+		return "Region Öst"
+	case RegionStockholm:
+		return "Region Stockholm"
+	case RegionWest:
+		return "Region Väst"
+	case RegionSouth:
+		return "Region Syd"
+	default:
+		return fmt.Sprintf("Okänd region (%d)", r)
+	}
+}
+
+type Vehicle string
+
+const (
+	VehicleAgricultural                       Vehicle = "agriculturalVehicle"
+	VehicleAny                                Vehicle = "anyVehicle"
+	VehicleArticulatedVehicle                 Vehicle = "articulatedVehicle"
+	VehicleBicycle                            Vehicle = "bicycle"
+	VehicleBus                                Vehicle = "bus"
+	VehicleCar                                Vehicle = "car"
+	VehicleACaravan                           Vehicle = "caravan"
+	VehicleCarOrLightVehicle                  Vehicle = "carOrLightVehicle"
+	VehicleCarWithCaravan                     Vehicle = "carWithCaravan"
+	VehicleCarWithTrailer                     Vehicle = "carWithTrailer"
+	VehicleConstructionOrMaintenanceVehicle   Vehicle = "constructionOrMaintenanceVehicle"
+	VehicleFourWheelDrive                     Vehicle = "fourWheelDrive"
+	VehicleHighSidedVehicle                   Vehicle = "highSidedVehicle"
+	VehicleLorry                              Vehicle = "lorry"
+	VehicleMoped                              Vehicle = "moped"
+	VehicleMotorcycle                         Vehicle = "motorcycle"
+	VehicleMotorcycleWithSideCar              Vehicle = "motorcycleWithSideCar"
+	VehicleScooter                            Vehicle = "motorscooter"
+	VehicleTanker                             Vehicle = "tanker"
+	VehicleThreeWheeledVehicle                Vehicle = "threeWheeledVehicle"
+	VehicleTrailer                            Vehicle = "trailer"
+	VehicleTram                               Vehicle = "tram"
+	VehicleTwoWheeledVehicle                  Vehicle = "twoWheeledVehicle"
+	VehicleVan                                Vehicle = "van"
+	VehicleWithCatalyticConverter             Vehicle = "vehicleWithCatalyticConverter"
+	VehicleWithoutCatalyticConverter          Vehicle = "vehicleWithoutCatalyticConverter"
+	VehicleWithCaravan                        Vehicle = "vehicleWithCaravan"
+	VehicleWithTrailer                        Vehicle = "vehicleWithTrailer"
+	VehicleWithEvenNumberedRegistrationPlates Vehicle = "withEvenNumberedRegistrationPlates"
+	VehicleWithOddNumberedRegistrationPlates  Vehicle = "withOddNumberedRegistrationPlates"
+	VehicleOther                              Vehicle = "other"
+)
