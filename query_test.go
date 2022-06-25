@@ -287,6 +287,24 @@ func TestQueryFilter(t *testing.T) {
 	}
 }
 
+func TestQueryEval(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).Eval(Eval("a", "b"))
+	if len(q.query.Eval) != 1 {
+		t.Fatalf("Expected 1 evaluation, got: %d", len(q.query.Eval))
+	}
+	if res := q.query.Eval[0].evaluation.Alias; res != "a" {
+		t.Fatalf("Expected Eval with alias=a, got alias=%s", res)
+	}
+	if res := q.query.Eval[0].evaluation.Function; res != "b" {
+		t.Fatalf("Expected Equal filter with function=b, got function=%s", res)
+	}
+
+	q.Eval(Eval("c", "d"))
+	if len(q.query.Eval) != 2 {
+		t.Fatalf("Expected 2 evaluations, got: %d", len(q.query.Eval))
+	}
+}
+
 func TestQueryMarshalXML(t *testing.T) {
 	q := NewQuery(WeatherStation, 1.0)
 
@@ -298,6 +316,33 @@ func TestQueryMarshalXML(t *testing.T) {
 	exp := `<Query objecttype="WeatherStation" schemaversion="1"></Query>`
 	if string(res) != exp {
 		t.Fatalf("Expected: %s, got: %s", exp, string(res))
+	}
+}
+
+func TestEvaluation(t *testing.T) {
+	e := Eval("a", "b")
+	exp := Evaluation{
+		evaluation: evaluation{
+			Alias:    "a",
+			Function: "b",
+		},
+	}
+
+	if !reflect.DeepEqual(e, exp) {
+		t.Fatalf("Expected: %#v, got: %#v", exp, e)
+	}
+}
+
+func TestEvaluationMarshalXML(t *testing.T) {
+	e := Eval("a", "b")
+	res, err := xml.Marshal(&e)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+
+	exp := `<Evaluation alias="a" function="b"></Evaluation>`
+	if string(res) != exp {
+		t.Fatalf("Expected: %s, got %s", exp, string(res))
 	}
 }
 

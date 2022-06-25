@@ -15,19 +15,20 @@ func (q *Query) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 }
 
 type query struct {
-	ObjectType            ObjectType `xml:"objecttype,attr"`
-	SchemaVersion         float64    `xml:"schemaversion,attr"`
-	ID                    string     `xml:"id,attr,omitempty"`
-	IncludeDeletedObjects bool       `xml:"includedeletedobjects,attr,omitempty"`
-	Limit                 int        `xml:"limit,attr,omitempty"`
-	OrderBy               string     `xml:"orderby,attr,omitempty"`
-	Skip                  int        `xml:"skip,attr,omitempty"`
-	LastModified          bool       `xml:"lastmodified,attr,omitempty"`
-	ChangeID              *string    `xml:"changeid,attr"`
-	Filter                *Filter    `xml:"FILTER"`
-	Include               []string   `xml:"INCLUDE"`
-	Exclude               []string   `xml:"EXCLUDE"`
-	Distinct              string     `xml:"DISTINCT,omitempty"`
+	ObjectType            ObjectType   `xml:"objecttype,attr"`
+	SchemaVersion         float64      `xml:"schemaversion,attr"`
+	ID                    string       `xml:"id,attr,omitempty"`
+	IncludeDeletedObjects bool         `xml:"includedeletedobjects,attr,omitempty"`
+	Limit                 int          `xml:"limit,attr,omitempty"`
+	OrderBy               string       `xml:"orderby,attr,omitempty"`
+	Skip                  int          `xml:"skip,attr,omitempty"`
+	LastModified          bool         `xml:"lastmodified,attr,omitempty"`
+	ChangeID              *string      `xml:"changeid,attr"`
+	Filter                *Filter      `xml:"FILTER"`
+	Include               []string     `xml:"INCLUDE"`
+	Exclude               []string     `xml:"EXCLUDE"`
+	Distinct              string       `xml:"DISTINCT,omitempty"`
+	Eval                  []Evaluation `xml:"EVAL"`
 }
 
 // NewQuery returns a query that other methods can be chained on to further
@@ -125,6 +126,11 @@ func (q *Query) Exclude(fields ...string) *Query {
 	return q
 }
 
+func (q *Query) Eval(evaluations ...Evaluation) *Query {
+	q.query.Eval = append(q.query.Eval, evaluations...)
+	return q
+}
+
 // And builds an AND filter
 func And(f1, f2 Filter, rest ...Filter) Filter {
 	f := []Filter{f1, f2}
@@ -158,6 +164,28 @@ func ElementMatch(f1, f2 Filter, rest ...Filter) Filter {
 	f = append(f, rest...)
 	return Filter{
 		filter: filter{ElementMatch: []filter{merge(f...)}},
+	}
+}
+
+type Evaluation struct {
+	evaluation evaluation
+}
+
+func (v *Evaluation) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	return e.EncodeElement(v.evaluation, start)
+}
+
+type evaluation struct {
+	Alias    string `xml:"alias,attr,omitempty"`
+	Function string `xml:"function,attr,omitempty"`
+}
+
+func Eval(alias, function string) Evaluation {
+	return Evaluation{
+		evaluation: evaluation{
+			Alias:    alias,
+			Function: function,
+		},
 	}
 }
 
