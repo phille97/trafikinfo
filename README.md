@@ -79,7 +79,7 @@ types and versions.
 
 | Object | Versions |
 :-- | :-----------
-`Camera` | 1.0: ❌
+`Camera` | 1.0: ✅
 `FerryAnnouncement` | 1.2: ❌
 `FerryRoute` | 1.2: ❌
 `Icon` | 1.0: ❌
