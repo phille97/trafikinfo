@@ -90,7 +90,7 @@ types and versions.
 `RailCrossing` | 1.4: ✅ 1.5: ✅
 `ReasonCode` | 1.0: ✅
 `RoadCondition` | 1.0: ❌ 1.1: ❌ 1.2: ❌
-`RoadConditionOverview` | 1.0: ❌
+`RoadConditionOverview` | 1.0: ✅
 `RoadData` | 1.0: ✅
 `RoadGeometry` | 1.0: ✅
 `TrafficFlow` | 1.0: ❌ 1.4: ❌

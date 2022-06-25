@@ -42,3 +42,16 @@ type TrafficSafetyCamera1Dot0 struct {
 	Name         *string        `json:"Name,omitempty"`
 	RoadNumber   *string        `json:"RoadNumber,omitempty"`
 }
+
+type RoadConditionOverview1Dot0 struct {
+	CountyNo                []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted                 *bool          `json:"Deleted,omitempty"`
+	EndTime                 *time.Time     `json:"EndTime,omitempty"`
+	Geometry                *Geometry      `json:"Geometry,omitempty"`
+	ID                      *string        `json:"Id,omitempty"`
+	LocationText            *string        `json:"LocationText,omitempty"`
+	ModifiedTime            *time.Time     `json:"ModifiedTime,omitempty"`
+	StartTime               *time.Time     `json:"StartTime,omitempty"`
+	Text                    *string        `json:"Text,omitempty"`
+	ValidUntilFurtherNotice *bool          `json:"ValidUntilFurtherNotice,omitempty"`
+}
