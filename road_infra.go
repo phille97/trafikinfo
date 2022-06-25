@@ -105,3 +105,51 @@ type PavementData1Dot0 struct {
 	Warranty              *int       `json:"Warranty,omitempty"`
 	WarrantyIsDue         *time.Time `json:"WarrantyIsDue,omitempty"`
 }
+
+type RoadData1Dot0 struct {
+	AADT                  *int `json:"AADT,omitempty"`
+	AADTHeavyVehicles     *int `json:"AADTHeavyVehicles,omitempty"`
+	AADTMeasurementMethod *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"AADTMeasurementMethod,omitempty"`
+	AADTMeasurementYear *int `json:"AADTMeasurementYear,omitempty"`
+	BearingCapacity     *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"BearingCapacity,omitempty"`
+	County    *CountyNumber `json:"County,omitempty"`
+	Deleted   *bool         `json:"Deleted,omitempty"`
+	Direction *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"Direction,omitempty"`
+	EndContinuousLength *int       `json:"EndContinuousLength,omitempty"`
+	LaneDescription     *int       `json:"LaneDescription,omitempty"`
+	Length              *int       `json:"Length,omitempty"`
+	ModifiedTime        *time.Time `json:"ModifiedTime,omitempty"`
+	RoadCategory        *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"RoadCategory,omitempty"`
+	RoadConstruction2009 *int `json:"RoadConstruction2009,omitempty"`
+	RoadMainNumber       *int `json:"RoadMainNumber,omitempty"`
+	RoadOwner            *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"RoadOwner,omitempty"`
+	RoadSubNumber *int `json:"RoadSubNumber,omitempty"`
+	RoadType      *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"RoadType,omitempty"`
+	RoadWidth             *float64   `json:"RoadWidth,omitempty"`
+	SpeedLimit            *int       `json:"SpeedLimit,omitempty"`
+	StartContinuousLength *int       `json:"StartContinuousLength,omitempty"`
+	Timestamp             *time.Time `json:"TimeStamp,omitempty"`
+	WearLayer             *int       `json:"WearLayer,omitempty"`
+	Winter2003            *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"Winter2003,omitempty"`
+}
