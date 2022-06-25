@@ -111,6 +111,15 @@ func (c County) String() string {
 	}
 }
 
+type Country string
+
+const (
+	CountryGermany Country = "DE"
+	CountryDenmark Country = "DK"
+	CountryNorway  Country = "NO"
+	CountrySweden  Country = "SE"
+)
+
 type Icon1Dot0 struct {
 	Base64       *string    `json:"Base64,omitempty"`
 	Deleted      *bool      `json:"Deleted,omitempty"`

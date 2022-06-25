@@ -242,26 +242,26 @@ type RoadCondition1Dot2 struct {
 }
 
 type TravelTimeRoute1Dot0 struct {
-	AverageFunctionalRoadClass *int         `json:"AverageFunctionalRoadClass,omitempty"`
-	CountryCode                *CountryCode `json:"CountryCode,omitempty"`
-	County                     []County     `json:"CountyNo,omitempty"`
-	Deleted                    *bool        `json:"Deleted,omitempty"`
-	ExpectedFreeFlowTravelTime *int         `json:"ExpectedFreeFlowTravelTime,omitempty"`
-	FreeFlowTravelTime         *int         `json:"FreeFlowTravelTime,omitempty"`
-	Geometry                   *Geometry    `json:"Geometry,omitempty"`
-	ID                         *string      `json:"Id,omitempty"`
-	Length                     *int         `json:"Length,omitempty"`
-	MeasureTime                *time.Time   `json:"MeasureTime,omitempty"`
-	ModifiedTime               *time.Time   `json:"ModifiedTime,omitempty"`
-	Name                       *string      `json:"Name,omitempty"`
-	Speed                      *float64     `json:"Speed,omitempty"`
-	Status                     *Status      `json:"Status,omitempty"`
-	TravelTime                 *int         `json:"TravelTime,omitempty"`
+	AverageFunctionalRoadClass *int       `json:"AverageFunctionalRoadClass,omitempty"`
+	Country                    *Country   `json:"CountryCode,omitempty"`
+	County                     []County   `json:"CountyNo,omitempty"`
+	Deleted                    *bool      `json:"Deleted,omitempty"`
+	ExpectedFreeFlowTravelTime *int       `json:"ExpectedFreeFlowTravelTime,omitempty"`
+	FreeFlowTravelTime         *int       `json:"FreeFlowTravelTime,omitempty"`
+	Geometry                   *Geometry  `json:"Geometry,omitempty"`
+	ID                         *string    `json:"Id,omitempty"`
+	Length                     *int       `json:"Length,omitempty"`
+	MeasureTime                *time.Time `json:"MeasureTime,omitempty"`
+	ModifiedTime               *time.Time `json:"ModifiedTime,omitempty"`
+	Name                       *string    `json:"Name,omitempty"`
+	Speed                      *float64   `json:"Speed,omitempty"`
+	Status                     *Status    `json:"Status,omitempty"`
+	TravelTime                 *int       `json:"TravelTime,omitempty"`
 }
 
 type TravelTimeRoute1Dot3 struct {
 	AverageFunctionalRoadClass *int             `json:"AverageFunctionalRoadClass,omitempty"`
-	CountryCode                *CountryCode     `json:"CountryCode,omitempty"`
+	Country                    *Country         `json:"CountryCode,omitempty"`
 	County                     []County         `json:"CountyNo,omitempty"`
 	Deleted                    *bool            `json:"Deleted,omitempty"`
 	ExpectedFreeFlowTravelTime *int             `json:"ExpectedFreeFlowTravelTime,omitempty"`
@@ -280,7 +280,7 @@ type TravelTimeRoute1Dot3 struct {
 
 type TravelTimeRoute1Dot4 struct {
 	AverageFunctionalRoadClass *int             `json:"AverageFunctionalRoadClass,omitempty"`
-	CountryCode                *CountryCode     `json:"CountryCode,omitempty"`
+	Country                    *Country         `json:"CountryCode,omitempty"`
 	County                     []County         `json:"CountyNo,omitempty"`
 	Deleted                    *bool            `json:"Deleted,omitempty"`
 	ExpectedFreeFlowTravelTime *int             `json:"ExpectedFreeFlowTravelTime,omitempty"`
@@ -299,7 +299,7 @@ type TravelTimeRoute1Dot4 struct {
 
 type TravelTimeRoute1Dot5 struct {
 	AverageFunctionalRoadClass *int             `json:"AverageFunctionalRoadClass,omitempty"`
-	CountryCode                *CountryCode     `json:"CountryCode,omitempty"`
+	Country                    *Country         `json:"CountryCode,omitempty"`
 	County                     []County         `json:"CountyNo,omitempty"`
 	Deleted                    *bool            `json:"Deleted,omitempty"`
 	ExpectedFreeFlowTravelTime *float64         `json:"ExpectedFreeFlowTravelTime,omitempty"`
