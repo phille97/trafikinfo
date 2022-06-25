@@ -85,7 +85,7 @@ types and versions.
 `Icon` | 1.0: ✅
 `MeasurementData100` | 1.0: ✅
 `MeasurementData20` | 1.0: ✅
-`Parking` | 1.0: ❌ 1.4: ❌
+`Parking` | 1.0: ✅ 1.4: ✅
 `PavementData` | 1.0: ✅
 `RailCrossing` | 1.4: ✅ 1.5: ✅
 `ReasonCode` | 1.0: ✅

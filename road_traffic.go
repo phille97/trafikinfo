@@ -87,3 +87,91 @@ type TrafficFlow1Dot4 struct {
 	VehicleFlowRate                *int           `json:"VehicleFlowRate,omitempty"`
 	VehicleType                    *Vehicle       `json:"VehicleType,omitempty"`
 }
+
+type Parking1Dot0 struct {
+	CountyNo              []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted               *bool          `json:"Deleted,omitempty"`
+	Description           *string        `json:"Description,omitempty"`
+	DistanceToNearestCity *string        `json:"DistanceToNearestCity,omitempty"`
+	Equipment             []struct {
+		Accessibility *Accessibility `json:"Accessibility,omitempty"`
+		Type          *Equipment     `json:"Type,omitempty"`
+	} `json:"Equipment,omitempty"`
+	Facility []struct {
+		Accessibility *Accessibility `json:"Accessibility,omitempty"`
+		Type          *Facility      `json:"Type,omitempty"`
+	} `json:"Facility,omitempty"`
+	Geometry            *Geometry  `json:"Geometry,omitempty"`
+	IconID              *string    `json:"IconId,omitempty"`
+	ID                  *string    `json:"Id,omitempty"`
+	LocationDescription *string    `json:"LocationDescription,omitempty"`
+	ModifiedTime        *time.Time `json:"ModifiedTime,omitempty"`
+	Name                *string    `json:"Name,omitempty"`
+	OpenStatus          *string    `json:"OpenStatus,omitempty"`
+	OperationStatus     *string    `json:"OperationStatus,omitempty"`
+	Operator            *struct {
+		Contact                *string `json:"Contact,omitempty"`
+		ContactEmail           *string `json:"ContactEmail,omitempty"`
+		ContactTelephoneNumber *string `json:"ContactTelephoneNumber,omitempty"`
+		Name                   *string `json:"Name,omitempty"`
+	} `json:"Operator,omitempty"`
+	ParkingAccess []Geometry `json:"ParkingAccess,omitempty"`
+	Photo         []struct {
+		Title *string `json:"Title,omitempty"`
+		URL   *string `json:"Url,omitempty"`
+	} `json:"Photo,omitempty"`
+	TariffsAndPayment *struct {
+		FreeOfCharge *bool   `json:"FreeOfCharge,omitempty"`
+		Tariff       *string `json:"Tariff,omitempty"`
+	} `json:"TariffsAndPayment,omitempty"`
+	UsageSenario           []string `json:"UsageSenario,omitempty"`
+	VehicleCharacteristics []struct {
+		LoadType       *string  `json:"LoadType,omitempty"`
+		NumberOfSpaces *int     `json:"NumberOfSpaces,omitempty"`
+		VehicleType    *Vehicle `json:"VeichleType,omitempty"`
+	} `json:"VehicleCharacteristics,omitempty"`
+}
+
+type Parking1Dot4 struct {
+	CountyNo              []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted               *bool          `json:"Deleted,omitempty"`
+	Description           *string        `json:"Description,omitempty"`
+	DistanceToNearestCity *string        `json:"DistanceToNearestCity,omitempty"`
+	Equipment             []struct {
+		Accessibility *Accessibility `json:"Accessibility,omitempty"`
+		Type          *Equipment     `json:"Type,omitempty"`
+	} `json:"Equipment,omitempty"`
+	Facility []struct {
+		Accessibility *Accessibility `json:"Accessibility,omitempty"`
+		Type          *Facility      `json:"Type,omitempty"`
+	} `json:"Facility,omitempty"`
+	Geometry            *Geometry  `json:"Geometry,omitempty"`
+	IconID              *string    `json:"IconId,omitempty"`
+	ID                  *string    `json:"Id,omitempty"`
+	LocationDescription *string    `json:"LocationDescription,omitempty"`
+	ModifiedTime        *time.Time `json:"ModifiedTime,omitempty"`
+	Name                *string    `json:"Name,omitempty"`
+	OpenStatus          *string    `json:"OpenStatus,omitempty"`
+	OperationStatus     *string    `json:"OperationStatus,omitempty"`
+	Operator            *struct {
+		Contact                *string `json:"Contact,omitempty"`
+		ContactEmail           *string `json:"ContactEmail,omitempty"`
+		ContactTelephoneNumber *string `json:"ContactTelephoneNumber,omitempty"`
+		Name                   *string `json:"Name,omitempty"`
+	} `json:"Operator,omitempty"`
+	ParkingAccess []Geometry `json:"ParkingAccess,omitempty"`
+	Photo         []struct {
+		Title *string `json:"Title,omitempty"`
+		URL   *string `json:"Url,omitempty"`
+	} `json:"Photo,omitempty"`
+	TariffsAndPayment *struct {
+		FreeOfCharge *bool   `json:"FreeOfCharge,omitempty"`
+		Tariff       *string `json:"Tariff,omitempty"`
+	} `json:"TariffsAndPayment,omitempty"`
+	UsageSenario           []string `json:"UsageSenario,omitempty"`
+	VehicleCharacteristics []struct {
+		LoadType       *string  `json:"LoadType,omitempty"`
+		NumberOfSpaces *int     `json:"NumberOfSpaces,omitempty"`
+		VehicleType    *Vehicle `json:"VehicleType,omitempty"`
+	} `json:"VehicleCharacteristics,omitempty"`
+}

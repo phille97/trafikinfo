@@ -180,3 +180,94 @@ const (
 	VehicleWithOddNumberedRegistrationPlates  Vehicle = "withOddNumberedRegistrationPlates"
 	VehicleOther                              Vehicle = "other"
 )
+
+type Accessibility string
+
+const (
+	AccessibilityBarrierFreeAccessible           Accessibility = "barrierFreeAccessible"
+	AccessibilityHandicappedAccessible           Accessibility = "handicappedAccessible"
+	AccessibilityHandicappedEasements            Accessibility = "handicappedEasements"
+	AccessibilityHandicappedMarked               Accessibility = "handicappedMarked"
+	AccessibilityOrientationSystemForBlindPeople Accessibility = "orientationSystemForBlindPeople"
+	AccessibilityWheelChairAccessible            Accessibility = "wheelChairAccessible"
+
+	AccessibilityNone    Accessibility = "none"
+	AccessibilityUnknown Accessibility = "unknown"
+	AccessibilityOther   Accessibility = "other"
+)
+
+type Equipment string
+
+const (
+	EquipmentBikeParking             Equipment = "bikeParking"
+	EquipmentCashMachine             Equipment = "cashMachine"
+	EquipmentCopyMachineOrService    Equipment = "copyMachineOrService"
+	EquipmentDefibrillator           Equipment = "defibrillator"
+	EquipmentDumpingStation          Equipment = "dumpingStation"
+	EquipmentElectricChargingStation Equipment = "electricChargingStation"
+	EquipmentElevator                Equipment = "elevator"
+	EquipmentFaxMachineOrService     Equipment = "faxMachineOrService"
+	EquipmentFireExtingiusher        Equipment = "fireExtingiusher"
+	EquipmentFireHose                Equipment = "fireHose"
+	EquipmentFireHydrant             Equipment = "fireHydrant"
+	EquipmentFirstAidEquipment       Equipment = "firstAidEquipment"
+	EquipmentFreshWater              Equipment = "freshWater"
+	EquipmentIceFreeScaffold         Equipment = "iceFreeScaffold"
+	EquipmentInformationPoint        Equipment = "informationPoint"
+	EquipmentInformatonStele         Equipment = "informatonStele"
+	EquipmentInternetTerminal        Equipment = "internetTerminal"
+	EquipmentInternetWireless        Equipment = "internetWireless"
+	EquipmentLuggageLocker           Equipment = "luggageLocker"
+	EquipmentPayDesk                 Equipment = "payDesk"
+	EquipmentPaymentMachine          Equipment = "paymentMachine"
+	EquipmentPicnicFacilities        Equipment = "picnicFacilities"
+	EquipmentPlayground              Equipment = "playground"
+	EquipmentPublicCardPhone         Equipment = "publicCardPhone"
+	EquipmentPublicCoinPhone         Equipment = "publicCoinPhone"
+	EquipmentPublicPhone             Equipment = "publicPhone"
+	EquipmentRefuseBin               Equipment = "refuseBin"
+	EquipmentSafeDeposit             Equipment = "safeDeposit"
+	EquipmentShower                  Equipment = "shower"
+	EquipmentToilet                  Equipment = "toilet"
+	EquipmentTollTerminal            Equipment = "tollTerminal"
+	EquipmentVendingMachine          Equipment = "vendingMachine"
+	EquipmentWasteDisposal           Equipment = "wasteDisposal"
+
+	EquipmentNone    Equipment = "none"
+	EquipmentOther   Equipment = "other"
+	EquipmentUnknown Equipment = "unknown"
+)
+
+type Facility string
+
+const (
+	FacilityHotel                   Facility = "hotel"
+	FacilityMotel                   Facility = "motel"
+	FacilityOvernightAccommodation  Facility = "overnightAccommodation"
+	FacilityShop                    Facility = "shop"
+	FacilityKiosk                   Facility = "kiosk"
+	FacilityFoodShopping            Facility = "foodShopping"
+	FacilityCafe                    Facility = "cafe"
+	FacilityRestaurant              Facility = "restaurant"
+	FacilityRestaurantSelfService   Facility = "restaurantSelfService"
+	FacilityMotorwayRestaurant      Facility = "motorwayRestaurant"
+	FacilityMotorwayRestaurantSmall Facility = "motorwayRestaurantSmall"
+	FacilitySparePartsShopping      Facility = "sparePartsShopping"
+	FacilityPetrolStation           Facility = "petrolStation"
+	FacilityVehicleMaintenance      Facility = "vehicleMaintenance"
+	FacilityTyreRepair              Facility = "tyreRepair"
+	FacilityTruckRepair             Facility = "truckRepair"
+	FacilityTruckWash               Facility = "truckWash"
+	FacilityCarWash                 Facility = "carWash"
+	FacilityPharmacy                Facility = "pharmacy"
+	FacilityMedicalFacility         Facility = "medicalFacility"
+	FacilityPolice                  Facility = "police"
+	FacilityTouristInformation      Facility = "touristInformation"
+	FacilityBikeSharing             Facility = "bikeSharing"
+	FacilityDocstop                 Facility = "docstop"
+	FacilityLaundry                 Facility = "laundry"
+	FacilityLeisureActivities       Facility = "leisureActivities"
+
+	FacilityUnknown Facility = "unknown"
+	FacilityOther   Facility = "other"
+)
