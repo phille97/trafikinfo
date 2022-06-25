@@ -4,7 +4,7 @@ import "time"
 
 type WeatherStation1Dot0 struct {
 	Active             *bool                `json:"Active,omitempty"`
-	CountyNumber       []CountyNumber       `json:"CountyNo,omitempty"`
+	County             []County             `json:"CountyNo,omitempty"`
 	Deleted            *bool                `json:"Deleted,omitempty"`
 	Geometry           *Geometry            `json:"Geometry,omitempty"`
 	IconID             *string              `json:"IconId,omitempty"`

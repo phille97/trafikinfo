@@ -3,8 +3,8 @@ package trafikinfo
 import "time"
 
 type MeasurementData1001Dot0 struct {
-	County    *CountyNumber `json:"County,omitempty"`
-	Deleted   *bool         `json:"Deleted,omitempty"`
+	County    *County `json:"County,omitempty"`
+	Deleted   *bool   `json:"Deleted,omitempty"`
 	Direction *struct {
 		Code  *int    `json:"Code,omitempty"`
 		Value *string `json:"Value,omitempty"`
@@ -31,10 +31,10 @@ type MeasurementData1001Dot0 struct {
 }
 
 type MeasurementData201Dot0 struct {
-	County             *CountyNumber `json:"County,omitempty"`
-	CrossfallRutBottom *float64      `json:"CrossfallRutBottom,omitempty"`
-	Curvature          *float64      `json:"Curvature,omitempty"`
-	Deleted            *bool         `json:"Deleted,omitempty"`
+	County             *County  `json:"County,omitempty"`
+	CrossfallRutBottom *float64 `json:"CrossfallRutBottom,omitempty"`
+	Curvature          *float64 `json:"Curvature,omitempty"`
+	Deleted            *bool    `json:"Deleted,omitempty"`
 	Direction          *struct {
 		Code  *int    `json:"Code,omitempty"`
 		Value *string `json:"Value,omitempty"`
@@ -76,12 +76,12 @@ type MeasurementData201Dot0 struct {
 }
 
 type PavementData1Dot0 struct {
-	BallMillValue *float64      `json:"BallMillValue,omitempty"`
-	Binder        *string       `json:"Binder,omitempty"`
-	Contractor    *string       `json:"Contractor,omitempty"`
-	County        *CountyNumber `json:"County,omitempty"`
-	Coverage      *string       `json:"Coverage,omitempty"`
-	Deleted       *bool         `json:"Deleted,omitempty"`
+	BallMillValue *float64 `json:"BallMillValue,omitempty"`
+	Binder        *string  `json:"Binder,omitempty"`
+	Contractor    *string  `json:"Contractor,omitempty"`
+	County        *County  `json:"County,omitempty"`
+	Coverage      *string  `json:"Coverage,omitempty"`
+	Deleted       *bool    `json:"Deleted,omitempty"`
 	Direction     *struct {
 		Code  *int    `json:"Code,omitempty"`
 		Value *string `json:"Value,omitempty"`
@@ -118,8 +118,8 @@ type RoadData1Dot0 struct {
 		Code  *int    `json:"Code,omitempty"`
 		Value *string `json:"Value,omitempty"`
 	} `json:"BearingCapacity,omitempty"`
-	County    *CountyNumber `json:"County,omitempty"`
-	Deleted   *bool         `json:"Deleted,omitempty"`
+	County    *County `json:"County,omitempty"`
+	Deleted   *bool   `json:"Deleted,omitempty"`
 	Direction *struct {
 		Code  *int    `json:"Code,omitempty"`
 		Value *string `json:"Value,omitempty"`
@@ -155,8 +155,8 @@ type RoadData1Dot0 struct {
 }
 
 type RoadGeometry1Dot0 struct {
-	County    *CountyNumber `json:"County,omitempty"`
-	Deleted   *bool         `json:"Deleted,omitempty"`
+	County    *County `json:"County,omitempty"`
+	Deleted   *bool   `json:"Deleted,omitempty"`
 	Direction *struct {
 		Code  *int    `json:"Code,omitempty"`
 		Value *string `json:"Value,omitempty"`

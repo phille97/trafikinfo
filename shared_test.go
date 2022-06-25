@@ -4,7 +4,7 @@ import "testing"
 
 func TestCountyNumberString(t *testing.T) {
 	tests := []struct {
-		In  CountyNumber
+		In  County
 		Out string
 	}{
 		{In: 1000, Out: "Okänt län (1000)"},

@@ -87,18 +87,18 @@ const (
 )
 
 type TrainStation1Dot0 struct {
-	Advertised                  *bool          `json:"Advertised,omitempty"`
-	AdvertisedLocationName      *string        `json:"AdvertisedLocationName,omitempty"`
-	AdvertisedShortLocationName *string        `json:"AdvertisedShortLocationName,omitempty"`
-	CountryCode                 *CountryCode   `json:"CountryCode,omitempty"`
-	CountyNo                    []CountyNumber `json:"CountyNo,omitempty"`
-	Deleted                     *bool          `json:"Deleted,omitempty"`
-	Geometry                    *Geometry      `json:"Geometry,omitempty"`
-	LocationInformationText     *string        `json:"LocationInformationText,omitempty"`
-	LocationSignature           *string        `json:"LocationSignature,omitempty"`
-	ModifiedTime                *time.Time     `json:"ModifiedTime,omitempty"`
-	PlatformLine                []string       `json:"PlatformLine,omitempty"`
-	Prognosticated              *bool          `json:"Prognosticated,omitempty"`
+	Advertised                  *bool        `json:"Advertised,omitempty"`
+	AdvertisedLocationName      *string      `json:"AdvertisedLocationName,omitempty"`
+	AdvertisedShortLocationName *string      `json:"AdvertisedShortLocationName,omitempty"`
+	CountryCode                 *CountryCode `json:"CountryCode,omitempty"`
+	County                      []County     `json:"CountyNo,omitempty"`
+	Deleted                     *bool        `json:"Deleted,omitempty"`
+	Geometry                    *Geometry    `json:"Geometry,omitempty"`
+	LocationInformationText     *string      `json:"LocationInformationText,omitempty"`
+	LocationSignature           *string      `json:"LocationSignature,omitempty"`
+	ModifiedTime                *time.Time   `json:"ModifiedTime,omitempty"`
+	PlatformLine                []string     `json:"PlatformLine,omitempty"`
+	Prognosticated              *bool        `json:"Prognosticated,omitempty"`
 }
 
 type TrainStation1Dot4 struct {
@@ -107,14 +107,14 @@ type TrainStation1Dot4 struct {
 }
 
 type TrainMessageCommon struct {
-	CountyNo            []CountyNumber `json:"CountyNo,omitempty"`
-	Deleted             *bool          `json:"Deleted,omitempty"`
-	EventID             *string        `json:"EventId,omitempty"`
-	ExternalDescription *string        `json:"ExternalDescription,omitempty"`
-	Geometry            *Geometry      `json:"Geometry,omitempty"`
-	LastUpdateDateTime  *time.Time     `json:"LastUpdateDateTime,omitempty"`
-	ModifiedTime        *time.Time     `json:"ModifiedTime,omitempty"`
-	StartDateTime       *time.Time     `json:"StartDateTime,omitempty"`
+	County              []County   `json:"CountyNo,omitempty"`
+	Deleted             *bool      `json:"Deleted,omitempty"`
+	EventID             *string    `json:"EventId,omitempty"`
+	ExternalDescription *string    `json:"ExternalDescription,omitempty"`
+	Geometry            *Geometry  `json:"Geometry,omitempty"`
+	LastUpdateDateTime  *time.Time `json:"LastUpdateDateTime,omitempty"`
+	ModifiedTime        *time.Time `json:"ModifiedTime,omitempty"`
+	StartDateTime       *time.Time `json:"StartDateTime,omitempty"`
 }
 
 type TrainMessage1Dot0 struct {

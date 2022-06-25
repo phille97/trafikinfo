@@ -31,11 +31,11 @@ type LastModified struct {
 	DateTime *time.Time `json:"_attr_datetime,omitempty"`
 }
 
-// CountyNumber is a numerical ID assigned to a county in Sweden
-type CountyNumber uint
+// County is a numerical ID assigned to a county in Sweden
+type County uint
 
 const (
-	CountyStockholm CountyNumber = iota + 1
+	CountyStockholm County = iota + 1
 	CountyStockholmDeprecated
 	CountyUppsala
 	CountySodermanland
@@ -62,7 +62,7 @@ const (
 	CountyNorrbotten
 )
 
-func (c CountyNumber) String() string {
+func (c County) String() string {
 	switch c {
 	case CountyStockholm, CountyStockholmDeprecated:
 		return "Stockholms län"
