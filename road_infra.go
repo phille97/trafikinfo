@@ -153,3 +153,18 @@ type RoadData1Dot0 struct {
 		Value *string `json:"Value,omitempty"`
 	} `json:"Winter2003,omitempty"`
 }
+
+type RoadGeometry1Dot0 struct {
+	County    *CountyNumber `json:"County,omitempty"`
+	Deleted   *bool         `json:"Deleted,omitempty"`
+	Direction *struct {
+		Code  *int    `json:"Code,omitempty"`
+		Value *string `json:"Value,omitempty"`
+	} `json:"Direction,omitempty"`
+	Geometry       *Geometry  `json:"Geometry,omitempty"`
+	Length         *int       `json:"Length,omitempty"`
+	ModifiedTime   *time.Time `json:"ModifiedTime,omitempty"`
+	RoadMainNumber *int       `json:"RoadMainNumber,omitempty"`
+	RoadSubNumber  *int       `json:"RoadSubNumber,omitempty"`
+	Timestamp      *time.Time `json:"TimeStamp,omitempty"`
+}
