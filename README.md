@@ -19,9 +19,6 @@ favourite HTTP client to retrieve it.
 The API endpoint is available through the `Endpoint` constant. The only
 supported endpoint is `v2`, `v1.x` is being deprecated by Trafikverket.
 
-This library is under construction and currently lacks the struct types to
-decode the response into.
-
 ## Usage
 
 ```go
