@@ -336,3 +336,37 @@ const (
 	WarningSnow         Warning = "Snöfall"
 	WarningOther        Warning = "Annat"
 )
+
+type Status uint
+
+const (
+	StatusFreeAccess Status = iota + 1
+	StatusPassabilityDifficult
+	StatusPassabilityImpossile
+	StatusPassabilityUnknown
+)
+
+func (s Status) String() string {
+	switch s {
+	case StatusFreeAccess:
+		return "fri framkomlighet"
+	case StatusPassabilityDifficult:
+		return "svår framkomlighet"
+	case StatusPassabilityImpossile:
+		return "framkomlighet omöjlig"
+	case StatusPassabilityUnknown:
+		return "framkomlighet okänd"
+	default:
+		return fmt.Sprintf("Okänd status (%d)", s)
+	}
+}
+
+type TrafficStatus string
+
+const (
+	TrafficStatusFreeflow   TrafficStatus = "freeflow"
+	TrafficStatusHeavy      TrafficStatus = "heavy"
+	TrafficStatusCongested  TrafficStatus = "congested"
+	TrafficStatusImpossible TrafficStatus = "impossible"
+	TrafficStatusUnknown    TrafficStatus = "unknown"
+)

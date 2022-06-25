@@ -90,3 +90,26 @@ func TestConditionCodeString(t *testing.T) {
 		})
 	}
 }
+
+func TestStatusString(t *testing.T) {
+	tests := []struct {
+		In  Status
+		Out string
+	}{
+		{In: 1000, Out: "Okänd status (1000)"},
+		{In: StatusFreeAccess, Out: "fri framkomlighet"},
+		{In: StatusPassabilityDifficult, Out: "svår framkomlighet"},
+		{In: StatusPassabilityImpossile, Out: "framkomlighet omöjlig"},
+		{In: StatusPassabilityUnknown, Out: "framkomlighet okänd"},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.In.String(), func(t *testing.T) {
+			t.Parallel()
+			if tt.In.String() != tt.Out {
+				t.Fatalf("Expected: %s, got: %s", tt.Out, tt.In.String())
+			}
+		})
+	}
+}
