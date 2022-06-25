@@ -94,7 +94,7 @@ types and versions.
 `RoadData` | 1.0: ✅
 `RoadGeometry` | 1.0: ✅
 `TrafficFlow` | 1.0: ❌ 1.4: ❌
-`TrafficSafetyCamera` | 1.0: ❌
+`TrafficSafetyCamera` | 1.0: ✅
 `TrainAnnouncement` | 1.0: ✅ 1.3: ✅ 1.4: ✅ 1.5: ✅ 1.6: ✅
 `TrainMessage` | 1.0: ✅ 1.3: ✅ 1.4: ✅ 1.5: ✅ 1.6: ✅ 1.7: ✅
 `TrainStation` | 1.0: ✅ 1.4: ✅

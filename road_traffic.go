@@ -30,3 +30,15 @@ const (
 	CameraTypeSpeed CameraType = "Väglagskamera"
 	CameraTypeFlow  CameraType = "Trafikflödeskamera"
 )
+
+type TrafficSafetyCamera1Dot0 struct {
+	Bearing      *int           `json:"Bearing,omitempty"`
+	CountyNo     []CountyNumber `json:"CountyNo,omitempty"`
+	Deleted      *bool          `json:"Deleted,omitempty"`
+	Geometry     *Geometry      `json:"Geometry,omitempty"`
+	IconID       *string        `json:"IconId,omitempty"`
+	ID           *string        `json:"Id,omitempty"`
+	ModifiedTime *time.Time     `json:"ModifiedTime,omitempty"`
+	Name         *string        `json:"Name,omitempty"`
+	RoadNumber   *string        `json:"RoadNumber,omitempty"`
+}
