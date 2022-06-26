@@ -17,10 +17,10 @@ type WeatherStation1Dot0 struct {
 		} `json:"Air,omitempty"`
 		MeasureTime   *time.Time `json:"MeasureTime,omitempty"`
 		Precipitation *struct {
-			Amount     *float64                 `json:"Amount,omitempty"`
-			AmountName *PrecipitationAmountName `json:"AmountName,omitempty"`
-			Type       *PrecipitationType       `json:"Type,omitempty"`
-			TypeIconID *string                  `json:"TypeIconId,omitempty"`
+			Amount     *float64             `json:"Amount,omitempty"`
+			AmountName *PrecipitationAmount `json:"AmountName,omitempty"`
+			Type       *PrecipitationType   `json:"Type,omitempty"`
+			TypeIconID *string              `json:"TypeIconId,omitempty"`
 		} `json:"Precipitation,omitempty"`
 		Road *struct {
 			Temperature       *float64 `json:"Temp,omitempty"`
@@ -42,10 +42,10 @@ type WeatherStation1Dot0 struct {
 		} `json:"Air,omitempty"`
 		MeasureTime   *time.Time `json:"MeasureTime,omitempty"`
 		Precipitation *struct {
-			Amount     *float64                 `json:"Amount,omitempty"`
-			AmountName *PrecipitationAmountName `json:"AmountName,omitempty"`
-			Type       *PrecipitationType       `json:"Type,omitempty"`
-			TypeIconID *string                  `json:"TypeIconId,omitempty"`
+			Amount     *float64             `json:"Amount,omitempty"`
+			AmountName *PrecipitationAmount `json:"AmountName,omitempty"`
+			Type       *PrecipitationType   `json:"Type,omitempty"`
+			TypeIconID *string              `json:"TypeIconId,omitempty"`
 		} `json:"Precipitation,omitempty"`
 		Road *struct {
 			Temperature       *float64 `json:"Temp,omitempty"`
@@ -64,25 +64,25 @@ type WeatherStation1Dot0 struct {
 	RoadNumber   *int       `json:"RoadNumberNumeric,omitempty"`
 }
 
-type PrecipitationAmountName string
+type PrecipitationAmount string
 
 const (
-	PrecipitationDataMissing PrecipitationAmountName = "Givare saknas/Fel på givare"
-	PrecipitationLightRain   PrecipitationAmountName = "Lätt regn"
-	PrecipitationMildRain    PrecipitationAmountName = "Måttligt regn"
-	PrecipitationHeavyRain   PrecipitationAmountName = "Kraftigt regn"
+	PrecipitationDataMissing PrecipitationAmount = "Givare saknas/Fel på givare"
+	PrecipitationLightRain   PrecipitationAmount = "Lätt regn"
+	PrecipitationMildRain    PrecipitationAmount = "Måttligt regn"
+	PrecipitationHeavyRain   PrecipitationAmount = "Kraftigt regn"
 
-	PrecipitationLightSleet PrecipitationAmountName = "Lätt snöblandat regn"
-	PrecipitationMildSleet  PrecipitationAmountName = "Måttligt snöblandat regn"
-	PrecipitationHeavySleet PrecipitationAmountName = "Kraftigt snöblandat regn"
+	PrecipitationLightSleet PrecipitationAmount = "Lätt snöblandat regn"
+	PrecipitationMildSleet  PrecipitationAmount = "Måttligt snöblandat regn"
+	PrecipitationHeavySleet PrecipitationAmount = "Kraftigt snöblandat regn"
 
-	PrecipitationLightSnow PrecipitationAmountName = "Lätt snöfall"
-	PrecipitationMindSnow  PrecipitationAmountName = "Måttligt snöfall"
-	PrecipitationHeavySnow PrecipitationAmountName = "Kraftigt snöfall"
+	PrecipitationLightSnow PrecipitationAmount = "Lätt snöfall"
+	PrecipitationMindSnow  PrecipitationAmount = "Måttligt snöfall"
+	PrecipitationHeavySnow PrecipitationAmount = "Kraftigt snöfall"
 
-	PrecipitationOther   PrecipitationAmountName = "Annan nederbördstyp"
-	PrecipitationUnknown PrecipitationAmountName = "Okänd nederbördstyp"
-	PrecipitationNone    PrecipitationAmountName = "Ingen nederbörd"
+	PrecipitationOther   PrecipitationAmount = "Annan nederbördstyp"
+	PrecipitationUnknown PrecipitationAmount = "Okänd nederbördstyp"
+	PrecipitationNone    PrecipitationAmount = "Ingen nederbörd"
 )
 
 type PrecipitationType string
