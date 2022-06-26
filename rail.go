@@ -251,7 +251,7 @@ type TrainAnnouncement1Dot0 struct {
 	ActivityType               *ActivityType `json:"ActivityType,omitempty"`
 	Advertised                 *bool         `json:"Advertised,omitempty"`
 	AdvertisedTimeAtLocation   *time.Time    `json:"AdvertisedTimeAtLocation,omitempty"`
-	AdvertisedTrainIdent       *string       `json:"AdvertisedTrainIdent,omitempty"`
+	AdvertisedTrainID          *string       `json:"AdvertisedTrainIdent,omitempty"`
 	Booking                    []string      `json:"Booking,omitempty"`
 	Canceled                   *bool         `json:"Canceled,omitempty"`
 	Deleted                    *bool         `json:"Deleted,omitempty"`
@@ -280,7 +280,7 @@ type TrainAnnouncement1Dot3 struct {
 	ActivityType               *ActivityType `json:"ActivityType,omitempty"`
 	Advertised                 *bool         `json:"Advertised,omitempty"`
 	AdvertisedTimeAtLocation   *time.Time    `json:"AdvertisedTimeAtLocation,omitempty"`
-	AdvertisedTrainIdent       *string       `json:"AdvertisedTrainIdent,omitempty"`
+	AdvertisedTrainID          *string       `json:"AdvertisedTrainIdent,omitempty"`
 	Booking                    []string      `json:"Booking,omitempty"`
 	Canceled                   *bool         `json:"Canceled,omitempty"`
 	Deleted                    *bool         `json:"Deleted,omitempty"`
@@ -303,7 +303,7 @@ type TrainAnnouncement1Dot3 struct {
 	ProductInformation                    []string   `json:"ProductInformation,omitempty"`
 	ScheduledDepartureDateTime            *time.Time `json:"ScheduledDepartureDateTime,omitempty"`
 	Service                               []string   `json:"Service,omitempty"`
-	TechnicalTrainIdent                   *string    `json:"TechnicalTrainIdent,omitempty"`
+	TechnicalTrainID                      *string    `json:"TechnicalTrainIdent,omitempty"`
 	TimeAtLocation                        *time.Time `json:"TimeAtLocation,omitempty"`
 	ToLocation                            []struct {
 		LocationName *string `json:"LocationName,omitempty"`
@@ -332,7 +332,7 @@ type TrainAnnouncement1Dot4 struct {
 	ActivityType               *ActivityType `json:"ActivityType,omitempty"`
 	Advertised                 *bool         `json:"Advertised,omitempty"`
 	AdvertisedTimeAtLocation   *time.Time    `json:"AdvertisedTimeAtLocation,omitempty"`
-	AdvertisedTrainIdent       *string       `json:"AdvertisedTrainIdent,omitempty"`
+	AdvertisedTrainID          *string       `json:"AdvertisedTrainIdent,omitempty"`
 	Booking                    []string      `json:"Booking,omitempty"`
 	Canceled                   *bool         `json:"Canceled,omitempty"`
 	Deleted                    *bool         `json:"Deleted,omitempty"`
@@ -357,7 +357,7 @@ type TrainAnnouncement1Dot4 struct {
 	ScheduledDepartureDateTime            *time.Time `json:"ScheduledDepartureDateTime,omitempty"`
 	Service                               []string   `json:"Service,omitempty"`
 	TechnicalDateTime                     *time.Time `json:"TechnicalDateTime,omitempty"`
-	TechnicalTrainIdent                   *string    `json:"TechnicalTrainIdent,omitempty"`
+	TechnicalTrainID                      *string    `json:"TechnicalTrainIdent,omitempty"`
 	TimeAtLocation                        *time.Time `json:"TimeAtLocation,omitempty"`
 	TimeAtLocationWithSeconds             *time.Time `json:"TimeAtLocationWithSeconds,omitempty"`
 	ToLocation                            []struct {
@@ -388,7 +388,7 @@ type TrainAnnouncement1Dot5 struct {
 	ActivityType             *ActivityType `json:"ActivityType,omitempty"`
 	Advertised               *bool         `json:"Advertised,omitempty"`
 	AdvertisedTimeAtLocation *time.Time    `json:"AdvertisedTimeAtLocation,omitempty"`
-	AdvertisedTrainIdent     *string       `json:"AdvertisedTrainIdent,omitempty"`
+	AdvertisedTrainID        *string       `json:"AdvertisedTrainIdent,omitempty"`
 	Booking                  []struct {
 		Code        *string `json:"Code,omitempty"`
 		Description *string `json:"Description,omitempty"`
@@ -428,7 +428,7 @@ type TrainAnnouncement1Dot5 struct {
 		Description *string `json:"Description,omitempty"`
 	} `json:"Service,omitempty"`
 	TechnicalDateTime         *time.Time `json:"TechnicalDateTime,omitempty"`
-	TechnicalTrainIdent       *string    `json:"TechnicalTrainIdent,omitempty"`
+	TechnicalTrainID          *string    `json:"TechnicalTrainIdent,omitempty"`
 	TimeAtLocation            *time.Time `json:"TimeAtLocation,omitempty"`
 	TimeAtLocationWithSeconds *time.Time `json:"TimeAtLocationWithSeconds,omitempty"`
 	ToLocation                []struct {
@@ -462,7 +462,7 @@ type TrainAnnouncement1Dot6 struct {
 	ActivityType             *ActivityType `json:"ActivityType,omitempty"`
 	Advertised               *bool         `json:"Advertised,omitempty"`
 	AdvertisedTimeAtLocation *time.Time    `json:"AdvertisedTimeAtLocation,omitempty"`
-	AdvertisedTrainIdent     *string       `json:"AdvertisedTrainIdent,omitempty"`
+	AdvertisedTrainID        *string       `json:"AdvertisedTrainIdent,omitempty"`
 	Booking                  []struct {
 		Code        *string `json:"Code,omitempty"`
 		Description *string `json:"Description,omitempty"`
@@ -502,7 +502,7 @@ type TrainAnnouncement1Dot6 struct {
 		Description *string `json:"Description,omitempty"`
 	} `json:"Service,omitempty"`
 	TechnicalDateTime         *time.Time `json:"TechnicalDateTime,omitempty"`
-	TechnicalTrainIdent       *string    `json:"TechnicalTrainIdent,omitempty"`
+	TechnicalTrainID          *string    `json:"TechnicalTrainIdent,omitempty"`
 	TimeAtLocation            *time.Time `json:"TimeAtLocation,omitempty"`
 	TimeAtLocationWithSeconds *time.Time `json:"TimeAtLocationWithSeconds,omitempty"`
 	ToLocation                []struct {
