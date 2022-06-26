@@ -46,16 +46,7 @@ func main() {
 	}
 
 	if resp.StatusCode == http.StatusBadRequest {
-		type errmsg struct {
-			Response struct {
-				Result []struct {
-					Error struct {
-						Message string `json:"MESSAGE"`
-					} `json:"ERROR"`
-				} `json:"RESULT"`
-			} `json:"RESPONSE"`
-		}
-		var e errmsg
+		var e trafikinfo.APIError
 		d := json.NewDecoder(resp.Body)
 		err := d.Decode(&e)
 		if err != nil {

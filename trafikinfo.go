@@ -36,3 +36,15 @@ const (
 	RoadData           ObjectType = "RoadData"
 	RoadGeometry       ObjectType = "RoadGeometry"
 )
+
+// APIError represents an error response from the API
+type APIError struct {
+	Response struct {
+		Result []struct {
+			Error struct {
+				Message string `json:"MESSAGE"`
+				Source  string `json:"SOURCE"`
+			} `json:"ERROR"`
+		} `json:"RESULT"`
+	} `json:"RESPONSE"`
+}
