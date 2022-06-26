@@ -177,51 +177,51 @@ type Parking1Dot4 struct {
 }
 
 type RoadCondition1Dot0 struct {
-	Cause             []Cause        `json:"Cause,omitempty"`
-	ConditionCode     *ConditionCode `json:"ConditionCode,omitempty"`
-	ConditionInfo     []string       `json:"ConditionInfo,omitempty"`
-	ConditionText     *string        `json:"ConditionText,omitempty"`
-	County            []County       `json:"CountyNo,omitempty"`
-	Creator           *string        `json:"Creator,omitempty"`
-	Deleted           *bool          `json:"Deleted,omitempty"`
-	EndTime           *time.Time     `json:"EndTime,omitempty"`
-	Geometry          *Geometry      `json:"Geometry,omitempty"`
-	IconID            *string        `json:"IconId,omitempty"`
-	ID                *string        `json:"Id,omitempty"`
-	LocationText      *string        `json:"LocationText,omitempty"`
-	Measurement       []Measurement  `json:"Measurement,omitempty"`
-	ModifiedTime      *time.Time     `json:"ModifiedTime,omitempty"`
-	RoadNumber        *string        `json:"RoadNumber,omitempty"`
-	RoadNumberNumeric *int           `json:"RoadNumberNumeric,omitempty"`
-	StartTime         *time.Time     `json:"StartTime,omitempty"`
-	Warning           []Warning      `json:"Warning,omitempty"`
+	Cause             []Cause       `json:"Cause,omitempty"`
+	ConditionCode     *Condition    `json:"ConditionCode,omitempty"`
+	ConditionInfo     []string      `json:"ConditionInfo,omitempty"`
+	ConditionText     *string       `json:"ConditionText,omitempty"`
+	County            []County      `json:"CountyNo,omitempty"`
+	Creator           *string       `json:"Creator,omitempty"`
+	Deleted           *bool         `json:"Deleted,omitempty"`
+	EndTime           *time.Time    `json:"EndTime,omitempty"`
+	Geometry          *Geometry     `json:"Geometry,omitempty"`
+	IconID            *string       `json:"IconId,omitempty"`
+	ID                *string       `json:"Id,omitempty"`
+	LocationText      *string       `json:"LocationText,omitempty"`
+	Measurement       []Measurement `json:"Measurement,omitempty"`
+	ModifiedTime      *time.Time    `json:"ModifiedTime,omitempty"`
+	RoadNumber        *string       `json:"RoadNumber,omitempty"`
+	RoadNumberNumeric *int          `json:"RoadNumberNumeric,omitempty"`
+	StartTime         *time.Time    `json:"StartTime,omitempty"`
+	Warning           []Warning     `json:"Warning,omitempty"`
 }
 
 type RoadCondition1Dot1 struct {
-	Cause                []Cause        `json:"Cause,omitempty"`
-	ConditionCode        *ConditionCode `json:"ConditionCode,omitempty"`
-	ConditionInfo        []string       `json:"ConditionInfo,omitempty"`
-	ConditionText        *string        `json:"ConditionText,omitempty"`
-	County               []County       `json:"CountyNo,omitempty"`
-	Creator              *string        `json:"Creator,omitempty"`
-	Deleted              *bool          `json:"Deleted,omitempty"`
-	EndTime              *time.Time     `json:"EndTime,omitempty"`
-	Geometry             *Geometry      `json:"Geometry,omitempty"`
-	IconID               *string        `json:"IconId,omitempty"`
-	ID                   *string        `json:"Id,omitempty"`
-	LocationText         *string        `json:"LocationText,omitempty"`
-	Measurement          []Measurement  `json:"Measurement,omitempty"`
-	ModifiedTime         *time.Time     `json:"ModifiedTime,omitempty"`
-	RoadNumber           *string        `json:"RoadNumber,omitempty"`
-	RoadNumberNumeric    *int           `json:"RoadNumberNumeric,omitempty"`
-	SafetyRelatedMessage *bool          `json:"SafetyRelatedMessage,omitempty"`
-	StartTime            *time.Time     `json:"StartTime,omitempty"`
-	Warning              []Warning      `json:"Warning,omitempty"`
+	Cause                []Cause       `json:"Cause,omitempty"`
+	ConditionCode        *Condition    `json:"ConditionCode,omitempty"`
+	ConditionInfo        []string      `json:"ConditionInfo,omitempty"`
+	ConditionText        *string       `json:"ConditionText,omitempty"`
+	County               []County      `json:"CountyNo,omitempty"`
+	Creator              *string       `json:"Creator,omitempty"`
+	Deleted              *bool         `json:"Deleted,omitempty"`
+	EndTime              *time.Time    `json:"EndTime,omitempty"`
+	Geometry             *Geometry     `json:"Geometry,omitempty"`
+	IconID               *string       `json:"IconId,omitempty"`
+	ID                   *string       `json:"Id,omitempty"`
+	LocationText         *string       `json:"LocationText,omitempty"`
+	Measurement          []Measurement `json:"Measurement,omitempty"`
+	ModifiedTime         *time.Time    `json:"ModifiedTime,omitempty"`
+	RoadNumber           *string       `json:"RoadNumber,omitempty"`
+	RoadNumberNumeric    *int          `json:"RoadNumberNumeric,omitempty"`
+	SafetyRelatedMessage *bool         `json:"SafetyRelatedMessage,omitempty"`
+	StartTime            *time.Time    `json:"StartTime,omitempty"`
+	Warning              []Warning     `json:"Warning,omitempty"`
 }
 
 type RoadCondition1Dot2 struct {
 	Cause                []Cause          `json:"Cause,omitempty"`
-	ConditionCode        *ConditionCode   `json:"ConditionCode,omitempty"`
+	ConditionCode        *Condition       `json:"ConditionCode,omitempty"`
 	ConditionInfo        []string         `json:"ConditionInfo,omitempty"`
 	ConditionText        *string          `json:"ConditionText,omitempty"`
 	County               []County         `json:"CountyNo,omitempty"`

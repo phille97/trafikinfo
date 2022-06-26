@@ -292,24 +292,24 @@ const (
 	CauseFreezingRain        Cause = "Underkylt regn"
 )
 
-type ConditionCode uint
+type Condition uint
 
 const (
-	ConditionCodeNormal ConditionCode = iota + 1
-	ConditionCodeDifficult
-	ConditionCodeVeryDifficult
-	ConditionCodeIceAndSnow
+	ConditionNormal Condition = iota + 1
+	ConditionDifficult
+	ConditionVeryDifficult
+	ConditionIceAndSnow
 )
 
-func (c ConditionCode) String() string {
+func (c Condition) String() string {
 	switch c {
-	case ConditionCodeNormal:
+	case ConditionNormal:
 		return "normalt"
-	case ConditionCodeDifficult:
+	case ConditionDifficult:
 		return "besvärligt (risk för)"
-	case ConditionCodeVeryDifficult:
+	case ConditionVeryDifficult:
 		return "mycket besvärligt"
-	case ConditionCodeIceAndSnow:
+	case ConditionIceAndSnow:
 		return "is- och snövägbana"
 	default:
 		return fmt.Sprintf("Okänd väglagskod (%d)", c)

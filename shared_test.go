@@ -70,14 +70,14 @@ func TestRegionString(t *testing.T) {
 
 func TestConditionCodeString(t *testing.T) {
 	tests := []struct {
-		In  ConditionCode
+		In  Condition
 		Out string
 	}{
 		{In: 1000, Out: "Okänd väglagskod (1000)"},
-		{In: ConditionCodeDifficult, Out: "besvärligt (risk för)"},
-		{In: ConditionCodeVeryDifficult, Out: "mycket besvärligt"},
-		{In: ConditionCodeNormal, Out: "normalt"},
-		{In: ConditionCodeIceAndSnow, Out: "is- och snövägbana"},
+		{In: ConditionDifficult, Out: "besvärligt (risk för)"},
+		{In: ConditionVeryDifficult, Out: "mycket besvärligt"},
+		{In: ConditionNormal, Out: "normalt"},
+		{In: ConditionIceAndSnow, Out: "is- och snövägbana"},
 	}
 
 	for _, tt := range tests {
