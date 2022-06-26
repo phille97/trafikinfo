@@ -15,20 +15,13 @@ type GeometryWithMod struct {
 	ModifiedTime *time.Time `json:"ModifiedTime,omitempty"`
 }
 
-type Road struct {
-	Temperature       *float64 `json:"Temp,omitempty"`
-	TemperatureIconID *string  `json:"TempIconId,omitempty"`
-}
-
 type Info struct {
-	LastModified *LastModified `json:"LASTMODIFIED,omitempty"`
-	LastChangeID *string       `json:"LASTCHANGEID,omitempty"`
-	EvalResult   []any         `json:"EVALRESULT,omitempty"`
-	SSEURL       *string       `json:"SSEURL,omitempty"`
-}
-
-type LastModified struct {
-	DateTime *time.Time `json:"_attr_datetime,omitempty"`
+	LastModified *struct {
+		DateTime *time.Time `json:"_attr_datetime,omitempty"`
+	} `json:"LASTMODIFIED,omitempty"`
+	LastChangeID *string `json:"LASTCHANGEID,omitempty"`
+	EvalResult   []any   `json:"EVALRESULT,omitempty"`
+	SSEURL       *string `json:"SSEURL,omitempty"`
 }
 
 // County is a numerical ID assigned to a county in Sweden

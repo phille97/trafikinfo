@@ -3,40 +3,65 @@ package trafikinfo
 import "time"
 
 type WeatherStation1Dot0 struct {
-	Active             *bool                `json:"Active,omitempty"`
-	County             []County             `json:"CountyNo,omitempty"`
-	Deleted            *bool                `json:"Deleted,omitempty"`
-	Geometry           *Geometry            `json:"Geometry,omitempty"`
-	IconID             *string              `json:"IconId,omitempty"`
-	ID                 *string              `json:"Id,omitempty"`
-	Measurement        *WeatherMeasurement  `json:"Measurement,omitempty"`
-	MeasurementHistory []WeatherMeasurement `json:"MeasurementHistory,omitempty"`
-	ModifiedTime       *time.Time           `json:"ModifiedTime,omitempty"`
-	Name               *string              `json:"Name,omitempty"`
-	RoadNumber         *int                 `json:"RoadNumberNumeric,omitempty"`
-}
-
-type WeatherMeasurement struct {
-	Air *struct {
-		RelativeHumidity  *float64 `json:"RelativeHumidity,omitempty"`
-		Temperature       *float64 `json:"Temp,omitempty"`
-		TemperatureIconID *string  `json:"TempIconId,omitempty"`
-	} `json:"Air,omitempty"`
-	MeasureTime   *time.Time `json:"MeasureTime,omitempty"`
-	Precipitation *struct {
-		Amount     *float64                 `json:"Amount,omitempty"`
-		AmountName *PrecipitationAmountName `json:"AmountName,omitempty"`
-		Type       *PrecipitationType       `json:"Type,omitempty"`
-		TypeIconID *string                  `json:"TypeIconId,omitempty"`
-	} `json:"Precipitation,omitempty"`
-	Road *Road `json:"Road,omitempty"`
-	Wind *struct {
-		Direction       *float64       `json:"Direction,omitempty"`
-		DirectionIconID *string        `json:"DirectionIconId,omitempty"`
-		DirectionText   *WindDirection `json:"DirectionText,omitempty"`
-		Force           *float64       `json:"Force,omitempty"`
-		ForceMax        *float64       `json:"ForceMax,omitempty"`
-	} `json:"Wind,omitempty"`
+	Active      *bool     `json:"Active,omitempty"`
+	County      []County  `json:"CountyNo,omitempty"`
+	Deleted     *bool     `json:"Deleted,omitempty"`
+	Geometry    *Geometry `json:"Geometry,omitempty"`
+	IconID      *string   `json:"IconId,omitempty"`
+	ID          *string   `json:"Id,omitempty"`
+	Measurement *struct {
+		Air *struct {
+			RelativeHumidity  *float64 `json:"RelativeHumidity,omitempty"`
+			Temperature       *float64 `json:"Temp,omitempty"`
+			TemperatureIconID *string  `json:"TempIconId,omitempty"`
+		} `json:"Air,omitempty"`
+		MeasureTime   *time.Time `json:"MeasureTime,omitempty"`
+		Precipitation *struct {
+			Amount     *float64                 `json:"Amount,omitempty"`
+			AmountName *PrecipitationAmountName `json:"AmountName,omitempty"`
+			Type       *PrecipitationType       `json:"Type,omitempty"`
+			TypeIconID *string                  `json:"TypeIconId,omitempty"`
+		} `json:"Precipitation,omitempty"`
+		Road *struct {
+			Temperature       *float64 `json:"Temp,omitempty"`
+			TemperatureIconID *string  `json:"TempIconId,omitempty"`
+		} `json:"Road,omitempty"`
+		Wind *struct {
+			Direction       *float64       `json:"Direction,omitempty"`
+			DirectionIconID *string        `json:"DirectionIconId,omitempty"`
+			DirectionText   *WindDirection `json:"DirectionText,omitempty"`
+			Force           *float64       `json:"Force,omitempty"`
+			ForceMax        *float64       `json:"ForceMax,omitempty"`
+		} `json:"Wind,omitempty"`
+	} `json:"Measurement,omitempty"`
+	MeasurementHistory []struct {
+		Air *struct {
+			RelativeHumidity  *float64 `json:"RelativeHumidity,omitempty"`
+			Temperature       *float64 `json:"Temp,omitempty"`
+			TemperatureIconID *string  `json:"TempIconId,omitempty"`
+		} `json:"Air,omitempty"`
+		MeasureTime   *time.Time `json:"MeasureTime,omitempty"`
+		Precipitation *struct {
+			Amount     *float64                 `json:"Amount,omitempty"`
+			AmountName *PrecipitationAmountName `json:"AmountName,omitempty"`
+			Type       *PrecipitationType       `json:"Type,omitempty"`
+			TypeIconID *string                  `json:"TypeIconId,omitempty"`
+		} `json:"Precipitation,omitempty"`
+		Road *struct {
+			Temperature       *float64 `json:"Temp,omitempty"`
+			TemperatureIconID *string  `json:"TempIconId,omitempty"`
+		} `json:"Road,omitempty"`
+		Wind *struct {
+			Direction       *float64       `json:"Direction,omitempty"`
+			DirectionIconID *string        `json:"DirectionIconId,omitempty"`
+			DirectionText   *WindDirection `json:"DirectionText,omitempty"`
+			Force           *float64       `json:"Force,omitempty"`
+			ForceMax        *float64       `json:"ForceMax,omitempty"`
+		} `json:"Wind,omitempty"`
+	} `json:"MeasurementHistory,omitempty"`
+	ModifiedTime *time.Time `json:"ModifiedTime,omitempty"`
+	Name         *string    `json:"Name,omitempty"`
+	RoadNumber   *int       `json:"RoadNumberNumeric,omitempty"`
 }
 
 type PrecipitationAmountName string
