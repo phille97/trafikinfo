@@ -120,7 +120,7 @@ func (q *Query) Include(fields ...string) *Query {
 	return q
 }
 
-// Exclude ensures element matching the specifields fields are ommitted
+// Exclude ensures element matching the specifields fields are omitted
 func (q *Query) Exclude(fields ...string) *Query {
 	q.query.Exclude = append(q.query.Exclude, fields...)
 	return q
