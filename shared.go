@@ -5,9 +5,16 @@ import (
 	"time"
 )
 
+// Geometry represents a set of coordinates that result
+// denote a location
 type Geometry struct {
+	// SWEREF99TM, SWEdish REference Frame 1999, Transverse Mercator,
+	// is a projected coordinate system to identify geographical
+	// locations in Sweden
 	SWEREF99TM *string `json:"SWEREF99TM,omitempty"`
-	WGS84      *string `json:"WGS84,omitempty"`
+	// WGS84 represents coordinates in the World Geodetic System
+	// 1984 revision.
+	WGS84 *string `json:"WGS84,omitempty"`
 }
 
 type GeometryWithMod struct {
@@ -15,6 +22,8 @@ type GeometryWithMod struct {
 	ModifiedTime *time.Time `json:"ModifiedTime,omitempty"`
 }
 
+// Info is part of the response API when a query is created
+// with either an EVAL or the use of a Change ID
 type Info struct {
 	LastModified *struct {
 		DateTime *time.Time `json:"_attr_datetime,omitempty"`
@@ -104,6 +113,7 @@ func (c County) String() string {
 	}
 }
 
+// Country represents a country through its country code
 type Country string
 
 const (
@@ -122,6 +132,7 @@ type Icon1Dot0 struct {
 	URL          *string    `json:"Url,omitempty"`
 }
 
+// Region is the code for a region in Sweden
 type Region uint
 
 const (
