@@ -179,6 +179,30 @@ func TestQueryChangeID(t *testing.T) {
 	}
 }
 
+func TestQuerySSEURL(t *testing.T) {
+	q := NewQuery(WeatherStation, 1.0).SSEURL(true)
+	if res := q.query.SSEURL; !res {
+		t.Fatalf("Expected query with sseurl=true, got: %t", res)
+	}
+
+	res, err := xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if !strings.Contains(string(res), `sseurl="true"`) {
+		t.Fatalf("Expected sseurl attribute is missing in serialised query: %s", string(res))
+	}
+
+	q.SSEURL(false)
+	res, err = xml.Marshal(&q)
+	if err != nil {
+		t.Fatalf("Got error: %v", err)
+	}
+	if strings.Contains(string(res), `sseurl=`) {
+		t.Fatalf("Expected sseurl attribute to be missing in serialised query: %s", string(res))
+	}
+}
+
 func TestQueryDistinct(t *testing.T) {
 	q := NewQuery(WeatherStation, 1.0).Distinct("test")
 	if q.query.Distinct != "test" {

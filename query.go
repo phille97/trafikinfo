@@ -24,6 +24,7 @@ type query struct {
 	Skip                  int          `xml:"skip,attr,omitempty"`
 	LastModified          bool         `xml:"lastmodified,attr,omitempty"`
 	ChangeID              *string      `xml:"changeid,attr"`
+	SSEURL                bool         `xml:"sseurl,attr,omitempty"`
 	Filter                *Filter      `xml:"FILTER"`
 	Include               []string     `xml:"INCLUDE"`
 	Exclude               []string     `xml:"EXCLUDE"`
@@ -99,6 +100,11 @@ func (q *Query) ChangeID(opt string) *Query {
 	} else {
 		q.query.ChangeID = &opt
 	}
+	return q
+}
+
+func (q *Query) SSEURL(opt bool) *Query {
+	q.query.SSEURL = opt
 	return q
 }
 
