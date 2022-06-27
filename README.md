@@ -16,6 +16,12 @@ Trafikinfo API. It contains a query builder that can be used to build up a
 `Request` object. You can then `xml.Marshal` it and pass it on to your
 favourite HTTP client to retrieve it.
 
+The data returned by the [Trafikinfo API is licensed][tl] under [Creative Commons
+CC0][cc0].
+
+[tl]: https://api.trafikinfo.trafikverket.se/DynamicContent/ContentDetails/58e384810bb22118e8041667
+[cc0]: https://creativecommons.org/publicdomain/zero/1.0/
+
 The API endpoint is available through the `Endpoint` constant. The only
 supported endpoint is `v2`, `v1.x` is being deprecated by Trafikverket.
 

@@ -3,6 +3,11 @@
 // Request object. You can then xml.Marshal it and pass it on to your
 // favourite HTTP client to retrieve it through a bytes.Buffer.
 //
+// The data returned by the Trafikinfo API is licensed under Creative Commons
+// CC0:
+// * https://api.trafikinfo.trafikverket.se/DynamicContent/ContentDetails/58e384810bb22118e8041667
+// * https://creativecommons.org/publicdomain/zero/1.0/.
+//
 // The API endpoint is available through the Endpoint constant. The only
 // supported endpoint is v2, v1.x is being deprecated by Trafikverket.
 //
