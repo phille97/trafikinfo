@@ -110,6 +110,6 @@ types and versions.
 `TrainStation` | 1.0: ✅ 1.4: ✅
 `TrainStationMessage` | 1.0: ✅
 `TravelTimeRoute` | 1.0: ✅ 1.3: ✅ 1.4: ✅ 1.5 ✅
-`WeatherMeasurepoint` | 1.0: ❌ 2.0: ❌
+`WeatherMeasurepoint` | 1.0: ✅ 2.0: ✅
 `WeatherObservation` | 1.0: ✅ 2.0: ✅
 `WeatherStation` | 1.0: ✅
