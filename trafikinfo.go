@@ -17,6 +17,12 @@
 // This is a consequence of the Include and Exclude primitives which can result
 // in only specific fields being present in the response, or specific fields be
 // excluded.
+//
+// A number of endpoints return IconID resources, either at the root of the
+// object, or in one of its embedded objects, like TemperatureIconID. Each of
+// these IconID strings can be plugged into a query for the Icon resource. It
+// in turn will give you access to a base64 encoded PNG in the response, as well
+// as a URL at which the icon can be retrieved.
 package trafikinfo
 
 // Endpoint is the current recommended endpoint for the Trafikinfo API

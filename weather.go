@@ -14,7 +14,10 @@ type WeatherStation1Dot0 struct {
 	Deleted *bool `json:"Deleted,omitempty"`
 	// Geometry contains coordinates for where this station is located
 	Geometry *Geometry `json:"Geometry,omitempty"`
-	IconID   *string   `json:"IconId,omitempty"`
+	// IconID is an identifier that can be used with a query for the Icon
+	// object type to retrieve the base64 encoded PNG and the URL at which
+	// the icon can also be retrieved
+	IconID *string `json:"IconId,omitempty"`
 	// ID is the unique ID identifying this station
 	ID *string `json:"Id,omitempty"`
 	// Measurement represents measurement data from environmental sensors
