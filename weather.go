@@ -116,7 +116,7 @@ const (
 	PrecipitationHeavySleet PrecipitationAmount = "Kraftigt snöblandat regn"
 
 	PrecipitationLightSnow PrecipitationAmount = "Lätt snöfall"
-	PrecipitationMindSnow  PrecipitationAmount = "Måttligt snöfall"
+	PrecipitationMildSnow  PrecipitationAmount = "Måttligt snöfall"
 	PrecipitationHeavySnow PrecipitationAmount = "Kraftigt snöfall"
 
 	PrecipitationOther   PrecipitationAmount = "Annan nederbördstyp"
