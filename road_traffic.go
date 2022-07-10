@@ -317,8 +317,8 @@ type TravelTimeRoute1Dot5 struct {
 }
 
 type Situation1Dot0 struct {
-	CountryCode *County `json:"CountryCode,omitempty"`
-	Deleted     *bool   `json:"Deleted,omitempty"`
+	CountryCode *Country `json:"CountryCode,omitempty"`
+	Deleted     *bool    `json:"Deleted,omitempty"`
 	Deviation   []struct {
 		CountyNo     []County   `json:"CountyNo,omitempty"`
 		CreationTime *time.Time `json:"CreationTime,omitempty"`
@@ -384,8 +384,8 @@ const (
 )
 
 type Situation1Dot1 struct {
-	CountryCode *County `json:"CountryCode,omitempty"`
-	Deleted     *bool   `json:"Deleted,omitempty"`
+	CountryCode *Country `json:"CountryCode,omitempty"`
+	Deleted     *bool    `json:"Deleted,omitempty"`
 	Deviation   []struct {
 		CountyNo     []County   `json:"CountyNo,omitempty"`
 		CreationTime *time.Time `json:"CreationTime,omitempty"`
@@ -435,8 +435,8 @@ type Situation1Dot1 struct {
 }
 
 type Situation1Dot2 struct {
-	CountryCode *County `json:"CountryCode,omitempty"`
-	Deleted     *bool   `json:"Deleted,omitempty"`
+	CountryCode *Country `json:"CountryCode,omitempty"`
+	Deleted     *bool    `json:"Deleted,omitempty"`
 	Deviation   []struct {
 		CountyNo     []County   `json:"CountyNo,omitempty"`
 		CreationTime *time.Time `json:"CreationTime,omitempty"`
@@ -487,8 +487,8 @@ type Situation1Dot2 struct {
 }
 
 type Situation1Dot4 struct {
-	CountryCode *County `json:"CountryCode,omitempty"`
-	Deleted     *bool   `json:"Deleted,omitempty"`
+	CountryCode *Country `json:"CountryCode,omitempty"`
+	Deleted     *bool    `json:"Deleted,omitempty"`
 	Deviation   []struct {
 		AffectedDirection      *string            `json:"AffectedDirection,omitempty"`
 		AffectedDirectionValue *AffectedDirection `json:"AffectedDirectionValue,omitempty"`
@@ -551,8 +551,8 @@ const (
 )
 
 type Situation1Dot5 struct {
-	CountryCode *County `json:"CountryCode,omitempty"`
-	Deleted     *bool   `json:"Deleted,omitempty"`
+	CountryCode *Country `json:"CountryCode,omitempty"`
+	Deleted     *bool    `json:"Deleted,omitempty"`
 	Deviation   []struct {
 		AffectedDirection      *string            `json:"AffectedDirection,omitempty"`
 		AffectedDirectionValue *AffectedDirection `json:"AffectedDirectionValue,omitempty"`
