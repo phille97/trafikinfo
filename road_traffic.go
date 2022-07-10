@@ -315,3 +315,295 @@ type TravelTimeRoute1Dot5 struct {
 	TrafficStatus              *TrafficStatus   `json:"TrafficStatus,omitempty"`
 	TravelTime                 *float64         `json:"TravelTime,omitempty"`
 }
+
+type Situation1Dot0 struct {
+	CountryCode *County `json:"CountryCode,omitempty"`
+	Deleted     *bool   `json:"Deleted,omitempty"`
+	Deviation   []struct {
+		CountyNo     []County   `json:"CountyNo,omitempty"`
+		CreationTime *time.Time `json:"CreationTime,omitempty"`
+		Creator      *string    `json:"Creator,omitempty"`
+		EndTime      *time.Time `json:"EndTime,omitempty"`
+		Geometry     *Geometry  `json:"Geometry,omitempty"`
+		Header       *string    `json:"Header,omitempty"`
+		IconID       *string    `json:"IconId,omitempty"`
+		ID           *string    `json:"Id,omitempty"`
+		Image        []struct {
+			HasFullSizePhoto *bool   `json:"HasFullSizePhoto,omitempty"`
+			URL              *string `json:"Url,omitempty"`
+		} `json:"Image,omitempty"`
+		JourneyReference        *string      `json:"JourneyReference,omitempty"`
+		LocationDescriptor      *string      `json:"LocationDescriptor,omitempty"`
+		ManagedCause            *bool        `json:"ManagedCause,omitempty"`
+		Message                 *string      `json:"Message,omitempty"`
+		MessageCode             *string      `json:"MessageCode,omitempty"`
+		MessageType             *MessageType `json:"MessageType,omitempty"`
+		NumberOfLanesRestricted *int         `json:"NumberOfLanesRestricted,omitempty"`
+		PositionalDescription   *string      `json:"PositionalDescription,omitempty"`
+		RoadNumber              *string      `json:"RoadNumber,omitempty"`
+		RoadNumberNumeric       *int         `json:"RoadNumberNumeric,omitempty"`
+		Schedule                []struct {
+			EndOfPeriod              *time.Time `json:"EndOfPeriod,omitempty"`
+			RecurringTimePeriodOfDay []struct {
+				End   *string `json:"End,omitempty"`
+				Start *string `json:"Start,omitempty"`
+			} `json:"RecurringTimePeriodOfDay,omitempty"`
+			StartOfPeriod *time.Time `json:"StartOfPeriod,omitempty"`
+		} `json:"Schedule,omitempty"`
+		SeverityCode            *int       `json:"SeverityCode,omitempty"`
+		SeverityText            *Severity  `json:"SeverityText,omitempty"`
+		StartTime               *time.Time `json:"StartTime,omitempty"`
+		TemporaryLimit          *string    `json:"TemporaryLimit,omitempty"`
+		TrafficRestrictionType  *string    `json:"TrafficRestrictionType,omitempty"`
+		ValidUntilFurtherNotice *bool      `json:"ValidUntilFurtherNotice,omitempty"`
+	} `json:"Deviation,omitempty"`
+	ID              *string    `json:"Id,omitempty"`
+	ModifiedTime    *time.Time `json:"ModifiedTime,omitempty"`
+	PublicationTime *time.Time `json:"PublicationTime,omitempty"`
+}
+
+type MessageType string
+
+const (
+	MessageTypeImportant    MessageType = "Viktig trafikinformation"
+	MessageTypeFerries      MessageType = "Färjor"
+	MessageTypeHinder       MessageType = "Hinder"
+	MessageTypeAccident     MessageType = "Olycka"
+	MessageTypeRestriction  MessageType = "Restriktion"
+	MessageTypeAnnouncement MessageType = "Trafikmeddelande"
+	MessageTypeRoadWork     MessageType = "Vägarbete"
+)
+
+type Severity string
+
+const (
+	SeverityNoImpact      Severity = "Ingen påverkan"
+	SeveritySmallImpact   Severity = "Liten påverkan"
+	SeverityBigImpact     Severity = "Stor påverkan"
+	SeverityVeryBigImpact Severity = "Mycket stor påverkan"
+)
+
+type Situation1Dot1 struct {
+	CountryCode *County `json:"CountryCode,omitempty"`
+	Deleted     *bool   `json:"Deleted,omitempty"`
+	Deviation   []struct {
+		CountyNo     []County   `json:"CountyNo,omitempty"`
+		CreationTime *time.Time `json:"CreationTime,omitempty"`
+		Creator      *string    `json:"Creator,omitempty"`
+		EndTime      *time.Time `json:"EndTime,omitempty"`
+		Geometry     *Geometry  `json:"Geometry,omitempty"`
+		Header       *string    `json:"Header,omitempty"`
+		IconID       *string    `json:"IconId,omitempty"`
+		ID           *string    `json:"Id,omitempty"`
+		Image        []struct {
+			HasFullSizePhoto *bool   `json:"HasFullSizePhoto,omitempty"`
+			URL              *string `json:"Url,omitempty"`
+		} `json:"Image,omitempty"`
+		JourneyReference        *string      `json:"JourneyReference,omitempty"`
+		LocationDescriptor      *string      `json:"LocationDescriptor,omitempty"`
+		ManagedCause            *bool        `json:"ManagedCause,omitempty"`
+		Message                 *string      `json:"Message,omitempty"`
+		MessageCode             *string      `json:"MessageCode,omitempty"`
+		MessageCodeValue        *string      `json:"MessageCodeValue,omitempty"`
+		MessageType             *MessageType `json:"MessageType,omitempty"`
+		MessageTypeValue        *string      `json:"MessageTypeValue,omitempty"`
+		NumberOfLanesRestricted *int         `json:"NumberOfLanesRestricted,omitempty"`
+		PositionalDescription   *string      `json:"PositionalDescription,omitempty"`
+		RoadNumber              *string      `json:"RoadNumber,omitempty"`
+		RoadNumberNumeric       *int         `json:"RoadNumberNumeric,omitempty"`
+		SafetyRelatedMessage    *bool        `json:"SafetyRelatedMessage,omitempty"`
+		Schedule                []struct {
+			EndOfPeriod              *time.Time `json:"EndOfPeriod,omitempty"`
+			RecurringTimePeriodOfDay []struct {
+				End   *string `json:"End,omitempty"`
+				Start *string `json:"Start,omitempty"`
+			} `json:"RecurringTimePeriodOfDay,omitempty"`
+			StartOfPeriod *time.Time `json:"StartOfPeriod,omitempty"`
+		} `json:"Schedule,omitempty"`
+		SeverityCode            *int       `json:"SeverityCode,omitempty"`
+		SeverityText            *Severity  `json:"SeverityText,omitempty"`
+		StartTime               *time.Time `json:"StartTime,omitempty"`
+		TemporaryLimit          *string    `json:"TemporaryLimit,omitempty"`
+		TrafficRestrictionType  *string    `json:"TrafficRestrictionType,omitempty"`
+		ValidUntilFurtherNotice *bool      `json:"ValidUntilFurtherNotice,omitempty"`
+		VersionTime             *time.Time `json:"VersionTime,omitempty"`
+	} `json:"Deviation,omitempty"`
+	ID              *string    `json:"Id,omitempty"`
+	ModifiedTime    *time.Time `json:"ModifiedTime,omitempty"`
+	PublicationTime *time.Time `json:"PublicationTime,omitempty"`
+	VersionTime     *time.Time `json:"VersionTime,omitempty"`
+}
+
+type Situation1Dot2 struct {
+	CountryCode *County `json:"CountryCode,omitempty"`
+	Deleted     *bool   `json:"Deleted,omitempty"`
+	Deviation   []struct {
+		CountyNo     []County   `json:"CountyNo,omitempty"`
+		CreationTime *time.Time `json:"CreationTime,omitempty"`
+		Creator      *string    `json:"Creator,omitempty"`
+		EndTime      *time.Time `json:"EndTime,omitempty"`
+		Geometry     *Geometry  `json:"Geometry,omitempty"`
+		Header       *string    `json:"Header,omitempty"`
+		IconID       *string    `json:"IconId,omitempty"`
+		ID           *string    `json:"Id,omitempty"`
+		Image        []struct {
+			HasFullSizePhoto *bool   `json:"HasFullSizePhoto,omitempty"`
+			URL              *string `json:"Url,omitempty"`
+		} `json:"Image,omitempty"`
+		JourneyReference        *string      `json:"JourneyReference,omitempty"`
+		LocationDescriptor      *string      `json:"LocationDescriptor,omitempty"`
+		ManagedCause            *bool        `json:"ManagedCause,omitempty"`
+		Message                 *string      `json:"Message,omitempty"`
+		MessageCode             *string      `json:"MessageCode,omitempty"`
+		MessageCodeValue        *string      `json:"MessageCodeValue,omitempty"`
+		MessageType             *MessageType `json:"MessageType,omitempty"`
+		MessageTypeValue        *string      `json:"MessageTypeValue,omitempty"`
+		NumberOfLanesRestricted *int         `json:"NumberOfLanesRestricted,omitempty"`
+		PositionalDescription   *string      `json:"PositionalDescription,omitempty"`
+		RoadNumber              *string      `json:"RoadNumber,omitempty"`
+		RoadNumberNumeric       *int         `json:"RoadNumberNumeric,omitempty"`
+		SafetyRelatedMessage    *bool        `json:"SafetyRelatedMessage,omitempty"`
+		Schedule                []struct {
+			EndOfPeriod              *time.Time `json:"EndOfPeriod,omitempty"`
+			RecurringTimePeriodOfDay []struct {
+				End   *string `json:"End,omitempty"`
+				Start *string `json:"Start,omitempty"`
+			} `json:"RecurringTimePeriodOfDay,omitempty"`
+			StartOfPeriod *time.Time `json:"StartOfPeriod,omitempty"`
+		} `json:"Schedule,omitempty"`
+		SeverityCode            *int       `json:"SeverityCode,omitempty"`
+		SeverityText            *Severity  `json:"SeverityText,omitempty"`
+		StartTime               *time.Time `json:"StartTime,omitempty"`
+		TemporaryLimit          *string    `json:"TemporaryLimit,omitempty"`
+		TrafficRestrictionType  *string    `json:"TrafficRestrictionType,omitempty"`
+		ValidUntilFurtherNotice *bool      `json:"ValidUntilFurtherNotice,omitempty"`
+		VersionTime             *time.Time `json:"VersionTime,omitempty"`
+		WebLink                 *string    `json:"WebLink,omitempty"`
+	} `json:"Deviation,omitempty"`
+	ID              *string    `json:"Id,omitempty"`
+	ModifiedTime    *time.Time `json:"ModifiedTime,omitempty"`
+	PublicationTime *time.Time `json:"PublicationTime,omitempty"`
+	VersionTime     *time.Time `json:"VersionTime,omitempty"`
+}
+
+type Situation1Dot4 struct {
+	CountryCode *County `json:"CountryCode,omitempty"`
+	Deleted     *bool   `json:"Deleted,omitempty"`
+	Deviation   []struct {
+		AffectedDirection      *string            `json:"AffectedDirection,omitempty"`
+		AffectedDirectionValue *AffectedDirection `json:"AffectedDirectionValue,omitempty"`
+		CountyNo               []County           `json:"CountyNo,omitempty"`
+		CreationTime           *time.Time         `json:"CreationTime,omitempty"`
+		Creator                *string            `json:"Creator,omitempty"`
+		EndTime                *time.Time         `json:"EndTime,omitempty"`
+		Geometry               *struct {
+			Line  *Geometry `json:"Line,omitempty"`
+			Point *Geometry `json:"Point,omitempty"`
+		} `json:"Geometry,omitempty"`
+		Header *string `json:"Header,omitempty"`
+		IconID *string `json:"IconId,omitempty"`
+		ID     *string `json:"Id,omitempty"`
+		Image  []struct {
+			HasFullSizePhoto *bool   `json:"HasFullSizePhoto,omitempty"`
+			URL              *string `json:"Url,omitempty"`
+		} `json:"Image,omitempty"`
+		JourneyReference        *string      `json:"JourneyReference,omitempty"`
+		LocationDescriptor      *string      `json:"LocationDescriptor,omitempty"`
+		ManagedCause            *bool        `json:"ManagedCause,omitempty"`
+		Message                 *string      `json:"Message,omitempty"`
+		MessageCode             *string      `json:"MessageCode,omitempty"`
+		MessageCodeValue        *string      `json:"MessageCodeValue,omitempty"`
+		MessageType             *MessageType `json:"MessageType,omitempty"`
+		MessageTypeValue        *string      `json:"MessageTypeValue,omitempty"`
+		NumberOfLanesRestricted *int         `json:"NumberOfLanesRestricted,omitempty"`
+		PositionalDescription   *string      `json:"PositionalDescription,omitempty"`
+		RoadNumber              *string      `json:"RoadNumber,omitempty"`
+		RoadNumberNumeric       *int         `json:"RoadNumberNumeric,omitempty"`
+		SafetyRelatedMessage    *bool        `json:"SafetyRelatedMessage,omitempty"`
+		Schedule                []struct {
+			EndOfPeriod              *time.Time `json:"EndOfPeriod,omitempty"`
+			RecurringTimePeriodOfDay []struct {
+				End   *string `json:"End,omitempty"`
+				Start *string `json:"Start,omitempty"`
+			} `json:"RecurringTimePeriodOfDay,omitempty"`
+			StartOfPeriod *time.Time `json:"StartOfPeriod,omitempty"`
+		} `json:"Schedule,omitempty"`
+		SeverityCode            *int       `json:"SeverityCode,omitempty"`
+		SeverityText            *Severity  `json:"SeverityText,omitempty"`
+		StartTime               *time.Time `json:"StartTime,omitempty"`
+		TemporaryLimit          *string    `json:"TemporaryLimit,omitempty"`
+		TrafficRestrictionType  *string    `json:"TrafficRestrictionType,omitempty"`
+		ValidUntilFurtherNotice *bool      `json:"ValidUntilFurtherNotice,omitempty"`
+		VersionTime             *time.Time `json:"VersionTime,omitempty"`
+		WebLink                 *string    `json:"WebLink,omitempty"`
+	} `json:"Deviation,omitempty"`
+	ID              *string    `json:"Id,omitempty"`
+	ModifiedTime    *time.Time `json:"ModifiedTime,omitempty"`
+	PublicationTime *time.Time `json:"PublicationTime,omitempty"`
+	VersionTime     *time.Time `json:"VersionTime,omitempty"`
+}
+
+type AffectedDirection string
+
+const (
+	AffectedDirectionBoth AffectedDirection = "BothDirections"
+	AffectedDirectionOne  AffectedDirection = "OneDirection"
+)
+
+type Situation1Dot5 struct {
+	CountryCode *County `json:"CountryCode,omitempty"`
+	Deleted     *bool   `json:"Deleted,omitempty"`
+	Deviation   []struct {
+		AffectedDirection      *string            `json:"AffectedDirection,omitempty"`
+		AffectedDirectionValue *AffectedDirection `json:"AffectedDirectionValue,omitempty"`
+		CountyNo               []County           `json:"CountyNo,omitempty"`
+		CreationTime           *time.Time         `json:"CreationTime,omitempty"`
+		Creator                *string            `json:"Creator,omitempty"`
+		EndTime                *time.Time         `json:"EndTime,omitempty"`
+		Geometry               *struct {
+			Line  *Geometry `json:"Line,omitempty"`
+			Point *Geometry `json:"Point,omitempty"`
+		} `json:"Geometry,omitempty"`
+		Header *string `json:"Header,omitempty"`
+		IconID *string `json:"IconId,omitempty"`
+		ID     *string `json:"Id,omitempty"`
+		Image  []struct {
+			HasFullSizePhoto *bool   `json:"HasFullSizePhoto,omitempty"`
+			URL              *string `json:"Url,omitempty"`
+		} `json:"Image,omitempty"`
+		JourneyReference        *string      `json:"JourneyReference,omitempty"`
+		LocationDescriptor      *string      `json:"LocationDescriptor,omitempty"`
+		ManagedCause            *bool        `json:"ManagedCause,omitempty"`
+		Message                 *string      `json:"Message,omitempty"`
+		MessageCode             *string      `json:"MessageCode,omitempty"`
+		MessageCodeValue        *string      `json:"MessageCodeValue,omitempty"`
+		MessageType             *MessageType `json:"MessageType,omitempty"`
+		MessageTypeValue        *string      `json:"MessageTypeValue,omitempty"`
+		NumberOfLanesRestricted *int         `json:"NumberOfLanesRestricted,omitempty"`
+		PositionalDescription   *string      `json:"PositionalDescription,omitempty"`
+		RoadName                *string      `json:"RoadName,omitempty"`
+		RoadNumber              *string      `json:"RoadNumber,omitempty"`
+		RoadNumberNumeric       *int         `json:"RoadNumberNumeric,omitempty"`
+		SafetyRelatedMessage    *bool        `json:"SafetyRelatedMessage,omitempty"`
+		Schedule                []struct {
+			EndOfPeriod              *time.Time `json:"EndOfPeriod,omitempty"`
+			RecurringTimePeriodOfDay []struct {
+				End   *string `json:"End,omitempty"`
+				Start *string `json:"Start,omitempty"`
+			} `json:"RecurringTimePeriodOfDay,omitempty"`
+			StartOfPeriod *time.Time `json:"StartOfPeriod,omitempty"`
+		} `json:"Schedule,omitempty"`
+		SeverityCode            *int       `json:"SeverityCode,omitempty"`
+		SeverityText            *Severity  `json:"SeverityText,omitempty"`
+		StartTime               *time.Time `json:"StartTime,omitempty"`
+		TemporaryLimit          *string    `json:"TemporaryLimit,omitempty"`
+		TrafficRestrictionType  *string    `json:"TrafficRestrictionType,omitempty"`
+		ValidUntilFurtherNotice *bool      `json:"ValidUntilFurtherNotice,omitempty"`
+		VersionTime             *time.Time `json:"VersionTime,omitempty"`
+		WebLink                 *string    `json:"WebLink,omitempty"`
+	} `json:"Deviation,omitempty"`
+	ID              *string    `json:"Id,omitempty"`
+	ModifiedTime    *time.Time `json:"ModifiedTime,omitempty"`
+	PublicationTime *time.Time `json:"PublicationTime,omitempty"`
+	VersionTime     *time.Time `json:"VersionTime,omitempty"`
+}
