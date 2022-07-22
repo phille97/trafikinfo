@@ -373,7 +373,7 @@ func TestEvaluationMarshalXML(t *testing.T) {
 func TestCompositeFilter(t *testing.T) {
 	tests := []struct {
 		Name    string
-		Func    func(f1, f2 Filter, filters ...Filter) Filter
+		Func    func(filters ...Filter) Filter
 		Filters []Filter
 		Result  Filter
 	}{
@@ -435,12 +435,7 @@ func TestCompositeFilter(t *testing.T) {
 		tt := tt
 		t.Run(tt.Name, func(t *testing.T) {
 			t.Parallel()
-			var f Filter
-			if len(tt.Filters) == 2 {
-				f = tt.Func(tt.Filters[0], tt.Filters[1])
-			} else {
-				f = tt.Func(tt.Filters[0], tt.Filters[1], tt.Filters[2:]...)
-			}
+			f := tt.Func(tt.Filters...)
 
 			if !reflect.DeepEqual(tt.Result, f) {
 				t.Fatalf("Did not get expected filter set: %+v", f)
@@ -474,6 +469,7 @@ func TestEqual(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestExists(t *testing.T) {
 	f := Exists("field", true)
 	if len(f.filter.Exists) != 1 {
@@ -499,6 +495,7 @@ func TestExists(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestGreaterThan(t *testing.T) {
 	f := GreaterThan("field", "something")
 	if len(f.filter.GreaterThan) != 1 {
@@ -524,6 +521,7 @@ func TestGreaterThan(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestGreaterThanOrEqual(t *testing.T) {
 	f := GreaterThanOrEqual("field", "something")
 	if len(f.filter.GreaterThanOrEqual) != 1 {
@@ -549,6 +547,7 @@ func TestGreaterThanOrEqual(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestLessThan(t *testing.T) {
 	f := LessThan("field", "something")
 	if len(f.filter.LessThan) != 1 {
@@ -574,6 +573,7 @@ func TestLessThan(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestLeesThanOrEqual(t *testing.T) {
 	f := LessThanOrEqual("field", "something")
 	if len(f.filter.LessThanOrEqual) != 1 {
@@ -599,6 +599,7 @@ func TestLeesThanOrEqual(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestNotEqual(t *testing.T) {
 	f := NotEqual("field", "something")
 	if len(f.filter.NotEqual) != 1 {
@@ -624,6 +625,7 @@ func TestNotEqual(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestLike(t *testing.T) {
 	f := Like("field", "something")
 	if len(f.filter.Like) != 1 {
@@ -649,6 +651,7 @@ func TestLike(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestNotLike(t *testing.T) {
 	f := NotLike("field", "something")
 	if len(f.filter.NotLike) != 1 {
@@ -674,6 +677,7 @@ func TestNotLike(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestIn(t *testing.T) {
 	f := In("field", "something")
 	if len(f.filter.In) != 1 {
@@ -725,6 +729,7 @@ func TestNotIn(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestWithin(t *testing.T) {
 	f := Within("field", "something", "box", 2.5)
 	if len(f.filter.Within) != 1 {
@@ -750,6 +755,7 @@ func TestWithin(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestIntersects(t *testing.T) {
 	f := Intersects("field", "something")
 	if len(f.filter.Intersects) != 1 {
@@ -775,6 +781,7 @@ func TestIntersects(t *testing.T) {
 		t.Fatalf("Did not expect filter to have maxdistance, got: %d", dst)
 	}
 }
+
 func TestNear(t *testing.T) {
 	f := Near("field", "something", 1, 10)
 	if len(f.filter.Near) != 1 {

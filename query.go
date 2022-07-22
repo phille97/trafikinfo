@@ -138,38 +138,47 @@ func (q *Query) Eval(evaluations ...Evaluation) *Query {
 }
 
 // And builds an AND filter
-func And(f1, f2 Filter, rest ...Filter) Filter {
-	f := []Filter{f1, f2}
-	f = append(f, rest...)
+//
+// This filter should be called with at least 2 filters. With only
+// one filter the AND doesn't make much sense and is equivalent to
+// adding the child filter on the Query directly. Despite this, an
+// AND filter with only one child is still considered valid by the
+// API.
+func And(filters ...Filter) Filter {
 	return Filter{
-		filter: filter{And: []filter{merge(f...)}},
+		filter: filter{And: []filter{merge(filters...)}},
 	}
 }
 
 // Or builds an OR filter
-func Or(f1, f2 Filter, rest ...Filter) Filter {
-	f := []Filter{f1, f2}
-	f = append(f, rest...)
+//
+// This filter should be called with at least 2 filters. With only
+// one filter the OR doesn't make much sense and is equivalent to
+// adding the child filter on the Query directly. Despite this, an
+// OR filter with only one child is still considered valid by the
+// API.
+func Or(filters ...Filter) Filter {
 	return Filter{
-		filter: filter{Or: []filter{merge(f...)}},
+		filter: filter{Or: []filter{merge(filters...)}},
 	}
 }
 
 // Not builds an NOT filter
-func Not(f1, f2 Filter, rest ...Filter) Filter {
-	f := []Filter{f1, f2}
-	f = append(f, rest...)
+//
+// This filter should be called with at least 1 filter.
+func Not(filters ...Filter) Filter {
 	return Filter{
-		filter: filter{Not: []filter{merge(f...)}},
+		filter: filter{Not: []filter{merge(filters...)}},
 	}
 }
 
 // ElementMatch builds an ELEMENTMATCH filter
-func ElementMatch(f1, f2 Filter, rest ...Filter) Filter {
-	f := []Filter{f1, f2}
-	f = append(f, rest...)
+//
+// This filter should be called with at least 2 filters. Using any less
+// than 2 filters will result in the API returning an error.
+func ElementMatch(filters ...Filter) Filter {
 	return Filter{
-		filter: filter{ElementMatch: []filter{merge(f...)}},
+		filter: filter{ElementMatch: []filter{merge(filters...)}},
 	}
 }
 

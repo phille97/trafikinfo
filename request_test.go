@@ -29,12 +29,7 @@ func TestRequestQuery(t *testing.T) {
 		tt := tt
 		t.Run(tt.Name, func(t *testing.T) {
 			t.Parallel()
-			var r *Request
-			if len(tt.Input) == 1 {
-				r = NewRequest().Query(tt.Input[0])
-			} else {
-				r = NewRequest().Query(tt.Input[0], tt.Input[1:]...)
-			}
+			r := NewRequest().Query(tt.Input...)
 			if qlen := len(r.Queries); qlen != len(tt.Input) {
 				t.Fatalf("Expected %d queries, got: %d", len(tt.Input), qlen)
 			}

@@ -23,6 +23,10 @@
 // these IconID strings can be plugged into a query for the Icon resource. It
 // in turn will give you access to a base64 encoded PNG in the response, as well
 // as a URL at which the icon can be retrieved.
+//
+// When using certain filters, for example Equals, querying for an attribute
+// with a value that doesn't exist will not result in an error by the API.
+// Instead you'll get an empty response.
 package trafikinfo
 
 // Endpoint is the current recommended endpoint for the Trafikinfo API

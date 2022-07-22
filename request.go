@@ -13,9 +13,8 @@ type Request struct {
 }
 
 // Query adds one or more queries to the request
-func (r *Request) Query(query *Query, rest ...*Query) *Request {
-	r.Queries = append(r.Queries, query)
-	r.Queries = append(r.Queries, rest...)
+func (r *Request) Query(queries ...*Query) *Request {
+	r.Queries = append(r.Queries, queries...)
 	return r
 }
 
