@@ -16,13 +16,12 @@ func main() {
 		APIKey("YOUR_API_KEY").
 		Query(
 			trafikinfo.NewQuery(
-				trafikinfo.WeatherStation,
-				1.0,
+				trafikinfo.WeatherMeasurePoint,
+				2.0,
 			).Filter(
-				trafikinfo.Equal("Id", "YOUR_STATION_ID"),
+				trafikinfo.Equal("Name", "YOUR_STATION_NAME"),
 			),
 		).Build()
-
 	if err != nil {
 		panic(err)
 	}
@@ -45,10 +44,14 @@ func main() {
 		os.Exit(1)
 	}
 
+	data, err := io.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+
 	if resp.StatusCode == http.StatusBadRequest {
 		var e trafikinfo.APIError
-		d := json.NewDecoder(resp.Body)
-		err := d.Decode(&e)
+		err := json.Unmarshal(data, &e)
 		if err != nil {
 			fmt.Println("Could not decode API error response")
 			os.Exit(1)
@@ -66,15 +69,16 @@ func main() {
 	type respMsg struct {
 		Resonpse struct {
 			Result []struct {
-				WeatherStation []trafikinfo.WeatherStation1Dot0 `json:"WeatherStation"`
-				Info           trafikinfo.Info                  `json:"INFO"`
+				MeasurePoint []trafikinfo.WeatherMeasurepoint2Dot0 `json:"WeatherMeasurepoint"`
+				Info         trafikinfo.Info                       `json:"INFO"`
 			}
 		} `json:"RESPONSE"`
 	}
 
+	fmt.Println(string(data))
+
 	var c respMsg
-	d := json.NewDecoder(resp.Body)
-	err = d.Decode(&c)
+	err = json.Unmarshal(data, &c)
 	if err != nil {
 		panic(err)
 	}
