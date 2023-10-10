@@ -16,7 +16,7 @@ func main() {
 		APIKey("YOUR_API_KEY").
 		Query(
 			trafikinfo.NewQuery(
-				trafikinfo.WeatherMeasurePoint,
+				trafikinfo.WeatherMeasurepoint,
 				2.0,
 			).Filter(
 				trafikinfo.Equal("Name", "YOUR_STATION_NAME"),

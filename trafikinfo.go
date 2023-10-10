@@ -55,7 +55,7 @@ const (
 	TrafficFlow           ObjectType = "TrafficFlow"
 	TrafficSafetyCamera   ObjectType = "TrafficSafetyCamera"
 	TravelTimeRoute       ObjectType = "TravelTimeRoute"
-	WeatherMeasurePoint   ObjectType = "WeatherMeasurePoint"
+	WeatherMeasurepoint   ObjectType = "WeatherMeasurepoint"
 	WeatherObservation    ObjectType = "WeatherObservation"
 	WeatherStation        ObjectType = "WeatherStation"
 

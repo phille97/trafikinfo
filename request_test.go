@@ -19,7 +19,7 @@ func TestRequestQuery(t *testing.T) {
 			Name: "Triple",
 			Input: []*Query{
 				NewQuery(WeatherStation, 1.0),
-				NewQuery(WeatherMeasurePoint, 1.0),
+				NewQuery(WeatherMeasurepoint, 1.0),
 				NewQuery(WeatherObservation, 1.0),
 			},
 		},
