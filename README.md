@@ -39,10 +39,10 @@ req, err := trafikinfo.NewRequest().
 	APIKey("YOUR_API_KEY").
 	Query(
 		trafikinfo.NewQuery(
-			trafikinfo.WeatherStation,
-			1.0,
+			trafikinfo.WeatherMeasurepoint,
+			2.0,
 		).Filter(
-			trafikinfo.Equal("Id", "YOUR_STATION_ID"),
+			trafikinfo.Equal("Name", "YOUR_STATION_NAME"),
 		),
 	).Build()
 
@@ -56,7 +56,7 @@ if err != nil {
 type respMsg struct {
 	Resonpse struct {
 		Result []struct {
-			WeatherStation []trafikinfo.WeatherStation1Dot0 `json:"WeatherStation"`
+			WeatherMeasurepoints []trafikinfo.WeatherMeasurepoint2Dot0 `json:"WeatherMeasurepoint"`
 			Info           trafikinfo.Info                  `json:"INFO"`
 		}
 	} `json:"RESPONSE"`
@@ -113,4 +113,3 @@ types and versions.
 `TravelTimeRoute` | 1.0: ✅ 1.3: ✅ 1.4: ✅ 1.5 ✅
 `WeatherMeasurepoint` | 1.0: ✅ 2.0: ✅
 `WeatherObservation` | 1.0: ✅ 2.0: ✅
-`WeatherStation` | 1.0: ✅
