@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # The code in examples/ might intentionally do things like log credentials
     # in order to show how the library is used, aid in debugging etc. We

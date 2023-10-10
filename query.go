@@ -70,7 +70,8 @@ func (q *Query) Limit(opt int) *Query {
 // sorted by.
 //
 // For example:
-//    OrderBy("SomeData.Name desc, SomeData.Description asc")
+//
+//	OrderBy("SomeData.Name desc, SomeData.Description asc")
 func (q *Query) OrderBy(opt string) *Query {
 	q.query.OrderBy = opt
 	return q

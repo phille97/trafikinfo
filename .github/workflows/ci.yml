@@ -21,16 +21,37 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-go@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-go@v4
       with:
-        go-version: '1.18'
+        go-version: '1.21'
+    - name: Setup gotestfmt
+      uses: GoTestTools/gotestfmt-action@v2.1.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Check formatting
       run: test -z $(gofmt -l **.go)
     - name: Run tests
       run: |
-        go test -race -v -coverprofile=coverage.txt -covermode=atomic
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v2
-      if: success()
+        set -euo pipefail
+        go test -race -json -v ./... 2>&1 | tee /tmp/gotest.log | gotestfmt
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-log
+        path: /tmp/gotest.log
+        if-no-files-found: error
+    - name: Create JUnit XML test report
+      run: |
+        go install github.com/jstemmer/go-junit-report/v2@latest
+        go-junit-report -in /tmp/gotest.log -parser gojson -out /tmp/junit.xml
+      if: always()
+    - name: Publish Test Report
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
+      with:
+        report_paths: '/tmp/junit.xml'
