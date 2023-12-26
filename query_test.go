@@ -6,10 +6,12 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+
+	wmp "code.dny.dev/trafikinfo/trv/weathermeasurepoint/v2"
 )
 
 func TestQueryID(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).ID("test")
+	q := NewQuery(wmp.ObjectType()).ID("test")
 	if res := q.query.ID; res != "test" {
 		t.Fatalf("Expected query with id=test, got: %s", res)
 	}
@@ -27,13 +29,13 @@ func TestQueryID(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Got error: %v", err)
 	}
-	if strings.Contains(string(res), `id=`) {
+	if strings.Contains(string(res), ` id=`) {
 		t.Fatalf("Expected id attribute to be missing in serialised query: %s", string(res))
 	}
 }
 
 func TestQueryIncludeDeletedObjects(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).IncludeDeletedObjects(true)
+	q := NewQuery(wmp.ObjectType()).IncludeDeletedObjects(true)
 	if res := q.query.IncludeDeletedObjects; !res {
 		t.Fatalf("Expected query with includedeletedobjects=true, got: %t", res)
 	}
@@ -57,7 +59,7 @@ func TestQueryIncludeDeletedObjects(t *testing.T) {
 }
 
 func TestQueryLimit(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).Limit(1)
+	q := NewQuery(wmp.ObjectType()).Limit(1)
 	if res := q.query.Limit; res != 1 {
 		t.Fatalf("Expected query with limit=1, got: %d", res)
 	}
@@ -81,7 +83,7 @@ func TestQueryLimit(t *testing.T) {
 }
 
 func TestQueryOrderBy(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).OrderBy("attr asc, attr desc")
+	q := NewQuery(wmp.ObjectType()).OrderBy("attr asc, attr desc")
 	if res := q.query.OrderBy; res != "attr asc, attr desc" {
 		t.Fatalf("Expected query with orderby=attr asc, attr desc, got: %s", res)
 	}
@@ -105,7 +107,7 @@ func TestQueryOrderBy(t *testing.T) {
 }
 
 func TestQuerySkip(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).Skip(1)
+	q := NewQuery(wmp.ObjectType()).Skip(1)
 	if res := q.query.Skip; res != 1 {
 		t.Fatalf("Expected query with skip=1, got: %d", res)
 	}
@@ -128,34 +130,10 @@ func TestQuerySkip(t *testing.T) {
 	}
 }
 
-func TestQueryLastModified(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).LastModified(true)
-	if res := q.query.LastModified; !res {
-		t.Fatalf("Expected query with lastmodified=true, got: %t", res)
-	}
-
-	res, err := xml.Marshal(&q)
-	if err != nil {
-		t.Fatalf("Got error: %v", err)
-	}
-	if !strings.Contains(string(res), `lastmodified="true"`) {
-		t.Fatalf("Expected lastmodified attribute is missing in serialised query: %s", string(res))
-	}
-
-	q.LastModified(false)
-	res, err = xml.Marshal(&q)
-	if err != nil {
-		t.Fatalf("Got error: %v", err)
-	}
-	if strings.Contains(string(res), `lastmodified=`) {
-		t.Fatalf("Expected lastmodified attribute to be missing in serialised query: %s", string(res))
-	}
-}
-
 func TestQueryChangeID(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).ChangeID("1")
-	if res := q.query.ChangeID; res != nil && *res != "1" {
-		t.Fatalf("Expected query with changeid=1, got: %s", *res)
+	q := NewQuery(wmp.ObjectType()).ChangeID("1")
+	if res := q.query.ChangeID; res != "0" && res != "1" {
+		t.Fatalf("Expected query with changeid=1, got: %s", res)
 	}
 
 	res, err := xml.Marshal(&q)
@@ -167,20 +145,20 @@ func TestQueryChangeID(t *testing.T) {
 	}
 
 	q.ChangeID("")
-	if res := q.query.ChangeID; res != nil {
-		t.Fatalf("Expected query without changeid, got: %s", *res)
+	if res := q.query.ChangeID; res != "0" {
+		t.Fatalf("Expected query with changeid 0, got: %s", res)
 	}
 	res, err = xml.Marshal(&q)
 	if err != nil {
 		t.Fatalf("Got error: %v", err)
 	}
-	if strings.Contains(string(res), `changeid=`) {
-		t.Fatalf("Expected changeid attribute to be missing in serialised query: %s", string(res))
+	if !strings.Contains(string(res), `changeid="0"`) {
+		t.Fatalf("Expected changeid to be 0 in serialised query: %s", string(res))
 	}
 }
 
 func TestQuerySSEURL(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).SSEURL(true)
+	q := NewQuery(wmp.ObjectType()).SSEURL(true)
 	if res := q.query.SSEURL; !res {
 		t.Fatalf("Expected query with sseurl=true, got: %t", res)
 	}
@@ -204,12 +182,12 @@ func TestQuerySSEURL(t *testing.T) {
 }
 
 func TestQueryDistinct(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).Distinct("test")
+	q := NewQuery(wmp.ObjectType()).Distinct("test")
 	if q.query.Distinct != "test" {
 		t.Fatalf("Expected distinct value of: test, got: %s", q.query.Distinct)
 	}
 
-	q2 := NewQuery(WeatherStation, 1.0).Distinct("test").Distinct("foo")
+	q2 := NewQuery(wmp.ObjectType()).Distinct("test").Distinct("foo")
 	if q2.query.Distinct != "foo" {
 		t.Fatalf("Expected distinct value of: foo, got: %s", q.query.Distinct)
 	}
@@ -229,7 +207,7 @@ func TestQueryInclude(t *testing.T) {
 		tt := tt
 		t.Run(tt.Name, func(t *testing.T) {
 			t.Parallel()
-			q := NewQuery(WeatherStation, 1.0).Include(tt.Input...)
+			q := NewQuery(wmp.ObjectType()).Include(tt.Input...)
 			if len(q.query.Include) != len(tt.Output) {
 				t.Fatalf("Expected: %d elements, got: %d", len(tt.Output), len(q.query.Include))
 			}
@@ -242,7 +220,7 @@ func TestQueryInclude(t *testing.T) {
 		tt := tt
 		t.Run(fmt.Sprintf("Fluent%s", tt.Name), func(t *testing.T) {
 			t.Parallel()
-			q := NewQuery(WeatherStation, 1.0)
+			q := NewQuery(wmp.ObjectType())
 			for _, in := range tt.Input {
 				q.Include(in)
 			}
@@ -271,7 +249,7 @@ func TestQueryExclude(t *testing.T) {
 		tt := tt
 		t.Run(tt.Name, func(t *testing.T) {
 			t.Parallel()
-			q := NewQuery(WeatherStation, 1.0).Exclude(tt.Input...)
+			q := NewQuery(wmp.ObjectType()).Exclude(tt.Input...)
 			if len(q.query.Exclude) != len(tt.Output) {
 				t.Fatalf("Expected: %d elements, got: %d", len(tt.Output), len(q.query.Exclude))
 			}
@@ -284,7 +262,7 @@ func TestQueryExclude(t *testing.T) {
 		tt := tt
 		t.Run(fmt.Sprintf("Fluent%s", tt.Name), func(t *testing.T) {
 			t.Parallel()
-			q := NewQuery(WeatherStation, 1.0)
+			q := NewQuery(wmp.ObjectType())
 			for _, in := range tt.Input {
 				q.Exclude(in)
 			}
@@ -299,7 +277,7 @@ func TestQueryExclude(t *testing.T) {
 }
 
 func TestQueryFilter(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).Filter(Equal("a", "b"))
+	q := NewQuery(wmp.ObjectType()).Filter(Equal("a", "b"))
 	if len(q.query.Filter.filter.Equal) != 1 {
 		t.Fatalf("Expected 1 filter, got: %d", len(q.query.Filter.filter.Equal))
 	}
@@ -312,7 +290,7 @@ func TestQueryFilter(t *testing.T) {
 }
 
 func TestQueryEval(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0).Eval(Eval("a", "b"))
+	q := NewQuery(wmp.ObjectType()).Eval(Eval("a", "b"))
 	if len(q.query.Eval) != 1 {
 		t.Fatalf("Expected 1 evaluation, got: %d", len(q.query.Eval))
 	}
@@ -330,14 +308,14 @@ func TestQueryEval(t *testing.T) {
 }
 
 func TestQueryMarshalXML(t *testing.T) {
-	q := NewQuery(WeatherStation, 1.0)
+	q := NewQuery(wmp.ObjectType())
 
 	res, err := xml.Marshal(q)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	exp := `<Query objecttype="WeatherStation" schemaversion="1"></Query>`
+	exp := `<Query objecttype="WeatherMeasurepoint" schemaversion="2" lastmodified="true" changeid="0"></Query>`
 	if string(res) != exp {
 		t.Fatalf("Expected: %s, got: %s", exp, string(res))
 	}

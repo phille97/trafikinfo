@@ -3,6 +3,8 @@ package trafikinfo
 import (
 	"encoding/xml"
 	"strconv"
+
+	"code.dny.dev/trafikinfo/trv"
 )
 
 // Query is used to request information from the Trafikinfo API
@@ -15,15 +17,16 @@ func (q *Query) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 }
 
 type query struct {
-	ObjectType            ObjectType   `xml:"objecttype,attr"`
-	SchemaVersion         float64      `xml:"schemaversion,attr"`
+	ObjectType            string       `xml:"objecttype,attr"`
+	SchemaVersion         string       `xml:"schemaversion,attr"`
+	Namespace             string       `xml:"namespace,attr,omitempty"`
 	ID                    string       `xml:"id,attr,omitempty"`
 	IncludeDeletedObjects bool         `xml:"includedeletedobjects,attr,omitempty"`
 	Limit                 int          `xml:"limit,attr,omitempty"`
 	OrderBy               string       `xml:"orderby,attr,omitempty"`
 	Skip                  int          `xml:"skip,attr,omitempty"`
 	LastModified          bool         `xml:"lastmodified,attr,omitempty"`
-	ChangeID              *string      `xml:"changeid,attr"`
+	ChangeID              string       `xml:"changeid,attr"`
 	SSEURL                bool         `xml:"sseurl,attr,omitempty"`
 	Filter                *Filter      `xml:"FILTER"`
 	Include               []string     `xml:"INCLUDE"`
@@ -34,11 +37,14 @@ type query struct {
 
 // NewQuery returns a query that other methods can be chained on to further
 // customise the request.
-func NewQuery(objectType ObjectType, schemaVersion float64) *Query {
+func NewQuery(obj trv.ObjectType) *Query {
 	return &Query{
 		query: query{
-			ObjectType:    objectType,
-			SchemaVersion: schemaVersion,
+			ObjectType:    obj.Kind,
+			Namespace:     obj.Namespace,
+			SchemaVersion: obj.Version,
+			ChangeID:      "0",
+			LastModified:  true,
 		},
 	}
 }
@@ -84,22 +90,15 @@ func (q *Query) Skip(opt int) *Query {
 	return q
 }
 
-// LastModified results in a lastmodified timestamp being included in the
-// response.
-func (q *Query) LastModified(opt bool) *Query {
-	q.query.LastModified = opt
-	return q
-}
-
 // ChangeID sets the change ID for the request. This should initially be
 // 0 to request all data, and then be set to the value of the change ID in
 // the response to only get updated/deleted objects since the previous change
 // ID.
 func (q *Query) ChangeID(opt string) *Query {
 	if opt == "" {
-		q.query.ChangeID = nil
+		q.query.ChangeID = "0"
 	} else {
-		q.query.ChangeID = &opt
+		q.query.ChangeID = opt
 	}
 	return q
 }

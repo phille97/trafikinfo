@@ -2,6 +2,9 @@ package trafikinfo
 
 import (
 	"testing"
+
+	wmp "code.dny.dev/trafikinfo/trv/weathermeasurepoint/v2"
+	wo "code.dny.dev/trafikinfo/trv/weatherobservation/v2"
 )
 
 func TestRequestQuery(t *testing.T) {
@@ -12,15 +15,14 @@ func TestRequestQuery(t *testing.T) {
 		{
 			Name: "Single",
 			Input: []*Query{
-				NewQuery(WeatherStation, 1.0),
+				NewQuery(wmp.ObjectType()),
 			},
 		},
 		{
-			Name: "Triple",
+			Name: "Double",
 			Input: []*Query{
-				NewQuery(WeatherStation, 1.0),
-				NewQuery(WeatherMeasurepoint, 1.0),
-				NewQuery(WeatherObservation, 1.0),
+				NewQuery(wmp.ObjectType()),
+				NewQuery(wo.ObjectType()),
 			},
 		},
 	}

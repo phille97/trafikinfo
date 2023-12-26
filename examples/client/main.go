@@ -1,24 +1,23 @@
+// An example on how to use the trafikinfo library to request weather data.
 package main
 
 import (
 	"bytes"
-	"encoding/json"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
 
 	"code.dny.dev/trafikinfo"
+	wmp "code.dny.dev/trafikinfo/trv/weathermeasurepoint/v2"
 )
 
 func main() {
 	req, err := trafikinfo.NewRequest().
 		APIKey("YOUR_API_KEY").
 		Query(
-			trafikinfo.NewQuery(
-				trafikinfo.WeatherMeasurepoint,
-				2.0,
-			).Filter(
+			trafikinfo.NewQuery(wmp.ObjectType()).Filter(
 				trafikinfo.Equal("Name", "YOUR_STATION_NAME"),
 			),
 		).Build()
@@ -39,49 +38,24 @@ func main() {
 	}
 	defer resp.Body.Close()
 
-	if resp.StatusCode == http.StatusUnauthorized {
-		fmt.Println("Invalied credentials")
-		os.Exit(1)
-	}
-
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
-		panic(err)
-	}
-
-	if resp.StatusCode == http.StatusBadRequest {
-		var e trafikinfo.APIError
-		err := json.Unmarshal(data, &e)
-		if err != nil {
-			fmt.Println("Could not decode API error response")
-			os.Exit(1)
-		}
-		fmt.Println(e.Response.Result[0].Error.Message)
+		fmt.Println("Could not read response data")
 		os.Exit(1)
 	}
 
-	if resp.StatusCode != 200 {
-		fmt.Printf("got status code: %d %s\n", resp.StatusCode, http.StatusText(resp.StatusCode))
-		io.Copy(io.Discard, resp.Body)
+	var res wmp.Response
+	if err := xml.Unmarshal(data, &res); err != nil {
+		fmt.Println("Could not decode API response")
+		fmt.Println(err)
 		os.Exit(1)
 	}
 
-	type respMsg struct {
-		Resonpse struct {
-			Result []struct {
-				MeasurePoint []trafikinfo.WeatherMeasurepoint2Dot0 `json:"WeatherMeasurepoint"`
-				Info         trafikinfo.Info                       `json:"INFO"`
-			}
-		} `json:"RESPONSE"`
+	if resp.StatusCode != http.StatusOK || res.HasErrors() {
+		fmt.Println("Status code", resp.StatusCode, "with errors", res.ErrorMsg())
+		os.Exit(1)
 	}
 
 	fmt.Println(string(data))
-
-	var c respMsg
-	err = json.Unmarshal(data, &c)
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("%+v\n", c)
+	fmt.Printf("%+v\n", res)
 }
