@@ -6,6 +6,17 @@ import (
 	"time"
 )
 
+// ObjectType holds metadata about an Object you can query for in
+// the Trafikverket API.
+//
+// The Kind is the object type, the version is the object version
+// and the namespace, if necessary, that the object resides in.
+// Namespaces are new to the API and are only present for certain
+// versions of certain objects.
+//
+// The ObjectType method in each public package will return this
+// object with all information correctly filled in. It can be passed
+// as the argument to [code.dny.dev/trafikinfo.NewQuery].
 type ObjectType struct {
 	Kind      string
 	Version   string
