@@ -1,6 +1,9 @@
 package trafikinfo
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"fmt"
+)
 
 // Request tells the API what we're interested in
 //
@@ -32,6 +35,12 @@ func (r *Request) APIKey(key string) *Request {
 // you can't chain additional methods on it that continue to modify
 // the request.
 func (r *Request) Build() ([]byte, error) {
+	if r.Login == nil {
+		return nil, fmt.Errorf("API key has not been set")
+	}
+	if len(r.Queries) == 0 {
+		return nil, fmt.Errorf("need at least one query")
+	}
 	return xml.Marshal(r)
 }
 

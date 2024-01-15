@@ -3,6 +3,7 @@ package trafikinfo
 import (
 	"testing"
 
+	"code.dny.dev/trafikinfo/trv"
 	wmp "code.dny.dev/trafikinfo/trv/weathermeasurepoint/v2"
 	wo "code.dny.dev/trafikinfo/trv/weatherobservation/v2"
 )
@@ -47,13 +48,30 @@ func TestRequestLogin(t *testing.T) {
 }
 
 func TestRequestBuild(t *testing.T) {
-	r, err := NewRequest().Build()
-	if err != nil {
-		t.Fatalf("Expected success, got: %v", err)
+	tests := []struct {
+		name string
+		in   *Request
+		out  string
+		err  bool
+	}{
+		{name: "without API key", in: NewRequest(), out: "", err: true},
+		{name: "with API key but no query", in: NewRequest().APIKey("test"), out: "", err: true},
+		{name: "with API key and query", in: NewRequest().APIKey("test").Query(NewQuery(trv.ObjectType{})), out: `<REQUEST><LOGIN authenticationkey="test"></LOGIN><QUERY objecttype="" schemaversion="" lastmodified="true" changeid="0"></QUERY></REQUEST>`},
 	}
 
-	exp := `<REQUEST></REQUEST>`
-	if res := string(r); res != exp {
-		t.Fatalf("Expected: %s, got: %s", exp, res)
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			res, err := tt.in.Build()
+			if tt.err && err == nil {
+				t.Fatalf("Expected error but didn't get one")
+			}
+			if !tt.err && err != nil {
+				t.Fatalf("Expected no error, but got: %v", err)
+			}
+			if out := string(res); out != tt.out {
+				t.Fatalf("Expected: %s, got: %s", tt.out, out)
+			}
+		})
 	}
 }
