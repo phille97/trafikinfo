@@ -7,13 +7,13 @@ import "encoding/xml"
 // It must include the Login information and at least
 // one Query.
 type Request struct {
-	XMLName string   `xml:"REQUEST"`
-	Login   *login   `xml:"LOGIN"`
-	Queries []*Query `xml:"QUERY"`
+	XMLName string  `xml:"REQUEST"`
+	Login   *login  `xml:"LOGIN"`
+	Queries []Query `xml:"QUERY"`
 }
 
 // Query adds one or more queries to the request
-func (r *Request) Query(queries ...*Query) *Request {
+func (r *Request) Query(queries ...Query) *Request {
 	r.Queries = append(r.Queries, queries...)
 	return r
 }
@@ -45,6 +45,6 @@ type login struct {
 // least 1 query needs to be provided.
 func NewRequest() *Request {
 	return &Request{
-		Queries: []*Query{},
+		Queries: []Query{},
 	}
 }

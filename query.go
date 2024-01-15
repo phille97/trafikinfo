@@ -9,10 +9,10 @@ import (
 
 // Query is used to request information from the Trafikinfo API
 type Query struct {
-	query query
+	query *query
 }
 
-func (q *Query) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+func (q Query) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	return e.EncodeElement(q.query, start)
 }
 
@@ -37,9 +37,9 @@ type query struct {
 
 // NewQuery returns a query that other methods can be chained on to further
 // customise the request.
-func NewQuery(obj trv.ObjectType) *Query {
-	return &Query{
-		query: query{
+func NewQuery(obj trv.ObjectType) Query {
+	return Query{
+		query: &query{
 			ObjectType:    obj.Kind,
 			Namespace:     obj.Namespace,
 			SchemaVersion: obj.Version,
@@ -52,14 +52,14 @@ func NewQuery(obj trv.ObjectType) *Query {
 // ID is an arbitrary value which will be echoed in the response. It can
 // be used to associate queries with responses, especially when a request
 // includes multiple queries.
-func (q *Query) ID(opt string) *Query {
+func (q Query) ID(opt string) Query {
 	q.query.ID = opt
 	return q
 }
 
 // IncludeDeletedObjects requests that deleted objects also be returned.
 // This defaults to false.
-func (q *Query) IncludeDeletedObjects(opt bool) *Query {
+func (q Query) IncludeDeletedObjects(opt bool) Query {
 	q.query.IncludeDeletedObjects = opt
 	return q
 }
@@ -67,7 +67,7 @@ func (q *Query) IncludeDeletedObjects(opt bool) *Query {
 // Limit sets the limit for the amount of items to be returned. This can be
 // used together with Skip to implement pagination. A Limit of 0 means no
 // limit at all, i.e return everything.
-func (q *Query) Limit(opt int) *Query {
+func (q Query) Limit(opt int) Query {
 	q.query.Limit = opt
 	return q
 }
@@ -78,14 +78,14 @@ func (q *Query) Limit(opt int) *Query {
 // For example:
 //
 //	OrderBy("SomeData.Name desc, SomeData.Description asc")
-func (q *Query) OrderBy(opt string) *Query {
+func (q Query) OrderBy(opt string) Query {
 	q.query.OrderBy = opt
 	return q
 }
 
 // Skip sets how many items to skip/exclude from the response. This can be
 // used together with Limit to implement pagination.
-func (q *Query) Skip(opt int) *Query {
+func (q Query) Skip(opt int) Query {
 	q.query.Skip = opt
 	return q
 }
@@ -94,7 +94,7 @@ func (q *Query) Skip(opt int) *Query {
 // 0 to request all data, and then be set to the value of the change ID in
 // the response to only get updated/deleted objects since the previous change
 // ID.
-func (q *Query) ChangeID(opt string) *Query {
+func (q Query) ChangeID(opt string) Query {
 	if opt == "" {
 		q.query.ChangeID = "0"
 	} else {
@@ -103,36 +103,36 @@ func (q *Query) ChangeID(opt string) *Query {
 	return q
 }
 
-func (q *Query) SSEURL(opt bool) *Query {
+func (q Query) SSEURL(opt bool) Query {
 	q.query.SSEURL = opt
 	return q
 }
 
-func (q *Query) Filter(filters ...Filter) *Query {
+func (q Query) Filter(filters ...Filter) Query {
 	f := merge(filters...)
 	q.query.Filter = &Filter{filter: f}
 	return q
 }
 
 // Distinct returns an array of unique values of this field
-func (q *Query) Distinct(field string) *Query {
+func (q Query) Distinct(field string) Query {
 	q.query.Distinct = field
 	return q
 }
 
 // Include ensures only elements matching the specified fields are returned
-func (q *Query) Include(fields ...string) *Query {
+func (q Query) Include(fields ...string) Query {
 	q.query.Include = append(q.query.Include, fields...)
 	return q
 }
 
 // Exclude ensures element matching the specifields fields are omitted
-func (q *Query) Exclude(fields ...string) *Query {
+func (q Query) Exclude(fields ...string) Query {
 	q.query.Exclude = append(q.query.Exclude, fields...)
 	return q
 }
 
-func (q *Query) Eval(evaluations ...Evaluation) *Query {
+func (q Query) Eval(evaluations ...Evaluation) Query {
 	q.query.Eval = append(q.query.Eval, evaluations...)
 	return q
 }
@@ -186,7 +186,7 @@ type Evaluation struct {
 	evaluation evaluation
 }
 
-func (v *Evaluation) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+func (v Evaluation) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	return e.EncodeElement(v.evaluation, start)
 }
 
@@ -209,7 +209,7 @@ type Filter struct {
 	filter filter
 }
 
-func (f *Filter) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+func (f Filter) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	return e.EncodeElement(f.filter, start)
 }
 

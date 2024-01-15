@@ -10,17 +10,17 @@ import (
 func TestRequestQuery(t *testing.T) {
 	tests := []struct {
 		Name  string
-		Input []*Query
+		Input []Query
 	}{
 		{
 			Name: "Single",
-			Input: []*Query{
+			Input: []Query{
 				NewQuery(wmp.ObjectType()),
 			},
 		},
 		{
 			Name: "Double",
-			Input: []*Query{
+			Input: []Query{
 				NewQuery(wmp.ObjectType()),
 				NewQuery(wo.ObjectType()),
 			},
