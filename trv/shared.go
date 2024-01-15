@@ -41,15 +41,5 @@ type APIError struct {
 }
 
 func (e *APIError) Error() string {
-	if e == nil {
-		return ""
-	}
 	return fmt.Sprintf("%s: %s", e.Source, e.Message)
-}
-
-func (e *APIError) AsError() error {
-	if e == nil {
-		return nil
-	}
-	return fmt.Errorf("%s: %s", e.Source, e.Message)
 }
