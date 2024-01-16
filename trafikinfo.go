@@ -35,9 +35,23 @@
 // Much of the code in this library is automatically generated using the XSD
 // schemas provided by Trafikverket. This results in some pointer-heavy structs
 // in [code.dny.dev/trafikinfo/internal/trv] as all fields are effectively
-// optional. In order to make it easier to drill down into nested structs, the
-// public structs in [trv] expose all fields as methods instead which you can
-// chain, even if they're nil, making it easy to get to a deeply nested value.
+// optional.
+//
+// In order to make it easier to drill down into nested structs, the
+// public structs in [trv] expose all fields as methods instead which perform
+// nil-checks themselves when returning nested values. In the case of nested
+// structs, they'll instead return a pointer to an empty struct. This results
+// in a fluent-style API, letting you write something like:
+//
+//	Observation().Aggregated5minutes().Precipitation().TotalWaterEquivalent().Value()
+//
+// You will get a value back which may be nil, no matter if Observation,
+// Aggregated5minutes, Precipitation and TotalWaterEquivalent elements where
+// present in the response or not.
+//
+// When a method returns a slice, that slice may be nil or empty. You can always
+// safely iterate over those using a for loop, or check the length of the returned
+// slice. A nil slice always has a length of 0.
 //
 // # XML to Go type mapping
 //
