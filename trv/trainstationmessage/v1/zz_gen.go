@@ -137,21 +137,21 @@ func (x *TrainStationMessage) ActiveDays() *string {
 
 func (x *TrainStationMessage) MonitorAttributes() *MonitorAttributes {
 	if x.data == nil {
-		return new(MonitorAttributes)
+		return &MonitorAttributes{}
 	}
 	return &MonitorAttributes{data: x.data.MonitorAttributes}
 }
 
 func (x *TrainStationMessage) PlatformSignAttributes() *PlatformSignAttributes {
 	if x.data == nil {
-		return new(PlatformSignAttributes)
+		return &PlatformSignAttributes{}
 	}
 	return &PlatformSignAttributes{data: x.data.PlatformSignAttributes}
 }
 
 func (x *TrainStationMessage) PublicAnnouncementAttributes() *PublicAnnouncementAttributes {
 	if x.data == nil {
-		return new(PublicAnnouncementAttributes)
+		return &PublicAnnouncementAttributes{}
 	}
 	return &PublicAnnouncementAttributes{data: x.data.PublicAnnouncementAttributes}
 }
@@ -231,7 +231,7 @@ func (x *PlatformSignAttributes) CommuterPlatformSign() *bool {
 // EN: The tracks that are affected by the message
 func (x *PlatformSignAttributes) TrackList() *TrackList {
 	if x.data == nil {
-		return new(TrackList)
+		return &TrackList{}
 	}
 	return &TrackList{data: x.data.TrackList}
 }
@@ -271,14 +271,14 @@ func (x *PublicAnnouncementAttributes) EnglishPublicAnnouncementActivated() *boo
 // EN: Plans for when the message is to be announced
 func (x *PublicAnnouncementAttributes) PublicAnnouncementPlanList() *PublicAnnouncementPlanList {
 	if x.data == nil {
-		return new(PublicAnnouncementPlanList)
+		return &PublicAnnouncementPlanList{}
 	}
 	return &PublicAnnouncementPlanList{data: x.data.PublicAnnouncementPlanList}
 }
 
 func (x *PublicAnnouncementAttributes) PublicAnnouncementZoneList() *PublicAnnouncementZoneList {
 	if x.data == nil {
-		return new(PublicAnnouncementZoneList)
+		return &PublicAnnouncementZoneList{}
 	}
 	return &PublicAnnouncementZoneList{data: x.data.PublicAnnouncementZoneList}
 }
@@ -317,6 +317,9 @@ func (x *PublicAnnouncementPlanList) UnmarshalXML(d *xml.Decoder, start xml.Star
 }
 
 func (x *PublicAnnouncementPlanList) PublicAnnouncementPlans() []PublicAnnouncementPlan {
+	if len(x.data.PublicAnnouncementPlan) == 0 {
+		return nil
+	}
 	data := []PublicAnnouncementPlan{}
 	for _, mem := range x.data.PublicAnnouncementPlan {
 		data = append(data, PublicAnnouncementPlan{data: &mem})
@@ -388,7 +391,7 @@ func (x *PublicAnnouncementPlan) ActiveDays() *string {
 
 func (x *PublicAnnouncementPlan) PublicAnnouncementOccasionList() *PublicAnnouncementOccasionList {
 	if x.data == nil {
-		return new(PublicAnnouncementOccasionList)
+		return &PublicAnnouncementOccasionList{}
 	}
 	return &PublicAnnouncementOccasionList{data: x.data.PublicAnnouncementOccasionList}
 }

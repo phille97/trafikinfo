@@ -20,7 +20,7 @@ type FerryAnnouncement struct {
 	Id *int64 `xml:"Id,omitempty"`
 	// SV: Information om avgången
 	// EN: Information about the departure
-	Info []string `xml:"Info"`
+	Info []string `xml:"Info,omitempty"`
 	// SV: Avgår från
 	// EN: Departing from
 	FromHarbor *FromHarbor `xml:"FromHarbor,omitempty"`

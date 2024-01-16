@@ -35,7 +35,7 @@ type Observation struct {
 	Weather             *Weather             `xml:"Weather,omitempty"`
 	Surface             *SurfaceCondition    `xml:"Surface,omitempty"`
 	Air                 *AirCondition        `xml:"Air,omitempty"`
-	Wind                []WindCondition      `xml:"Wind"`
+	Wind                []WindCondition      `xml:"Wind,omitempty"`
 	DeicingChemical     *DeicingChemical     `xml:"DeicingChemical,omitempty"`
 	Subsurface          *SubsurfaceCondition `xml:"Subsurface,omitempty"`
 	Aggregated5minutes  *Aggregated          `xml:"Aggregated5minutes,omitempty"`
@@ -96,7 +96,7 @@ type DeicingChemical struct {
 }
 
 type SubsurfaceCondition struct {
-	Ground []GroundCondition `xml:"Ground"`
+	Ground []GroundCondition `xml:"Ground,omitempty"`
 }
 
 type Celsius struct {

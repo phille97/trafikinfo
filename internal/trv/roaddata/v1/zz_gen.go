@@ -9,42 +9,42 @@ import (
 
 type RoadData struct {
 	// SV: Län.
-	County int `xml:"County"`
+	County *int `xml:"County,omitempty"`
 	// SV: Huvudvägnummer.
-	RoadMainNumber int `xml:"RoadMainNumber"`
+	RoadMainNumber *int `xml:"RoadMainNumber,omitempty"`
 	// SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
-	RoadSubNumber int        `xml:"RoadSubNumber"`
+	RoadSubNumber *int       `xml:"RoadSubNumber,omitempty"`
 	Direction     *Direction `xml:"Direction,omitempty"`
 	// SV: Körfältsbeskrivning. Beskrivning av körfältskombinationer, främst för att utskilja vilka vägar som har s.k. 2+1 körfältsuppdelning.
-	LaneDescription int `xml:"LaneDescription"`
+	LaneDescription *int `xml:"LaneDescription,omitempty"`
 	// SV: Start löpande längd. Anges i meter. Starten för aktuell data angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-	StartContinuousLength int `xml:"StartContinuousLength"`
+	StartContinuousLength *int `xml:"StartContinuousLength,omitempty"`
 	// SV: Slut löpande längd. Anges i meter. Slutet för aktuell data angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-	EndContinuousLength int `xml:"EndContinuousLength"`
+	EndContinuousLength *int `xml:"EndContinuousLength,omitempty"`
 	// SV: Längd.
-	Length          int              `xml:"Length"`
+	Length          *int             `xml:"Length,omitempty"`
 	BearingCapacity *BearingCapacity `xml:"BearingCapacity,omitempty"`
 	// SV: Hastighetsgräns. Skyltad hastighet. Vid variabel hastighet visar pmsv3 1000 km/h för att markera att hastigheten inte är entydig.
-	SpeedLimit int `xml:"SpeedLimit"`
+	SpeedLimit *int `xml:"SpeedLimit,omitempty"`
 	// SV: Slitlager
-	WearLayer int `xml:"WearLayer"`
+	WearLayer *int `xml:"WearLayer,omitempty"`
 	// SV: ÅDT fordon. På mötesseparerad väg anges ÅDT för en riktning i taget. Dvs. den siffra som anges är trafiken i en riktning. På vanlig väg, dvs där trafiken går i båda riktningar, utan mittseparering, gäller ÅDT-siffran båda riktningar tillsammans. Om det finns fler än ett körfält gäller angivna ÅDT-siffran för alla körfält tillsammans. T.ex: Om ÅDT = 20000 fordon och det finns 3 körfält, så kommer ÅDT att anges som 20000 för varje körfält.
-	AADT int `xml:"AADT"`
+	AADT *int `xml:"AADT,omitempty"`
 	// SV: ÅDT tung. ÅDT lastbilar avser trafikflöde lastbilar. (Antal lastbilar per årsmedeldygn).
-	AADTHeavyVehicles int `xml:"AADTHeavyVehicles"`
+	AADTHeavyVehicles *int `xml:"AADTHeavyVehicles,omitempty"`
 	// SV: ÅDT mätår.
-	AADTMeasurementYear   int                    `xml:"AADTMeasurementYear"`
+	AADTMeasurementYear   *int                   `xml:"AADTMeasurementYear,omitempty"`
 	AADTMeasurementMethod *AADTMeasurementMethod `xml:"AADTMeasurementMethod,omitempty"`
 	// SV: Vägbredd.
-	RoadWidth    float64       `xml:"RoadWidth"`
+	RoadWidth    *float64      `xml:"RoadWidth,omitempty"`
 	RoadOwner    *RoadOwner    `xml:"RoadOwner,omitempty"`
 	RoadCategory *RoadCategory `xml:"RoadCategory,omitempty"`
 	RoadType     *RoadType     `xml:"RoadType,omitempty"`
 	Winter2003   *Winter2003   `xml:"Winter2003,omitempty"`
 	// SV: Vägnybyggnadsår 2009. Det årtal som en nybyggnad utförts på vägen, vägsträckan byggdes, och det årtal som ett förstärkningsarbete utförts på en vägsträcka.
-	RoadConstruction2009 int `xml:"RoadConstruction2009"`
+	RoadConstruction2009 *int `xml:"RoadConstruction2009,omitempty"`
 	// SV: Datum för när vägdata hämtades ut från källsystemet.
-	TimeStamp time.Time `xml:"TimeStamp"`
+	TimeStamp *time.Time `xml:"TimeStamp,omitempty"`
 	// SV: Tidpunkt då dataposten ändrades
 	// EN: Time when the data item was changed
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
@@ -55,49 +55,49 @@ type RoadData struct {
 
 type Direction struct {
 	// SV: Riktning. Värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Riktning. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }
 
 type BearingCapacity struct {
 	// SV: Bärighetsklass. Upplåten bärighetsklass på statliga och kommunala vägar. Värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Bärighetsklass. Upplåten bärighetsklass på statliga och kommunala vägar. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }
 
 type AADTMeasurementMethod struct {
 	// SV: ÅDT mätmetod. värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: ÅDT mätmetod. beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }
 
 type RoadOwner struct {
 	// SV: Väghållare. Den som är ansvarig för väghållningen.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Väghållare. Den som är ansvarig för väghållningen. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }
 
 type RoadCategory struct {
 	// SV: Vägkategori. Värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Vägkategori. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }
 
 type RoadType struct {
 	// SV: Vägtyp. Värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Vägtyp. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }
 
 type Winter2003 struct {
 	// SV: Vinter2003. Vinter2003/Klassificering map vinterväghållningstandard. Värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Vinter2003. Vinter2003/Klassificering map vinterväghållningstandard. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }

@@ -22,7 +22,6 @@ type Node struct {
 	Name          string
 	Type          Type
 	Nodes         []*Node
-	Optional      bool
 	Multiple      bool
 	Attr          bool
 	Documentation []string
@@ -217,35 +216,23 @@ func AttrToNode(attr xsd.Attribute) *Node {
 		Type: typeMap(attr.Type),
 		Attr: true,
 	}
-	if attr.Use == "optional" {
-		n.Optional = true
-	}
 	return &n
 }
 
 func ElemToNode(elem xsd.Element) *Node {
 	if elem.Reference == "Deleted" {
 		return &Node{
-			Name:     "Deleted",
-			Type:     Type{Kind: "bool", Final: true},
-			Optional: true,
+			Name: "Deleted",
+			Type: Type{Kind: "bool", Final: true},
 		}
 	}
 	if elem.Reference != "" {
 		panic(fmt.Sprintf("cannot handle elem with ref: %s", elem.Reference))
 	}
 	n := Node{
-		Name: goName(elem.Name),
-		Type: typeMap(elem.Type),
-	}
-	if elem.MinOccurs == 0 && elem.MaxOccurs == 1 {
-		n.Optional = true
-	}
-	if elem.MaxOccurs > 1 {
-		n.Multiple = true
-	}
-	if elem.Nillable {
-		n.Optional = true
+		Name:     goName(elem.Name),
+		Type:     typeMap(elem.Type),
+		Multiple: elem.Multiple,
 	}
 	if anot := elem.Annotation; anot != nil {
 		for _, doc := range anot.Documentations {
@@ -267,10 +254,7 @@ func tag(n *Node) string {
 	if n.Attr {
 		s = s + ",attr"
 	}
-	if n.Optional {
-		s = s + ",omitempty"
-	}
-	s = s + "\"`"
+	s = s + ",omitempty\"`"
 	return s
 }
 

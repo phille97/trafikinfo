@@ -40,7 +40,7 @@ func (x *TrainPosition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 // EN: Train information
 func (x *TrainPosition) Train() *Train {
 	if x.data == nil {
-		return new(Train)
+		return &Train{}
 	}
 	return &Train{data: x.data.Train}
 }
@@ -49,7 +49,7 @@ func (x *TrainPosition) Train() *Train {
 // EN: Last known position of the train
 func (x *TrainPosition) Position() *Position {
 	if x.data == nil {
-		return new(Position)
+		return &Position{}
 	}
 	return &Position{data: x.data.Position}
 }
@@ -67,7 +67,7 @@ func (x *TrainPosition) TimeStamp() *time.Time {
 // EN: The train's current status
 func (x *TrainPosition) Status() *Status {
 	if x.data == nil {
-		return new(Status)
+		return &Status{}
 	}
 	return &Status{data: x.data.Status}
 }

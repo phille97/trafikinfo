@@ -53,6 +53,9 @@ func (x *Situation) Deleted() *bool {
 }
 
 func (x *Situation) Deviations() []Deviation {
+	if len(x.data.Deviation) == 0 {
+		return nil
+	}
 	data := []Deviation{}
 	for _, mem := range x.data.Deviation {
 		data = append(data, Deviation{data: &mem})
@@ -155,7 +158,7 @@ func (x *Deviation) EndTime() *time.Time {
 
 func (x *Deviation) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }
@@ -185,6 +188,9 @@ func (x *Deviation) ID() *string {
 }
 
 func (x *Deviation) Images() []Image {
+	if len(x.data.Image) == 0 {
+		return nil
+	}
 	data := []Image{}
 	for _, mem := range x.data.Image {
 		data = append(data, Image{data: &mem})
@@ -297,6 +303,9 @@ func (x *Deviation) SafetyRelatedMessage() *bool {
 }
 
 func (x *Deviation) Schedules() []Schedule {
+	if len(x.data.Schedule) == 0 {
+		return nil
+	}
 	data := []Schedule{}
 	for _, mem := range x.data.Schedule {
 		data = append(data, Schedule{data: &mem})
@@ -391,14 +400,14 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 func (x *Geometry) Point() *GeoPoint {
 	if x.data == nil {
-		return new(GeoPoint)
+		return &GeoPoint{}
 	}
 	return &GeoPoint{data: x.data.Point}
 }
 
 func (x *Geometry) Line() *GeoLine {
 	if x.data == nil {
-		return new(GeoLine)
+		return &GeoLine{}
 	}
 	return &GeoLine{data: x.data.Line}
 }
@@ -454,6 +463,9 @@ func (x *Schedule) EndOfPeriod() *time.Time {
 }
 
 func (x *Schedule) RecurringTimePeriodOfDays() []RecurringTimePeriodOfDay {
+	if len(x.data.RecurringTimePeriodOfDay) == 0 {
+		return nil
+	}
 	data := []RecurringTimePeriodOfDay{}
 	for _, mem := range x.data.RecurringTimePeriodOfDay {
 		data = append(data, RecurringTimePeriodOfDay{data: &mem})

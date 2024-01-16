@@ -78,6 +78,9 @@ func (x *TrainAnnouncement) AdvertisedTrainIdent() *string {
 
 // SV: Kod för bokningsinformation och bokningsinformation, ex: "Vagn 4 obokad
 func (x *TrainAnnouncement) Bookings() []Booking {
+	if len(x.data.Booking) == 0 {
+		return nil
+	}
 	data := []Booking{}
 	for _, mem := range x.data.Booking {
 		data = append(data, Booking{data: &mem})
@@ -111,6 +114,9 @@ func (x *TrainAnnouncement) DepartureDateOTN() *time.Time {
 
 // SV: Eventuell avvikelse med full orsakskod, ex: ABC023 och beskrivning, ex: "Buss ersätter", "Spårändrat", "Kort tåg", "Ej servering" o.s.v.
 func (x *TrainAnnouncement) Deviations() []Deviation {
+	if len(x.data.Deviation) == 0 {
+		return nil
+	}
 	data := []Deviation{}
 	for _, mem := range x.data.Deviation {
 		data = append(data, Deviation{data: &mem})
@@ -136,6 +142,9 @@ func (x *TrainAnnouncement) EstimatedTimeIsPreliminary() *bool {
 
 // SV: Från station för tåget med ordning och i vilken prioritet som ska visas. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. FromLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur från-stationer ska annonseras.
 func (x *TrainAnnouncement) FromLocations() []FromLocation {
+	if len(x.data.FromLocation) == 0 {
+		return nil
+	}
 	data := []FromLocation{}
 	for _, mem := range x.data.FromLocation {
 		data = append(data, FromLocation{data: &mem})
@@ -209,6 +218,9 @@ func (x *TrainAnnouncement) OperationalTrainNumber() *string {
 
 // SV: Kod för övrig annonseringsinformation och övrig annonseringsinformation, ex. "Trevlig resa!", "Bakre fordon går låst!", "Ingen påstigning"
 func (x *TrainAnnouncement) OtherInformation() []OtherInformation {
+	if len(x.data.OtherInformation) == 0 {
+		return nil
+	}
 	data := []OtherInformation{}
 	for _, mem := range x.data.OtherInformation {
 		data = append(data, OtherInformation{data: &mem})
@@ -234,6 +246,9 @@ func (x *TrainAnnouncement) PlannedEstimatedTimeAtLocationIsValid() *bool {
 
 // SV: Kod för beskrivning av tåget och beskrivning av tåget, ex. "Tågkompaniet", "SJ InterCity", "TiB/Tågkomp"
 func (x *TrainAnnouncement) ProductInformation() []ProductInformation {
+	if len(x.data.ProductInformation) == 0 {
+		return nil
+	}
 	data := []ProductInformation{}
 	for _, mem := range x.data.ProductInformation {
 		data = append(data, ProductInformation{data: &mem})
@@ -251,6 +266,9 @@ func (x *TrainAnnouncement) ScheduledDepartureDateTime() *time.Time {
 
 // SV: Servicekod och lite extra utöver produktinformation, ex "Bistro", "Sov-och liggv"
 func (x *TrainAnnouncement) Services() []Service {
+	if len(x.data.Service) == 0 {
+		return nil
+	}
 	data := []Service{}
 	for _, mem := range x.data.Service {
 		data = append(data, Service{data: &mem})
@@ -276,6 +294,9 @@ func (x *TrainAnnouncement) TimeAtLocationWithSeconds() *time.Time {
 
 // SV: Till station för tåget med ordning och i vilken prioritet som ska visas. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. ToLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur till-stationer ska annonseras.
 func (x *TrainAnnouncement) ToLocations() []ToLocation {
+	if len(x.data.ToLocation) == 0 {
+		return nil
+	}
 	data := []ToLocation{}
 	for _, mem := range x.data.ToLocation {
 		data = append(data, ToLocation{data: &mem})
@@ -293,6 +314,9 @@ func (x *TrainAnnouncement) TrackAtLocation() *string {
 
 // SV: Kod för tågsammansättning och tågsammansättning, ex: "Vagnsordning 7, 6, 5, 4, 2, 1"
 func (x *TrainAnnouncement) TrainCompositions() []TrainComposition {
+	if len(x.data.TrainComposition) == 0 {
+		return nil
+	}
 	data := []TrainComposition{}
 	for _, mem := range x.data.TrainComposition {
 		data = append(data, TrainComposition{data: &mem})
@@ -310,6 +334,9 @@ func (x *TrainAnnouncement) TrainOwner() *string {
 
 // SV: Trafiktypen, ex. "Buss", "Pendeltåg", "Taxi", "Tåg".
 func (x *TrainAnnouncement) TypesOfTraffic() []TypeOfTraffic {
+	if len(x.data.TypeOfTraffic) == 0 {
+		return nil
+	}
 	data := []TypeOfTraffic{}
 	for _, mem := range x.data.TypeOfTraffic {
 		data = append(data, TypeOfTraffic{data: &mem})
@@ -318,6 +345,9 @@ func (x *TrainAnnouncement) TypesOfTraffic() []TypeOfTraffic {
 }
 
 func (x *TrainAnnouncement) ViaFromLocations() []ViaFromLocation {
+	if len(x.data.ViaFromLocation) == 0 {
+		return nil
+	}
 	data := []ViaFromLocation{}
 	for _, mem := range x.data.ViaFromLocation {
 		data = append(data, ViaFromLocation{data: &mem})
@@ -326,6 +356,9 @@ func (x *TrainAnnouncement) ViaFromLocations() []ViaFromLocation {
 }
 
 func (x *TrainAnnouncement) ViaToLocations() []ViaToLocation {
+	if len(x.data.ViaToLocation) == 0 {
+		return nil
+	}
 	data := []ViaToLocation{}
 	for _, mem := range x.data.ViaToLocation {
 		data = append(data, ViaToLocation{data: &mem})

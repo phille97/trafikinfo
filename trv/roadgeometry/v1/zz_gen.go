@@ -37,55 +37,55 @@ func (x *RoadGeometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 }
 
 // SV: Län.
-func (x *RoadGeometry) County() int {
+func (x *RoadGeometry) County() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.County
 }
 
 // SV: Huvudvägnummer.
-func (x *RoadGeometry) RoadMainNumber() int {
+func (x *RoadGeometry) RoadMainNumber() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.RoadMainNumber
 }
 
 // SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
-func (x *RoadGeometry) RoadSubNumber() int {
+func (x *RoadGeometry) RoadSubNumber() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.RoadSubNumber
 }
 
 func (x *RoadGeometry) Direction() *Direction {
 	if x.data == nil {
-		return new(Direction)
+		return &Direction{}
 	}
 	return &Direction{data: x.data.Direction}
 }
 
 // SV: Längd.
-func (x *RoadGeometry) Length() int {
+func (x *RoadGeometry) Length() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Length
 }
 
 func (x *RoadGeometry) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Datum för när vägdata hämtades ut från källsystemen.
-func (x *RoadGeometry) TimeStamp() time.Time {
+func (x *RoadGeometry) TimeStamp() *time.Time {
 	if x.data == nil {
-		return *new(time.Time)
+		return nil
 	}
 	return x.data.TimeStamp
 }
@@ -122,9 +122,9 @@ func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Riktning. Värde.
-func (x *Direction) Code() int {
+func (x *Direction) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }

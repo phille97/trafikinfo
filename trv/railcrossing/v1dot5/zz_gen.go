@@ -53,9 +53,9 @@ func (x *RailCrossing) Deleted() *bool {
 }
 
 // SV: Plankorsningens femsiffriga idnummer
-func (x *RailCrossing) LevelCrossingID() int {
+func (x *RailCrossing) LevelCrossingID() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.LevelCrossingId
 }
@@ -157,6 +157,9 @@ func (x *RailCrossing) RoadProfileSteepSlope() *int {
 }
 
 func (x *RailCrossing) RoadProtectionAdditions() []RoadProtectionAddition {
+	if len(x.data.RoadProtectionAddition) == 0 {
+		return nil
+	}
 	data := []RoadProtectionAddition{}
 	for _, mem := range x.data.RoadProtectionAddition {
 		data = append(data, RoadProtectionAddition{data: &mem})
@@ -165,6 +168,9 @@ func (x *RailCrossing) RoadProtectionAdditions() []RoadProtectionAddition {
 }
 
 func (x *RailCrossing) RoadProtectionBases() []RoadProtectionBase {
+	if len(x.data.RoadProtectionBase) == 0 {
+		return nil
+	}
 	data := []RoadProtectionBase{}
 	for _, mem := range x.data.RoadProtectionBase {
 		data = append(data, RoadProtectionBase{data: &mem})
@@ -198,7 +204,7 @@ func (x *RailCrossing) Kilometer() *int {
 
 func (x *RailCrossing) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }

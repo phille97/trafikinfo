@@ -9,34 +9,34 @@ import (
 
 type PavementData struct {
 	// SV: Län.
-	County int `xml:"County"`
+	County *int `xml:"County,omitempty"`
 	// SV: Huvudvägnummer.
-	RoadMainNumber int `xml:"RoadMainNumber"`
+	RoadMainNumber *int `xml:"RoadMainNumber,omitempty"`
 	// SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
-	RoadSubNumber int        `xml:"RoadSubNumber"`
+	RoadSubNumber *int       `xml:"RoadSubNumber,omitempty"`
 	Direction     *Direction `xml:"Direction,omitempty"`
 	// SV: Körfält. Räknas från höger sida och startar med körfält 10. Nästa är 20 och kan gå upp till 50.
-	Lane int `xml:"Lane"`
+	Lane *int `xml:"Lane,omitempty"`
 	// SV: Start löpande längd. Anges i meter. Starten för aktuell åtgärdsinformation angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-	StartContinuousLength int `xml:"StartContinuousLength"`
+	StartContinuousLength *int `xml:"StartContinuousLength,omitempty"`
 	// SV: Slut löpande längd. Anges i meter. Slutet för aktuell åtgärdsinformation angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-	EndContinuousLength int `xml:"EndContinuousLength"`
+	EndContinuousLength *int `xml:"EndContinuousLength,omitempty"`
 	// SV: Längd i antal meter
-	Length int `xml:"Length"`
+	Length *int `xml:"Length,omitempty"`
 	// SV: Beläggningsdatum. Datum när åtgärd utfördes. (om flera åtgärder på samma sträcka anges senaste datumet)
-	PavementDate time.Time `xml:"PavementDate"`
+	PavementDate *time.Time `xml:"PavementDate,omitempty"`
 	// SV: Typ av åtgärd.
 	PavementType *string `xml:"PavementType,omitempty"`
 	// SV: Åtgärdskategori. Gruppering av åtgärder som är av liknande karaktär.
 	TreatmentCategory *string `xml:"TreatmentCategory,omitempty"`
 	// SV: Stenstorlek i beläggningen.
-	MaxStoneSize int `xml:"MaxStoneSize"`
+	MaxStoneSize *int `xml:"MaxStoneSize,omitempty"`
 	// SV: Tjocklek. Medelvärde för beläggningsåtgärdens tjocklek.
-	Thickness float64 `xml:"Thickness"`
+	Thickness *float64 `xml:"Thickness,omitempty"`
 	// SV: Entreprenör. Den som utfört åtgärden.
 	Contractor *string `xml:"Contractor,omitempty"`
 	// SV: Kulkvarnsvärde som är aktuell i beläggningsåtgärden.
-	BallMillValue float64 `xml:"BallMillValue"`
+	BallMillValue *float64 `xml:"BallMillValue,omitempty"`
 	// SV: Bindemedel som är aktuellt i beläggningen.
 	Binder *string `xml:"Binder,omitempty"`
 	// SV: Tillverkningsmetod som använts för beläggningen.
@@ -46,13 +46,13 @@ type PavementData struct {
 	// SV: Täckning. I vilken utsträckning åtgärden omfattar hela längden angiven för åtgärden eller bredden på körfältet.
 	Coverage *string `xml:"Coverage,omitempty"`
 	// SV: Garantitid. Det antal år som garantitiden gäller för utförd åtgärd.
-	Warranty int `xml:"Warranty"`
+	Warranty *int `xml:"Warranty,omitempty"`
 	// SV: Garantitid förfaller år. Datum då garantin för åtgärden förfaller.
-	WarrantyIsDue time.Time `xml:"WarrantyIsDue"`
+	WarrantyIsDue *time.Time `xml:"WarrantyIsDue,omitempty"`
 	// SV: Datum för besiktningen av åtgärden.
-	FinalInspectionDate time.Time `xml:"FinalInspectionDate"`
+	FinalInspectionDate *time.Time `xml:"FinalInspectionDate,omitempty"`
 	// SV: Datum för när NVDB-data och beläggningsdata hämtades ut från källsystemen.
-	TimeStamp time.Time `xml:"TimeStamp"`
+	TimeStamp *time.Time `xml:"TimeStamp,omitempty"`
 	// SV: Tidpunkt då dataposten ändrades
 	// EN: Time when the data item was changed
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
@@ -63,7 +63,7 @@ type PavementData struct {
 
 type Direction struct {
 	// SV: Riktning. Värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Riktning. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }

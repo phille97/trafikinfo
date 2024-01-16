@@ -21,7 +21,7 @@ type TrainStation struct {
 	// EN: Designation of the country in which the station is located.<br /> 'DE' - Germany<br /> 'DK' - Denmark<br /> 'NO' - Norway<br /> 'SE' - Sweden
 	CountryCode *string `xml:"CountryCode,omitempty"`
 	// SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
-	CountyNo *[]int    `xml:"CountyNo,omitempty"`
+	CountyNo []int     `xml:"CountyNo,omitempty"`
 	Deleted  *bool     `xml:"Deleted,omitempty"`
 	Geometry *Geometry `xml:"Geometry,omitempty"`
 	// SV: Upplysningsinformation för stationen, ex. "SL-tåg omfattas ej.", "Ring 033-172444 för trafikinformation"
@@ -32,7 +32,7 @@ type TrainStation struct {
 	LocationSignature *string `xml:"LocationSignature,omitempty"`
 	// SV: Plattformens spår
 	// EN: Platform Tracks
-	PlatformLine []string `xml:"PlatformLine"`
+	PlatformLine []string `xml:"PlatformLine,omitempty"`
 	// SV: Anger om stationen prognostiseras i tidtabell
 	// EN: Specifies if station forecasted in timetabell
 	Prognosticated *bool `xml:"Prognosticated,omitempty"`

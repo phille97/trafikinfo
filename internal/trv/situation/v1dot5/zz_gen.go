@@ -12,7 +12,7 @@ type Situation struct {
 	CountryCode *string `xml:"CountryCode,omitempty"`
 	// SV: Anger att dataposten raderats
 	Deleted   *bool       `xml:"Deleted,omitempty"`
-	Deviation []Deviation `xml:"Deviation"`
+	Deviation []Deviation `xml:"Deviation,omitempty"`
 	// SV: Datapostens id
 	Id *string `xml:"Id,omitempty"`
 	// SV: Tidpunkt då dataposten ändrades
@@ -29,7 +29,7 @@ type Deviation struct {
 	// SV: <div class="toggleTitle">Påverkad riktningsvärde</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>BothDirections</td> <td>Båda riktningarna är påverkade</td> </tr> <tr> <td>OneDirection</td> <td>En rikting påverkad. I de fall Deviation.Geometry.Line är definierad så är dess koordinater ordnade efter riktingen.</td> </tr> </table> </div>
 	AffectedDirectionValue *string `xml:"AffectedDirectionValue,omitempty"`
 	// SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>0</td> <td>Alla län (kan förekomma för poster med Deviation.MessageType="Viktig trafikinformation" och meddelandet gäller då för hela Sverige)</td> </tr> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
-	CountyNo []int `xml:"CountyNo"`
+	CountyNo []int `xml:"CountyNo,omitempty"`
 	// SV: Källa till datat
 	Creator *string `xml:"Creator,omitempty"`
 	// SV: Tidpunkt då dataposten skapades
@@ -43,7 +43,7 @@ type Deviation struct {
 	IconId *string `xml:"IconId,omitempty"`
 	// SV: Datapostens id
 	Id    *string `xml:"Id,omitempty"`
-	Image []Image `xml:"Image"`
+	Image []Image `xml:"Image,omitempty"`
 	// SV: Färjeled
 	JourneyReference *string `xml:"JourneyReference,omitempty"`
 	// SV: Objektet är orsaken till situationen
@@ -70,7 +70,7 @@ type Deviation struct {
 	RoadNumberNumeric *int `xml:"RoadNumberNumeric,omitempty"`
 	// SV: Indikerar att meddelandet är säkerhetsrelaterat i enlighet med Kommisionens Delegerade Förordning (EU) nr 886/2013 vad gäller data och förfaranden för kostnadsfritt tillhandahållande, när så är möjligt, av ett minimum av vägsäkerhetsrelaterad universell trafikinformation för användare.
 	SafetyRelatedMessage *bool      `xml:"SafetyRelatedMessage,omitempty"`
-	Schedule             []Schedule `xml:"Schedule"`
+	Schedule             []Schedule `xml:"Schedule,omitempty"`
 	// SV: Påverkansgrad, värden: 1, 2, 4, 5
 	SeverityCode *int `xml:"SeverityCode,omitempty"`
 	// SV: <div class="toggleTitle"> Påverkan: </div> <div class="toggle arrowR"> </div> <div class="toggleContent"> "Ingen påverkan"<br /> "Liten påverkan"<br /> "Stor påverkan"<br /> "Mycket stor påverkan" </div>
@@ -106,7 +106,7 @@ type Image struct {
 type Schedule struct {
 	// SV: Objektet är aktivt till och med period
 	EndOfPeriod              *time.Time                 `xml:"EndOfPeriod,omitempty"`
-	RecurringTimePeriodOfDay []RecurringTimePeriodOfDay `xml:"RecurringTimePeriodOfDay"`
+	RecurringTimePeriodOfDay []RecurringTimePeriodOfDay `xml:"RecurringTimePeriodOfDay,omitempty"`
 	// SV: Objektet är aktivt från och med period
 	StartOfPeriod *time.Time `xml:"StartOfPeriod,omitempty"`
 }

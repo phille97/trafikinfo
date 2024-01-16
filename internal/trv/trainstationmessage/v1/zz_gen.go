@@ -84,17 +84,17 @@ type PublicAnnouncementAttributes struct {
 }
 
 type TrackList struct {
-	Track []string `xml:"Track"`
+	Track []string `xml:"Track,omitempty"`
 }
 
 type PublicAnnouncementPlanList struct {
-	PublicAnnouncementPlan []PublicAnnouncementPlan `xml:"PublicAnnouncementPlan"`
+	PublicAnnouncementPlan []PublicAnnouncementPlan `xml:"PublicAnnouncementPlan,omitempty"`
 }
 
 type PublicAnnouncementZoneList struct {
 	// SV: Anger en zon där meddelandet skall utropas
 	// EN: Indicates a zone for where the message is to be announced
-	PublicAnnouncementZone []string `xml:"PublicAnnouncementZone"`
+	PublicAnnouncementZone []string `xml:"PublicAnnouncementZone,omitempty"`
 }
 
 type PublicAnnouncementPlan struct {
@@ -113,5 +113,5 @@ type PublicAnnouncementPlan struct {
 type PublicAnnouncementOccasionList struct {
 	// SV: Anger vilken minut på dygnet ett utrop skall utföras
 	// EN: Indicates which minute in the day the announcement is to be made
-	PublicAnnouncementOccasion []int `xml:"PublicAnnouncementOccasion"`
+	PublicAnnouncementOccasion []int `xml:"PublicAnnouncementOccasion,omitempty"`
 }

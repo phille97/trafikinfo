@@ -62,15 +62,15 @@ func (x *TrainMessage) ExternalDescription() *string {
 
 func (x *TrainMessage) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Unikt id för händelsen
-func (x *TrainMessage) EventID() string {
+func (x *TrainMessage) EventID() *string {
 	if x.data == nil {
-		return *new(string)
+		return nil
 	}
 	return x.data.EventId
 }
@@ -84,6 +84,9 @@ func (x *TrainMessage) Header() *string {
 }
 
 func (x *TrainMessage) ReasonCodes() []ReasonCode {
+	if len(x.data.ReasonCode) == 0 {
+		return nil
+	}
 	data := []ReasonCode{}
 	for _, mem := range x.data.ReasonCode {
 		data = append(data, ReasonCode{data: &mem})
@@ -93,6 +96,9 @@ func (x *TrainMessage) ReasonCodes() []ReasonCode {
 
 // SV: Meddelandets trafikpåverkan
 func (x *TrainMessage) TrafficImpact() []TrafficImpact {
+	if len(x.data.TrafficImpact) == 0 {
+		return nil
+	}
 	data := []TrafficImpact{}
 	for _, mem := range x.data.TrafficImpact {
 		data = append(data, TrafficImpact{data: &mem})
@@ -212,9 +218,9 @@ func (x *TrafficImpact) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 }
 
 // SV: Anger om trafikpåverkan är bekräftad. När påverkan inte är bekräftad anges alla platser på den aktuella sträckan som påverkade
-func (x *TrafficImpact) IsConfirmed() bool {
+func (x *TrafficImpact) IsConfirmed() *bool {
 	if x.data == nil {
-		return *new(bool)
+		return nil
 	}
 	return x.data.IsConfirmed
 }
@@ -229,6 +235,9 @@ func (x *TrafficImpact) FromLocations() []string {
 
 // SV: Påverkade stationer
 func (x *TrafficImpact) AffectedLocations() []AffectedLocation {
+	if len(x.data.AffectedLocation) == 0 {
+		return nil
+	}
 	data := []AffectedLocation{}
 	for _, mem := range x.data.AffectedLocation {
 		data = append(data, AffectedLocation{data: &mem})

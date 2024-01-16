@@ -53,6 +53,9 @@ func (x *Parking) Deleted() *bool {
 }
 
 func (x *Parking) Equipment() []Equipment {
+	if len(x.data.Equipment) == 0 {
+		return nil
+	}
 	data := []Equipment{}
 	for _, mem := range x.data.Equipment {
 		data = append(data, Equipment{data: &mem})
@@ -85,6 +88,9 @@ func (x *Parking) Description() *string {
 }
 
 func (x *Parking) Facilities() []Facility {
+	if len(x.data.Facility) == 0 {
+		return nil
+	}
 	data := []Facility{}
 	for _, mem := range x.data.Facility {
 		data = append(data, Facility{data: &mem})
@@ -111,7 +117,7 @@ func (x *Parking) ID() *string {
 // SV: Parkeringens position
 func (x *Parking) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }
@@ -150,12 +156,15 @@ func (x *Parking) OperationStatus() *string {
 
 func (x *Parking) Operator() *Operator {
 	if x.data == nil {
-		return new(Operator)
+		return &Operator{}
 	}
 	return &Operator{data: x.data.Operator}
 }
 
 func (x *Parking) ParkingAccess() []ParkingAccess {
+	if len(x.data.ParkingAccess) == 0 {
+		return nil
+	}
 	data := []ParkingAccess{}
 	for _, mem := range x.data.ParkingAccess {
 		data = append(data, ParkingAccess{data: &mem})
@@ -164,6 +173,9 @@ func (x *Parking) ParkingAccess() []ParkingAccess {
 }
 
 func (x *Parking) Photos() []Photo {
+	if len(x.data.Photo) == 0 {
+		return nil
+	}
 	data := []Photo{}
 	for _, mem := range x.data.Photo {
 		data = append(data, Photo{data: &mem})
@@ -173,7 +185,7 @@ func (x *Parking) Photos() []Photo {
 
 func (x *Parking) TariffsAndPayment() *TariffsAndPayment {
 	if x.data == nil {
-		return new(TariffsAndPayment)
+		return &TariffsAndPayment{}
 	}
 	return &TariffsAndPayment{data: x.data.TariffsAndPayment}
 }
@@ -187,6 +199,9 @@ func (x *Parking) UsageSenarios() []string {
 }
 
 func (x *Parking) VehicleCharacteristics() []VehicleCharacteristics {
+	if len(x.data.VehicleCharacteristics) == 0 {
+		return nil
+	}
 	data := []VehicleCharacteristics{}
 	for _, mem := range x.data.VehicleCharacteristics {
 		data = append(data, VehicleCharacteristics{data: &mem})

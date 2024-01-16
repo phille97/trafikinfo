@@ -165,48 +165,35 @@ func (n *Node) PublicRender(w io.Writer, name string) {
 
 func (n *Node) PublicRenderMethod(w io.Writer, name string) {
 	io.WriteString(w, "func (x *"+name+") "+goIdentifier(n.Name, n.Multiple)+"() ")
-	if n.Optional {
-		io.WriteString(w, "*")
-	}
 	if n.Multiple {
 		io.WriteString(w, "[]")
+	} else {
+		io.WriteString(w, "*")
 	}
 	io.WriteString(w, n.Type.Kind+" {\n")
 	if n.Type.Final {
-		io.WriteString(w, "if x.data == nil {\n")
-		if n.Multiple || n.Optional {
-			io.WriteString(w, "return nil\n")
-		} else {
-			io.WriteString(w, "return *new("+n.Type.Kind+")\n")
+		io.WriteString(w, fmt.Sprintf(`if x.data == nil {
+return nil
 		}
-		io.WriteString(w, "}\n")
-		io.WriteString(w, "return x.data."+goName(n.Name)+"\n")
+return x.data.%s
+`, goName(n.Name)))
 	} else {
 		if n.Multiple {
-			io.WriteString(w, "data := []"+n.Type.Kind+"{}\n")
-			io.WriteString(w, "for _, mem := range x.data."+n.Name+"{\n")
-			io.WriteString(w, "data = append(data, "+n.Type.Kind+"{data: &mem})\n")
-			io.WriteString(w, "}\n")
-			io.WriteString(w, "return data\n")
+			io.WriteString(w, fmt.Sprintf(`if len(x.data.%s) == 0 {
+	return nil
+	}
+	data :=[]%s{}
+	for _, mem := range x.data.%s {
+		data = append(data, %s{data:&mem})
+	}
+	return data
+`, n.Name, n.Type.Kind, n.Name, n.Type.Kind))
 		} else {
-			io.WriteString(w, "if x.data == nil {\n")
-			if n.Optional {
-				io.WriteString(w, "return new("+n.Type.Kind+")\n")
-			} else {
-				io.WriteString(w, "return *new("+n.Type.Kind+")\n")
-			}
-			io.WriteString(w, "}\n")
-
-			io.WriteString(w, "return ")
-			if n.Optional {
-				io.WriteString(w, "&")
-			}
-			io.WriteString(w, n.Type.Kind+"{data: ")
-			if !n.Optional {
-				io.WriteString(w, "&")
-			}
-			io.WriteString(w, "x.data.")
-			io.WriteString(w, n.Name+"}\n")
+			io.WriteString(w, fmt.Sprintf(`if x.data == nil {
+	return &%s{}
+}
+return &%s{data: x.data.%s}
+`, n.Type.Kind, n.Type.Kind, n.Name))
 		}
 	}
 	io.WriteString(w, "}\n\n")

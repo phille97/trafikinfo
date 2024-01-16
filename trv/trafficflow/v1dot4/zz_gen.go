@@ -102,7 +102,7 @@ func (x *TrafficFlow) Deleted() *bool {
 
 func (x *TrafficFlow) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }

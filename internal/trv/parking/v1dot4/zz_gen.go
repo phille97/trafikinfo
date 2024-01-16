@@ -9,17 +9,17 @@ import (
 
 type Parking struct {
 	// SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
-	CountyNo []int `xml:"CountyNo"`
+	CountyNo []int `xml:"CountyNo,omitempty"`
 	// SV: Anger att dataposten raderats
 	Deleted   *bool       `xml:"Deleted,omitempty"`
-	Equipment []Equipment `xml:"Equipment"`
+	Equipment []Equipment `xml:"Equipment,omitempty"`
 	// SV: Avstånd till närmaste stad
 	DistanceToNearestCity *string `xml:"DistanceToNearestCity,omitempty"`
 	// SV: Lägesbeskrivning
 	LocationDescription *string `xml:"LocationDescription,omitempty"`
 	// SV: Beskrivning av parkeringen
 	Description *string    `xml:"Description,omitempty"`
-	Facility    []Facility `xml:"Facility"`
+	Facility    []Facility `xml:"Facility,omitempty"`
 	// SV: Ikonid
 	IconId *string `xml:"IconId,omitempty"`
 	// SV: Parkeringens id
@@ -35,12 +35,12 @@ type Parking struct {
 	// SV: Anger om det finns några driftstörningar på rastplatsen (limitedOperation) eller om allt fungerar (inOperation)
 	OperationStatus   *string            `xml:"OperationStatus,omitempty"`
 	Operator          *Operator          `xml:"Operator,omitempty"`
-	ParkingAccess     []ParkingAccess    `xml:"ParkingAccess"`
-	Photo             []Photo            `xml:"Photo"`
+	ParkingAccess     []ParkingAccess    `xml:"ParkingAccess,omitempty"`
+	Photo             []Photo            `xml:"Photo,omitempty"`
 	TariffsAndPayment *TariffsAndPayment `xml:"TariffsAndPayment,omitempty"`
 	// SV: Anger användningsområde
-	UsageSenario           []string                 `xml:"UsageSenario"`
-	VehicleCharacteristics []VehicleCharacteristics `xml:"VehicleCharacteristics"`
+	UsageSenario           []string                 `xml:"UsageSenario,omitempty"`
+	VehicleCharacteristics []VehicleCharacteristics `xml:"VehicleCharacteristics,omitempty"`
 }
 
 type Equipment struct {

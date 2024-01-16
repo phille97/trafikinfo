@@ -86,7 +86,7 @@ func (x *TravelTimeRoute) FreeFlowTravelTime() *float64 {
 
 func (x *TravelTimeRoute) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }

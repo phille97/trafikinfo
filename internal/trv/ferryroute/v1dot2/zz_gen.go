@@ -23,8 +23,8 @@ type FerryRoute struct {
 	// EN: Abbreviation of the name of the trail
 	Shortname *string     `xml:"Shortname,omitempty"`
 	Type      *Type       `xml:"Type,omitempty"`
-	Harbor    []Harbor    `xml:"Harbor"`
-	Timetable []Timetable `xml:"Timetable"`
+	Harbor    []Harbor    `xml:"Harbor,omitempty"`
+	Timetable []Timetable `xml:"Timetable,omitempty"`
 	// EN: Specifies when the object is stored.
 	// SV: Anger när objektet är sparat.
 	ModifiedTime      *time.Time `xml:"ModifiedTime,omitempty"`
@@ -75,8 +75,8 @@ type Timetable struct {
 	// SV: Tidtabellens prioritet, det kan finnas flera tidtabeller som är giltiga samma datum, den med högst prioritet gäller.
 	// EN: The priority of the timetable, there may be several timetables valid on the same date, the one with the highest priority applies.
 	Priority *int     `xml:"Priority,omitempty"`
-	Valid    []Valid  `xml:"Valid"`
-	Period   []Period `xml:"Period"`
+	Valid    []Valid  `xml:"Valid,omitempty"`
+	Period   []Period `xml:"Period,omitempty"`
 }
 
 type StopType struct {
@@ -107,8 +107,8 @@ type Period struct {
 	// SV: Periodens sorteringsordning
 	// EN: Sort order of the period
 	SortOrder *int       `xml:"SortOrder,omitempty"`
-	Weekday   []Weekday  `xml:"Weekday"`
-	Schedule  []Schedule `xml:"Schedule"`
+	Weekday   []Weekday  `xml:"Weekday,omitempty"`
+	Schedule  []Schedule `xml:"Schedule,omitempty"`
 }
 
 type Weekday struct {
@@ -121,7 +121,7 @@ type Weekday struct {
 }
 
 type Schedule struct {
-	Deviation []Deviation `xml:"Deviation"`
+	Deviation []Deviation `xml:"Deviation,omitempty"`
 	// SV: Tidpunkt för händelse
 	// EN: Time of event
 	Time   *string `xml:"Time,omitempty"`

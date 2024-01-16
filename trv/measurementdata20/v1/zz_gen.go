@@ -37,271 +37,271 @@ func (x *MeasurementData20) UnmarshalXML(d *xml.Decoder, start xml.StartElement)
 }
 
 // SV: Län.
-func (x *MeasurementData20) County() int {
+func (x *MeasurementData20) County() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.County
 }
 
 // SV: Huvudvägnummer.
-func (x *MeasurementData20) RoadMainNumber() int {
+func (x *MeasurementData20) RoadMainNumber() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.RoadMainNumber
 }
 
 // SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
-func (x *MeasurementData20) RoadSubNumber() int {
+func (x *MeasurementData20) RoadSubNumber() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.RoadSubNumber
 }
 
 func (x *MeasurementData20) Direction() *Direction {
 	if x.data == nil {
-		return new(Direction)
+		return &Direction{}
 	}
 	return &Direction{data: x.data.Direction}
 }
 
 // SV: Körfält. Räknas från höger sida och startar med körfält 10. Nästa är 20 och kan gå upp till 50.
-func (x *MeasurementData20) Lane() int {
+func (x *MeasurementData20) Lane() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Lane
 }
 
 // SV: Start löpande längd. Anges i meter. Starten för aktuell data angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-func (x *MeasurementData20) StartContinuousLength() int {
+func (x *MeasurementData20) StartContinuousLength() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.StartContinuousLength
 }
 
 // SV: Slut löpande längd. Anges i meter. Slutet för aktuell data angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-func (x *MeasurementData20) EndContinuousLength() int {
+func (x *MeasurementData20) EndContinuousLength() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.EndContinuousLength
 }
 
 // SV: Längd i antal meter.
-func (x *MeasurementData20) Length() int {
+func (x *MeasurementData20) Length() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Length
 }
 
 // SV: Mätdatum. Ett gemensamt datum för en hel mätperiod. Är detta datum som visas i graferna i PMSV3 Analysera sträcka.
-func (x *MeasurementData20) MeasurementDate() time.Time {
+func (x *MeasurementData20) MeasurementDate() *time.Time {
 	if x.data == nil {
-		return *new(time.Time)
+		return nil
 	}
 	return x.data.MeasurementDate
 }
 
 // SV: Mätdatum exakt. Det exakta mätdatumet för aktuellt mätdata.
-func (x *MeasurementData20) MeasurementDateSpecific() time.Time {
+func (x *MeasurementData20) MeasurementDateSpecific() *time.Time {
 	if x.data == nil {
-		return *new(time.Time)
+		return nil
 	}
 	return x.data.MeasurementDateSpecific
 }
 
 func (x *MeasurementData20) MeasurementDataType() *MeasurementDataType {
 	if x.data == nil {
-		return new(MeasurementDataType)
+		return &MeasurementDataType{}
 	}
 	return &MeasurementDataType{data: x.data.MeasurementDataType}
 }
 
 // SV: IRI vänster. Enhet mm/m. IRI (International Roughness Index) Beräknat mått baserat på uppmätt längsprofil i vänster hjulspår. Avser jämnhet i längsled.
-func (x *MeasurementData20) IRILeft() float64 {
+func (x *MeasurementData20) IRILeft() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.IRILeft
 }
 
 // SV: IRI höger. Enhet mm/m. IRI (International Roughness Index) Beräknat mått baserat på uppmätt längsprofil i höger hjulspår. Avser jämnhet i längsled.
-func (x *MeasurementData20) IRIRight() float64 {
+func (x *MeasurementData20) IRIRight() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.IRIRight
 }
 
 // SV: Mätbilens hastighet.
-func (x *MeasurementData20) MeasurementVehicleSpeed() float64 {
+func (x *MeasurementData20) MeasurementVehicleSpeed() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.MeasurementVehicleSpeed
 }
 
 // SV: Backighet. Anges i %. Backighet är medellutningen för 20m väg i mätriktningen. Uppför har positivt tecken och utför negativt.
-func (x *MeasurementData20) Hilliness() float64 {
+func (x *MeasurementData20) Hilliness() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.Hilliness
 }
 
 // SV: Kurvatur. Enhet 10000/r. Kurvatur beskriver medelvärdet av krökningsradien (r) över 20m.
-func (x *MeasurementData20) Curvature() float64 {
+func (x *MeasurementData20) Curvature() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.Curvature
 }
 
 // SV: Kantdjup. Enhet mm. Kantdjup avser att detektera skador närmast vägrenen. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil. (se VTI Rapport 718)
-func (x *MeasurementData20) EdgeDepth() float64 {
+func (x *MeasurementData20) EdgeDepth() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.EdgeDepth
 }
 
 // SV: Megatextur höger. Enhet mm.
-func (x *MeasurementData20) MegatextureRight() float64 {
+func (x *MeasurementData20) MegatextureRight() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.MegatextureRight
 }
 
 // SV: Megatextur vänster. Enhet mm.
-func (x *MeasurementData20) MegatextureLeft() float64 {
+func (x *MeasurementData20) MegatextureLeft() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.MegatextureLeft
 }
 
 // SV: MPD Makrotextur höger. Enhet mm. Makrotextur beräknad som MPD (Mean Profile Depth beräknat enligt ISO 13473-1), beskriver vägytans 'skrovlighet' i våglängdsintervallet 0,5-50 mm.
-func (x *MeasurementData20) MPDMacrotextureRight() float64 {
+func (x *MeasurementData20) MPDMacrotextureRight() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.MPDMacrotextureRight
 }
 
 // SV: MPD Makrotextur mellan. Enhet mm. Makrotextur beräknad som MPD (Mean Profile Depth beräknat enligt ISO 13473-1), beskriver vägytans 'skrovlighet' i våglängdsintervallet 0,5-50 mm.
-func (x *MeasurementData20) MPDMacrotextureMiddle() float64 {
+func (x *MeasurementData20) MPDMacrotextureMiddle() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.MPDMacrotextureMiddle
 }
 
 // SV: MPD Makrotextur vänster. Enhet mm. Makrotextur beräknad som MPD (Mean Profile Depth beräknat enligt ISO 13473-1), beskriver vägytans 'skrovlighet' i våglängdsintervallet 0,5-50 mm.
-func (x *MeasurementData20) MPDMacrotextureLeft() float64 {
+func (x *MeasurementData20) MPDMacrotextureLeft() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.MPDMacrotextureLeft
 }
 
 // SV: Spårarea. Enhet dm2. Mått för deformation i tvärled, komplement till spårdjup max. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil. (se VTI Rapport 718)
-func (x *MeasurementData20) RutArea() float64 {
+func (x *MeasurementData20) RutArea() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutArea
 }
 
 // SV: Spårbottenavstånd. Enhet mm. Avstånd mellan de djupaste spåren i vänster resp höger del av tvärprofilen. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil. (se VTI Rapport 718)
-func (x *MeasurementData20) RutBottomDistance() float64 {
+func (x *MeasurementData20) RutBottomDistance() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutBottomDistance
 }
 
 // SV: Spårbredd höger. Enhet mm. Höger hjulspårs bredd. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil. (se VTI Rapport 718)
-func (x *MeasurementData20) RutWidthRight() float64 {
+func (x *MeasurementData20) RutWidthRight() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutWidthRight
 }
 
 // SV: Spårbredd vänster. Enhet mm. Vänster hjulspårs bredd. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil. (se VTI Rapport 718)
-func (x *MeasurementData20) RutWidthLeft() float64 {
+func (x *MeasurementData20) RutWidthLeft() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutWidthLeft
 }
 
 // SV: Spårdjup höger15. Enhet mm. 15 lasrar.
-func (x *MeasurementData20) RutDepthRight15() float64 {
+func (x *MeasurementData20) RutDepthRight15() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutDepthRight15
 }
 
 // SV: Spårdjup höger17. Enhet mm. 17 lasrar.
-func (x *MeasurementData20) RutDepthRight17() float64 {
+func (x *MeasurementData20) RutDepthRight17() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutDepthRight17
 }
 
 // SV: Spårdjup max15. Maxvärde 15 lasrar.
-func (x *MeasurementData20) RutDepthMax15() float64 {
+func (x *MeasurementData20) RutDepthMax15() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutDepthMax15
 }
 
 // SV: Spårdjup max17. Maxvärde 17 lasrar.
-func (x *MeasurementData20) RutDepthMax17() float64 {
+func (x *MeasurementData20) RutDepthMax17() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutDepthMax17
 }
 
 // SV: Spårdjup vänster17. Enhet mm. 17 lasrar.
-func (x *MeasurementData20) RutDepthLeft17() float64 {
+func (x *MeasurementData20) RutDepthLeft17() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RutDepthLeft17
 }
 
 // SV: Spårbottentvärfall. Enhet %.
-func (x *MeasurementData20) CrossfallRutBottom() float64 {
+func (x *MeasurementData20) CrossfallRutBottom() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.CrossfallRutBottom
 }
 
 // SV: Vattenarea. Enhet dm2. Mått för deformation i tvärled, komplement till spårdjup max. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil. (se VTI Rapport 718)
-func (x *MeasurementData20) WaterArea() float64 {
+func (x *MeasurementData20) WaterArea() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.WaterArea
 }
 
 // SV: Datum för när mätdata hämtades ut från källsystemen.
-func (x *MeasurementData20) TimeStamp() time.Time {
+func (x *MeasurementData20) TimeStamp() *time.Time {
 	if x.data == nil {
-		return *new(time.Time)
+		return nil
 	}
 	return x.data.TimeStamp
 }
@@ -338,9 +338,9 @@ func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Riktning. Värde.
-func (x *Direction) Code() int {
+func (x *Direction) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }
@@ -367,9 +367,9 @@ func (x *MeasurementDataType) UnmarshalXML(d *xml.Decoder, start xml.StartElemen
 }
 
 // SV: Mätdatatyp. Värde.
-func (x *MeasurementDataType) Code() int {
+func (x *MeasurementDataType) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }

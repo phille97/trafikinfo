@@ -60,9 +60,7 @@ type Element struct {
 	Name         string      `xml:"name,attr"`
 	Type         string      `xml:"type,attr"`
 	Reference    string      `xml:"ref,attr"`
-	MinOccurs    int         `xml:"-"`
-	MaxOccurs    int         `xml:"-"`
-	StrMinOccurs string      `xml:"minOccurs,attr"`
+	Multiple     bool        `xml:"-"`
 	StrMaxOccurs string      `xml:"maxOccurs,attr"`
 	Nillable     bool        `xml:"nillable,attr"`
 	Annotation   *Annotation `xml:"annotation"`
@@ -74,24 +72,14 @@ type Element struct {
 
 func (e *Element) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	type element Element
-	elem := element{
-		StrMinOccurs: "1",
-		StrMaxOccurs: "1",
-	}
+	elem := element{}
 	if err := d.DecodeElement(&elem, &start); err != nil {
 		return err
 	}
-	switch elem.StrMinOccurs {
-	case "0":
-		elem.MinOccurs = 0
-	default:
-		elem.MinOccurs = 1
-	}
 	switch elem.StrMaxOccurs {
-	case "unbounded", "2":
-		elem.MaxOccurs = 2
+	case "1", "":
 	default:
-		elem.MaxOccurs = 1
+		elem.Multiple = true
 	}
 	*e = (Element)(elem)
 	return nil
@@ -167,7 +155,7 @@ type Sequence struct {
 	XMLName      xml.Name    `xml:"sequence"`
 	MinOccurs    int         `xml:"-"`
 	MaxOccurs    int         `xml:"-"`
-	StrMinOccurs string      `xml:"minOccurs,attr"`
+	Multiple     bool        `xml:"-"`
 	StrMaxOccurs string      `xml:"maxOccurs,attr"`
 	Elements     []Element   `xml:"element"`
 	Annotation   *Annotation `xml:"annotation"`
@@ -175,24 +163,14 @@ type Sequence struct {
 
 func (s *Sequence) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	type sequence Sequence
-	elem := sequence{
-		StrMinOccurs: "1",
-		StrMaxOccurs: "1",
-	}
+	elem := sequence{}
 	if err := d.DecodeElement(&elem, &start); err != nil {
 		return err
 	}
-	switch elem.StrMinOccurs {
-	case "0":
-		elem.MinOccurs = 0
-	default:
-		elem.MinOccurs = 1
-	}
 	switch elem.StrMaxOccurs {
-	case "unbounded", "2":
-		elem.MaxOccurs = 2
+	case "1", "":
 	default:
-		elem.MaxOccurs = 1
+		elem.Multiple = true
 	}
 	*s = (Sequence)(elem)
 	return nil

@@ -94,7 +94,7 @@ func (x *Camera) Direction() *int {
 
 func (x *Camera) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }

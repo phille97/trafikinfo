@@ -83,7 +83,7 @@ func (x *FerryAnnouncement) Info() []string {
 // EN: Departing from
 func (x *FerryAnnouncement) FromHarbor() *FromHarbor {
 	if x.data == nil {
-		return new(FromHarbor)
+		return &FromHarbor{}
 	}
 	return &FromHarbor{data: x.data.FromHarbor}
 }
@@ -92,7 +92,7 @@ func (x *FerryAnnouncement) FromHarbor() *FromHarbor {
 // EN: Arriving at
 func (x *FerryAnnouncement) ToHarbor() *ToHarbor {
 	if x.data == nil {
-		return new(ToHarbor)
+		return &ToHarbor{}
 	}
 	return &ToHarbor{data: x.data.ToHarbor}
 }
@@ -101,7 +101,7 @@ func (x *FerryAnnouncement) ToHarbor() *ToHarbor {
 // EN: Route information
 func (x *FerryAnnouncement) Route() *Route {
 	if x.data == nil {
-		return new(Route)
+		return &Route{}
 	}
 	return &Route{data: x.data.Route}
 }
@@ -279,7 +279,7 @@ func (x *Route) Shortname() *string {
 // EN: led type
 func (x *Route) Type() *Type {
 	if x.data == nil {
-		return new(Type)
+		return &Type{}
 	}
 	return &Type{data: x.data.Type}
 }

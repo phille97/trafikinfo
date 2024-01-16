@@ -34,9 +34,7 @@ func (r *Root) InternalTemplate(w io.Writer) {
 func (n *Node) InternalRenderAttr(w io.Writer) {
 	io.WriteString(w, goName(n.Name))
 	io.WriteString(w, " ")
-	if n.Optional {
-		io.WriteString(w, "*")
-	}
+	io.WriteString(w, "*")
 	io.WriteString(w, n.Type.Kind)
 	io.WriteString(w, " ")
 	io.WriteString(w, tag(n)+"\n")
@@ -44,11 +42,10 @@ func (n *Node) InternalRenderAttr(w io.Writer) {
 
 func (n *Node) InternalRenderField(w io.Writer) {
 	io.WriteString(w, n.Name+" ")
-	if n.Optional {
-		io.WriteString(w, "*")
-	}
 	if n.Multiple {
 		io.WriteString(w, "[]")
+	} else {
+		io.WriteString(w, "*")
 	}
 	io.WriteString(w, n.Type.Kind+" "+tag(n)+"\n")
 }

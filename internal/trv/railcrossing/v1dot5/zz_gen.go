@@ -13,7 +13,7 @@ type RailCrossing struct {
 	// SV: Anger att dataposten raderats
 	Deleted *bool `xml:"Deleted,omitempty"`
 	// SV: Plankorsningens femsiffriga idnummer
-	LevelCrossingId int `xml:"LevelCrossingId"`
+	LevelCrossingId *int `xml:"LevelCrossingId,omitempty"`
 	// SV: Id för rutt, används för att referera till andra datamängder med samma id
 	RailwayRouteId *string `xml:"RailwayRouteId,omitempty"`
 	// SV: Id för rutt, används för att referera till andra datamängder med samma id
@@ -38,8 +38,8 @@ type RailCrossing struct {
 	RoadProfileCrest *int `xml:"RoadProfileCrest,omitempty"`
 	// SV: Vägprofil brant lutning. Vägbanan inom 25 meter från plankorsningen lutar mer än +/- 35 promille. <br /> Värdemängd: 0: uppgift saknas, 1: Ja, 2: Nej
 	RoadProfileSteepSlope  *int                     `xml:"RoadProfileSteepSlope,omitempty"`
-	RoadProtectionAddition []RoadProtectionAddition `xml:"RoadProtectionAddition"`
-	RoadProtectionBase     []RoadProtectionBase     `xml:"RoadProtectionBase"`
+	RoadProtectionAddition []RoadProtectionAddition `xml:"RoadProtectionAddition,omitempty"`
+	RoadProtectionBase     []RoadProtectionBase     `xml:"RoadProtectionBase,omitempty"`
 	// SV: Bandel
 	TrackPortion *int `xml:"TrackPortion,omitempty"`
 	// SV: Plankorsningens meter-tal enligt banans längdmätning

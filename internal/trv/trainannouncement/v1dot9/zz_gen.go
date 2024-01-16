@@ -19,7 +19,7 @@ type TrainAnnouncement struct {
 	// SV: Annonserat tågnummer (tågnumret som står på biljetten)
 	AdvertisedTrainIdent *string `xml:"AdvertisedTrainIdent,omitempty"`
 	// SV: Kod för bokningsinformation och bokningsinformation, ex: "Vagn 4 obokad
-	Booking []Booking `xml:"Booking"`
+	Booking []Booking `xml:"Booking,omitempty"`
 	// SV: Anger om ankomsten/avgången är inställd
 	Canceled *bool `xml:"Canceled,omitempty"`
 	// SV: Anger att dataposten raderats
@@ -27,13 +27,13 @@ type TrainAnnouncement struct {
 	// SV: Utgångsdatum för det Operativa tågnumret.
 	DepartureDateOTN *time.Time `xml:"DepartureDateOTN,omitempty"`
 	// SV: Eventuell avvikelse med full orsakskod, ex: ABC023 och beskrivning, ex: "Buss ersätter", "Spårändrat", "Kort tåg", "Ej servering" o.s.v.
-	Deviation []Deviation `xml:"Deviation"`
+	Deviation []Deviation `xml:"Deviation,omitempty"`
 	// SV: Tidpunkt för beräknad ankomst eller avgång
 	EstimatedTimeAtLocation *time.Time `xml:"EstimatedTimeAtLocation,omitempty"`
 	// SV: Anger om en beräknad tid är preliminär. Notera att om den beräknade tiden är preliminär så innebär det att den kan ändras både framåt och bakåt, ett tåg kan alltså t.ex avgå tidigare än beräknad tidpunkt om den också är markerad som preliminär.
 	EstimatedTimeIsPreliminary *bool `xml:"EstimatedTimeIsPreliminary,omitempty"`
 	// SV: Från station för tåget med ordning och i vilken prioritet som ska visas. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. FromLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur från-stationer ska annonseras.
-	FromLocation []FromLocation `xml:"FromLocation"`
+	FromLocation []FromLocation `xml:"FromLocation,omitempty"`
 	// SV: Namnet på trafikinformationsägaren
 	InformationOwner *string `xml:"InformationOwner,omitempty"`
 	// SV: Det operativa tågets ankomst- eller avgångstid enligt tidtabell (kan skilja sig från den annonserade tiden).
@@ -51,33 +51,33 @@ type TrainAnnouncement struct {
 	// SV: Operativt tågnummer (OTN).
 	OperationalTrainNumber *string `xml:"OperationalTrainNumber,omitempty"`
 	// SV: Kod för övrig annonseringsinformation och övrig annonseringsinformation, ex. "Trevlig resa!", "Bakre fordon går låst!", "Ingen påstigning"
-	OtherInformation []OtherInformation `xml:"OtherInformation"`
+	OtherInformation []OtherInformation `xml:"OtherInformation,omitempty"`
 	// SV: Anger en planerad försening och dess giltighet anges med PlannedEstimatedTimeAtLocationIsValid-flaggan
 	PlannedEstimatedTimeAtLocation *time.Time `xml:"PlannedEstimatedTimeAtLocation,omitempty"`
 	// SV: Anger om PlaneradBeraknadTid är giltig. Kommer sättas till false när en operativ beräknad tidrapport, tidrapport eller slopningsrapport skapas
 	PlannedEstimatedTimeAtLocationIsValid *bool `xml:"PlannedEstimatedTimeAtLocationIsValid,omitempty"`
 	// SV: Kod för beskrivning av tåget och beskrivning av tåget, ex. "Tågkompaniet", "SJ InterCity", "TiB/Tågkomp"
-	ProductInformation []ProductInformation `xml:"ProductInformation"`
+	ProductInformation []ProductInformation `xml:"ProductInformation,omitempty"`
 	// SV: Tågets annonserade avgångsdatum
 	ScheduledDepartureDateTime *time.Time `xml:"ScheduledDepartureDateTime,omitempty"`
 	// SV: Servicekod och lite extra utöver produktinformation, ex "Bistro", "Sov-och liggv"
-	Service []Service `xml:"Service"`
+	Service []Service `xml:"Service,omitempty"`
 	// SV: När tåget har ankommit eller avgått
 	TimeAtLocation *time.Time `xml:"TimeAtLocation,omitempty"`
 	// SV: När tåget har ankommit eller avgått, med sekunder
 	TimeAtLocationWithSeconds *time.Time `xml:"TimeAtLocationWithSeconds,omitempty"`
 	// SV: Till station för tåget med ordning och i vilken prioritet som ska visas. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. ToLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur till-stationer ska annonseras.
-	ToLocation []ToLocation `xml:"ToLocation"`
+	ToLocation []ToLocation `xml:"ToLocation,omitempty"`
 	// SV: Spår
 	TrackAtLocation *string `xml:"TrackAtLocation,omitempty"`
 	// SV: Kod för tågsammansättning och tågsammansättning, ex: "Vagnsordning 7, 6, 5, 4, 2, 1"
-	TrainComposition []TrainComposition `xml:"TrainComposition"`
+	TrainComposition []TrainComposition `xml:"TrainComposition,omitempty"`
 	// SV: Ägaren av det aktuella tågläget
 	TrainOwner *string `xml:"TrainOwner,omitempty"`
 	// SV: Trafiktypen, ex. "Buss", "Pendeltåg", "Taxi", "Tåg".
-	TypeOfTraffic   []TypeOfTraffic   `xml:"TypeOfTraffic"`
-	ViaFromLocation []ViaFromLocation `xml:"ViaFromLocation"`
-	ViaToLocation   []ViaToLocation   `xml:"ViaToLocation"`
+	TypeOfTraffic   []TypeOfTraffic   `xml:"TypeOfTraffic,omitempty"`
+	ViaFromLocation []ViaFromLocation `xml:"ViaFromLocation,omitempty"`
+	ViaToLocation   []ViaToLocation   `xml:"ViaToLocation,omitempty"`
 	// SV: Url till trafikägarens hemsida
 	WebLink *string `xml:"WebLink,omitempty"`
 	// SV: Namn på trafikinfoägaren att använda i länkar

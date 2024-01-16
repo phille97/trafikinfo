@@ -54,7 +54,7 @@ func (x *FerryRoute) DeviationID() *string {
 
 func (x *FerryRoute) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }
@@ -88,12 +88,15 @@ func (x *FerryRoute) Shortname() *string {
 
 func (x *FerryRoute) Type() *Type {
 	if x.data == nil {
-		return new(Type)
+		return &Type{}
 	}
 	return &Type{data: x.data.Type}
 }
 
 func (x *FerryRoute) Harbors() []Harbor {
+	if len(x.data.Harbor) == 0 {
+		return nil
+	}
 	data := []Harbor{}
 	for _, mem := range x.data.Harbor {
 		data = append(data, Harbor{data: &mem})
@@ -102,6 +105,9 @@ func (x *FerryRoute) Harbors() []Harbor {
 }
 
 func (x *FerryRoute) Timetables() []Timetable {
+	if len(x.data.Timetable) == 0 {
+		return nil
+	}
 	data := []Timetable{}
 	for _, mem := range x.data.Timetable {
 		data = append(data, Timetable{data: &mem})
@@ -271,7 +277,7 @@ func (x *Harbor) SortOrder() *int {
 
 func (x *Harbor) StopType() *StopType {
 	if x.data == nil {
-		return new(StopType)
+		return &StopType{}
 	}
 	return &StopType{data: x.data.StopType}
 }
@@ -308,6 +314,9 @@ func (x *Timetable) Priority() *int {
 }
 
 func (x *Timetable) Valid() []Valid {
+	if len(x.data.Valid) == 0 {
+		return nil
+	}
 	data := []Valid{}
 	for _, mem := range x.data.Valid {
 		data = append(data, Valid{data: &mem})
@@ -316,6 +325,9 @@ func (x *Timetable) Valid() []Valid {
 }
 
 func (x *Timetable) Periods() []Period {
+	if len(x.data.Period) == 0 {
+		return nil
+	}
 	data := []Period{}
 	for _, mem := range x.data.Period {
 		data = append(data, Period{data: &mem})
@@ -426,6 +438,9 @@ func (x *Period) SortOrder() *int {
 }
 
 func (x *Period) Weekdays() []Weekday {
+	if len(x.data.Weekday) == 0 {
+		return nil
+	}
 	data := []Weekday{}
 	for _, mem := range x.data.Weekday {
 		data = append(data, Weekday{data: &mem})
@@ -434,6 +449,9 @@ func (x *Period) Weekdays() []Weekday {
 }
 
 func (x *Period) Schedules() []Schedule {
+	if len(x.data.Schedule) == 0 {
+		return nil
+	}
 	data := []Schedule{}
 	for _, mem := range x.data.Schedule {
 		data = append(data, Schedule{data: &mem})
@@ -486,6 +504,9 @@ func (x *Schedule) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 func (x *Schedule) Deviations() []Deviation {
+	if len(x.data.Deviation) == 0 {
+		return nil
+	}
 	data := []Deviation{}
 	for _, mem := range x.data.Deviation {
 		data = append(data, Deviation{data: &mem})
@@ -504,7 +525,7 @@ func (x *Schedule) Time() *string {
 
 func (x *Schedule) Harbor() *Harbor {
 	if x.data == nil {
-		return new(Harbor)
+		return &Harbor{}
 	}
 	return &Harbor{data: x.data.Harbor}
 }
@@ -520,7 +541,7 @@ func (x *Schedule) SortOrder() *int {
 
 func (x *Schedule) StopType() *StopType {
 	if x.data == nil {
-		return new(StopType)
+		return &StopType{}
 	}
 	return &StopType{data: x.data.StopType}
 }
@@ -549,7 +570,7 @@ func (x *Deviation) Description() *string {
 
 func (x *Deviation) Type() *DeviationType {
 	if x.data == nil {
-		return new(DeviationType)
+		return &DeviationType{}
 	}
 	return &DeviationType{data: x.data.Type}
 }

@@ -62,7 +62,7 @@ func (x *TrafficSafetyCamera) Deleted() *bool {
 
 func (x *TrafficSafetyCamera) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }

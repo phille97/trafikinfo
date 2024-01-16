@@ -9,17 +9,17 @@ import (
 
 type RoadGeometry struct {
 	// SV: Län.
-	County int `xml:"County"`
+	County *int `xml:"County,omitempty"`
 	// SV: Huvudvägnummer.
-	RoadMainNumber int `xml:"RoadMainNumber"`
+	RoadMainNumber *int `xml:"RoadMainNumber,omitempty"`
 	// SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
-	RoadSubNumber int        `xml:"RoadSubNumber"`
+	RoadSubNumber *int       `xml:"RoadSubNumber,omitempty"`
 	Direction     *Direction `xml:"Direction,omitempty"`
 	// SV: Längd.
-	Length   int       `xml:"Length"`
+	Length   *int      `xml:"Length,omitempty"`
 	Geometry *Geometry `xml:"Geometry,omitempty"`
 	// SV: Datum för när vägdata hämtades ut från källsystemen.
-	TimeStamp time.Time `xml:"TimeStamp"`
+	TimeStamp *time.Time `xml:"TimeStamp,omitempty"`
 	// SV: Tidpunkt då dataposten ändrades
 	// EN: Time when the data item was changed
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
@@ -30,7 +30,7 @@ type RoadGeometry struct {
 
 type Direction struct {
 	// SV: Riktning. Värde.
-	Code int `xml:"Code"`
+	Code *int `xml:"Code,omitempty"`
 	// SV: Riktning. Beskrivning.
 	Value *string `xml:"Value,omitempty"`
 }

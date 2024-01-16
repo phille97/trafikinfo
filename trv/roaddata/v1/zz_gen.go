@@ -37,170 +37,170 @@ func (x *RoadData) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Län.
-func (x *RoadData) County() int {
+func (x *RoadData) County() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.County
 }
 
 // SV: Huvudvägnummer.
-func (x *RoadData) RoadMainNumber() int {
+func (x *RoadData) RoadMainNumber() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.RoadMainNumber
 }
 
 // SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
-func (x *RoadData) RoadSubNumber() int {
+func (x *RoadData) RoadSubNumber() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.RoadSubNumber
 }
 
 func (x *RoadData) Direction() *Direction {
 	if x.data == nil {
-		return new(Direction)
+		return &Direction{}
 	}
 	return &Direction{data: x.data.Direction}
 }
 
 // SV: Körfältsbeskrivning. Beskrivning av körfältskombinationer, främst för att utskilja vilka vägar som har s.k. 2+1 körfältsuppdelning.
-func (x *RoadData) LaneDescription() int {
+func (x *RoadData) LaneDescription() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.LaneDescription
 }
 
 // SV: Start löpande längd. Anges i meter. Starten för aktuell data angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-func (x *RoadData) StartContinuousLength() int {
+func (x *RoadData) StartContinuousLength() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.StartContinuousLength
 }
 
 // SV: Slut löpande längd. Anges i meter. Slutet för aktuell data angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
-func (x *RoadData) EndContinuousLength() int {
+func (x *RoadData) EndContinuousLength() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.EndContinuousLength
 }
 
 // SV: Längd.
-func (x *RoadData) Length() int {
+func (x *RoadData) Length() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Length
 }
 
 func (x *RoadData) BearingCapacity() *BearingCapacity {
 	if x.data == nil {
-		return new(BearingCapacity)
+		return &BearingCapacity{}
 	}
 	return &BearingCapacity{data: x.data.BearingCapacity}
 }
 
 // SV: Hastighetsgräns. Skyltad hastighet. Vid variabel hastighet visar pmsv3 1000 km/h för att markera att hastigheten inte är entydig.
-func (x *RoadData) SpeedLimit() int {
+func (x *RoadData) SpeedLimit() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.SpeedLimit
 }
 
 // SV: Slitlager
-func (x *RoadData) WearLayer() int {
+func (x *RoadData) WearLayer() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.WearLayer
 }
 
 // SV: ÅDT fordon. På mötesseparerad väg anges ÅDT för en riktning i taget. Dvs. den siffra som anges är trafiken i en riktning. På vanlig väg, dvs där trafiken går i båda riktningar, utan mittseparering, gäller ÅDT-siffran båda riktningar tillsammans. Om det finns fler än ett körfält gäller angivna ÅDT-siffran för alla körfält tillsammans. T.ex: Om ÅDT = 20000 fordon och det finns 3 körfält, så kommer ÅDT att anges som 20000 för varje körfält.
-func (x *RoadData) AADT() int {
+func (x *RoadData) AADT() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.AADT
 }
 
 // SV: ÅDT tung. ÅDT lastbilar avser trafikflöde lastbilar. (Antal lastbilar per årsmedeldygn).
-func (x *RoadData) AADTHeavyVehicles() int {
+func (x *RoadData) AADTHeavyVehicles() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.AADTHeavyVehicles
 }
 
 // SV: ÅDT mätår.
-func (x *RoadData) AADTMeasurementYear() int {
+func (x *RoadData) AADTMeasurementYear() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.AADTMeasurementYear
 }
 
 func (x *RoadData) AADTMeasurementMethod() *AADTMeasurementMethod {
 	if x.data == nil {
-		return new(AADTMeasurementMethod)
+		return &AADTMeasurementMethod{}
 	}
 	return &AADTMeasurementMethod{data: x.data.AADTMeasurementMethod}
 }
 
 // SV: Vägbredd.
-func (x *RoadData) RoadWidth() float64 {
+func (x *RoadData) RoadWidth() *float64 {
 	if x.data == nil {
-		return *new(float64)
+		return nil
 	}
 	return x.data.RoadWidth
 }
 
 func (x *RoadData) RoadOwner() *RoadOwner {
 	if x.data == nil {
-		return new(RoadOwner)
+		return &RoadOwner{}
 	}
 	return &RoadOwner{data: x.data.RoadOwner}
 }
 
 func (x *RoadData) RoadCategory() *RoadCategory {
 	if x.data == nil {
-		return new(RoadCategory)
+		return &RoadCategory{}
 	}
 	return &RoadCategory{data: x.data.RoadCategory}
 }
 
 func (x *RoadData) RoadType() *RoadType {
 	if x.data == nil {
-		return new(RoadType)
+		return &RoadType{}
 	}
 	return &RoadType{data: x.data.RoadType}
 }
 
 func (x *RoadData) Winter2003() *Winter2003 {
 	if x.data == nil {
-		return new(Winter2003)
+		return &Winter2003{}
 	}
 	return &Winter2003{data: x.data.Winter2003}
 }
 
 // SV: Vägnybyggnadsår 2009. Det årtal som en nybyggnad utförts på vägen, vägsträckan byggdes, och det årtal som ett förstärkningsarbete utförts på en vägsträcka.
-func (x *RoadData) RoadConstruction2009() int {
+func (x *RoadData) RoadConstruction2009() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.RoadConstruction2009
 }
 
 // SV: Datum för när vägdata hämtades ut från källsystemet.
-func (x *RoadData) TimeStamp() time.Time {
+func (x *RoadData) TimeStamp() *time.Time {
 	if x.data == nil {
-		return *new(time.Time)
+		return nil
 	}
 	return x.data.TimeStamp
 }
@@ -237,9 +237,9 @@ func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Riktning. Värde.
-func (x *Direction) Code() int {
+func (x *Direction) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }
@@ -266,9 +266,9 @@ func (x *BearingCapacity) UnmarshalXML(d *xml.Decoder, start xml.StartElement) e
 }
 
 // SV: Bärighetsklass. Upplåten bärighetsklass på statliga och kommunala vägar. Värde.
-func (x *BearingCapacity) Code() int {
+func (x *BearingCapacity) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }
@@ -295,9 +295,9 @@ func (x *AADTMeasurementMethod) UnmarshalXML(d *xml.Decoder, start xml.StartElem
 }
 
 // SV: ÅDT mätmetod. värde.
-func (x *AADTMeasurementMethod) Code() int {
+func (x *AADTMeasurementMethod) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }
@@ -324,9 +324,9 @@ func (x *RoadOwner) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Väghållare. Den som är ansvarig för väghållningen.
-func (x *RoadOwner) Code() int {
+func (x *RoadOwner) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }
@@ -353,9 +353,9 @@ func (x *RoadCategory) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 }
 
 // SV: Vägkategori. Värde.
-func (x *RoadCategory) Code() int {
+func (x *RoadCategory) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }
@@ -382,9 +382,9 @@ func (x *RoadType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Vägtyp. Värde.
-func (x *RoadType) Code() int {
+func (x *RoadType) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }
@@ -411,9 +411,9 @@ func (x *Winter2003) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 }
 
 // SV: Vinter2003. Vinter2003/Klassificering map vinterväghållningstandard. Värde.
-func (x *Winter2003) Code() int {
+func (x *Winter2003) Code() *int {
 	if x.data == nil {
-		return *new(int)
+		return nil
 	}
 	return x.data.Code
 }

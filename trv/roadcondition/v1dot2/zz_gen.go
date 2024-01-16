@@ -102,7 +102,7 @@ func (x *RoadCondition) EndTime() *time.Time {
 
 func (x *RoadCondition) Geometry() *Geometry {
 	if x.data == nil {
-		return new(Geometry)
+		return &Geometry{}
 	}
 	return &Geometry{data: x.data.Geometry}
 }
