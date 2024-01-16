@@ -38,95 +38,152 @@ func (x *RoadCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 
 // SV: <div class="toggleTitle">Orsak</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> "Dimma"<br /> "Fallande temperatur"<br /> "Frost"<br /> "Regn"<br /> "Smältvatten"<br /> "Snödrev"<br /> "Snöfall"<br /> "Underkylt regn" </div>
 func (x *RoadCondition) Causes() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Cause
 }
 
 // SV: <div class="toggleTitle">Väglagskod</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> 1 - normalt<br /> 2 - besvärligt (risk för)<br /> 3 - mycket besvärligt<br /> 4 - is- och snövägbana </div>
 func (x *RoadCondition) ConditionCode() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ConditionCode
 }
 
 // SV: Väglagsbeskrivning
 func (x *RoadCondition) ConditionInfo() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ConditionInfo
 }
 
 // SV: Väglagskod som text
 func (x *RoadCondition) ConditionText() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ConditionText
 }
 
 // SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 func (x *RoadCondition) Counties() []int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CountyNo
 }
 
 // SV: Källa till datat
 func (x *RoadCondition) Creator() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Creator
 }
 
 // SV: Anger att dataposten raderats
 func (x *RoadCondition) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Väglagsbeskrivningen gäller till och med
 func (x *RoadCondition) EndTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EndTime
 }
 
 func (x *RoadCondition) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Ikonid
 func (x *RoadCondition) IconID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.IconId
 }
 
 // SV: Datapostens id
 func (x *RoadCondition) ID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Beskrivning av vägsträckningen
 func (x *RoadCondition) LocationText() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationText
 }
 
 // SV: <div class="toggleTitle">Åtgärd</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> "Förebyggande halkbekämpning"<br /> "Halkbekämpning"<br /> "Ishyvling"<br /> "Plogning"<br /> "Sandning"<br /> "Annat" </div>
 func (x *RoadCondition) Measurements() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Measurement
 }
 
 // SV: Tidpunkt då dataposten ändrades
 func (x *RoadCondition) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 // SV: Vägnummer, ex. "Väg 73"
 func (x *RoadCondition) RoadNumber() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadNumber
 }
 
 // SV: Vägnummer som nummeriskt värde, ex. 73
 func (x *RoadCondition) RoadNumberNumeric() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadNumberNumeric
 }
 
 // SV: Indikerar att meddelandet är säkerhetsrelaterat i enlighet med Kommisionens Delegerade Förordning (EU) nr 886/2013 vad gäller data och förfaranden för kostnadsfritt tillhandahållande, när så är möjligt, av ett minimum av vägsäkerhetsrelaterad universell trafikinformation för användare.
 func (x *RoadCondition) SafetyRelatedMessage() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SafetyRelatedMessage
 }
 
 // SV: Väglagsbeskrivningen gäller från och med
 func (x *RoadCondition) StartTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.StartTime
 }
 
 // SV: <div class="toggleTitle">Varning</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> "Risk för halka"<br /> "Halka"<br /> "Snörök"<br /> "Snödrev"<br /> "Hård vind"<br /> "Snöfall"<br /> "Annat" </div>
 func (x *RoadCondition) Warnings() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Warning
 }
 
@@ -145,16 +202,25 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Geometrisk linje i koordinatsystem SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Geometrisk linje i koordinatsystem WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 
 // SV: Tidpunkt då elementet ändrades
 func (x *Geometry) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 

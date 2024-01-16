@@ -38,127 +38,202 @@ func (x *PavementData) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 
 // SV: Län.
 func (x *PavementData) County() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.County
 }
 
 // SV: Huvudvägnummer.
 func (x *PavementData) RoadMainNumber() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.RoadMainNumber
 }
 
 // SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
 func (x *PavementData) RoadSubNumber() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.RoadSubNumber
 }
 
 func (x *PavementData) Direction() *Direction {
+	if x.data == nil {
+		return new(Direction)
+	}
 	return &Direction{data: x.data.Direction}
 }
 
 // SV: Körfält. Räknas från höger sida och startar med körfält 10. Nästa är 20 och kan gå upp till 50.
 func (x *PavementData) Lane() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.Lane
 }
 
 // SV: Start löpande längd. Anges i meter. Starten för aktuell åtgärdsinformation angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
 func (x *PavementData) StartContinuousLength() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.StartContinuousLength
 }
 
 // SV: Slut löpande längd. Anges i meter. Slutet för aktuell åtgärdsinformation angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
 func (x *PavementData) EndContinuousLength() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.EndContinuousLength
 }
 
 // SV: Längd i antal meter
 func (x *PavementData) Length() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.Length
 }
 
 // SV: Beläggningsdatum. Datum när åtgärd utfördes. (om flera åtgärder på samma sträcka anges senaste datumet)
 func (x *PavementData) PavementDate() time.Time {
+	if x.data == nil {
+		return *new(time.Time)
+	}
 	return x.data.PavementDate
 }
 
 // SV: Typ av åtgärd.
 func (x *PavementData) PavementType() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PavementType
 }
 
 // SV: Åtgärdskategori. Gruppering av åtgärder som är av liknande karaktär.
 func (x *PavementData) TreatmentCategory() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TreatmentCategory
 }
 
 // SV: Stenstorlek i beläggningen.
 func (x *PavementData) MaxStoneSize() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.MaxStoneSize
 }
 
 // SV: Tjocklek. Medelvärde för beläggningsåtgärdens tjocklek.
 func (x *PavementData) Thickness() float64 {
+	if x.data == nil {
+		return *new(float64)
+	}
 	return x.data.Thickness
 }
 
 // SV: Entreprenör. Den som utfört åtgärden.
 func (x *PavementData) Contractor() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Contractor
 }
 
 // SV: Kulkvarnsvärde som är aktuell i beläggningsåtgärden.
 func (x *PavementData) BallMillValue() float64 {
+	if x.data == nil {
+		return *new(float64)
+	}
 	return x.data.BallMillValue
 }
 
 // SV: Bindemedel som är aktuellt i beläggningen.
 func (x *PavementData) Binder() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Binder
 }
 
 // SV: Tillverkningsmetod som använts för beläggningen.
 func (x *PavementData) ManufacturingMethod() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ManufacturingMethod
 }
 
 // SV: Utläggningsmetod.
 func (x *PavementData) PavingMethod() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PavingMethod
 }
 
 // SV: Täckning. I vilken utsträckning åtgärden omfattar hela längden angiven för åtgärden eller bredden på körfältet.
 func (x *PavementData) Coverage() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Coverage
 }
 
 // SV: Garantitid. Det antal år som garantitiden gäller för utförd åtgärd.
 func (x *PavementData) Warranty() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.Warranty
 }
 
 // SV: Garantitid förfaller år. Datum då garantin för åtgärden förfaller.
 func (x *PavementData) WarrantyIsDue() time.Time {
+	if x.data == nil {
+		return *new(time.Time)
+	}
 	return x.data.WarrantyIsDue
 }
 
 // SV: Datum för besiktningen av åtgärden.
 func (x *PavementData) FinalInspectionDate() time.Time {
+	if x.data == nil {
+		return *new(time.Time)
+	}
 	return x.data.FinalInspectionDate
 }
 
 // SV: Datum för när NVDB-data och beläggningsdata hämtades ut från källsystemen.
 func (x *PavementData) TimeStamp() time.Time {
+	if x.data == nil {
+		return *new(time.Time)
+	}
 	return x.data.TimeStamp
 }
 
 // SV: Tidpunkt då dataposten ändrades
 // EN: Time when the data item was changed
 func (x *PavementData) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 // SV: Anger att dataposten raderats
 // EN: Indicates that the data record has been deleted
 func (x *PavementData) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
@@ -177,11 +252,17 @@ func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Riktning. Värde.
 func (x *Direction) Code() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.Code
 }
 
 // SV: Riktning. Beskrivning.
 func (x *Direction) Value() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 

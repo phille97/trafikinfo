@@ -173,6 +173,13 @@ func (n *Node) PublicRenderMethod(w io.Writer, name string) {
 	}
 	io.WriteString(w, n.Type.Kind+" {\n")
 	if n.Type.Final {
+		io.WriteString(w, "if x.data == nil {\n")
+		if n.Multiple || n.Optional {
+			io.WriteString(w, "return nil\n")
+		} else {
+			io.WriteString(w, "return *new("+n.Type.Kind+")\n")
+		}
+		io.WriteString(w, "}\n")
 		io.WriteString(w, "return x.data."+goName(n.Name)+"\n")
 	} else {
 		if n.Multiple {
@@ -182,6 +189,14 @@ func (n *Node) PublicRenderMethod(w io.Writer, name string) {
 			io.WriteString(w, "}\n")
 			io.WriteString(w, "return data\n")
 		} else {
+			io.WriteString(w, "if x.data == nil {\n")
+			if n.Optional {
+				io.WriteString(w, "return new("+n.Type.Kind+")\n")
+			} else {
+				io.WriteString(w, "return *new("+n.Type.Kind+")\n")
+			}
+			io.WriteString(w, "}\n")
+
 			io.WriteString(w, "return ")
 			if n.Optional {
 				io.WriteString(w, "&")

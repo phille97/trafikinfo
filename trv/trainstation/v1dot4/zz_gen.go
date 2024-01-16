@@ -39,73 +39,112 @@ func (x *TrainStation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 // SV: Anger om stationen annonseras i tidtabell
 // EN: Indicates if the station is advertised in the timetable
 func (x *TrainStation) Advertised() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Advertised
 }
 
 // SV: Stationens namn
 // EN: Stations name
 func (x *TrainStation) AdvertisedLocationName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.AdvertisedLocationName
 }
 
 // SV: Stationens namn i kort version
 // EN: Stations name in short version
 func (x *TrainStation) AdvertisedShortLocationName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.AdvertisedShortLocationName
 }
 
 // SV: Beteckning för i vilket land stationen finns.<br /> 'DE' - Tyskland<br /> 'DK' - Danmark<br /> 'NO' - Norge<br /> 'SE' - Sverige
 // EN: Designation of the country in which the station is located.<br /> 'DE' - Germany<br /> 'DK' - Denmark<br /> 'NO' - Norway<br /> 'SE' - Sweden
 func (x *TrainStation) CountryCode() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CountryCode
 }
 
 // SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 func (x *TrainStation) Counties() *[]int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CountyNo
 }
 
 func (x *TrainStation) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 func (x *TrainStation) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Upplysningsinformation för stationen, ex. "SL-tåg omfattas ej.", "Ring 033-172444 för trafikinformation"
 // EN: Disclosure information for the station, ex. "SL-train is excluded.", "Call 033-172444 for trafficinfomation"
 func (x *TrainStation) LocationInformationText() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationInformationText
 }
 
 // SV: Stationens unika signatur, ex. "Cst"
 // EN: Stations unique signature, ex. "Cst"
 func (x *TrainStation) LocationSignature() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationSignature
 }
 
 // SV: Plattformens spår
 // EN: Platform Tracks
 func (x *TrainStation) PlatformLines() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PlatformLine
 }
 
 // SV: Anger om stationen prognostiseras i tidtabell
 // EN: Specifies if station forecasted in timetabell
 func (x *TrainStation) Prognosticated() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Prognosticated
 }
 
 // SV: Det av Transportstyrelsen fastslagna officiella namnet på stationen
 // EN: The official name of the station established by the Swedish Transport Agency
 func (x *TrainStation) OfficialLocationName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.OfficialLocationName
 }
 
 // EN: Specifies when the object is stored.
 // SV: Anger när objektet är sparat.
 func (x *TrainStation) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
@@ -125,12 +164,18 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 // SV: Geometrisk punkt i koordinatsystem SWEREF99TM
 // EN: Geometric point in coordinate system SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Geometrisk punkt i koordinatsystem WGS84
 // EN: Geometric point in coordinate system WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 

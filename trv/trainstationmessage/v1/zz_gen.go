@@ -39,90 +39,138 @@ func (x *TrainStationMessage) UnmarshalXML(d *xml.Decoder, start xml.StartElemen
 // SV: Unikt id för varje meddelande
 // EN: Unique identifier
 func (x *TrainStationMessage) ID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Anger vilket presentationsmedia meddelandet gäller.<br /> 'Monitor'<br /> 'Plattformsskylt'<br /> 'Utrop'
 // EN: Type of media.<br /> 'Monitor' - Monitor<br /> 'Plattformsskylt'- Platform sign<br /> 'Utrop' - Announcement
 func (x *TrainStationMessage) MediaType() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.MediaType
 }
 
 // SV: Stationens platssignatur
 // EN: Location code
 func (x *TrainStationMessage) LocationCode() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationCode
 }
 
 // SV: Trafikhändelsenummer från Basun
 // EN: Id in the BASUN application
 func (x *TrainStationMessage) EventID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EventId
 }
 
 // SV: När meddelandet ska börja visas
 // EN: When the message should start to be displayed
 func (x *TrainStationMessage) StartDateTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.StartDateTime
 }
 
 // SV: När meddelandet ska sluta visas
 // EN: When the message should not be displayed anymore
 func (x *TrainStationMessage) EndDateTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EndDateTime
 }
 
 // SV: Anger att ett meddelande bara skall gälla mellan tidpunkterna i Starttid och Sluttid, för varje dag i intervallet Starttid och Sluttid
 // EN: For the dates specified in Start and EndDateTime, specifies if the message should be displayed around the clock or just between the time set in Start and EndDateTime each day
 func (x *TrainStationMessage) SplitActivationTime() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SplitActivationTime
 }
 
 // SV: Annonseringstexten
 // EN: Informational text
 func (x *TrainStationMessage) FreeText() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.FreeText
 }
 
 // SV: Meddelandets viktighetsgrad
 // EN: How important the message are (in relative to other messages)
 func (x *TrainStationMessage) Status() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Status
 }
 
 // SV: Version på detta meddelande
 // EN: Versioning number for this external message
 func (x *TrainStationMessage) VersionNumber() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.VersionNumber
 }
 
 // SV: En sträng som beskriver om ett meddelande ska vara aktivt (Y) eller inte (N) för varje dag från Starttid till Sluttid.
 // EN: A string with an 'Y' or 'N' for each day between the start and the end date. 'Y' if the message is to be active that day and 'N' otherwise.
 func (x *TrainStationMessage) ActiveDays() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ActiveDays
 }
 
 func (x *TrainStationMessage) MonitorAttributes() *MonitorAttributes {
+	if x.data == nil {
+		return new(MonitorAttributes)
+	}
 	return &MonitorAttributes{data: x.data.MonitorAttributes}
 }
 
 func (x *TrainStationMessage) PlatformSignAttributes() *PlatformSignAttributes {
+	if x.data == nil {
+		return new(PlatformSignAttributes)
+	}
 	return &PlatformSignAttributes{data: x.data.PlatformSignAttributes}
 }
 
 func (x *TrainStationMessage) PublicAnnouncementAttributes() *PublicAnnouncementAttributes {
+	if x.data == nil {
+		return new(PublicAnnouncementAttributes)
+	}
 	return &PublicAnnouncementAttributes{data: x.data.PublicAnnouncementAttributes}
 }
 
 // SV: Anger att dataposten raderats
 // EN: Specifies if the element has been deleted
 func (x *TrainStationMessage) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Tidpunkt då dataposten ändrades
 // EN: Time when the element wast last modified
 func (x *TrainStationMessage) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
@@ -142,12 +190,18 @@ func (x *MonitorAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartElement)
 // SV: Anger om meddelandet skall visas på pendelmonitor.
 // EN: Specifies if the monitor is a commuter monitor or regular
 func (x *MonitorAttributes) CommuterMonitor() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CommuterMonitor
 }
 
 // SV: Anger om monitormeddelandet även skall visas på stortavla.
 // EN: Specifies if the message is to be shown on a big screen monitor
 func (x *MonitorAttributes) BigScreenMonitorActivated() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.BigScreenMonitorActivated
 }
 
@@ -167,12 +221,18 @@ func (x *PlatformSignAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartEle
 // SV: Anger om meddelandet skall visas på pendelplattformsskylt eller en vanlig plattformsskylt.
 // EN: Specifies if the message is to be shown on a commuter platform sign or regular platform sign
 func (x *PlatformSignAttributes) CommuterPlatformSign() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CommuterPlatformSign
 }
 
 // SV: Vilka spår som meddelandet gäller
 // EN: The tracks that are affected by the message
 func (x *PlatformSignAttributes) TrackList() *TrackList {
+	if x.data == nil {
+		return new(TrackList)
+	}
 	return &TrackList{data: x.data.TrackList}
 }
 
@@ -192,22 +252,34 @@ func (x *PublicAnnouncementAttributes) UnmarshalXML(d *xml.Decoder, start xml.St
 // SV: Utropstext på engelska.
 // EN: Announcement text in English.
 func (x *PublicAnnouncementAttributes) EnglishText() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EnglishText
 }
 
 // SV: Om Utropsystem ska ropa på engelska.
 // EN: Specifies if the message is announced in English.
 func (x *PublicAnnouncementAttributes) EnglishPublicAnnouncementActivated() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EnglishPublicAnnouncementActivated
 }
 
 // SV: En planering för vilka dagar och tidpunkter ett meddelande skall ropas.
 // EN: Plans for when the message is to be announced
 func (x *PublicAnnouncementAttributes) PublicAnnouncementPlanList() *PublicAnnouncementPlanList {
+	if x.data == nil {
+		return new(PublicAnnouncementPlanList)
+	}
 	return &PublicAnnouncementPlanList{data: x.data.PublicAnnouncementPlanList}
 }
 
 func (x *PublicAnnouncementAttributes) PublicAnnouncementZoneList() *PublicAnnouncementZoneList {
+	if x.data == nil {
+		return new(PublicAnnouncementZoneList)
+	}
 	return &PublicAnnouncementZoneList{data: x.data.PublicAnnouncementZoneList}
 }
 
@@ -225,6 +297,9 @@ func (x *TrackList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 func (x *TrackList) Tracks() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Track
 }
 
@@ -265,6 +340,9 @@ func (x *PublicAnnouncementZoneList) UnmarshalXML(d *xml.Decoder, start xml.Star
 // SV: Anger en zon där meddelandet skall utropas
 // EN: Indicates a zone for where the message is to be announced
 func (x *PublicAnnouncementZoneList) PublicAnnouncementZones() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PublicAnnouncementZone
 }
 
@@ -284,22 +362,34 @@ func (x *PublicAnnouncementPlan) UnmarshalXML(d *xml.Decoder, start xml.StartEle
 // SV: Planeringen är giltig efter denna tidpunkt och är första aktiva dagen i planeringen.
 // EN: The start and first valid date of the plan.
 func (x *PublicAnnouncementPlan) ValidFrom() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ValidFrom
 }
 
 // SV: Planeringen är giltig fram till denna tidpunkt och är sista aktiva dagen i planeringen.
 // EN: The end and last valid date of the plan.
 func (x *PublicAnnouncementPlan) ValidTo() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ValidTo
 }
 
 // SV: En sträng som beskriver om en planering är aktiv (Y) eller inte (N) för varje dag från Starttid till Sluttid.
 // EN: A string with an 'Y' or 'N' for each day between the start and the end date. 'Y' if the message is to be announced that day and 'N' otherwise.
 func (x *PublicAnnouncementPlan) ActiveDays() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ActiveDays
 }
 
 func (x *PublicAnnouncementPlan) PublicAnnouncementOccasionList() *PublicAnnouncementOccasionList {
+	if x.data == nil {
+		return new(PublicAnnouncementOccasionList)
+	}
 	return &PublicAnnouncementOccasionList{data: x.data.PublicAnnouncementOccasionList}
 }
 
@@ -319,6 +409,9 @@ func (x *PublicAnnouncementOccasionList) UnmarshalXML(d *xml.Decoder, start xml.
 // SV: Anger vilken minut på dygnet ett utrop skall utföras
 // EN: Indicates which minute in the day the announcement is to be made
 func (x *PublicAnnouncementOccasionList) PublicAnnouncementOccasions() []int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PublicAnnouncementOccasion
 }
 

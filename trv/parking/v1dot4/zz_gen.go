@@ -38,11 +38,17 @@ func (x *Parking) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 func (x *Parking) Counties() []int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CountyNo
 }
 
 // SV: Anger att dataposten raderats
 func (x *Parking) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
@@ -56,16 +62,25 @@ func (x *Parking) Equipment() []Equipment {
 
 // SV: Avstånd till närmaste stad
 func (x *Parking) DistanceToNearestCity() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.DistanceToNearestCity
 }
 
 // SV: Lägesbeskrivning
 func (x *Parking) LocationDescription() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationDescription
 }
 
 // SV: Beskrivning av parkeringen
 func (x *Parking) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -79,40 +94,64 @@ func (x *Parking) Facilities() []Facility {
 
 // SV: Ikonid
 func (x *Parking) IconID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.IconId
 }
 
 // SV: Parkeringens id
 func (x *Parking) ID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Parkeringens position
 func (x *Parking) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Tidpunkt då dataposten ändrades
 func (x *Parking) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 // SV: Parkeringens namn
 func (x *Parking) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 
 // SV: Anger om rastplatsen är öppen eller stängd (open, closed)
 func (x *Parking) OpenStatus() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.OpenStatus
 }
 
 // SV: Anger om det finns några driftstörningar på rastplatsen (limitedOperation) eller om allt fungerar (inOperation)
 func (x *Parking) OperationStatus() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.OperationStatus
 }
 
 func (x *Parking) Operator() *Operator {
+	if x.data == nil {
+		return new(Operator)
+	}
 	return &Operator{data: x.data.Operator}
 }
 
@@ -133,11 +172,17 @@ func (x *Parking) Photos() []Photo {
 }
 
 func (x *Parking) TariffsAndPayment() *TariffsAndPayment {
+	if x.data == nil {
+		return new(TariffsAndPayment)
+	}
 	return &TariffsAndPayment{data: x.data.TariffsAndPayment}
 }
 
 // SV: Anger användningsområde
 func (x *Parking) UsageSenarios() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.UsageSenario
 }
 
@@ -164,11 +209,17 @@ func (x *Equipment) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: <div class="toggleTitle"> Typ av utrustning </div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>toilet</td> </tr> <tr> <td>shower</td> </tr> <tr> <td>informationPoint</td> </tr> <tr> <td>informatonStele</td> </tr> <tr> <td>internetTerminal</td> </tr> <tr> <td>internetWireless</td> </tr> <tr> <td>payDesk</td> </tr> <tr> <td>paymentMachine</td> </tr> <tr> <td>cashMachine</td> </tr> <tr> <td>vendingMachine</td> </tr> <tr> <td>faxMachineOrService</td> </tr> <tr> <td>copyMachineOrService</td> </tr> <tr> <td>safeDeposit</td> </tr> <tr> <td>luggageLocker</td> </tr> <tr> <td>publicPhone</td> </tr> <tr> <td>publicCoinPhone</td> </tr> <tr> <td>publicCardPhone</td> </tr> <tr> <td>elevator</td> </tr> <tr> <td>picnicFacilities</td> </tr> <tr> <td>dumpingStation</td> </tr> <tr> <td>freshWater</td> </tr> <tr> <td>wasteDisposal</td> </tr> <tr> <td>refuseBin</td> </tr> <tr> <td>iceFreeScaffold</td> </tr> <tr> <td>playground</td> </tr> <tr> <td>electricChargingStation</td> </tr> <tr> <td>bikeParking</td> </tr> <tr> <td>tollTerminal</td> </tr> <tr> <td>defibrillator</td> </tr> <tr> <td>firstAidEquipment</td> </tr> <tr> <td>fireHose</td> </tr> <tr> <td>fireExtingiusher</td> </tr> <tr> <td>fireHydrant</td> </tr> <tr> <td>none</td> </tr> <tr> <td>unknown</td> </tr> <tr> <td>other</td> </tr> </table> </div>
 func (x *Equipment) Type() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Type
 }
 
 // SV: <div class="toggleTitle"> Utrustningens tillgänglighet </div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>barrierFreeAccessible</td> </tr> <tr> <td>handicappedAccessible</td> </tr> <tr> <td>wheelChairAccessible</td> </tr> <tr> <td>handicappedEasements</td> </tr> <tr> <td>orientationSystemForBlindPeople</td> </tr> <tr> <td>handicappedMarked</td> </tr> <tr> <td>none</td> </tr> <tr> <td>unknown</td> </tr> <tr> <td>other</td> </tr> </table> </div>
 func (x *Equipment) Accessibility() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Accessibility
 }
 
@@ -187,11 +238,17 @@ func (x *Facility) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: <div class="toggleTitle"> Serviceanläggningar vid parkeringen </div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>hotel</td> </tr> <tr> <td>motel</td> </tr> <tr> <td>overnightAccommodation</td> </tr> <tr> <td>shop</td> </tr> <tr> <td>kiosk</td> </tr> <tr> <td>foodShopping</td> </tr> <tr> <td>cafe</td> </tr> <tr> <td>restaurant</td> </tr> <tr> <td>restaurantSelfService</td> </tr> <tr> <td>motorwayRestaurant</td> </tr> <tr> <td>motorwayRestaurantSmall</td> </tr> <tr> <td>sparePartsShopping</td> </tr> <tr> <td>petrolStation</td> </tr> <tr> <td>vehicleMaintenance</td> </tr> <tr> <td>tyreRepair</td> </tr> <tr> <td>truckRepair</td> </tr> <tr> <td>truckWash</td> </tr> <tr> <td>carWash</td> </tr> <tr> <td>pharmacy</td> </tr> <tr> <td>medicalFacility</td> </tr> <tr> <td>police</td> </tr> <tr> <td>touristInformation</td> </tr> <tr> <td>bikeSharing</td> </tr> <tr> <td>docstop</td> </tr> <tr> <td>laundry</td> </tr> <tr> <td>leisureActivities</td> </tr> <tr> <td>unknown</td> </tr> <tr> <td>other</td> </tr> </table> </div>
 func (x *Facility) Type() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Type
 }
 
 // SV: <div class="toggleTitle"> Serviceanläggningens tillgänglighet </div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>barrierFreeAccessible</td> </tr> <tr> <td>handicappedAccessible</td> </tr> <tr> <td>wheelChairAccessible</td> </tr> <tr> <td>handicappedEasements</td> </tr> <tr> <td>orientationSystemForBlindPeople</td> </tr> <tr> <td>handicappedMarked</td> </tr> <tr> <td>none</td> </tr> <tr> <td>unknown</td> </tr> <tr> <td>other</td> </tr> </table> </div>
 func (x *Facility) Accessibility() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Accessibility
 }
 
@@ -210,11 +267,17 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Parkeringens position som en geometrisk punkt i koordinatsystemet SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Parkeringens position som en geometrisk punkt i koordinatsystemet WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 
@@ -233,21 +296,33 @@ func (x *Operator) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Namn på operatörens kontakt
 func (x *Operator) Contact() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Contact
 }
 
 // SV: Operatörens kontaktmail
 func (x *Operator) ContactEmail() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ContactEmail
 }
 
 // SV: Operatörens kontakttelefon
 func (x *Operator) ContactTelephoneNumber() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ContactTelephoneNumber
 }
 
 // SV: Operatörens namn
 func (x *Operator) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 
@@ -266,11 +341,17 @@ func (x *ParkingAccess) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 
 // SV: Parkeringens anslutning som en geometrisk punkt i koordinatsystemet SWEREF99TM
 func (x *ParkingAccess) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Parkeringens anslutning som en geometrisk punkt i koordinatsystemet WGS84
 func (x *ParkingAccess) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 
@@ -289,11 +370,17 @@ func (x *Photo) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Namn på foto
 func (x *Photo) Title() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Title
 }
 
 // SV: Url till foto
 func (x *Photo) URL() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Url
 }
 
@@ -312,11 +399,17 @@ func (x *TariffsAndPayment) UnmarshalXML(d *xml.Decoder, start xml.StartElement)
 
 // SV: Anger om parkeringen är gratis att använda
 func (x *TariffsAndPayment) FreeOfCharge() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.FreeOfCharge
 }
 
 // SV: Anger parkeringens avgift
 func (x *TariffsAndPayment) Tariff() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Tariff
 }
 
@@ -335,16 +428,25 @@ func (x *VehicleCharacteristics) UnmarshalXML(d *xml.Decoder, start xml.StartEle
 
 // SV: Fordonstyp parkeringen är avsedd för
 func (x *VehicleCharacteristics) VehicleType() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.VehicleType
 }
 
 // SV: Antal platser för fordonstypen inkl släp
 func (x *VehicleCharacteristics) NumberOfSpaces() *uint8 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.NumberOfSpaces
 }
 
 // SV: Typ av last parkeringen är avsedd för, exempelvis fryst gods (refrigeratedGoods)
 func (x *VehicleCharacteristics) LoadType() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LoadType
 }
 

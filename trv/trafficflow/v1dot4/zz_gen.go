@@ -38,65 +38,104 @@ func (x *TrafficFlow) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error
 
 // SV: Detektorns id
 func (x *TrafficFlow) SiteID() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SiteId
 }
 
 // SV: Tidpunkt då detta specifika värde eller uppsättning värden har uppmätts. Det är slutet på perioden som skickas från källsystemet
 func (x *TrafficFlow) MeasurementTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.MeasurementTime
 }
 
 // SV: Den tid som förflutit mellan början och slutet av provtagnings- eller mätperioden. Det här objektet kan skilja sig från enhetens attribut t.ex. ett timmeflöde kan uppskattas från en 5-minuters mätperiod
 func (x *TrafficFlow) MeasurementOrCalculationPeriod() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.MeasurementOrCalculationPeriod
 }
 
 // SV: <div class="toggleTitle">Fordonets typ</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>agriculturalVehicle</td> <td>Fordon normalt använt för jordbruk, t.ex. Traktor m.fl.</td> </tr> <tr> <td>anyVehicle</td> <td>Fordon av ospecificierad typ.</td> </tr> <tr> <td>articulatedVehicle</td> <td>Ledat fordon.</td> </tr> <tr> <td>bicycle</td> <td>Cykel.</td> </tr> <tr> <td>bus</td> <td>Buss.</td> </tr> <tr> <td>car</td> <td>Bil.</td> </tr> <tr> <td>caravan</td> <td>Husvagn.</td> </tr> <tr> <td>carOrLightVehicle</td> <td>Bil eller lätt fordon.</td> </tr> <tr> <td>carWithCaravan</td> <td>Bil med husvagn.</td> </tr> <tr> <td>carWithTrailer</td> <td>Bil med släpvagn.</td> </tr> <tr> <td>constructionOrMaintenanceVehicle</td> <td>Fordon normalt använt inom konstruktion eller underhåll, t.ex. grävmaskin, vägskrapa m.fl.</td> </tr> <tr> <td>fourWheelDrive</td> <td>Fyrhjulsdrivet fordon.</td> </tr> <tr> <td>highSidedVehicle</td> <td>Högt fordon.</td> </tr> <tr> <td>lorry</td> <td>Lastbil.</td> </tr> <tr> <td>moped</td> <td>Moped.</td> </tr> <tr> <td>motorcycle</td> <td>Motorcykel.</td> </tr> <tr> <td>motorcycleWithSideCar</td> <td>Motorcykel med sidovagn.</td> </tr> <tr> <td>motorscooter</td> <td>Skoter (ett tvåhjuligt fordon med små hjul och vindskydd framför knäna).</td> </tr> <tr> <td>tanker</td> <td>Lastbil speciellt utformad för att frakta vätskor.</td> </tr> <tr> <td>threeWheeledVehicle</td> <td>Fordon med tre hjul av ospecificierad typ.</td> </tr> <tr> <td>trailer</td> <td>Släpvagn.</td> </tr> <tr> <td>tram</td> <td>Spårvagn.</td> </tr> <tr> <td>twoWheeledVehicle</td> <td>Fordon med två hjul av ospecificierad typ.</td> </tr> <tr> <td>van</td> <td>Skåpbil.</td> </tr> <tr> <td>vehicleWithCatalyticConverter</td> <td>Fordon med katalytisk avgasrening.</td> </tr> <tr> <td>vehicleWithoutCatalyticConverter</td> <td>Fordon utan katalytisk avgasrening.</td> </tr> <tr> <td>vehicleWithCaravan</td> <td>Ospecificierat fordon med husvagn.</td> </tr> <tr> <td>vehicleWithTrailer</td> <td>Ospecificierat fordon med släpvagn.</td> </tr> <tr> <td>withEvenNumberedRegistrationPlates</td> <td>Fordon vars nummerskylt har jämnt nummer.</td> </tr> <tr> <td>withOddNumberedRegistrationPlates</td> <td>Fordon vars nummerskylt har ojämnt nummer.</td> </tr> <tr> <td>other</td> <td>Övriga fordon ej benämnda i denna uppräkning.</td> </tr> </table> </div>
 func (x *TrafficFlow) VehicleType() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.VehicleType
 }
 
 // SV: Flöde uttryckt i fordon per timme.
 func (x *TrafficFlow) VehicleFlowRate() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.VehicleFlowRate
 }
 
 // SV: En genomsnittlig mätning eller beräkning av hastigheten på fordon på den angivna platsen.
 func (x *TrafficFlow) AverageVehicleSpeed() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.AverageVehicleSpeed
 }
 
 // SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 func (x *TrafficFlow) Counties() []int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CountyNo
 }
 
 // SV: Anger att dataposten raderats
 func (x *TrafficFlow) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 func (x *TrafficFlow) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Tidpunkt då dataposten ändrades
 func (x *TrafficFlow) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 // SV: <div class="toggleTitle">Regionsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Region Norr</td> </tr> <tr> <td>2</td> <td> Region Mitt </td> </tr> <tr> <td>3</td> <td>Region Öst</td> </tr> <tr> <td>4</td> <td>Region Stockholm</td> </tr> <tr> <td>5</td> <td>Region Väst</td> </tr> <tr> <td>6</td> <td>Region Syd</td> </tr> </table> </div>
 func (x *TrafficFlow) RegionID() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RegionId
 }
 
 // SV: Vilket körfält som detektorn befinner sig i. Körfält numreras från höger till vänster i vägens körriktning
 func (x *TrafficFlow) SpecificLane() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SpecificLane
 }
 
 // SV: Riktning som detektorn mäter i.
 func (x *TrafficFlow) MeasurementSide() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.MeasurementSide
 }
 
@@ -115,11 +154,17 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Geometrisk punkt i koordinatsystem SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Geometrisk punkt i koordinatsystem WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 

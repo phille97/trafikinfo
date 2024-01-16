@@ -38,36 +38,57 @@ func (x *ReasonCode) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 
 // SV: Full orsakskod, detta fält motsvarar det som finns från och med TrainAnnouncement version 1.5 under t.ex. Deviation.Code<br /> eller i objekttypen TrainMessage från och med schemaversion 1.5 under ReasonCode.Code
 func (x *ReasonCode) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Beskrivning för vilken grupp orsakskoden tillhör, t.ex Annonseringstexter och Orsaker nya principer
 func (x *ReasonCode) GroupDescription() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.GroupDescription
 }
 
 // SV: Nivå 1 beskrivning, beskriver vilken typ av orsakskod.
 func (x *ReasonCode) Level1Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Level1Description
 }
 
 // SV: Nivå 2 beskrivning, beskriver vilken betydelse orsakskoden har, t.ex. Nationell
 func (x *ReasonCode) Level2Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Level2Description
 }
 
 // SV: Nivå 3 beskrivning, beskrivande text för orsakskoden, detta fält motsvarar det som finns i objekttypen TrainAnnouncement från och med schemaversion 1.5 under t.ex. Deviation.Description<br /> eller i objekttypen TrainMessage från och med schemaversion 1.5 under ReasonCode.Description
 func (x *ReasonCode) Level3Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Level3Description
 }
 
 // SV: Anger att dataposten raderats
 func (x *ReasonCode) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Tidpunkt då dataposten ändrades
 func (x *ReasonCode) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 

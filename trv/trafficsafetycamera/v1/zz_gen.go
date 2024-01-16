@@ -39,49 +39,76 @@ func (x *TrafficSafetyCamera) UnmarshalXML(d *xml.Decoder, start xml.StartElemen
 // SV: Vilket håll kameran är riktad mot. Medsols grader från norr
 // EN: Which direction the camera is aimed at. Clockwise degrees from the north
 func (x *TrafficSafetyCamera) Bearing() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Bearing
 }
 
 // SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>0</td> <td>Alla län (kan förekomma för poster med Deviation.MessageType="Viktig trafikinformation" och meddelandet gäller då för hela Sverige)</td> </tr> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 func (x *TrafficSafetyCamera) Counties() []int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CountyNo
 }
 
 func (x *TrafficSafetyCamera) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 func (x *TrafficSafetyCamera) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Anger ikonid för kameratypen
 // EN: Describe iconid for camera type
 func (x *TrafficSafetyCamera) IconID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.IconId
 }
 
 // SV: Unikt id för kameran
 // EN: Uniquely id for the camera
 func (x *TrafficSafetyCamera) ID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Namn på kameran
 // EN: Name on the camera
 func (x *TrafficSafetyCamera) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 
 // SV: Vägnummer som mätplatsen står vid
 // EN: Roadnumber which the measuring point stands at
 func (x *TrafficSafetyCamera) RoadNumber() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadNumber
 }
 
 // EN: Specifies when the object is stored.
 // SV: Anger när objektet är sparat.
 func (x *TrafficSafetyCamera) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
@@ -100,11 +127,17 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Geometrisk punkt i koordinatsystem SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Geometrisk punkt i koordinatsystem WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 

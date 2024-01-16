@@ -38,76 +38,121 @@ func (x *RailCrossing) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 
 // SV: Tidpunkt då plankorsningens data senast ändrades
 func (x *RailCrossing) DataLastUpdated() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.DataLastUpdated
 }
 
 // SV: Anger att dataposten raderats
 func (x *RailCrossing) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Plankorsningens femsiffriga idnummer
 func (x *RailCrossing) LevelCrossingID() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.LevelCrossingId
 }
 
 // SV: Id för rutt, används för att referera till andra datamängder med samma id
 func (x *RailCrossing) RailwayRouteID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RailwayRouteId
 }
 
 // SV: Id för rutt, används för att referera till andra datamängder med samma id
 func (x *RailCrossing) RoadRouteID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadRouteId
 }
 
 // SV: Antal spår i plankorsningen
 func (x *RailCrossing) NumberOfTracks() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.NumberOfTracks
 }
 
 // SV: Driftläge, T.ex. "I drift", "Stängd", "Okänd" eller "Blankt" (okänd)
 func (x *RailCrossing) OperatingMode() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.OperatingMode
 }
 
 // SV: Tågflöde, vid värde 0 eller inget angivet värde så saknas uppgifter om tågflöde.
 func (x *RailCrossing) TrainFlow() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TrainFlow
 }
 
 // SV: Portalhöjd vänster sida uttryckt i meter med högst två decimaler.<br /> Värdemängd: 0: Uppgift saknas, 9: Portal finns inte
 func (x *RailCrossing) PortalHeightLeft() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PortalHeightLeft
 }
 
 // SV: Portalhöjd höger sida uttryckt i meter med högst två decimaler.<br /> Värdemängd: 0: Uppgift saknas, 9: Portal finns inte
 func (x *RailCrossing) PortalHeightRight() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PortalHeightRight
 }
 
 // SV: Alternativt vägnamn
 func (x *RailCrossing) RoadNameAlternative() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadNameAlternative
 }
 
 // SV: Kommunalt gatunamn
 func (x *RailCrossing) RoadNameOfficial() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadNameOfficial
 }
 
 // SV: Vägprofil tvär kurva. Kurva nära plankorsningen där ett vägfordon med släp riskerar att fastna. <br /> Värdemängd: 0: uppgift saknas, 1: Ja, 2: Nej
 func (x *RailCrossing) RoadProfileCrossCurve() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadProfileCrossCurve
 }
 
 // SV: Vägprofil vägkrön. Vertikal vägprofil där ett vägfordon med låg markfrigång riskerar att fastna. <br /> Värdemängd: 0: Uppgift saknas, 1: Ja, 2: Nej
 func (x *RailCrossing) RoadProfileCrest() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadProfileCrest
 }
 
 // SV: Vägprofil brant lutning. Vägbanan inom 25 meter från plankorsningen lutar mer än +/- 35 promille. <br /> Värdemängd: 0: uppgift saknas, 1: Ja, 2: Nej
 func (x *RailCrossing) RoadProfileSteepSlope() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.RoadProfileSteepSlope
 }
 
@@ -129,25 +174,40 @@ func (x *RailCrossing) RoadProtectionBases() []RoadProtectionBase {
 
 // SV: Bandel
 func (x *RailCrossing) TrackPortion() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TrackPortion
 }
 
 // SV: Plankorsningens meter-tal enligt banans längdmätning
 func (x *RailCrossing) Meter() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Meter
 }
 
 // SV: Plankorsningens kilometer-tal enligt banans längdmätning
 func (x *RailCrossing) Kilometer() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Kilometer
 }
 
 func (x *RailCrossing) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Tidpunkt då dataposten ändrades
 func (x *RailCrossing) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
@@ -166,11 +226,17 @@ func (x *RoadProtectionAddition) UnmarshalXML(d *xml.Decoder, start xml.StartEle
 
 // SV: Skyddsalternativ, tillägg <br /><div class="toggleTitle">Värdemängd</div><div class="toggle arrowR" /><div class="toggleContent"> 1: Förenklad bevakning alternativ 1 – Vakt bevakar <br /> 2: Förenklad bevakning alternativ 2 – Stopp framför <br /> 3: Förenklad bevakning alternativ 3 – Sth 10 <br /> 4: Förenklad bevakning alternativ 4 – Vakt går före <br /> E: Enkel ljussignal <br /> F: Förlängd förringningstid <br /> Gf: Gångfålla <br /> H: Hinderdetektor <br /> P: Plattformsanläggning med gul signalbild ”STOP” och/eller vita bommar <br /> S: Stoppmärke <br /> V: Ägovägsbom <br /> b: Signalering mot banan som halvbomsprincipen </div>
 func (x *RoadProtectionAddition) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Skyddsalternativ, tillägg - Beskrivning av kod
 func (x *RoadProtectionAddition) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -189,11 +255,17 @@ func (x *RoadProtectionBase) UnmarshalXML(d *xml.Decoder, start xml.StartElement
 
 // SV: Skyddsalternativ, grund <br /><div class="toggleTitle">Värdemängd</div><div class="toggle arrowR" /><div class="toggleContent"> A: Helbommar <br /> B: Halvbommar <br /> C: Ljussignaler <br /> CD: Ljus- och ljudsignaler <br /> D: Ljudsignaler <br /> K: Kryssmärke <br /> O: Oskyddad <br /> -: Saknas </div>
 func (x *RoadProtectionBase) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Skyddsalternativ, grund - Beskrivning av kod
 func (x *RoadProtectionBase) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -212,11 +284,17 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Geometrisk punkt i koordinatsystem SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Geometrisk punkt i koordinatsystem WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 

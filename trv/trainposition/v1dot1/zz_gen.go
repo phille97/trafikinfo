@@ -39,52 +39,79 @@ func (x *TrainPosition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 // SV: Tåginformation
 // EN: Train information
 func (x *TrainPosition) Train() *Train {
+	if x.data == nil {
+		return new(Train)
+	}
 	return &Train{data: x.data.Train}
 }
 
 // SV: Senast registrerade position för tåget
 // EN: Last known position of the train
 func (x *TrainPosition) Position() *Position {
+	if x.data == nil {
+		return new(Position)
+	}
 	return &Position{data: x.data.Position}
 }
 
 // SV: Tiden då positionen uppmättes
 // EN: The time when the position was measured
 func (x *TrainPosition) TimeStamp() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TimeStamp
 }
 
 // SV: Tågets aktuell status
 // EN: The train's current status
 func (x *TrainPosition) Status() *Status {
+	if x.data == nil {
+		return new(Status)
+	}
 	return &Status{data: x.data.Status}
 }
 
 // SV: Tågets bäring i grader
 // EN: The train's bearing in degrees
 func (x *TrainPosition) Bearing() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Bearing
 }
 
 // SV: Tågets hastighet i kilometer per timme
 // EN: The train's speed in kilometers per hour
 func (x *TrainPosition) Speed() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Speed
 }
 
 // SV: Versionsnumret för ett tågs position
 // EN: The version number for a train's position
 func (x *TrainPosition) VersionNumber() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.VersionNumber
 }
 
 // EN: Specifies when the object is stored.
 // SV: Anger när objektet är sparat.
 func (x *TrainPosition) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 func (x *TrainPosition) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
@@ -104,30 +131,45 @@ func (x *Train) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 // SV: Operativt tågnummer
 // EN: Operational train number
 func (x *Train) OperationalTrainNumber() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.OperationalTrainNumber
 }
 
 // SV: Det operativa tågets utgångsdag
 // EN: The operational train's departure day
 func (x *Train) OperationalTrainDepartureDate() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.OperationalTrainDepartureDate
 }
 
 // SV: Tågets uppdragsnummer
 // EN: The train's daily journey plan number
 func (x *Train) JourneyPlanNumber() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.JourneyPlanNumber
 }
 
 // SV: Tåguppdragets utgångsdag
 // EN: Daily journey plan departure day
 func (x *Train) JourneyPlanDepartureDate() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.JourneyPlanDepartureDate
 }
 
 // SV: Tågets annonserade tågnummer (tågnumret som står på biljetten)
 // EN: The train's advertised train number
 func (x *Train) AdvertisedTrainNumber() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.AdvertisedTrainNumber
 }
 
@@ -147,12 +189,18 @@ func (x *Position) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 // SV: Koordinater uttryckt i formatet sweref99tm
 // EN: Coordinates in sweref99tm format
 func (x *Position) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Koordinater uttryckt i formatet wgs84
 // EN: Coordinates in wgs84 format
 func (x *Position) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 
@@ -172,6 +220,9 @@ func (x *Status) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 // SV: Flagga som visar om tåget är aktivt
 // EN: A flag that shows whether or not the train is active
 func (x *Status) Active() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Active
 }
 

@@ -38,26 +38,41 @@ func (x *TrainAnnouncement) UnmarshalXML(d *xml.Decoder, start xml.StartElement)
 
 // SV: Aktivitetens unika id
 func (x *TrainAnnouncement) ActivityID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ActivityId
 }
 
 // SV: "Ankomst" eller "Avgang"
 func (x *TrainAnnouncement) ActivityType() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ActivityType
 }
 
 // SV: Anger om ankomsten/avgången annonseras i tidtabell
 func (x *TrainAnnouncement) Advertised() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Advertised
 }
 
 // SV: Tidtabellstid
 func (x *TrainAnnouncement) AdvertisedTimeAtLocation() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.AdvertisedTimeAtLocation
 }
 
 // SV: Annonserat tågnummer (tågnumret som står på biljetten)
 func (x *TrainAnnouncement) AdvertisedTrainIdent() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.AdvertisedTrainIdent
 }
 
@@ -72,16 +87,25 @@ func (x *TrainAnnouncement) Bookings() []Booking {
 
 // SV: Anger om ankomsten/avgången är inställd
 func (x *TrainAnnouncement) Canceled() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Canceled
 }
 
 // SV: Anger att dataposten raderats
 func (x *TrainAnnouncement) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Utgångsdatum för det Operativa tågnumret.
 func (x *TrainAnnouncement) DepartureDateOTN() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.DepartureDateOTN
 }
 
@@ -96,11 +120,17 @@ func (x *TrainAnnouncement) Deviations() []Deviation {
 
 // SV: Tidpunkt för beräknad ankomst eller avgång
 func (x *TrainAnnouncement) EstimatedTimeAtLocation() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EstimatedTimeAtLocation
 }
 
 // SV: Anger om en beräknad tid är preliminär. Notera att om den beräknade tiden är preliminär så innebär det att den kan ändras både framåt och bakåt, ett tåg kan alltså t.ex avgå tidigare än beräknad tidpunkt om den också är markerad som preliminär.
 func (x *TrainAnnouncement) EstimatedTimeIsPreliminary() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EstimatedTimeIsPreliminary
 }
 
@@ -115,41 +145,65 @@ func (x *TrainAnnouncement) FromLocations() []FromLocation {
 
 // SV: Namnet på trafikinformationsägaren
 func (x *TrainAnnouncement) InformationOwner() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.InformationOwner
 }
 
 // SV: Det operativa tågets ankomst- eller avgångstid enligt tidtabell (kan skilja sig från den annonserade tiden).
 func (x *TrainAnnouncement) LocationDateTimeOTN() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationDateTimeOTN
 }
 
 // SV: Signatur för stationen
 func (x *TrainAnnouncement) LocationSignature() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationSignature
 }
 
 // SV: Url till trafikägarens mobila hemsida
 func (x *TrainAnnouncement) MobileWebLink() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.MobileWebLink
 }
 
 // SV: Tidpunkt då dataposten ändrades
 func (x *TrainAnnouncement) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 // SV: Anger i vilken ordning tåget nyutrustats. Om ingen nyutrustning skett kommer värdet vara noll
 func (x *TrainAnnouncement) NewEquipment() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.NewEquipment
 }
 
 // SV: Det järnvägsföretag som utför järnvägstrafik, alltså kör tåget, för en trafikorganisatör.
 func (x *TrainAnnouncement) Operator() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Operator
 }
 
 // SV: Operativt tågnummer (OTN).
 func (x *TrainAnnouncement) OperationalTrainNumber() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.OperationalTrainNumber
 }
 
@@ -164,11 +218,17 @@ func (x *TrainAnnouncement) OtherInformation() []OtherInformation {
 
 // SV: Anger en planerad försening och dess giltighet anges med PlannedEstimatedTimeAtLocationIsValid-flaggan
 func (x *TrainAnnouncement) PlannedEstimatedTimeAtLocation() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PlannedEstimatedTimeAtLocation
 }
 
 // SV: Anger om PlaneradBeraknadTid är giltig. Kommer sättas till false när en operativ beräknad tidrapport, tidrapport eller slopningsrapport skapas
 func (x *TrainAnnouncement) PlannedEstimatedTimeAtLocationIsValid() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PlannedEstimatedTimeAtLocationIsValid
 }
 
@@ -183,6 +243,9 @@ func (x *TrainAnnouncement) ProductInformation() []ProductInformation {
 
 // SV: Tågets annonserade avgångsdatum
 func (x *TrainAnnouncement) ScheduledDepartureDateTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ScheduledDepartureDateTime
 }
 
@@ -197,11 +260,17 @@ func (x *TrainAnnouncement) Services() []Service {
 
 // SV: När tåget har ankommit eller avgått
 func (x *TrainAnnouncement) TimeAtLocation() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TimeAtLocation
 }
 
 // SV: När tåget har ankommit eller avgått, med sekunder
 func (x *TrainAnnouncement) TimeAtLocationWithSeconds() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TimeAtLocationWithSeconds
 }
 
@@ -216,6 +285,9 @@ func (x *TrainAnnouncement) ToLocations() []ToLocation {
 
 // SV: Spår
 func (x *TrainAnnouncement) TrackAtLocation() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TrackAtLocation
 }
 
@@ -230,6 +302,9 @@ func (x *TrainAnnouncement) TrainCompositions() []TrainComposition {
 
 // SV: Ägaren av det aktuella tågläget
 func (x *TrainAnnouncement) TrainOwner() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.TrainOwner
 }
 
@@ -260,11 +335,17 @@ func (x *TrainAnnouncement) ViaToLocations() []ViaToLocation {
 
 // SV: Url till trafikägarens hemsida
 func (x *TrainAnnouncement) WebLink() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WebLink
 }
 
 // SV: Namn på trafikinfoägaren att använda i länkar
 func (x *TrainAnnouncement) WebLinkName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WebLinkName
 }
 
@@ -283,11 +364,17 @@ func (x *Booking) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Kod för bokningsinformation
 func (x *Booking) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Text som ger bokningsinformation, ex: "Vagn 4 obokad", "Platsbiljett krävs"
 func (x *Booking) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -306,11 +393,17 @@ func (x *Deviation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Kod för avvikelse
 func (x *Deviation) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Text som beskriver avvikelse, ex: "Buss ersätter", "Spårändrat", "Kort tåg", "Ej servering", "Oväder"
 func (x *Deviation) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -329,16 +422,25 @@ func (x *FromLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 
 // SV: Namn på frånstation. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. FromLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur från-stationer ska annonseras.
 func (x *FromLocation) LocationName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationName
 }
 
 // SV: Prioritet för vilka stationer som ska visas.
 func (x *FromLocation) Priority() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Priority
 }
 
 // SV: Vilken ordning stationer ska visas.
 func (x *FromLocation) Order() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Order
 }
 
@@ -357,11 +459,17 @@ func (x *OtherInformation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) 
 
 // SV: Kod för övrig annonseringsinformation
 func (x *OtherInformation) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Text som ger övrig annonseringinformation, ex. "Trevlig resa!", "Bakre vagnen låst!", "Ingen påstigning"
 func (x *OtherInformation) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -380,11 +488,17 @@ func (x *ProductInformation) UnmarshalXML(d *xml.Decoder, start xml.StartElement
 
 // SV: Kod för produkten
 func (x *ProductInformation) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Text som beskriver produkten, ex. "Västtågen", "SJ Snabbtåg", "Pågatågen"
 func (x *ProductInformation) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -403,11 +517,17 @@ func (x *Service) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Kod för service
 func (x *Service) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Text som beskriver den service som finns, ex "Bistro", "Sov-och liggvagnar", "Kiosk"
 func (x *Service) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -426,16 +546,25 @@ func (x *ToLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 
 // SV: Tillstation för tåget. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. ToLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur till-stationer ska annonseras.
 func (x *ToLocation) LocationName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationName
 }
 
 // SV: Prioritet för vilka stationer som ska visas.
 func (x *ToLocation) Priority() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Priority
 }
 
 // SV: Vilken ordning stationer ska visas.
 func (x *ToLocation) Order() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Order
 }
 
@@ -454,11 +583,17 @@ func (x *TrainComposition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) 
 
 // SV: Kod för tågsammansättning
 func (x *TrainComposition) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Text som beskriver tågsammansättning, ex: "Vagnsordning 7, 6, 5, 4, 2, 1"
 func (x *TrainComposition) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -477,11 +612,17 @@ func (x *TypeOfTraffic) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 
 // SV: Kod för trafiktyp
 func (x *TypeOfTraffic) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Trafiktypen, ex. "Buss", "Pendeltåg", "Taxi", "Tåg".
 func (x *TypeOfTraffic) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -500,16 +641,25 @@ func (x *ViaFromLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) e
 
 // SV: Namn på via frånstation. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. ViaFromLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur från-stationer ska annonseras.
 func (x *ViaFromLocation) LocationName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationName
 }
 
 // SV: Prioritet för vilka stationer som ska visas.
 func (x *ViaFromLocation) Priority() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Priority
 }
 
 // SV: Vilken ordning stationer ska visas.
 func (x *ViaFromLocation) Order() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Order
 }
 
@@ -528,16 +678,25 @@ func (x *ViaToLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 
 // SV: Namn på vi. Notera att det avser vad som ska annonseras för resenärerna, det vill säga vad som ska visas på skyltar o.dyl. ViaToLocation kan med andra ord ha olika innehåll för samma tåg vid olika stationer och olika innehåll vad ankomster respektive avgångar. Fältet anger hur till-stationer ska annonseras.
 func (x *ViaToLocation) LocationName() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationName
 }
 
 // SV: Prioritet för vilka stationer som ska visas.
 func (x *ViaToLocation) Priority() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Priority
 }
 
 // SV: Vilken ordning stationer ska visas.
 func (x *ViaToLocation) Order() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Order
 }
 

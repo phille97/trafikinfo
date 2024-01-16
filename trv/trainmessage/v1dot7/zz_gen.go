@@ -38,30 +38,48 @@ func (x *TrainMessage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 
 // SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 func (x *TrainMessage) Counties() []int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CountyNo
 }
 
 // SV: Anger att dataposten raderats
 func (x *TrainMessage) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Informationstext
 func (x *TrainMessage) ExternalDescription() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ExternalDescription
 }
 
 func (x *TrainMessage) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Unikt id för händelsen
 func (x *TrainMessage) EventID() string {
+	if x.data == nil {
+		return *new(string)
+	}
 	return x.data.EventId
 }
 
 // SV: Redaktörssatt rubrik för händelsen, kan i vissa fall vara samma som ReasonCodeText
 func (x *TrainMessage) Header() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Header
 }
 
@@ -84,26 +102,41 @@ func (x *TrainMessage) TrafficImpact() []TrafficImpact {
 
 // SV: Händelsens starttid
 func (x *TrainMessage) StartDateTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.StartDateTime
 }
 
 // SV: Prognos för då händelsen inte längre väntas påverka trafiken
 func (x *TrainMessage) PrognosticatedEndDateTimeTrafficImpact() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.PrognosticatedEndDateTimeTrafficImpact
 }
 
 // SV: Händelsens sluttid
 func (x *TrainMessage) EndDateTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.EndDateTime
 }
 
 // SV: Tidpunkt då händelsen uppdaterades
 func (x *TrainMessage) LastUpdateDateTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LastUpdateDateTime
 }
 
 // SV: Tidpunkt då dataposten ändrades
 func (x *TrainMessage) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
@@ -122,11 +155,17 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Geometrisk punkt i koordinatsystem SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Geometrisk punkt i koordinatsystem WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 
@@ -145,11 +184,17 @@ func (x *ReasonCode) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 
 // SV: Orsakskod
 func (x *ReasonCode) Code() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Code
 }
 
 // SV: Beskrivande text för orsakskod
 func (x *ReasonCode) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
@@ -168,11 +213,17 @@ func (x *TrafficImpact) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 
 // SV: Anger om trafikpåverkan är bekräftad. När påverkan inte är bekräftad anges alla platser på den aktuella sträckan som påverkade
 func (x *TrafficImpact) IsConfirmed() bool {
+	if x.data == nil {
+		return *new(bool)
+	}
 	return x.data.IsConfirmed
 }
 
 // SV: Påverkad sträckas frånstation, för att avgöra om stationen är påverkad, se fältet AffectedLocation
 func (x *TrafficImpact) FromLocations() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.FromLocation
 }
 
@@ -187,6 +238,9 @@ func (x *TrafficImpact) AffectedLocations() []AffectedLocation {
 
 // SV: Påverkad sträckas tillstation, för att avgöra om stationen är påverkad, se fältet AffectedLocation
 func (x *TrafficImpact) ToLocations() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ToLocation
 }
 
@@ -205,12 +259,18 @@ func (x *AffectedLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) 
 
 // SV: Signatur för den påverkade platsen
 func (x *AffectedLocation) LocationSignature() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.LocationSignature
 }
 
 // SV: Visar huruvida platsen ska ingå i trafikinformationen eller inte
 // EN: Indicates if the location should be included in traffic information
 func (x *AffectedLocation) ShouldBeTrafficInformed() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ShouldBeTrafficInformed
 }
 

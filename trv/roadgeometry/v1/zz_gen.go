@@ -38,46 +38,73 @@ func (x *RoadGeometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 
 // SV: Län.
 func (x *RoadGeometry) County() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.County
 }
 
 // SV: Huvudvägnummer.
 func (x *RoadGeometry) RoadMainNumber() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.RoadMainNumber
 }
 
 // SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
 func (x *RoadGeometry) RoadSubNumber() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.RoadSubNumber
 }
 
 func (x *RoadGeometry) Direction() *Direction {
+	if x.data == nil {
+		return new(Direction)
+	}
 	return &Direction{data: x.data.Direction}
 }
 
 // SV: Längd.
 func (x *RoadGeometry) Length() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.Length
 }
 
 func (x *RoadGeometry) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
 // SV: Datum för när vägdata hämtades ut från källsystemen.
 func (x *RoadGeometry) TimeStamp() time.Time {
+	if x.data == nil {
+		return *new(time.Time)
+	}
 	return x.data.TimeStamp
 }
 
 // SV: Tidpunkt då dataposten ändrades
 // EN: Time when the data item was changed
 func (x *RoadGeometry) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 // SV: Anger att dataposten raderats
 // EN: Indicates that the data record has been deleted
 func (x *RoadGeometry) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
@@ -96,11 +123,17 @@ func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Riktning. Värde.
 func (x *Direction) Code() int {
+	if x.data == nil {
+		return *new(int)
+	}
 	return x.data.Code
 }
 
 // SV: Riktning. Beskrivning.
 func (x *Direction) Value() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -119,11 +152,17 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Geometrisk 3D punkt i koordinatsystem SWEREF99TM. Vissa koordinater kan sakna höjdvärde. Höjdvärdet anges i meter i <a href="https://www.lantmateriet.se/sv/Kartor-och-geografisk-information/GPS-och-geodetisk-matning/Referenssystem/Hojdsystem/RH-2000/" target="_blank">RH 2000</a>
 func (x *Geometry) SWEREF99TM3D() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM3D
 }
 
 // SV: Geometrisk 3D punkt i koordinatsystem WGS84. Vissa koordinater kan sakna höjdvärde. Höjdvärdet anges i meter i <a href="https://www.lantmateriet.se/sv/Kartor-och-geografisk-information/GPS-och-geodetisk-matning/Referenssystem/Hojdsystem/RH-2000/" target="_blank">RH 2000</a>
 func (x *Geometry) WGS843D() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS843D
 }
 

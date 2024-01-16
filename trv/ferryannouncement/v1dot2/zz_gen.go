@@ -37,82 +37,130 @@ func (x *FerryAnnouncement) UnmarshalXML(d *xml.Decoder, start xml.StartElement)
 }
 
 func (x *FerryAnnouncement) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Avgångstid
 // EN: Departure time
 func (x *FerryAnnouncement) DepartureTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.DepartureTime
 }
 
 // SV: Referens till Deviation.Id i objektet Situation
 // EN: Reference to Deviation.Id in the Situation object
 func (x *FerryAnnouncement) DeviationID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.DeviationId
 }
 
 // SV: Avgångens id
 // EN: Departure id
 func (x *FerryAnnouncement) ID() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Information om avgången
 // EN: Information about the departure
 func (x *FerryAnnouncement) Info() []string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Info
 }
 
 // SV: Avgår från
 // EN: Departing from
 func (x *FerryAnnouncement) FromHarbor() *FromHarbor {
+	if x.data == nil {
+		return new(FromHarbor)
+	}
 	return &FromHarbor{data: x.data.FromHarbor}
 }
 
 // SV: Ankommer till
 // EN: Arriving at
 func (x *FerryAnnouncement) ToHarbor() *ToHarbor {
+	if x.data == nil {
+		return new(ToHarbor)
+	}
 	return &ToHarbor{data: x.data.ToHarbor}
 }
 
 // SV: Information om rutten
 // EN: Route information
 func (x *FerryAnnouncement) Route() *Route {
+	if x.data == nil {
+		return new(Route)
+	}
 	return &Route{data: x.data.Route}
 }
 
 // EN: Specifies when the object is stored.
 // SV: Anger när objektet är sparat.
 func (x *FerryAnnouncement) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 func (x *FerryAnnouncement) CheckoutID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Checkoutid
 }
 
 func (x *FerryAnnouncement) Checkouts() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Checkouts
 }
 
 func (x *FerryAnnouncement) LeasedUntil() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Leaseduntil
 }
 
 func (x *FerryAnnouncement) Acknowledged() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Acknowledged
 }
 
 func (x *FerryAnnouncement) StatusCode() *uint8 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Statuscode
 }
 
 func (x *FerryAnnouncement) ItemsAcknowledged() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Itemsacknowledged
 }
 
 func (x *FerryAnnouncement) ItemsLeft() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Itemsleft
 }
 
@@ -132,12 +180,18 @@ func (x *FromHarbor) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 // SV: Avgår från (id)
 // EN: Departing from (id)
 func (x *FromHarbor) ID() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Avgår från (namn)
 // EN: Departing from (name)
 func (x *FromHarbor) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 
@@ -157,12 +211,18 @@ func (x *ToHarbor) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 // SV: Ankommer till (id)
 // EN: Arriving at (id)
 func (x *ToHarbor) ID() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Ankommer till (namn)
 // EN: Arriving at (name)
 func (x *ToHarbor) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 
@@ -182,30 +242,45 @@ func (x *Route) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 // SV: Beskrivande text om rutten
 // EN: Descriptive text about the route
 func (x *Route) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
 // SV: Ruttens id
 // EN: Route id
 func (x *Route) ID() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Ruttens namn
 // EN: Route name
 func (x *Route) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 
 // SV: Ruttens kortnamn
 // EN: Short name of the route
 func (x *Route) Shortname() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Shortname
 }
 
 // SV: Ledtyp
 // EN: led type
 func (x *Route) Type() *Type {
+	if x.data == nil {
+		return new(Type)
+	}
 	return &Type{data: x.data.Type}
 }
 
@@ -225,12 +300,18 @@ func (x *Type) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 // SV: Id för ledtypen
 // EN: id for led type
 func (x *Type) ID() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Namn för ledtypen (ex. Vändande)
 // EN: Name for the led type (ex. Flipping)
 func (x *Type) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 

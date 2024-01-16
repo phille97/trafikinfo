@@ -37,60 +37,99 @@ func (x *Icon) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 func (x *Icon) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
 // SV: Kort beskrivning av ikonen
 func (x *Icon) Description() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Description
 }
 
 // SV: Ikonens id, refereras från andra objekttyper i fältet IconId
 func (x *Icon) ID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Förhandsgranskning av ikon där bilden representeras som en Base64-enkodad sträng.<br /> En webbläsare kan direkt visa en Base64-enkodad bild utan att behöva göra ett anrop till servern. Detta görs i HTML genom att img-elementets src-attribut inleds med <code>data:image/png;base64,</code> följt av själva datat. Exempel:<br /><pre class="prettyprint">&lt;img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" /&gt;</pre> Resultat: <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" /><br /> Läs mer om Base64 - <a href="http://sv.wikipedia.org/wiki/Base64" target="_blank">http://sv.wikipedia.org/wiki/Base64</a>
 func (x *Icon) Base64() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Base64
 }
 
 // SV: Url till ikonbilden<br /> Notera att det finns tre olika ikonbilder vilka specifieras med Url-parametern 'type'. Om ingen typ specificeras returneras png32x32.<br /><table class="table table-bordered table-condensed table-striped"><tr class="headerRowClass"><th>type</th><th>Beskrivning</th></tr><tr><td>svg</td><td>Filformat SVG</td></tr><tr><td>png16x16</td><td>Filformat PNG i storlek 16x16 pixlar</td></tr><tr><td>png32x32</td><td>Filformat PNG i storlek 32x32 pixlar</td></tr></table><p> Exempel:<br /> http://api.trafikinfo.trafikverket.se/v1/icons/roadwork?type=png32x32 </p><p> SVG (Scalable Vector Graphics) är ett XML-baserat format för vektorgrafik. En vektorbaserad bild kan skalas upp utan kvalitetsförsämring.<br /> Läs mer om SVG – <a href="http://sv.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank">http://sv.wikipedia.org/wiki/Scalable_Vector_Graphics</a></p><p> PNG (Portable Network Graphics) är ett format för icke-fotografiska bilder så som t.ex. ikoner.<br /> Läs mer om PNG– <a href="http://sv.wikipedia.org/wiki/PNG" target="_blank">http://sv.wikipedia.org/wiki/PNG</a></p>
 func (x *Icon) URL() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Url
 }
 
 // EN: Specifies when the object is stored.
 // SV: Anger när objektet är sparat.
 func (x *Icon) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 func (x *Icon) CheckoutID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Checkoutid
 }
 
 func (x *Icon) Checkouts() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Checkouts
 }
 
 func (x *Icon) LeasedUntil() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Leaseduntil
 }
 
 func (x *Icon) Acknowledged() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Acknowledged
 }
 
 func (x *Icon) StatusCode() *uint8 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Statuscode
 }
 
 func (x *Icon) ItemsAcknowledged() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Itemsacknowledged
 }
 
 func (x *Icon) ItemsLeft() *int64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Itemsleft
 }
 

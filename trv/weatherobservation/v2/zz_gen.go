@@ -38,18 +38,30 @@ func (x *WeatherObservation) UnmarshalXML(d *xml.Decoder, start xml.StartElement
 
 // SV: Tidpunkt som observationen avser, inklusive tidzon för att hantera sommartid och normaltid.
 func (x *WeatherObservation) Sample() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Sample
 }
 
 func (x *WeatherObservation) Weather() *Weather {
+	if x.data == nil {
+		return new(Weather)
+	}
 	return &Weather{data: x.data.Weather}
 }
 
 func (x *WeatherObservation) Surface() *SurfaceCondition {
+	if x.data == nil {
+		return new(SurfaceCondition)
+	}
 	return &SurfaceCondition{data: x.data.Surface}
 }
 
 func (x *WeatherObservation) Air() *AirCondition {
+	if x.data == nil {
+		return new(AirCondition)
+	}
 	return &AirCondition{data: x.data.Air}
 }
 
@@ -62,43 +74,70 @@ func (x *WeatherObservation) Wind() []WindCondition {
 }
 
 func (x *WeatherObservation) DeicingChemical() *DeicingChemical {
+	if x.data == nil {
+		return new(DeicingChemical)
+	}
 	return &DeicingChemical{data: x.data.DeicingChemical}
 }
 
 func (x *WeatherObservation) Subsurface() *SubsurfaceCondition {
+	if x.data == nil {
+		return new(SubsurfaceCondition)
+	}
 	return &SubsurfaceCondition{data: x.data.Subsurface}
 }
 
 func (x *WeatherObservation) Aggregated5minutes() *Aggregated {
+	if x.data == nil {
+		return new(Aggregated)
+	}
 	return &Aggregated{data: x.data.Aggregated5minutes}
 }
 
 func (x *WeatherObservation) Aggregated10minutes() *Aggregated {
+	if x.data == nil {
+		return new(Aggregated)
+	}
 	return &Aggregated{data: x.data.Aggregated10minutes}
 }
 
 func (x *WeatherObservation) Aggregated30minutes() *Aggregated {
+	if x.data == nil {
+		return new(Aggregated)
+	}
 	return &Aggregated{data: x.data.Aggregated30minutes}
 }
 
 // SV: Unik publiceringsidentitet för observationen.
 func (x *WeatherObservation) ID() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 func (x *WeatherObservation) Measurepoint() *Location {
+	if x.data == nil {
+		return new(Location)
+	}
 	return &Location{data: x.data.Measurepoint}
 }
 
 // SV: Tidpunkt då dataposten ändrades i cachen
 // EN: Time when the data item was changed in the cache
 func (x *WeatherObservation) ModifiedTime() *time.Time {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.ModifiedTime
 }
 
 // SV: Anger att dataposten raderats
 // EN: Indicates that the data record has been deleted
 func (x *WeatherObservation) Deleted() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Deleted
 }
 
@@ -117,15 +156,24 @@ func (x *Location) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Unik identitet för en mätpunkt
 func (x *Location) ID() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Id
 }
 
 // SV: Mätpunktens namn
 func (x *Location) Name() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Name
 }
 
 func (x *Location) Geometry() *Geometry {
+	if x.data == nil {
+		return new(Geometry)
+	}
 	return &Geometry{data: x.data.Geometry}
 }
 
@@ -144,6 +192,9 @@ func (x *Weather) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Vilken typ av nederbörd som detekterats
 func (x *Weather) Precipitation() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Precipitation
 }
 
@@ -162,41 +213,65 @@ func (x *SurfaceCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) 
 
 // SV: Vägytans temperatur. Value [C]
 func (x *SurfaceCondition) Temperature() *Celsius {
+	if x.data == nil {
+		return new(Celsius)
+	}
 	return &Celsius{data: x.data.Temperature}
 }
 
 // SV: Förekomst av vatten på vägytan.
 func (x *SurfaceCondition) Water() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Water
 }
 
 // SV: Förekomst av is på vägytan.
 func (x *SurfaceCondition) Ice() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Ice
 }
 
 // SV: Förekomst av snö på vägytan.
 func (x *SurfaceCondition) Snow() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Snow
 }
 
 // SV: Value [0-1]
 func (x *SurfaceCondition) Grip() *Grip {
+	if x.data == nil {
+		return new(Grip)
+	}
 	return &Grip{data: x.data.Grip}
 }
 
 // SV: Vattendjup på vägytan. Value [mm]
 func (x *SurfaceCondition) WaterDepth() *Millimeters {
+	if x.data == nil {
+		return new(Millimeters)
+	}
 	return &Millimeters{data: x.data.WaterDepth}
 }
 
 // SV: Isdjup på vägytan. Value [mm]
 func (x *SurfaceCondition) IceDepth() *Millimeters {
+	if x.data == nil {
+		return new(Millimeters)
+	}
 	return &Millimeters{data: x.data.IceDepth}
 }
 
 // SV: Snödjup på vägytan.
 func (x *SurfaceCondition) SnowDepth() *Snow {
+	if x.data == nil {
+		return new(Snow)
+	}
 	return &Snow{data: x.data.SnowDepth}
 }
 
@@ -215,26 +290,41 @@ func (x *AirCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) erro
 
 // SV: Lufttemperatur. Value [C]
 func (x *AirCondition) Temperature() *Celsius {
+	if x.data == nil {
+		return new(Celsius)
+	}
 	return &Celsius{data: x.data.Temperature}
 }
 
 // SV: Daggpunkt, den temperatur där vatten kondenserar. Value [C]
 func (x *AirCondition) Dewpoint() *Celsius {
+	if x.data == nil {
+		return new(Celsius)
+	}
 	return &Celsius{data: x.data.Dewpoint}
 }
 
 // SV: Relativ luftfuktighet. Andel av den fukt som luften kan bära. Vid 100% är luften mättad. Value [%]
 func (x *AirCondition) RelativeHumidity() *Percentage {
+	if x.data == nil {
+		return new(Percentage)
+	}
 	return &Percentage{data: x.data.RelativeHumidity}
 }
 
 // SV: Den sträcka det finns sikt. Value [m]
 func (x *AirCondition) VisibleDistance() *Meters {
+	if x.data == nil {
+		return new(Meters)
+	}
 	return &Meters{data: x.data.VisibleDistance}
 }
 
 // SV: Förekomst av tillräckligt klart väder för att vara av vikt för vägytans temperatur.
 func (x *AirCondition) CloudFree() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.CloudFree
 }
 
@@ -252,16 +342,25 @@ func (x *WindCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 }
 
 func (x *WindCondition) Height() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Height
 }
 
 // SV: Mått på vindhastighet vid en viss tidpunkt. Medelvärde över tiominutersperiod t.o.m. tidpunkten. Value [m/s]
 func (x *WindCondition) Speed() *MetersPerSecond {
+	if x.data == nil {
+		return new(MetersPerSecond)
+	}
 	return &MetersPerSecond{data: x.data.Speed}
 }
 
 // SV: Mått på vindriktning vid en viss tidpunkt. Medelvärde över tiominutersperiod t.o.m. tidpunkten. Value [grader]
 func (x *WindCondition) Direction() *Degrees {
+	if x.data == nil {
+		return new(Degrees)
+	}
 	return &Degrees{data: x.data.Direction}
 }
 
@@ -280,6 +379,9 @@ func (x *DeicingChemical) UnmarshalXML(d *xml.Decoder, start xml.StartElement) e
 
 // SV: Mängd salt vid mätpunkten. Value [g/kvm]
 func (x *DeicingChemical) Amount() *GramPerSquareMeter {
+	if x.data == nil {
+		return new(GramPerSquareMeter)
+	}
 	return &GramPerSquareMeter{data: x.data.Amount}
 }
 
@@ -319,11 +421,17 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Geometrisk punkt som observationen avser i koordinatsystem SWEREF99TM
 func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SWEREF99TM
 }
 
 // SV: Geometrisk punkt som observationen avser i koordinatsystem WGS84
 func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.WGS84
 }
 
@@ -342,15 +450,24 @@ func (x *Celsius) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Mätvärdets ursprung
 func (x *Celsius) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *Celsius) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *Celsius) Value() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -369,15 +486,24 @@ func (x *Grip) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Mätvärdets ursprung
 func (x *Grip) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *Grip) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *Grip) Value() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -396,15 +522,24 @@ func (x *Millimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error
 
 // SV: Mätvärdets ursprung
 func (x *Millimeters) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *Millimeters) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *Millimeters) Value() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -423,11 +558,17 @@ func (x *Snow) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Mängd snö. Value [mm]
 func (x *Snow) Solid() *Millimeters {
+	if x.data == nil {
+		return new(Millimeters)
+	}
 	return &Millimeters{data: x.data.Solid}
 }
 
 // SV: Mängd vatten som snön motsvarar i smält form. Value [mm]
 func (x *Snow) WaterEquivalent() *Millimeters {
+	if x.data == nil {
+		return new(Millimeters)
+	}
 	return &Millimeters{data: x.data.WaterEquivalent}
 }
 
@@ -446,15 +587,24 @@ func (x *Percentage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 
 // SV: Mätvärdets ursprung
 func (x *Percentage) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *Percentage) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *Percentage) Value() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -473,15 +623,24 @@ func (x *Meters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Mätvärdets ursprung
 func (x *Meters) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *Meters) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *Meters) Value() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -500,15 +659,24 @@ func (x *MetersPerSecond) UnmarshalXML(d *xml.Decoder, start xml.StartElement) e
 
 // SV: Mätvärdets ursprung
 func (x *MetersPerSecond) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *MetersPerSecond) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *MetersPerSecond) Value() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -527,15 +695,24 @@ func (x *Degrees) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 // SV: Mätvärdets ursprung
 func (x *Degrees) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *Degrees) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *Degrees) Value() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -554,15 +731,24 @@ func (x *GramPerSquareMeter) UnmarshalXML(d *xml.Decoder, start xml.StartElement
 
 // SV: Mätvärdets ursprung
 func (x *GramPerSquareMeter) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *GramPerSquareMeter) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *GramPerSquareMeter) Value() *float64 {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -581,11 +767,17 @@ func (x *GroundCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) e
 
 // SV: Det djup som observationen avser och är negativt för att återspegla att det avser under markytan. Value [cm]
 func (x *GroundCondition) Depth() *IntegerCentimeters {
+	if x.data == nil {
+		return new(IntegerCentimeters)
+	}
 	return &IntegerCentimeters{data: x.data.Depth}
 }
 
 // SV: Temperatur (grader celsius) vid ett visst djup i marken. Value [C]
 func (x *GroundCondition) Temperature() *Celsius {
+	if x.data == nil {
+		return new(Celsius)
+	}
 	return &Celsius{data: x.data.Temperature}
 }
 
@@ -603,10 +795,16 @@ func (x *Aggregated) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 }
 
 func (x *Aggregated) Wind() *WindConditionAggregated {
+	if x.data == nil {
+		return new(WindConditionAggregated)
+	}
 	return &WindConditionAggregated{data: x.data.Wind}
 }
 
 func (x *Aggregated) Precipitation() *PrecipitationConditionAggregated {
+	if x.data == nil {
+		return new(PrecipitationConditionAggregated)
+	}
 	return &PrecipitationConditionAggregated{data: x.data.Precipitation}
 }
 
@@ -625,15 +823,24 @@ func (x *IntegerCentimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement
 
 // SV: Mätvärdets ursprung
 func (x *IntegerCentimeters) Origin() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Origin
 }
 
 // SV: Sensorernas beteckning
 func (x *IntegerCentimeters) SensorNames() *string {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.SensorNames
 }
 
 func (x *IntegerCentimeters) Value() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Value
 }
 
@@ -651,16 +858,25 @@ func (x *WindConditionAggregated) UnmarshalXML(d *xml.Decoder, start xml.StartEl
 }
 
 func (x *WindConditionAggregated) Height() *int {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Height
 }
 
 // SV: Högst uppmätt 3-sekundersmedelvärde under perioden. Value [m/s]
 func (x *WindConditionAggregated) SpeedMax() *MetersPerSecond {
+	if x.data == nil {
+		return new(MetersPerSecond)
+	}
 	return &MetersPerSecond{data: x.data.SpeedMax}
 }
 
 // SV: Value [m/s]
 func (x *WindConditionAggregated) SpeedAverage() *MetersPerSecond {
+	if x.data == nil {
+		return new(MetersPerSecond)
+	}
 	return &MetersPerSecond{data: x.data.SpeedAverage}
 }
 
@@ -679,26 +895,41 @@ func (x *PrecipitationConditionAggregated) UnmarshalXML(d *xml.Decoder, start xm
 
 // SV: Förekomst av regn.
 func (x *PrecipitationConditionAggregated) Rain() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Rain
 }
 
 // SV: Förekomst av snö.
 func (x *PrecipitationConditionAggregated) Snow() *bool {
+	if x.data == nil {
+		return nil
+	}
 	return x.data.Snow
 }
 
 // SV: Mängd regn under perioden. Value [mm]
 func (x *PrecipitationConditionAggregated) RainSum() *Millimeters {
+	if x.data == nil {
+		return new(Millimeters)
+	}
 	return &Millimeters{data: x.data.RainSum}
 }
 
 // SV: Mängd snö under perioden.
 func (x *PrecipitationConditionAggregated) SnowSum() *Snow {
+	if x.data == nil {
+		return new(Snow)
+	}
 	return &Snow{data: x.data.SnowSum}
 }
 
 // SV: Mängd vatten som nederbörden under perioden motsvarar. Value [mm]
 func (x *PrecipitationConditionAggregated) TotalWaterEquivalent() *Millimeters {
+	if x.data == nil {
+		return new(Millimeters)
+	}
 	return &Millimeters{data: x.data.TotalWaterEquivalent}
 }
 
