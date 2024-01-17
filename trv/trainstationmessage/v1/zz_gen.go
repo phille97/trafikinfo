@@ -23,6 +23,23 @@ func ObjectType() trv.ObjectType {
 	}
 }
 
+type MediaType string
+
+const (
+	MediaTypeMonitor         MediaType = "Monitor"
+	MediaTypePlattformsskylt MediaType = "Plattformsskylt"
+	MediaTypeUtrop           MediaType = "Utrop"
+)
+
+type MessageStatus2 string
+
+const (
+	MessageStatus2Lag       MessageStatus2 = "Lag"
+	MessageStatus2Normal    MessageStatus2 = "Normal"
+	MessageStatus2Hog       MessageStatus2 = "Hog"
+	MessageStatus2StortLage MessageStatus2 = "StortLage"
+)
+
 type TrainStationMessage struct {
 	data *schema.TrainStationMessage
 }
@@ -47,11 +64,11 @@ func (x *TrainStationMessage) ID() *string {
 
 // SV: Anger vilket presentationsmedia meddelandet gäller.<br /> 'Monitor'<br /> 'Plattformsskylt'<br /> 'Utrop'
 // EN: Type of media.<br /> 'Monitor' - Monitor<br /> 'Plattformsskylt'- Platform sign<br /> 'Utrop' - Announcement
-func (x *TrainStationMessage) MediaType() *string {
+func (x *TrainStationMessage) MediaType() *MediaType {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.MediaType
+	return (*MediaType)(x.data.MediaType)
 }
 
 // SV: Stationens platssignatur
@@ -110,11 +127,11 @@ func (x *TrainStationMessage) FreeText() *string {
 
 // SV: Meddelandets viktighetsgrad
 // EN: How important the message are (in relative to other messages)
-func (x *TrainStationMessage) Status() *string {
+func (x *TrainStationMessage) Status() *MessageStatus2 {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Status
+	return (*MessageStatus2)(x.data.Status)
 }
 
 // SV: Version på detta meddelande

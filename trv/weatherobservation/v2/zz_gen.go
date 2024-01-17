@@ -23,6 +23,25 @@ func ObjectType() trv.ObjectType {
 	}
 }
 
+type PrecipTypeMeasure string
+
+const (
+	PrecipTypeMeasureNo           PrecipTypeMeasure = "no"
+	PrecipTypeMeasureRain         PrecipTypeMeasure = "rain"
+	PrecipTypeMeasureFreezingRain PrecipTypeMeasure = "freezing_rain"
+	PrecipTypeMeasureSnow         PrecipTypeMeasure = "snow"
+	PrecipTypeMeasureSleet        PrecipTypeMeasure = "sleet"
+	PrecipTypeMeasureYes          PrecipTypeMeasure = "yes"
+)
+
+// SV: Vindsensorns höjdplacering [m]
+type WindSensorHeight int
+
+const (
+	WindSensorHeight6  WindSensorHeight = 6
+	WindSensorHeight10 WindSensorHeight = 10
+)
+
 type WeatherObservation struct {
 	data *schema.WeatherObservation
 }
@@ -194,11 +213,11 @@ func (x *Weather) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Vilken typ av nederbörd som detekterats
-func (x *Weather) Precipitation() *string {
+func (x *Weather) Precipitation() *PrecipTypeMeasure {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Precipitation
+	return (*PrecipTypeMeasure)(x.data.Precipitation)
 }
 
 type SurfaceCondition struct {
@@ -344,11 +363,11 @@ func (x *WindCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) err
 	return nil
 }
 
-func (x *WindCondition) Height() *int {
+func (x *WindCondition) Height() *WindSensorHeight {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Height
+	return (*WindSensorHeight)(x.data.Height)
 }
 
 // SV: Mått på vindhastighet vid en viss tidpunkt. Medelvärde över tiominutersperiod t.o.m. tidpunkten. Value [m/s]
@@ -455,11 +474,11 @@ func (x *Celsius) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Mätvärdets ursprung
-func (x *Celsius) Origin() *string {
+func (x *Celsius) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -491,11 +510,11 @@ func (x *Grip) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Mätvärdets ursprung
-func (x *Grip) Origin() *string {
+func (x *Grip) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -527,11 +546,11 @@ func (x *Millimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error
 }
 
 // SV: Mätvärdets ursprung
-func (x *Millimeters) Origin() *string {
+func (x *Millimeters) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -592,11 +611,11 @@ func (x *Percentage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error 
 }
 
 // SV: Mätvärdets ursprung
-func (x *Percentage) Origin() *string {
+func (x *Percentage) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -628,11 +647,11 @@ func (x *Meters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Mätvärdets ursprung
-func (x *Meters) Origin() *string {
+func (x *Meters) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -664,11 +683,11 @@ func (x *MetersPerSecond) UnmarshalXML(d *xml.Decoder, start xml.StartElement) e
 }
 
 // SV: Mätvärdets ursprung
-func (x *MetersPerSecond) Origin() *string {
+func (x *MetersPerSecond) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -700,11 +719,11 @@ func (x *Degrees) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 }
 
 // SV: Mätvärdets ursprung
-func (x *Degrees) Origin() *string {
+func (x *Degrees) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -736,11 +755,11 @@ func (x *GramPerSquareMeter) UnmarshalXML(d *xml.Decoder, start xml.StartElement
 }
 
 // SV: Mätvärdets ursprung
-func (x *GramPerSquareMeter) Origin() *string {
+func (x *GramPerSquareMeter) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -814,6 +833,15 @@ func (x *Aggregated) Precipitation() *PrecipitationConditionAggregated {
 	return &PrecipitationConditionAggregated{data: x.data.Precipitation}
 }
 
+// SV: Mätvärdets ursprung
+type Origin string
+
+const (
+	OriginCalculated Origin = "calculated"
+	OriginMeasured   Origin = "measured"
+	OriginEstimated  Origin = "estimated"
+)
+
 type IntegerCentimeters struct {
 	data *schema.IntegerCentimeters
 }
@@ -828,11 +856,11 @@ func (x *IntegerCentimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement
 }
 
 // SV: Mätvärdets ursprung
-func (x *IntegerCentimeters) Origin() *string {
+func (x *IntegerCentimeters) Origin() *Origin {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Origin
+	return (*Origin)(x.data.Origin)
 }
 
 // SV: Sensorernas beteckning
@@ -863,11 +891,11 @@ func (x *WindConditionAggregated) UnmarshalXML(d *xml.Decoder, start xml.StartEl
 	return nil
 }
 
-func (x *WindConditionAggregated) Height() *int {
+func (x *WindConditionAggregated) Height() *WindSensorHeight {
 	if x.data == nil {
 		return nil
 	}
-	return x.data.Height
+	return (*WindSensorHeight)(x.data.Height)
 }
 
 // SV: Högst uppmätt 3-sekundersmedelvärde under perioden. Value [m/s]

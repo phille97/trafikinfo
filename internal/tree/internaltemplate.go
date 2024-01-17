@@ -27,7 +27,9 @@ func (r *Root) InternalTemplate(w io.Writer) {
 	))
 
 	for _, node := range r.Nodes {
-		node.InternalRender(w)
+		if len(node.Type.Choices) == 0 {
+			node.InternalRender(w)
+		}
 	}
 }
 
@@ -47,7 +49,11 @@ func (n *Node) InternalRenderField(w io.Writer) {
 	} else {
 		io.WriteString(w, "*")
 	}
-	io.WriteString(w, n.Type.Kind+" "+tag(n)+"\n")
+	typ := n.Type.Kind
+	if len(n.Type.Choices) != 0 {
+		typ = n.Type.Undertype
+	}
+	io.WriteString(w, typ+" "+tag(n)+"\n")
 }
 
 func (n *Node) InternalRender(w io.Writer) {

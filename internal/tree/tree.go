@@ -64,8 +64,28 @@ func WalkXSD(schema *xsd.Schema) *Root {
 	// However, for our purpose we don't care about the restrictions as we
 	// don't implement validation routines
 	for _, st := range schema.SimpleTypes {
-		n := Node{Name: goName(st.Name), Type: typeMap(st.Restriction.Base)}
+		if len(st.Restriction.Enumerations) == 0 {
+			n := Node{Name: goName(st.Name), Type: typeMap(st.Restriction.Base)}
+			tm.Types[goName(n.Name)] = &n
+			continue
+		}
+
+		typ := Type{
+			Kind:      st.Name,
+			Choices:   make([]string, 0, len(st.Restriction.Enumerations)),
+			Undertype: typeMap(st.Restriction.Base).Kind,
+		}
+		for _, enum := range st.Restriction.Enumerations {
+			typ.Choices = append(typ.Choices, enum.Value)
+		}
+		n := Node{Name: goName(st.Name), Type: typ}
+		if anot := st.Annotation; anot != nil {
+			for _, doc := range anot.Documentations {
+				n.Documentation = append(n.Documentation, DocString(doc))
+			}
+		}
 		tm.Types[goName(n.Name)] = &n
+		allNodes = append(allNodes, &n)
 	}
 
 	// Create a mapping of attributeGroups, so that when we run into a
@@ -101,7 +121,13 @@ func WalkXSD(schema *xsd.Schema) *Root {
 
 		// Elements on a complexType are fields in a struct
 		for _, elem := range AllElems(ct) {
-			n.Nodes = append(n.Nodes, ElemToNode(elem))
+			node, isType := ElemToNode(elem)
+			n.Nodes = append(n.Nodes, node)
+			if isType {
+				nt := Node{Name: node.Name, Type: node.Type, Documentation: node.Documentation}
+				tm.Types[goName(nt.Name)] = &nt
+				allNodes = append(allNodes, &nt)
+			}
 		}
 
 		// Resolve any attribute groups, and create fields on the struct
@@ -140,11 +166,13 @@ func WalkXSD(schema *xsd.Schema) *Root {
 			// In order to respect the intention of the XSD, create field
 			// definitions for the elements in the base type first
 			for _, elem := range AllElems(extCt) {
-				n.Nodes = append(n.Nodes, ElemToNode(elem))
+				node, _ := ElemToNode(elem)
+				n.Nodes = append(n.Nodes, node)
 			}
 			// Now add the additional fields of our type to it
 			for _, elem := range cc.Extension.Sequence.Elements {
-				n.Nodes = append(n.Nodes, ElemToNode(elem))
+				node, _ := ElemToNode(elem)
+				n.Nodes = append(n.Nodes, node)
 			}
 		}
 		allNodes = append(allNodes, n)
@@ -196,8 +224,10 @@ func (n *Node) ResolveType(tm TypeMap) {
 }
 
 type Type struct {
-	Kind  string
-	Final bool
+	Kind      string
+	Final     bool
+	Choices   []string
+	Undertype string
 }
 
 func AllElems(cts xsd.ComplexType) []xsd.Element {
@@ -219,20 +249,34 @@ func AttrToNode(attr xsd.Attribute) *Node {
 	return &n
 }
 
-func ElemToNode(elem xsd.Element) *Node {
+func ElemToNode(elem xsd.Element) (*Node, bool) {
 	if elem.Reference == "Deleted" {
 		return &Node{
 			Name: "Deleted",
 			Type: Type{Kind: "bool", Final: true},
-		}
+		}, false
 	}
 	if elem.Reference != "" {
 		panic(fmt.Sprintf("cannot handle elem with ref: %s", elem.Reference))
 	}
 	n := Node{
 		Name:     goName(elem.Name),
-		Type:     typeMap(elem.Type),
 		Multiple: elem.Multiple,
+	}
+	isType := false
+	if st := elem.SimpleType; st != nil && len(st.Restriction.Enumerations) != 0 {
+		isType = true
+		n.Type = Type{
+			Kind:      elem.Name,
+			Undertype: typeMap(st.Restriction.Base).Kind,
+		}
+		choices := []string{}
+		for _, c := range st.Restriction.Enumerations {
+			choices = append(choices, c.Value)
+		}
+		n.Type.Choices = choices
+	} else {
+		n.Type = typeMap(elem.Type)
 	}
 	if anot := elem.Annotation; anot != nil {
 		for _, doc := range anot.Documentations {
@@ -240,7 +284,7 @@ func ElemToNode(elem xsd.Element) *Node {
 		}
 	}
 
-	return &n
+	return &n, isType
 }
 
 func DocString(doc xsd.Documentation) string {
@@ -297,7 +341,12 @@ func upperFirst(s string) string {
 }
 
 func goName(s string) string {
-	s = strings.ReplaceAll(upperFirst(s), "-", "_")
+	s = strings.ReplaceAll(s, "-", "_")
+	sl := strings.Split(s, "_")
+	for i, elem := range sl[:] {
+		sl[i] = upperFirst(elem)
+	}
+	s = strings.Join(sl, "")
 	s = strings.TrimSuffix(s, "Measure")
 	s = strings.TrimSuffix(s, "Config")
 	if s == "Amount" {

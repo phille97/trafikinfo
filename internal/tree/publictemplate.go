@@ -145,6 +145,11 @@ func (n *Node) PublicRender(w io.Writer, name string) {
 		io.WriteString(w, "\n")
 	}
 
+	if len(n.Type.Choices) != 0 && name == "" {
+		n.PublicRenderEnum(w)
+		return
+	}
+
 	if name != "" {
 		n.PublicRenderMethod(w, name)
 		return
@@ -189,12 +194,33 @@ return x.data.%s
 	return data
 `, n.Name, n.Type.Kind, n.Name, n.Type.Kind))
 		} else {
-			io.WriteString(w, fmt.Sprintf(`if x.data == nil {
-	return &%s{}
-}
-return &%s{data: x.data.%s}
-`, n.Type.Kind, n.Type.Kind, n.Name))
+			if len(n.Type.Choices) == 0 {
+				io.WriteString(w, fmt.Sprintf(
+					"if x.data == nil { return &%s{} }\n",
+					n.Type.Kind))
+				io.WriteString(w, fmt.Sprintf(
+					"return &%s{data: x.data.%s}\n",
+					n.Type.Kind, n.Name))
+			} else {
+				io.WriteString(w, "if x.data == nil { return nil }\n")
+				io.WriteString(w, fmt.Sprintf("return (*%s)(x.data.%s)\n",
+					n.Type.Kind, goIdentifier(n.Name, n.Multiple)))
+			}
 		}
 	}
 	io.WriteString(w, "}\n\n")
+}
+
+func (n *Node) PublicRenderEnum(w io.Writer) {
+	io.WriteString(w, "type "+n.Type.Kind+" "+n.Type.Undertype+"\n\n")
+	io.WriteString(w, "const(\n")
+	for _, c := range n.Type.Choices {
+		io.WriteString(w, n.Type.Kind+goName(c)+" "+n.Type.Kind+" = ")
+		if n.Type.Undertype == "string" {
+			io.WriteString(w, `"`+c+`"`+"\n")
+		} else {
+			io.WriteString(w, c+"\n")
+		}
+	}
+	io.WriteString(w, ")\n\n")
 }
