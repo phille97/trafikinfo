@@ -50,6 +50,9 @@ type TrainAnnouncement struct {
 	Operator *string `xml:"Operator,omitempty"`
 	// SV: Operativt tågnummer (OTN).
 	OperationalTrainNumber *string `xml:"OperationalTrainNumber,omitempty"`
+	// SV: Identifierare i TAF/TAP format.
+	// EN: Identifiers in TAF/TAP format.
+	OperationalTransportIdentifiers []CompositIdentifierOperationalType `xml:"OperationalTransportIdentifiers,omitempty"`
 	// SV: Kod för övrig annonseringsinformation och övrig annonseringsinformation, ex. "Trevlig resa!", "Bakre fordon går låst!", "Ingen påstigning"
 	OtherInformation []OtherInformation `xml:"OtherInformation,omitempty"`
 	// SV: Anger en planerad försening och dess giltighet anges med PlannedEstimatedTimeAtLocationIsValid-flaggan
@@ -105,6 +108,27 @@ type FromLocation struct {
 	Priority *int `xml:"Priority,omitempty"`
 	// SV: Vilken ordning stationer ska visas.
 	Order *int `xml:"Order,omitempty"`
+}
+
+type CompositIdentifierOperationalType struct {
+	// SV: Ger möjlighet att beskriva olika objekt inför en ansökan, TR = Train, PA = Path, CR = Case Reference, PR = Path Request
+	// EN: Provides a possibility for differentiantion between the objects: Train, Path, Case Reference and Path Request
+	ObjectType *string `xml:"ObjectType,omitempty"`
+	// SV: Företagskod UIC för den som utfärdat identiteten
+	// EN: Identifies the RU, IM or other company involved in the Rail Transport Chain
+	Company *string `xml:"Company,omitempty"`
+	// SV: Huvuddelen av identifieraren.
+	// EN: It is the main part of identifier and is determent by the company that creates it.
+	Core *string `xml:"Core,omitempty"`
+	// SV: Varianten visar relationen mellan två id'n som refererar samma affärsobjekt
+	// EN: The variant shows a relationship between two identifiers referring to the same business case
+	Variant *string `xml:"Variant,omitempty"`
+	// SV: Refererar till tågplan där behovet ska exekveras
+	// EN: Refers to the timetable period in which the business will be carried out
+	TimetableYear *int64 `xml:"TimetableYear,omitempty"`
+	// SV: Starten då behovet exekveras
+	// EN: The start of the date/time in effect
+	StartDate *time.Time `xml:"StartDate,omitempty"`
 }
 
 type OtherInformation struct {

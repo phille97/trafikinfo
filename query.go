@@ -4,7 +4,7 @@ import (
 	"encoding/xml"
 	"strconv"
 
-	"code.dny.dev/trafikinfo/trv"
+	"github.com/phille97/trafikinfo/trv"
 )
 
 // Query is used to request information from the Trafikinfo API

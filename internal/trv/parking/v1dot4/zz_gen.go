@@ -10,24 +10,22 @@ import (
 type Parking struct {
 	// SV: <div class="toggleTitle">Länsnummer</div> <div class="toggle arrowR"> </div> <div class="toggleContent"> <table class="table table-condensed"> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 	CountyNo []int `xml:"CountyNo,omitempty"`
-	// SV: Anger att dataposten raderats
-	Deleted   *bool       `xml:"Deleted,omitempty"`
-	Equipment []Equipment `xml:"Equipment,omitempty"`
-	// SV: Avstånd till närmaste stad
-	DistanceToNearestCity *string `xml:"DistanceToNearestCity,omitempty"`
-	// SV: Lägesbeskrivning
-	LocationDescription *string `xml:"LocationDescription,omitempty"`
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
+	Deleted *bool `xml:"Deleted,omitempty"`
 	// SV: Beskrivning av parkeringen
-	Description *string    `xml:"Description,omitempty"`
-	Facility    []Facility `xml:"Facility,omitempty"`
+	Description *string `xml:"Description,omitempty"`
+	// SV: Avstånd till närmaste stad
+	DistanceToNearestCity *string     `xml:"DistanceToNearestCity,omitempty"`
+	Equipment             []Equipment `xml:"Equipment,omitempty"`
+	Facility              []Facility  `xml:"Facility,omitempty"`
+	Geometry              *Geometry   `xml:"Geometry,omitempty"`
 	// SV: Ikonid
 	IconId *string `xml:"IconId,omitempty"`
 	// SV: Parkeringens id
 	Id *string `xml:"Id,omitempty"`
-	// SV: Parkeringens position
-	Geometry *Geometry `xml:"Geometry,omitempty"`
-	// SV: Tidpunkt då dataposten ändrades
-	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
+	// SV: Lägesbeskrivning
+	LocationDescription *string `xml:"LocationDescription,omitempty"`
 	// SV: Parkeringens namn
 	Name *string `xml:"Name,omitempty"`
 	// SV: Anger om rastplatsen är öppen eller stängd (open, closed)
@@ -41,6 +39,16 @@ type Parking struct {
 	// SV: Anger användningsområde
 	UsageSenario           []string                 `xml:"UsageSenario,omitempty"`
 	VehicleCharacteristics []VehicleCharacteristics `xml:"VehicleCharacteristics,omitempty"`
+	// EN: Specifies when the object is stored.
+	// SV: Anger när objektet är sparat.
+	ModifiedTime      *time.Time `xml:"ModifiedTime,omitempty"`
+	Checkoutid        *string    `xml:"checkoutid,attr,omitempty"`
+	Checkouts         *int64     `xml:"checkouts,attr,omitempty"`
+	Leaseduntil       *time.Time `xml:"leaseduntil,attr,omitempty"`
+	Acknowledged      *time.Time `xml:"acknowledged,attr,omitempty"`
+	Statuscode        *uint8     `xml:"statuscode,attr,omitempty"`
+	Itemsacknowledged *int64     `xml:"itemsacknowledged,attr,omitempty"`
+	Itemsleft         *int64     `xml:"itemsleft,attr,omitempty"`
 }
 
 type Equipment struct {

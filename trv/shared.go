@@ -16,7 +16,7 @@ import (
 //
 // The ObjectType method in each public package will return this
 // object with all information correctly filled in. It can be passed
-// as the argument to [code.dny.dev/trafikinfo.NewQuery].
+// as the argument to [github.com/phille97/trafikinfo.NewQuery].
 type ObjectType struct {
 	Kind      string
 	Version   string

@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"code.dny.dev/trafikinfo/internal/meta"
+	"github.com/phille97/trafikinfo/internal/meta"
 )
 
 var (
@@ -21,30 +21,30 @@ var (
 	schemaPath = "/apb/prod/schema/%s/%s/data?annotations=true"
 	trvSchemas = map[string][]string{
 		// Choo choo motherfucker
-		"RailCrossing":        {"1.5"},
-		"ReasonCode":          {"1"},
-		"TrainAnnouncement":   {"1.9"},
-		"TrainMessage":        {"1.7"},
-		"TrainPosition":       {"1.1"},
-		"TrainStation":        {"1.4"},
-		"TrainStationMessage": {"1"},
+		"Road.Infrastructure.RailCrossing": {"1.5"},
+		"Rail.TrafficInfo.ReasonCode":      {"1.0"},
+		"TrainAnnouncement":                {"1.9"},
+		"TrainMessage":                     {"1.7"},
+		"TrainPosition":                    {"1.1"},
+		"TrainStation":                     {"1.4"},
+		"TrainStationMessage":              {"1.0"},
 		// Road surface
-		"MeasurementData100": {"1"},
-		"MeasurementData20":  {"1"},
-		"PavementData":       {"1"},
-		"RoadData":           {"1"},
-		"RoadGeometry":       {"1"},
+		"Road.PavementInfo.MeasurementData100": {"1"},
+		"Road.PavementInfo.MeasurementData20":  {"1"},
+		"Road.PavementInfo.PavementData":       {"1"},
+		"Road.PavementInfo.RoadData":           {"1"},
+		"Road.PavementInfo.RoadGeometry":       {"1"},
 		// Vroom vroom
-		"Camera":              {"1"},
-		"Icon":                {"1.1"},
-		"Parking":             {"1.4"},
-		"RoadCondition":       {"1.2"},
-		"Situation":           {"1.5"},
-		"TrafficFlow":         {"1.4"},
-		"TrafficSafetyCamera": {"1"},
-		"TravelTimeRoute":     {"1.5"},
-		"WeatherMeasurepoint": {"2"},
-		"WeatherObservation":  {"2"},
+		"Road.Infrastructure.Camera":              {"1.0"},
+		"Road.Infrastructure.Icon":                {"1.1"},
+		"Road.Infrastructure.Parking":             {"1.4"},
+		"Road.TrafficInfo.RoadCondition":          {"1.2"},
+		"Road.TrafficInfo.Situation":              {"1.5"},
+		"Road.TrafficInfo.TrafficFlow":            {"1.4"},
+		"Road.Infrastructure.TrafficSafetyCamera": {"1.0"},
+		"Road.TrafficInfo.TravelTimeRoute":        {"1.5"},
+		"Road.WeatherInfo.WeatherMeasurepoint":    {"2.1"},
+		"Road.WeatherInfo.WeatherObservation":     {"2.1"},
 		// Toot toot
 		"FerryAnnouncement": {"1.2"},
 		"FerryRoute":        {"1.2"},
@@ -69,11 +69,12 @@ func download(ctx context.Context, dir string) error {
 				schemaName = fmt.Sprintf("%s.%s", namespace, schemaName)
 			}
 			url := base + fmt.Sprintf(schemaPath, schemaName, version)
+			fmt.Printf("fetching %s @ %s from %s\n", schema, version, url)
 			req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
 			if err != nil {
 				return err
 			}
-			req.Header.Set("User-Agent", "trafikgen (+https://code.dny.dev/trafikinfo)")
+			req.Header.Set("User-Agent", "trafikgen (+https://github.com/phille97/trafikinfo)")
 			log.Printf("download starting: %s @ %s...\n", schema, version)
 			resp, err := client.Do(req)
 			if err != nil {
@@ -81,6 +82,9 @@ func download(ctx context.Context, dir string) error {
 			}
 			defer resp.Body.Close()
 			if resp.StatusCode != 200 {
+				// dump body to string for better error message
+				body, _ := io.ReadAll(resp.Body)
+				log.Printf("response body: %s\n", string(body))
 				return fmt.Errorf("failed to fetch: %s %s, status: %d", schema, version, resp.StatusCode)
 			}
 			if _, err := io.Copy(out, resp.Body); err != nil {

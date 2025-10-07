@@ -11,9 +11,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"code.dny.dev/trafikinfo/internal/meta"
-	"code.dny.dev/trafikinfo/internal/tree"
-	"code.dny.dev/trafikinfo/internal/xsd"
+	"github.com/phille97/trafikinfo/internal/meta"
+	"github.com/phille97/trafikinfo/internal/tree"
+	"github.com/phille97/trafikinfo/internal/xsd"
 )
 
 func generate(_ context.Context, dir string, output string) error {

@@ -18,7 +18,7 @@
 //
 // A number of endpoints return IconID elements, either at the root of the
 // object, or in one of its embedded objects. Each of these IconID strings can
-// be plugged into a query for the [code.dny.dev/trafikinfo/trv/icon/v1dot1.Icon]
+// be plugged into a query for the [github.com/phille97/trafikinfo/trv/icon/v1dot1.Icon]
 // resource. It in turn will give you access to a base64 encoded PNG in the response,
 // as well as a URL at which the icon can be retrieved.
 //
@@ -34,7 +34,7 @@
 //
 // Much of the code in this library is automatically generated using the XSD
 // schemas provided by Trafikverket. This results in some pointer-heavy structs
-// in [code.dny.dev/trafikinfo/internal/trv] as all fields are effectively
+// in [github.com/phille97/trafikinfo/internal/trv] as all fields are effectively
 // optional.
 //
 // In order to make it easier to drill down into nested structs, the

@@ -75,7 +75,7 @@ func newCmd(name, descr string) *flag.FlagSet {
 	f := flag.NewFlagSet(name, flag.ExitOnError)
 	f.Usage = func() {
 		fmt.Fprintf(f.Output(), "Usage of: %s\n\n", fmt.Sprintf("%s %s", os.Args[0], name))
-		fmt.Fprintf(f.Output(), descr+"\n")
+		fmt.Fprintf(f.Output(), "%s", descr+"\n")
 		f.PrintDefaults()
 	}
 

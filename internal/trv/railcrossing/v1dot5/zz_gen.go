@@ -10,12 +10,18 @@ import (
 type RailCrossing struct {
 	// SV: Tidpunkt då plankorsningens data senast ändrades
 	DataLastUpdated *time.Time `xml:"DataLastUpdated,omitempty"`
-	// SV: Anger att dataposten raderats
-	Deleted *bool `xml:"Deleted,omitempty"`
+	// SV: Information om plankorsningen gäller från och med detta datum.
+	FromDate *time.Time `xml:"FromDate,omitempty"`
+	// SV: Information om plankorsningen gäller till och med detta datum.
+	ToDate *time.Time `xml:"ToDate,omitempty"`
+	// SV: Unikt id för plankorsning.
+	ObjectId *string `xml:"ObjectId,omitempty"`
 	// SV: Plankorsningens femsiffriga idnummer
 	LevelCrossingId *int `xml:"LevelCrossingId,omitempty"`
 	// SV: Id för rutt, används för att referera till andra datamängder med samma id
 	RailwayRouteId *string `xml:"RailwayRouteId,omitempty"`
+	// SV: Id för vägen
+	RouteId *string `xml:"RouteId,omitempty"`
 	// SV: Id för rutt, används för att referera till andra datamängder med samma id
 	RoadRouteId *string `xml:"RoadRouteId,omitempty"`
 	// SV: Antal spår i plankorsningen
@@ -24,42 +30,52 @@ type RailCrossing struct {
 	OperatingMode *string `xml:"OperatingMode,omitempty"`
 	// SV: Tågflöde, vid värde 0 eller inget angivet värde så saknas uppgifter om tågflöde.
 	TrainFlow *int `xml:"TrainFlow,omitempty"`
-	// SV: Portalhöjd vänster sida uttryckt i meter med högst två decimaler.<br /> Värdemängd: 0: Uppgift saknas, 9: Portal finns inte
+	// SV: Portalhöjd höger
 	PortalHeightLeft *float64 `xml:"PortalHeightLeft,omitempty"`
-	// SV: Portalhöjd höger sida uttryckt i meter med högst två decimaler.<br /> Värdemängd: 0: Uppgift saknas, 9: Portal finns inte
+	// SV: Portalhöjd höger
 	PortalHeightRight *float64 `xml:"PortalHeightRight,omitempty"`
+	// SV: Vägnamn.
+	RoadName *string `xml:"RoadName,omitempty"`
 	// SV: Alternativt vägnamn
 	RoadNameAlternative *string `xml:"RoadNameAlternative,omitempty"`
 	// SV: Kommunalt gatunamn
 	RoadNameOfficial *string `xml:"RoadNameOfficial,omitempty"`
-	// SV: Vägprofil tvär kurva. Kurva nära plankorsningen där ett vägfordon med släp riskerar att fastna. <br /> Värdemängd: 0: uppgift saknas, 1: Ja, 2: Nej
+	// SV: Vägprofil tvär kurva. Kurva nära plankorsningen där ett vägfordon med släp riskerar att fastna. <br xmlns="http://trafikverket.se/RailCrossing.xsd" /> Värdemängd: 0: uppgift saknas, 1: Ja, 2: Nej
 	RoadProfileCrossCurve *int `xml:"RoadProfileCrossCurve,omitempty"`
-	// SV: Vägprofil vägkrön. Vertikal vägprofil där ett vägfordon med låg markfrigång riskerar att fastna. <br /> Värdemängd: 0: Uppgift saknas, 1: Ja, 2: Nej
+	// SV: Vägprofil farligt vägkrön. Vertikal vägprofil där ett vägfordon med låg markfrigång riskerar att fastna.<br xmlns="http://trafikverket.se/RailCrossing.xsd" /> Värdemängd: 0: Uppgift saknas, 1: Ja, 2: Nej
+	RoadProfileDangerousCrest *int `xml:"RoadProfileDangerousCrest,omitempty"`
+	// SV: Vägprofil vägkrön. Vertikal vägprofil där ett vägfordon med låg markfrigång riskerar att fastna. <br xmlns="http://trafikverket.se/RailCrossing.xsd" /> Värdemängd: 0: Uppgift saknas, 1: Ja, 2: Nej
 	RoadProfileCrest *int `xml:"RoadProfileCrest,omitempty"`
-	// SV: Vägprofil brant lutning. Vägbanan inom 25 meter från plankorsningen lutar mer än +/- 35 promille. <br /> Värdemängd: 0: uppgift saknas, 1: Ja, 2: Nej
-	RoadProfileSteepSlope  *int                     `xml:"RoadProfileSteepSlope,omitempty"`
+	// SV: Vägprofil brant lutning. Vägbanan inom 25 meter från plankorsningen lutar mer än +/- 35 promille. <br xmlns="http://trafikverket.se/RailCrossing.xsd" /> Värdemängd: 0: uppgift saknas, 1: Ja, 2: Nej
+	RoadProfileSteepSlope *int `xml:"RoadProfileSteepSlope,omitempty"`
+	// SV: Vägskydd.
+	RoadProtection         *int                     `xml:"RoadProtection,omitempty"`
 	RoadProtectionAddition []RoadProtectionAddition `xml:"RoadProtectionAddition,omitempty"`
 	RoadProtectionBase     []RoadProtectionBase     `xml:"RoadProtectionBase,omitempty"`
 	// SV: Bandel
-	TrackPortion *int `xml:"TrackPortion,omitempty"`
+	TrackPortion *string `xml:"TrackPortion,omitempty"`
 	// SV: Plankorsningens meter-tal enligt banans längdmätning
 	Meter *int `xml:"Meter,omitempty"`
 	// SV: Plankorsningens kilometer-tal enligt banans längdmätning
 	Kilometer *int      `xml:"Kilometer,omitempty"`
 	Geometry  *Geometry `xml:"Geometry,omitempty"`
-	// SV: Tidpunkt då dataposten ändrades
+	// EN: Specifies when the object is stored.
+	// SV: Anger när objektet är sparat.
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
+	Deleted *bool `xml:"Deleted,omitempty"`
 }
 
 type RoadProtectionAddition struct {
-	// SV: Skyddsalternativ, tillägg <br /><div class="toggleTitle">Värdemängd</div><div class="toggle arrowR" /><div class="toggleContent"> 1: Förenklad bevakning alternativ 1 – Vakt bevakar <br /> 2: Förenklad bevakning alternativ 2 – Stopp framför <br /> 3: Förenklad bevakning alternativ 3 – Sth 10 <br /> 4: Förenklad bevakning alternativ 4 – Vakt går före <br /> E: Enkel ljussignal <br /> F: Förlängd förringningstid <br /> Gf: Gångfålla <br /> H: Hinderdetektor <br /> P: Plattformsanläggning med gul signalbild ”STOP” och/eller vita bommar <br /> S: Stoppmärke <br /> V: Ägovägsbom <br /> b: Signalering mot banan som halvbomsprincipen </div>
+	// SV: Skyddsalternativ, tillägg <br xmlns="http://trafikverket.se/RailCrossing.xsd" /><div class="toggleTitle" xmlns="http://trafikverket.se/RailCrossing.xsd">Värdemängd</div><div class="toggle arrowR" xmlns="http://trafikverket.se/RailCrossing.xsd" /><div class="toggleContent" xmlns="http://trafikverket.se/RailCrossing.xsd"> 1: Förenklad bevakning alternativ 1 – Vakt bevakar <br /> 2: Förenklad bevakning alternativ 2 – Stopp framför <br /> 3: Förenklad bevakning alternativ 3 – Sth 10 <br /> 4: Förenklad bevakning alternativ 4 – Vakt går före <br /> E: Enkel ljussignal <br /> F: Förlängd förringningstid <br /> Gf: Gångfålla <br /> H: Hinderdetektor <br /> P: Plattformsanläggning med gul signalbild ”STOP” och/eller vita bommar <br /> S: Stoppmärke <br /> V: Ägovägsbom <br /> b: Signalering mot banan som halvbomsprincipen </div>
 	Code *string `xml:"Code,omitempty"`
 	// SV: Skyddsalternativ, tillägg - Beskrivning av kod
 	Description *string `xml:"Description,omitempty"`
 }
 
 type RoadProtectionBase struct {
-	// SV: Skyddsalternativ, grund <br /><div class="toggleTitle">Värdemängd</div><div class="toggle arrowR" /><div class="toggleContent"> A: Helbommar <br /> B: Halvbommar <br /> C: Ljussignaler <br /> CD: Ljus- och ljudsignaler <br /> D: Ljudsignaler <br /> K: Kryssmärke <br /> O: Oskyddad <br /> -: Saknas </div>
+	// SV: Skyddsalternativ, grund <br xmlns="http://trafikverket.se/RailCrossing.xsd" /><div class="toggleTitle" xmlns="http://trafikverket.se/RailCrossing.xsd">Värdemängd</div><div class="toggle arrowR" xmlns="http://trafikverket.se/RailCrossing.xsd" /><div class="toggleContent" xmlns="http://trafikverket.se/RailCrossing.xsd"> A: Helbommar <br /> B: Halvbommar <br /> C: Ljussignaler <br /> CD: Ljus- och ljudsignaler <br /> D: Ljudsignaler <br /> K: Kryssmärke <br /> O: Oskyddad <br /> -: Saknas </div>
 	Code *string `xml:"Code,omitempty"`
 	// SV: Skyddsalternativ, grund - Beskrivning av kod
 	Description *string `xml:"Description,omitempty"`

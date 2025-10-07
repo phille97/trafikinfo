@@ -10,7 +10,7 @@ import (
 	"slices"
 	"strings"
 
-	"code.dny.dev/trafikinfo/internal/meta"
+	"github.com/phille97/trafikinfo/internal/meta"
 )
 
 var complexSkip = []string{
@@ -23,6 +23,7 @@ type Schema struct {
 	SimpleTypes     []SimpleType     `xml:"simpleType"`
 	AttributeGroups []AttributeGroup `xml:"attributeGroup"`
 	Annotation      []Annotation     `xml:"annotation"`
+	Elements        []Element        `xml:"element"`
 
 	Meta meta.Data `xml:"-"`
 }

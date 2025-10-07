@@ -3,10 +3,10 @@
 </h1>
 <h4 align="center">A Go library for the <a href="https://api.trafikinfo.trafikverket.se/">Trafikinfo API</a> from <a href="https://www.trafikverket.se/">Trafikverket</a></h4>
 <p align="center">
-    <a href="https://github.com/daenney/trafikinfo/actions/workflows/ci.yml"><img src="https://github.com/daenney/trafikinfo/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
-	<a href="https://github.com/daenney/trafikinfo/releases"><img src="https://img.shields.io/github/release/daenney/trafikinfo.svg" alt="Release"></a>
-    <a href="https://pkg.go.dev/code.dny.dev/trafikinfo"><img src="https://pkg.go.dev/badge/code.dny.dev/trafikinfo.svg" alt="GoDoc"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/daenney/trafikinfo" alt="License: MIT"></a>
+    <a href="https://github.com/phille97/trafikinfo/actions/workflows/ci.yml"><img src="https://github.com/phille97/trafikinfo/actions/workflows/ci.yml/badge.svg" alt="Build Status"></a>
+	<a href="https://github.com/phille97/trafikinfo/releases"><img src="https://img.shields.io/github/release/phille97/trafikinfo.svg" alt="Release"></a>
+    <a href="https://pkg.go.dev/github.com/phille97/trafikinfo"><img src="https://pkg.go.dev/badge/github.com/phille97/trafikinfo.svg" alt="GoDoc"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/phille97/trafikinfo" alt="License: MIT"></a>
 </p>
 
 This library provides the necessary primitives to interact with the
@@ -61,5 +61,5 @@ types and versions.
 `TrainStation` | 1.4
 `TrainStationMessage` | 1
 `TravelTimeRoute` | 1.5
-`WeatherMeasurepoint` | 2
-`WeatherObservation` | 2
+`WeatherMeasurepoint` | 2.1
+`WeatherObservation` | 2.1
