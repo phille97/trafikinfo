@@ -1,3 +1,3 @@
-module code.dny.dev/trafikinfo
+module github.com/phille97/trafikinfo
 
 go 1.18

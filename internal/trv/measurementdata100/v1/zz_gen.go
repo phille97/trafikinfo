@@ -9,56 +9,74 @@ import (
 
 type MeasurementData100 struct {
 	// SV: Län
+	// EN: County.
 	County *int `xml:"County,omitempty"`
 	// SV: Huvudvägnummer
+	// EN: Main number.
 	RoadMainNumber *int `xml:"RoadMainNumber,omitempty"`
 	// SV: Undervägnummer. Kallas ibland även punktväg. Måste användas ihop med huvudvägnumret.
+	// EN: Sub number. Must be used in conjunction with the main road number.
 	RoadSubNumber *int       `xml:"RoadSubNumber,omitempty"`
 	Direction     *Direction `xml:"Direction,omitempty"`
 	// SV: Körfält. Räknas från höger sida och startar med körfält 10. Nästa är 20 och kan gå upp till 50.
+	// EN: Lane. Starting from the right side with lane 10. The next one is 20 and can go up to 50.
 	Lane *int `xml:"Lane,omitempty"`
 	// SV: Start löpande längd. Anges i meter. Starten för aktuell åtgärdsinformation angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
+	// EN: Start continous length. Indicated in meters. The start of current action information given in the number of meters from the start of the road number within that county, in the current direction.
 	StartContinuousLength *int `xml:"StartContinuousLength,omitempty"`
-	// SV: Slut löpnande längd. Anges i meter.Slutet för aktuell åtgärdsinformation angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
+	// SV: Slut löpnande längd. Anges i meter. Slutet för aktuell åtgärdsinformation angivet i antal meter från vägnumrets start inom det länet, i aktuell riktning.
+	// EN: End continous length. Indicated in meters. The end of the current action information given in the number of meters from the start of the road number within that county, in the current direction.
 	EndContinuousLength *int `xml:"EndContinuousLength,omitempty"`
 	// SV: Längd i antal meter
+	// EN: Length in meters
 	Length *int `xml:"Length,omitempty"`
 	// SV: Mätdatum. Ett gemensamt datum för en hel mätperiod. Är detta datum som visas i graferna i PMSV3 Analysera sträcka.
+	// EN: Measurement date. A common date for a full measurement period. This date is shown in the graphs PMSV3 Analyze distance.
 	MeasurementDate *time.Time `xml:"MeasurementDate,omitempty"`
 	// SV: Mätdatum exakt. Det exakta mätdatumet för aktuellt mätdata.
-	MeasurementDateSpecific *time.Time `xml:"MeasurementDateSpecific,omitempty"`
-	// SV: Mätdatatyp
-	MeasurementDataType *MeasurementDataType `xml:"MeasurementDataType,omitempty"`
-	// SV: IRI höger medelvärde. Avser jämnhet i längsled. IRI (International Roughness Index). Beräknat mått baserat på uppmätt längsprofil i höger hjulspår.
+	// EN: Measurement date specific. The exact date of the measurement.
+	MeasurementDateSpecific *time.Time           `xml:"MeasurementDateSpecific,omitempty"`
+	MeasurementDataType     *MeasurementDataType `xml:"MeasurementDataType,omitempty"`
+	// SV: IRI höger-medelvärde. Avser jämnhet i längsled. IRI (International Roughness Index). Beräknat mått baserat på uppmätt längsprofil i höger hjulspår.
+	// EN: IRI right-average. Refers to longitudinal smoothness. IRI (International Roughness Index). Calculated measurement based on measured longitudinal profile in the right-hand wheel track.
 	IRIRightAverageValue *float64 `xml:"IRIRightAverageValue,omitempty"`
 	// SV: Kantdjup medelvärde. Kantdjup avser att detektera skador närmast vägrenen. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil.
+	// EN: Average edge depth. Edge depth refers to the detection of damage closest to the roadside. Not measured directly by a measuring vehicle, but calculated afterwards based on measured 20m data on a transverse profile.
 	EdgeDepthAverageValue *float64 `xml:"EdgeDepthAverageValue,omitempty"`
 	// SV: Spårdjup max15 medelvärde. 15 lasrar.
+	// EN: Rut depth max15 average. 15 lasers.
 	RutDepthMax15AverageValue *float64 `xml:"RutDepthMax15AverageValue,omitempty"`
 	// SV: Spårdjup max17 medelvärde. 17 lasrar. Medelvärdet av de största spårdjupen beräknade enligt 'trådprincipen' för 200 profiler inom 20m sträckan. Se TRV metodbeskrivningar för vägytemätning.
+	// EN: Rut depth max17 average. 17 lasers. The average of the maximum rut depths calculated according to the 'wire principle' for 200 profiles within the 20m stretch. See TRV method descriptions for road surface measurement.
 	RutDepthMax17AverageValue *float64 `xml:"RutDepthMax17AverageValue,omitempty"`
-	// SV: MPD Makrotextur medelvärde. beskriver vägytans 'skrovlighet' i våglängdsintervallet 0,5-50 mm. Makrotextur beräknad som MPD. (Mean Profile Depth beräknat enligt ISO 13473-1)
+	// SV: MPD Makrotextur medelvärde, beskriver vägytans 'skrovlighet' i våglängdsintervallet 0,5-50 mm. Makrotextur beräknad som MPD. (Mean Profile Depth beräknat enligt ISO 13473-1)
+	// EN: MPD Macro Texture Average, describes the 'roughness' of the road surface in the wavelength range 0.5-50 mm. Macro texture calculated as MPD. (Mean Profile Depth calculated according to ISO 13473-1)
 	MPDMacrotextureAverageValue *float64 `xml:"MPDMacrotextureAverageValue,omitempty"`
 	// SV: Datum för när mätdata hämtades ut från källsystemen och 100m-data skapades.
+	// EN: The date of when the measurement data was extracted from the source systems and the 100m data was created.
 	TimeStamp *time.Time `xml:"TimeStamp,omitempty"`
-	// SV: Tidpunkt då dataposten ändrades
-	// EN: Time when the data item was changed
+	// EN: Specifies when the object is stored.
+	// SV: Anger när objektet är sparat.
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
-	// SV: Anger att dataposten raderats
-	// EN: Indicates that the data record has been deleted
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
 	Deleted *bool `xml:"Deleted,omitempty"`
 }
 
 type Direction struct {
 	// SV: Riktning. Värde.
+	// EN: Direction. Value.
 	Code *int `xml:"Code,omitempty"`
 	// SV: Riktning. Beskrivning.
+	// EN: Direction. Description.
 	Value *string `xml:"Value,omitempty"`
 }
 
 type MeasurementDataType struct {
-	// SV: Mätdatatyp. Värde.
+	// SV: Mätdatatyp, värde.
+	// EN: Measurement data type, value.
 	Code *int `xml:"Code,omitempty"`
-	// SV: Mätdatatyp. Beskrivning.
+	// SV: Mätdatatyp, beskrivning.
+	// EN: Measurement data type, description.
 	Value *string `xml:"Value,omitempty"`
 }

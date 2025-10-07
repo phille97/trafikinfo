@@ -20,11 +20,11 @@ type RoadGeometry struct {
 	Geometry *Geometry `xml:"Geometry,omitempty"`
 	// SV: Datum för när vägdata hämtades ut från källsystemen.
 	TimeStamp *time.Time `xml:"TimeStamp,omitempty"`
-	// SV: Tidpunkt då dataposten ändrades
-	// EN: Time when the data item was changed
+	// EN: Specifies when the object is stored.
+	// SV: Anger när objektet är sparat.
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
-	// SV: Anger att dataposten raderats
-	// EN: Indicates that the data record has been deleted
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
 	Deleted *bool `xml:"Deleted,omitempty"`
 }
 
@@ -36,8 +36,8 @@ type Direction struct {
 }
 
 type Geometry struct {
-	// SV: Geometrisk 3D punkt i koordinatsystem SWEREF99TM. Vissa koordinater kan sakna höjdvärde. Höjdvärdet anges i meter i <a href="https://www.lantmateriet.se/sv/Kartor-och-geografisk-information/GPS-och-geodetisk-matning/Referenssystem/Hojdsystem/RH-2000/" target="_blank">RH 2000</a>
+	// SV: Geometrisk punkt i koordinatsystem SWEREF99TM
 	SWEREF99TM3D *string `xml:"SWEREF99TM3D,omitempty"`
-	// SV: Geometrisk 3D punkt i koordinatsystem WGS84. Vissa koordinater kan sakna höjdvärde. Höjdvärdet anges i meter i <a href="https://www.lantmateriet.se/sv/Kartor-och-geografisk-information/GPS-och-geodetisk-matning/Referenssystem/Hojdsystem/RH-2000/" target="_blank">RH 2000</a>
+	// SV: Geometrisk punkt i koordinatsystem WGS84
 	WGS843D *string `xml:"WGS843D,omitempty"`
 }

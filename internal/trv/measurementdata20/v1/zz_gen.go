@@ -36,7 +36,7 @@ type MeasurementData20 struct {
 	MeasurementVehicleSpeed *float64 `xml:"MeasurementVehicleSpeed,omitempty"`
 	// SV: Backighet. Anges i %. Backighet är medellutningen för 20m väg i mätriktningen. Uppför har positivt tecken och utför negativt.
 	Hilliness *float64 `xml:"Hilliness,omitempty"`
-	// SV: Kurvatur. Enhet 10000/r. Kurvatur beskriver medelvärdet av krökningsradien (r) över 20m.
+	// SV: Kurvatur. Enhet 2000/r. Kurvatur beskriver medelvärdet av krökningsradien (r) över 20m.
 	Curvature *float64 `xml:"Curvature,omitempty"`
 	// SV: Kantdjup. Enhet mm. Kantdjup avser att detektera skador närmast vägrenen. Mäts inte direkt av mätbil utan beräknas i efterbearbetning baserat på mätta 20m data om tvärprofil. (se VTI Rapport 718)
 	EdgeDepth *float64 `xml:"EdgeDepth,omitempty"`
@@ -74,11 +74,11 @@ type MeasurementData20 struct {
 	WaterArea *float64 `xml:"WaterArea,omitempty"`
 	// SV: Datum för när mätdata hämtades ut från källsystemen.
 	TimeStamp *time.Time `xml:"TimeStamp,omitempty"`
-	// SV: Tidpunkt då dataposten ändrades
-	// EN: Time when the data item was changed
+	// EN: Specifies when the object is stored.
+	// SV: Anger när objektet är sparat.
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
-	// SV: Anger att dataposten raderats
-	// EN: Indicates that the data record has been deleted
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
 	Deleted *bool `xml:"Deleted,omitempty"`
 }
 

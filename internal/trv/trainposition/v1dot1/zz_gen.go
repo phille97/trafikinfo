@@ -20,8 +20,8 @@ type TrainPosition struct {
 	// SV: Tågets aktuell status
 	// EN: The train's current status
 	Status *Status `xml:"Status,omitempty"`
-	// SV: Tågets bäring i grader
-	// EN: The train's bearing in degrees
+	// SV: Tåget absoluta riktning i grader - termen bäring används felaktigt här
+	// EN: The train's absolute direction in degrees – the term bearing is incorrectly used here
 	Bearing *int `xml:"Bearing,omitempty"`
 	// SV: Tågets hastighet i kilometer per timme
 	// EN: The train's speed in kilometers per hour
@@ -32,7 +32,9 @@ type TrainPosition struct {
 	// EN: Specifies when the object is stored.
 	// SV: Anger när objektet är sparat.
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
-	Deleted      *bool      `xml:"Deleted,omitempty"`
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
+	Deleted *bool `xml:"Deleted,omitempty"`
 }
 
 type Train struct {

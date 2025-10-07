@@ -53,11 +53,11 @@ type PavementData struct {
 	FinalInspectionDate *time.Time `xml:"FinalInspectionDate,omitempty"`
 	// SV: Datum för när NVDB-data och beläggningsdata hämtades ut från källsystemen.
 	TimeStamp *time.Time `xml:"TimeStamp,omitempty"`
-	// SV: Tidpunkt då dataposten ändrades
-	// EN: Time when the data item was changed
+	// EN: Specifies when the object is stored.
+	// SV: Anger när objektet är sparat.
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
-	// SV: Anger att dataposten raderats
-	// EN: Indicates that the data record has been deleted
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
 	Deleted *bool `xml:"Deleted,omitempty"`
 }
 

@@ -7,8 +7,8 @@ import (
 	"strings"
 	"unicode"
 
-	"code.dny.dev/trafikinfo/internal/meta"
-	"code.dny.dev/trafikinfo/internal/xsd"
+	"github.com/phille97/trafikinfo/internal/meta"
+	"github.com/phille97/trafikinfo/internal/xsd"
 )
 
 type Root struct {
@@ -95,6 +95,14 @@ func WalkXSD(schema *xsd.Schema) *Root {
 		ags[goName(ag.Name)] = ag
 	}
 
+	refs := map[string]xsd.Element{}
+	for _, x := range schema.Elements {
+		if len(x.Name) == 0 {
+			continue
+		}
+		refs[goName(x.Name)] = x
+	}
+
 	// This is where it starts to get funky. Start by looping over each
 	// complexType
 	for _, ct := range schema.ComplexTypes {
@@ -121,7 +129,7 @@ func WalkXSD(schema *xsd.Schema) *Root {
 
 		// Elements on a complexType are fields in a struct
 		for _, elem := range AllElems(ct) {
-			node, isType := ElemToNode(elem)
+			node, isType := ElemToNode(elem, refs)
 			n.Nodes = append(n.Nodes, node)
 			if isType {
 				nt := Node{Name: node.Name, Type: node.Type, Documentation: node.Documentation}
@@ -166,12 +174,12 @@ func WalkXSD(schema *xsd.Schema) *Root {
 			// In order to respect the intention of the XSD, create field
 			// definitions for the elements in the base type first
 			for _, elem := range AllElems(extCt) {
-				node, _ := ElemToNode(elem)
+				node, _ := ElemToNode(elem, refs)
 				n.Nodes = append(n.Nodes, node)
 			}
 			// Now add the additional fields of our type to it
 			for _, elem := range cc.Extension.Sequence.Elements {
-				node, _ := ElemToNode(elem)
+				node, _ := ElemToNode(elem, refs)
 				n.Nodes = append(n.Nodes, node)
 			}
 		}
@@ -249,15 +257,13 @@ func AttrToNode(attr xsd.Attribute) *Node {
 	return &n
 }
 
-func ElemToNode(elem xsd.Element) (*Node, bool) {
-	if elem.Reference == "Deleted" {
-		return &Node{
-			Name: "Deleted",
-			Type: Type{Kind: "bool", Final: true},
-		}, false
-	}
+func ElemToNode(elem xsd.Element, refs map[string]xsd.Element) (*Node, bool) {
 	if elem.Reference != "" {
-		panic(fmt.Sprintf("cannot handle elem with ref: %s", elem.Reference))
+		refElem, ok := refs[goName(elem.Reference)]
+		if !ok {
+			panic(fmt.Sprintf("cannot handle elem with ref: %s", elem.Reference))
+		}
+		elem = refElem
 	}
 	n := Node{
 		Name:     goName(elem.Name),
@@ -323,6 +329,7 @@ func typeMap(s string) Type {
 		"xs:float":        "float64",
 		"xs:double":       "float64",
 		"xs:dateTime":     "time.Time",
+		"xs:date":         "time.Time",
 		"xs:unsignedByte": "uint8",
 		"xs:decimal":      "float64",
 	}

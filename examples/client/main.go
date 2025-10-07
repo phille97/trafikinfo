@@ -9,15 +9,15 @@ import (
 	"net/http"
 	"os"
 
-	"code.dny.dev/trafikinfo"
-	wmp "code.dny.dev/trafikinfo/trv/weathermeasurepoint/v2"
+	"github.com/phille97/trafikinfo"
+	wmp "github.com/phille97/trafikinfo/trv/weathermeasurepoint/v2dot1"
 )
 
 func main() {
 	req, err := trafikinfo.NewRequest().
 		APIKey("YOUR_API_KEY").
 		Query(
-			trafikinfo.NewQuery(wmp.ObjectType()).Filter(
+			trafikinfo.NewQuery(wmp.T()).Filter(
 				trafikinfo.Equal("Name", "YOUR_STATION_NAME"),
 			),
 		).Build()
