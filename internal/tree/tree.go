@@ -329,7 +329,7 @@ func typeMap(s string) Type {
 		"xs:float":        "float64",
 		"xs:double":       "float64",
 		"xs:dateTime":     "time.Time",
-		"xs:date":         "time.Time",
+		"xs:date":         "string",
 		"xs:unsignedByte": "uint8",
 		"xs:decimal":      "float64",
 	}

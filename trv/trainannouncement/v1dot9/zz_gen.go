@@ -560,7 +560,7 @@ func (x *CompositIdentifierOperationalType) TimetableYear() *int64 {
 
 // SV: Starten då behovet exekveras
 // EN: The start of the date/time in effect
-func (x *CompositIdentifierOperationalType) StartDate() *time.Time {
+func (x *CompositIdentifierOperationalType) StartDate() *string {
 	if x.data == nil {
 		return nil
 	}

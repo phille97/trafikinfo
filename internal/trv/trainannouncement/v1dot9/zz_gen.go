@@ -128,7 +128,7 @@ type CompositIdentifierOperationalType struct {
 	TimetableYear *int64 `xml:"TimetableYear,omitempty"`
 	// SV: Starten då behovet exekveras
 	// EN: The start of the date/time in effect
-	StartDate *time.Time `xml:"StartDate,omitempty"`
+	StartDate *string `xml:"StartDate,omitempty"`
 }
 
 type OtherInformation struct {
