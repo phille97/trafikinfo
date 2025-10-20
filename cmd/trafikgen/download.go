@@ -11,6 +11,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/phille97/trafikinfo/internal/meta"
@@ -126,20 +127,33 @@ func extract(_ context.Context, src, dst string) error {
 				return err
 			}
 			defer reader.Close()
-			path := filepath.Join(dst, file.Name)
-			_ = os.Remove(path)
-			err = os.MkdirAll(path, os.ModePerm)
+			extractPath := filepath.Join(dst, file.Name)
+			absDst, err := filepath.Abs(dst)
+			if err != nil {
+				return err
+			}
+			absExtractPath, err := filepath.Abs(extractPath)
+			if err != nil {
+				return err
+			}
+			// Ensure extractPath is within absDst
+			if !strings.HasPrefix(absExtractPath, absDst+string(os.PathSeparator)) && absExtractPath != absDst {
+				log.Printf("skipping suspicious path: %s (would extract outside of %s)\n", file.Name, absDst)
+				continue
+			}
+			_ = os.Remove(absExtractPath)
+			err = os.MkdirAll(absExtractPath, os.ModePerm)
 			if err != nil {
 				return err
 			}
 			if file.FileInfo().IsDir() {
 				continue
 			}
-			err = os.Remove(path)
+			err = os.Remove(absExtractPath)
 			if err != nil {
 				return err
 			}
-			writer, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, file.Mode())
+			writer, err := os.OpenFile(absExtractPath, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, file.Mode())
 			if err != nil {
 				return err
 			}
