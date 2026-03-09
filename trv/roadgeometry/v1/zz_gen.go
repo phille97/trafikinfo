@@ -27,6 +27,10 @@ type RoadGeometry struct {
 	data *schema.RoadGeometry
 }
 
+func (RoadGeometry) XMLName() xml.Name {
+	return xml.Name{Local: "RoadGeometry"}
+}
+
 func (x *RoadGeometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadGeometry{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -112,6 +116,10 @@ type Direction struct {
 	data *schema.Direction
 }
 
+func (Direction) XMLName() xml.Name {
+	return xml.Name{Local: "Direction"}
+}
+
 func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Direction{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -139,6 +147,10 @@ func (x *Direction) Value() *string {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

@@ -54,3 +54,7 @@ type APIError struct {
 func (e *APIError) Error() string {
 	return fmt.Sprintf("%s: %s", e.Source, e.Message)
 }
+
+type Object interface {
+	XMLName() xml.Name
+}

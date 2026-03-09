@@ -47,6 +47,10 @@ type WeatherMeasurepoint struct {
 	data *schema.WeatherMeasurepoint
 }
 
+func (WeatherMeasurepoint) XMLName() xml.Name {
+	return xml.Name{Local: "WeatherMeasurepoint"}
+}
+
 func (x *WeatherMeasurepoint) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.WeatherMeasurepoint{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -159,6 +163,10 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
+}
+
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Geometry{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -188,6 +196,10 @@ func (x *Geometry) WGS84() *string {
 
 type Observation struct {
 	data *schema.Observation
+}
+
+func (Observation) XMLName() xml.Name {
+	return xml.Name{Local: "Observation"}
 }
 
 func (x *Observation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -288,6 +300,10 @@ type Weather struct {
 	data *schema.Weather
 }
 
+func (Weather) XMLName() xml.Name {
+	return xml.Name{Local: "Weather"}
+}
+
 func (x *Weather) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Weather{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -308,6 +324,10 @@ func (x *Weather) Precipitation() *PrecipTypeMeasure {
 
 type SurfaceCondition struct {
 	data *schema.SurfaceCondition
+}
+
+func (SurfaceCondition) XMLName() xml.Name {
+	return xml.Name{Local: "SurfaceCondition"}
 }
 
 func (x *SurfaceCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -395,6 +415,10 @@ type AirCondition struct {
 	data *schema.AirCondition
 }
 
+func (AirCondition) XMLName() xml.Name {
+	return xml.Name{Local: "AirCondition"}
+}
+
 func (x *AirCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.AirCondition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -444,6 +468,10 @@ type WindCondition struct {
 	data *schema.WindCondition
 }
 
+func (WindCondition) XMLName() xml.Name {
+	return xml.Name{Local: "WindCondition"}
+}
+
 func (x *WindCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.WindCondition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -482,6 +510,10 @@ type DeicingChemical struct {
 	data *schema.DeicingChemical
 }
 
+func (DeicingChemical) XMLName() xml.Name {
+	return xml.Name{Local: "DeicingChemical"}
+}
+
 func (x *DeicingChemical) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.DeicingChemical{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -502,6 +534,10 @@ func (x *DeicingChemical) Amount() *GramPerSquareMeter {
 
 type SubsurfaceCondition struct {
 	data *schema.SubsurfaceCondition
+}
+
+func (SubsurfaceCondition) XMLName() xml.Name {
+	return xml.Name{Local: "SubsurfaceCondition"}
 }
 
 func (x *SubsurfaceCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -526,6 +562,10 @@ func (x *SubsurfaceCondition) Ground() []GroundCondition {
 
 type Celsius struct {
 	data *schema.Celsius
+}
+
+func (Celsius) XMLName() xml.Name {
+	return xml.Name{Local: "Celsius"}
 }
 
 func (x *Celsius) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -566,6 +606,10 @@ type Grip struct {
 	data *schema.Grip
 }
 
+func (Grip) XMLName() xml.Name {
+	return xml.Name{Local: "Grip"}
+}
+
 func (x *Grip) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Grip{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -602,6 +646,10 @@ func (x *Grip) Value() *float64 {
 
 type Millimeters struct {
 	data *schema.Millimeters
+}
+
+func (Millimeters) XMLName() xml.Name {
+	return xml.Name{Local: "Millimeters"}
 }
 
 func (x *Millimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -642,6 +690,10 @@ type Snow struct {
 	data *schema.Snow
 }
 
+func (Snow) XMLName() xml.Name {
+	return xml.Name{Local: "Snow"}
+}
+
 func (x *Snow) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Snow{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -671,6 +723,10 @@ func (x *Snow) WaterEquivalent() *Millimeters {
 
 type Percentage struct {
 	data *schema.Percentage
+}
+
+func (Percentage) XMLName() xml.Name {
+	return xml.Name{Local: "Percentage"}
 }
 
 func (x *Percentage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -711,6 +767,10 @@ type Meters struct {
 	data *schema.Meters
 }
 
+func (Meters) XMLName() xml.Name {
+	return xml.Name{Local: "Meters"}
+}
+
 func (x *Meters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Meters{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -747,6 +807,10 @@ func (x *Meters) Value() *float64 {
 
 type MetersPerSecond struct {
 	data *schema.MetersPerSecond
+}
+
+func (MetersPerSecond) XMLName() xml.Name {
+	return xml.Name{Local: "MetersPerSecond"}
 }
 
 func (x *MetersPerSecond) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -787,6 +851,10 @@ type Degrees struct {
 	data *schema.Degrees
 }
 
+func (Degrees) XMLName() xml.Name {
+	return xml.Name{Local: "Degrees"}
+}
+
 func (x *Degrees) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Degrees{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -823,6 +891,10 @@ func (x *Degrees) Value() *int {
 
 type GramPerSquareMeter struct {
 	data *schema.GramPerSquareMeter
+}
+
+func (GramPerSquareMeter) XMLName() xml.Name {
+	return xml.Name{Local: "GramPerSquareMeter"}
 }
 
 func (x *GramPerSquareMeter) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -863,6 +935,10 @@ type GroundCondition struct {
 	data *schema.GroundCondition
 }
 
+func (GroundCondition) XMLName() xml.Name {
+	return xml.Name{Local: "GroundCondition"}
+}
+
 func (x *GroundCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.GroundCondition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -892,6 +968,10 @@ func (x *GroundCondition) Temperature() *Celsius {
 
 type Aggregated struct {
 	data *schema.Aggregated
+}
+
+func (Aggregated) XMLName() xml.Name {
+	return xml.Name{Local: "Aggregated"}
 }
 
 func (x *Aggregated) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -929,6 +1009,10 @@ const (
 
 type IntegerCentimeters struct {
 	data *schema.IntegerCentimeters
+}
+
+func (IntegerCentimeters) XMLName() xml.Name {
+	return xml.Name{Local: "IntegerCentimeters"}
 }
 
 func (x *IntegerCentimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -969,6 +1053,10 @@ type WindConditionAggregated struct {
 	data *schema.WindConditionAggregated
 }
 
+func (WindConditionAggregated) XMLName() xml.Name {
+	return xml.Name{Local: "WindConditionAggregated"}
+}
+
 func (x *WindConditionAggregated) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.WindConditionAggregated{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -1005,6 +1093,10 @@ func (x *WindConditionAggregated) SpeedAverage() *MetersPerSecond {
 
 type PrecipitationConditionAggregated struct {
 	data *schema.PrecipitationConditionAggregated
+}
+
+func (PrecipitationConditionAggregated) XMLName() xml.Name {
+	return xml.Name{Local: "PrecipitationConditionAggregated"}
 }
 
 func (x *PrecipitationConditionAggregated) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

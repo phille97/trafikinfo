@@ -27,6 +27,10 @@ type FerryRoute struct {
 	data *schema.FerryRoute
 }
 
+func (FerryRoute) XMLName() xml.Name {
+	return xml.Name{Local: "FerryRoute"}
+}
+
 func (x *FerryRoute) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.FerryRoute{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -179,6 +183,10 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
+}
+
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Geometry{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -210,6 +218,10 @@ type Type struct {
 	data *schema.Type
 }
 
+func (Type) XMLName() xml.Name {
+	return xml.Name{Local: "Type"}
+}
+
 func (x *Type) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Type{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -239,6 +251,10 @@ func (x *Type) Name() *string {
 
 type Harbor struct {
 	data *schema.Harbor
+}
+
+func (Harbor) XMLName() xml.Name {
+	return xml.Name{Local: "Harbor"}
 }
 
 func (x *Harbor) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -286,6 +302,10 @@ func (x *Harbor) StopType() *StopType {
 
 type Timetable struct {
 	data *schema.Timetable
+}
+
+func (Timetable) XMLName() xml.Name {
+	return xml.Name{Local: "Timetable"}
 }
 
 func (x *Timetable) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -341,6 +361,10 @@ type StopType struct {
 	data *schema.StopType
 }
 
+func (StopType) XMLName() xml.Name {
+	return xml.Name{Local: "StopType"}
+}
+
 func (x *StopType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.StopType{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -381,6 +405,10 @@ type Valid struct {
 	data *schema.Valid
 }
 
+func (Valid) XMLName() xml.Name {
+	return xml.Name{Local: "Valid"}
+}
+
 func (x *Valid) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Valid{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -410,6 +438,10 @@ func (x *Valid) To() *time.Time {
 
 type Period struct {
 	data *schema.Period
+}
+
+func (Period) XMLName() xml.Name {
+	return xml.Name{Local: "Period"}
 }
 
 func (x *Period) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -465,6 +497,10 @@ type Weekday struct {
 	data *schema.Weekday
 }
 
+func (Weekday) XMLName() xml.Name {
+	return xml.Name{Local: "Weekday"}
+}
+
 func (x *Weekday) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Weekday{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -494,6 +530,10 @@ func (x *Weekday) ID() *int {
 
 type Schedule struct {
 	data *schema.Schedule
+}
+
+func (Schedule) XMLName() xml.Name {
+	return xml.Name{Local: "Schedule"}
 }
 
 func (x *Schedule) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -550,6 +590,10 @@ func (x *Schedule) StopType() *StopType {
 
 type Deviation struct {
 	data *schema.Deviation
+}
+
+func (Deviation) XMLName() xml.Name {
+	return xml.Name{Local: "Deviation"}
 }
 
 func (x *Deviation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -615,6 +659,10 @@ func (x *Deviation) SpecDate() *string {
 
 type DeviationType struct {
 	data *schema.DeviationType
+}
+
+func (DeviationType) XMLName() xml.Name {
+	return xml.Name{Local: "DeviationType"}
 }
 
 func (x *DeviationType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

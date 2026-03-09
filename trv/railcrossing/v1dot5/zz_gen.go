@@ -27,6 +27,10 @@ type RailCrossing struct {
 	data *schema.RailCrossing
 }
 
+func (RailCrossing) XMLName() xml.Name {
+	return xml.Name{Local: "RailCrossing"}
+}
+
 func (x *RailCrossing) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RailCrossing{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -279,6 +283,10 @@ type RoadProtectionAddition struct {
 	data *schema.RoadProtectionAddition
 }
 
+func (RoadProtectionAddition) XMLName() xml.Name {
+	return xml.Name{Local: "RoadProtectionAddition"}
+}
+
 func (x *RoadProtectionAddition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadProtectionAddition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -308,6 +316,10 @@ type RoadProtectionBase struct {
 	data *schema.RoadProtectionBase
 }
 
+func (RoadProtectionBase) XMLName() xml.Name {
+	return xml.Name{Local: "RoadProtectionBase"}
+}
+
 func (x *RoadProtectionBase) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadProtectionBase{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -335,6 +347,10 @@ func (x *RoadProtectionBase) Description() *string {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

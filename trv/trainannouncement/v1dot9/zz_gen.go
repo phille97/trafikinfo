@@ -37,6 +37,10 @@ type TrainAnnouncement struct {
 	data *schema.TrainAnnouncement
 }
 
+func (TrainAnnouncement) XMLName() xml.Name {
+	return xml.Name{Local: "TrainAnnouncement"}
+}
+
 func (x *TrainAnnouncement) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrainAnnouncement{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -409,6 +413,10 @@ type Booking struct {
 	data *schema.Booking
 }
 
+func (Booking) XMLName() xml.Name {
+	return xml.Name{Local: "Booking"}
+}
+
 func (x *Booking) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Booking{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -438,6 +446,10 @@ type Deviation struct {
 	data *schema.Deviation
 }
 
+func (Deviation) XMLName() xml.Name {
+	return xml.Name{Local: "Deviation"}
+}
+
 func (x *Deviation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Deviation{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -465,6 +477,10 @@ func (x *Deviation) Description() *string {
 
 type FromLocation struct {
 	data *schema.FromLocation
+}
+
+func (FromLocation) XMLName() xml.Name {
+	return xml.Name{Local: "FromLocation"}
 }
 
 func (x *FromLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -502,6 +518,10 @@ func (x *FromLocation) Order() *int {
 
 type CompositIdentifierOperationalType struct {
 	data *schema.CompositIdentifierOperationalType
+}
+
+func (CompositIdentifierOperationalType) XMLName() xml.Name {
+	return xml.Name{Local: "CompositIdentifierOperationalType"}
 }
 
 func (x *CompositIdentifierOperationalType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -571,6 +591,10 @@ type OtherInformation struct {
 	data *schema.OtherInformation
 }
 
+func (OtherInformation) XMLName() xml.Name {
+	return xml.Name{Local: "OtherInformation"}
+}
+
 func (x *OtherInformation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.OtherInformation{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -598,6 +622,10 @@ func (x *OtherInformation) Description() *string {
 
 type ProductInformation struct {
 	data *schema.ProductInformation
+}
+
+func (ProductInformation) XMLName() xml.Name {
+	return xml.Name{Local: "ProductInformation"}
 }
 
 func (x *ProductInformation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -629,6 +657,10 @@ type Service struct {
 	data *schema.Service
 }
 
+func (Service) XMLName() xml.Name {
+	return xml.Name{Local: "Service"}
+}
+
 func (x *Service) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Service{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -656,6 +688,10 @@ func (x *Service) Description() *string {
 
 type ToLocation struct {
 	data *schema.ToLocation
+}
+
+func (ToLocation) XMLName() xml.Name {
+	return xml.Name{Local: "ToLocation"}
 }
 
 func (x *ToLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -695,6 +731,10 @@ type TrainComposition struct {
 	data *schema.TrainComposition
 }
 
+func (TrainComposition) XMLName() xml.Name {
+	return xml.Name{Local: "TrainComposition"}
+}
+
 func (x *TrainComposition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrainComposition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -724,6 +764,10 @@ type TypeOfTraffic struct {
 	data *schema.TypeOfTraffic
 }
 
+func (TypeOfTraffic) XMLName() xml.Name {
+	return xml.Name{Local: "TypeOfTraffic"}
+}
+
 func (x *TypeOfTraffic) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TypeOfTraffic{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -751,6 +795,10 @@ func (x *TypeOfTraffic) Description() *string {
 
 type ViaFromLocation struct {
 	data *schema.ViaFromLocation
+}
+
+func (ViaFromLocation) XMLName() xml.Name {
+	return xml.Name{Local: "ViaFromLocation"}
 }
 
 func (x *ViaFromLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -788,6 +836,10 @@ func (x *ViaFromLocation) Order() *int {
 
 type ViaToLocation struct {
 	data *schema.ViaToLocation
+}
+
+func (ViaToLocation) XMLName() xml.Name {
+	return xml.Name{Local: "ViaToLocation"}
 }
 
 func (x *ViaToLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

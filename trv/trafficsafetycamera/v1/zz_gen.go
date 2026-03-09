@@ -27,6 +27,10 @@ type TrafficSafetyCamera struct {
 	data *schema.TrafficSafetyCamera
 }
 
+func (TrafficSafetyCamera) XMLName() xml.Name {
+	return xml.Name{Local: "TrafficSafetyCamera"}
+}
+
 func (x *TrafficSafetyCamera) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrafficSafetyCamera{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -116,6 +120,10 @@ func (x *TrafficSafetyCamera) ModifiedTime() *time.Time {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

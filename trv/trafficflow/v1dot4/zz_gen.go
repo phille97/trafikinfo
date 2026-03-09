@@ -27,6 +27,10 @@ type TrafficFlow struct {
 	data *schema.TrafficFlow
 }
 
+func (TrafficFlow) XMLName() xml.Name {
+	return xml.Name{Local: "TrafficFlow"}
+}
+
 func (x *TrafficFlow) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrafficFlow{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -143,6 +147,10 @@ func (x *TrafficFlow) ModifiedTime() *time.Time {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

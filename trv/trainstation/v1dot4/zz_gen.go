@@ -27,6 +27,10 @@ type TrainStation struct {
 	data *schema.TrainStation
 }
 
+func (TrainStation) XMLName() xml.Name {
+	return xml.Name{Local: "TrainStation"}
+}
+
 func (x *TrainStation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrainStation{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -152,6 +156,10 @@ func (x *TrainStation) ModifiedTime() *time.Time {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

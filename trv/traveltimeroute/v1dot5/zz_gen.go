@@ -27,6 +27,10 @@ type TravelTimeRoute struct {
 	data *schema.TravelTimeRoute
 }
 
+func (TravelTimeRoute) XMLName() xml.Name {
+	return xml.Name{Local: "TravelTimeRoute"}
+}
+
 func (x *TravelTimeRoute) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TravelTimeRoute{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -216,6 +220,10 @@ func (x *TravelTimeRoute) ItemsLeft() *int64 {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
