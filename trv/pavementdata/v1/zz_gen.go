@@ -27,8 +27,8 @@ type PavementData struct {
 	data *schema.PavementData
 }
 
-func (x PavementData) XMLName() string {
-	return "PavementData"
+func (PavementData) XMLName() xml.Name {
+	return xml.Name{Local: "PavementData"}
 }
 
 func (x *PavementData) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -245,8 +245,8 @@ type Direction struct {
 	data *schema.Direction
 }
 
-func (x Direction) XMLName() string {
-	return "Direction"
+func (Direction) XMLName() xml.Name {
+	return xml.Name{Local: "Direction"}
 }
 
 func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

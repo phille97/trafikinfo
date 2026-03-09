@@ -27,8 +27,8 @@ type TrainPosition struct {
 	data *schema.TrainPosition
 }
 
-func (x TrainPosition) XMLName() string {
-	return "TrainPosition"
+func (TrainPosition) XMLName() xml.Name {
+	return xml.Name{Local: "TrainPosition"}
 }
 
 func (x *TrainPosition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -125,8 +125,8 @@ type Train struct {
 	data *schema.Train
 }
 
-func (x Train) XMLName() string {
-	return "Train"
+func (Train) XMLName() xml.Name {
+	return xml.Name{Local: "Train"}
 }
 
 func (x *Train) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -187,8 +187,8 @@ type Position struct {
 	data *schema.Position
 }
 
-func (x Position) XMLName() string {
-	return "Position"
+func (Position) XMLName() xml.Name {
+	return xml.Name{Local: "Position"}
 }
 
 func (x *Position) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -222,8 +222,8 @@ type Status struct {
 	data *schema.Status
 }
 
-func (x Status) XMLName() string {
-	return "Status"
+func (Status) XMLName() xml.Name {
+	return xml.Name{Local: "Status"}
 }
 
 func (x *Status) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

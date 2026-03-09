@@ -101,8 +101,8 @@ const publicStruct = `type %s struct {
 	data *schema.%s
 }
 
-func (x %s) XMLName() string {
-	return "%s"
+func (%s) XMLName() xml.Name {
+	return xml.Name{Local: "%s"}
 }
 
 func (x *%s) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

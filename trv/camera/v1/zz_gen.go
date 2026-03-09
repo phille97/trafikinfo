@@ -27,8 +27,8 @@ type Camera struct {
 	data *schema.Camera
 }
 
-func (x Camera) XMLName() string {
-	return "Camera"
+func (Camera) XMLName() xml.Name {
+	return xml.Name{Local: "Camera"}
 }
 
 func (x *Camera) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -197,8 +197,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) XMLName() string {
-	return "Geometry"
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

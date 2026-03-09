@@ -27,8 +27,8 @@ type RailCrossing struct {
 	data *schema.RailCrossing
 }
 
-func (x RailCrossing) XMLName() string {
-	return "RailCrossing"
+func (RailCrossing) XMLName() xml.Name {
+	return xml.Name{Local: "RailCrossing"}
 }
 
 func (x *RailCrossing) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -283,8 +283,8 @@ type RoadProtectionAddition struct {
 	data *schema.RoadProtectionAddition
 }
 
-func (x RoadProtectionAddition) XMLName() string {
-	return "RoadProtectionAddition"
+func (RoadProtectionAddition) XMLName() xml.Name {
+	return xml.Name{Local: "RoadProtectionAddition"}
 }
 
 func (x *RoadProtectionAddition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -316,8 +316,8 @@ type RoadProtectionBase struct {
 	data *schema.RoadProtectionBase
 }
 
-func (x RoadProtectionBase) XMLName() string {
-	return "RoadProtectionBase"
+func (RoadProtectionBase) XMLName() xml.Name {
+	return xml.Name{Local: "RoadProtectionBase"}
 }
 
 func (x *RoadProtectionBase) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -349,8 +349,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) XMLName() string {
-	return "Geometry"
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

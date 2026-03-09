@@ -27,8 +27,8 @@ type Parking struct {
 	data *schema.Parking
 }
 
-func (x Parking) XMLName() string {
-	return "Parking"
+func (Parking) XMLName() xml.Name {
+	return xml.Name{Local: "Parking"}
 }
 
 func (x *Parking) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -267,8 +267,8 @@ type Equipment struct {
 	data *schema.Equipment
 }
 
-func (x Equipment) XMLName() string {
-	return "Equipment"
+func (Equipment) XMLName() xml.Name {
+	return xml.Name{Local: "Equipment"}
 }
 
 func (x *Equipment) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -300,8 +300,8 @@ type Facility struct {
 	data *schema.Facility
 }
 
-func (x Facility) XMLName() string {
-	return "Facility"
+func (Facility) XMLName() xml.Name {
+	return xml.Name{Local: "Facility"}
 }
 
 func (x *Facility) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -333,8 +333,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) XMLName() string {
-	return "Geometry"
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -366,8 +366,8 @@ type Operator struct {
 	data *schema.Operator
 }
 
-func (x Operator) XMLName() string {
-	return "Operator"
+func (Operator) XMLName() xml.Name {
+	return xml.Name{Local: "Operator"}
 }
 
 func (x *Operator) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -415,8 +415,8 @@ type ParkingAccess struct {
 	data *schema.ParkingAccess
 }
 
-func (x ParkingAccess) XMLName() string {
-	return "ParkingAccess"
+func (ParkingAccess) XMLName() xml.Name {
+	return xml.Name{Local: "ParkingAccess"}
 }
 
 func (x *ParkingAccess) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -448,8 +448,8 @@ type Photo struct {
 	data *schema.Photo
 }
 
-func (x Photo) XMLName() string {
-	return "Photo"
+func (Photo) XMLName() xml.Name {
+	return xml.Name{Local: "Photo"}
 }
 
 func (x *Photo) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -481,8 +481,8 @@ type TariffsAndPayment struct {
 	data *schema.TariffsAndPayment
 }
 
-func (x TariffsAndPayment) XMLName() string {
-	return "TariffsAndPayment"
+func (TariffsAndPayment) XMLName() xml.Name {
+	return xml.Name{Local: "TariffsAndPayment"}
 }
 
 func (x *TariffsAndPayment) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -514,8 +514,8 @@ type VehicleCharacteristics struct {
 	data *schema.VehicleCharacteristics
 }
 
-func (x VehicleCharacteristics) XMLName() string {
-	return "VehicleCharacteristics"
+func (VehicleCharacteristics) XMLName() xml.Name {
+	return xml.Name{Local: "VehicleCharacteristics"}
 }
 
 func (x *VehicleCharacteristics) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

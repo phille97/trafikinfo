@@ -27,8 +27,8 @@ type MeasurementData100 struct {
 	data *schema.MeasurementData100
 }
 
-func (x MeasurementData100) XMLName() string {
-	return "MeasurementData100"
+func (MeasurementData100) XMLName() xml.Name {
+	return xml.Name{Local: "MeasurementData100"}
 }
 
 func (x *MeasurementData100) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -211,8 +211,8 @@ type Direction struct {
 	data *schema.Direction
 }
 
-func (x Direction) XMLName() string {
-	return "Direction"
+func (Direction) XMLName() xml.Name {
+	return xml.Name{Local: "Direction"}
 }
 
 func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -246,8 +246,8 @@ type MeasurementDataType struct {
 	data *schema.MeasurementDataType
 }
 
-func (x MeasurementDataType) XMLName() string {
-	return "MeasurementDataType"
+func (MeasurementDataType) XMLName() xml.Name {
+	return xml.Name{Local: "MeasurementDataType"}
 }
 
 func (x *MeasurementDataType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

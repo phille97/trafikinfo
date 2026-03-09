@@ -27,8 +27,8 @@ type RoadData struct {
 	data *schema.RoadData
 }
 
-func (x RoadData) XMLName() string {
-	return "RoadData"
+func (RoadData) XMLName() xml.Name {
+	return xml.Name{Local: "RoadData"}
 }
 
 func (x *RoadData) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -245,8 +245,8 @@ type Direction struct {
 	data *schema.Direction
 }
 
-func (x Direction) XMLName() string {
-	return "Direction"
+func (Direction) XMLName() xml.Name {
+	return xml.Name{Local: "Direction"}
 }
 
 func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -280,8 +280,8 @@ type BearingCapacity struct {
 	data *schema.BearingCapacity
 }
 
-func (x BearingCapacity) XMLName() string {
-	return "BearingCapacity"
+func (BearingCapacity) XMLName() xml.Name {
+	return xml.Name{Local: "BearingCapacity"}
 }
 
 func (x *BearingCapacity) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -315,8 +315,8 @@ type AADTMeasurementMethod struct {
 	data *schema.AADTMeasurementMethod
 }
 
-func (x AADTMeasurementMethod) XMLName() string {
-	return "AADTMeasurementMethod"
+func (AADTMeasurementMethod) XMLName() xml.Name {
+	return xml.Name{Local: "AADTMeasurementMethod"}
 }
 
 func (x *AADTMeasurementMethod) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -350,8 +350,8 @@ type RoadOwner struct {
 	data *schema.RoadOwner
 }
 
-func (x RoadOwner) XMLName() string {
-	return "RoadOwner"
+func (RoadOwner) XMLName() xml.Name {
+	return xml.Name{Local: "RoadOwner"}
 }
 
 func (x *RoadOwner) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -385,8 +385,8 @@ type RoadCategory struct {
 	data *schema.RoadCategory
 }
 
-func (x RoadCategory) XMLName() string {
-	return "RoadCategory"
+func (RoadCategory) XMLName() xml.Name {
+	return xml.Name{Local: "RoadCategory"}
 }
 
 func (x *RoadCategory) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -420,8 +420,8 @@ type RoadType struct {
 	data *schema.RoadType
 }
 
-func (x RoadType) XMLName() string {
-	return "RoadType"
+func (RoadType) XMLName() xml.Name {
+	return xml.Name{Local: "RoadType"}
 }
 
 func (x *RoadType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -455,8 +455,8 @@ type Vagunderhallsklass struct {
 	data *schema.Vagunderhallsklass
 }
 
-func (x Vagunderhallsklass) XMLName() string {
-	return "Vagunderhallsklass"
+func (Vagunderhallsklass) XMLName() xml.Name {
+	return xml.Name{Local: "Vagunderhallsklass"}
 }
 
 func (x *Vagunderhallsklass) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

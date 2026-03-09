@@ -27,8 +27,8 @@ func StreamResponse[T trv.Object](r io.Reader) iter.Seq2[T, error] {
 				continue
 			}
 
-			switch se.Name.Local {
-			case "ERROR":
+			switch se.Name {
+			case xml.Name{Local: "ERROR"}:
 				var apiErr trv.APIError
 				if err := decoder.DecodeElement(&apiErr, &se); err != nil {
 					yield(zero, err)

@@ -27,8 +27,8 @@ type Icon struct {
 	data *schema.Icon
 }
 
-func (x Icon) XMLName() string {
-	return "Icon"
+func (Icon) XMLName() xml.Name {
+	return xml.Name{Local: "Icon"}
 }
 
 func (x *Icon) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

@@ -27,8 +27,8 @@ type RailwayEvent struct {
 	data *schema.RailwayEvent
 }
 
-func (x RailwayEvent) XMLName() string {
-	return "RailwayEvent"
+func (RailwayEvent) XMLName() xml.Name {
+	return xml.Name{Local: "RailwayEvent"}
 }
 
 func (x *RailwayEvent) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -205,8 +205,8 @@ type SelectedSection struct {
 	data *schema.SelectedSection
 }
 
-func (x SelectedSection) XMLName() string {
-	return "SelectedSection"
+func (SelectedSection) XMLName() xml.Name {
+	return xml.Name{Local: "SelectedSection"}
 }
 
 func (x *SelectedSection) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -262,8 +262,8 @@ type Location struct {
 	data *schema.Location
 }
 
-func (x Location) XMLName() string {
-	return "Location"
+func (Location) XMLName() xml.Name {
+	return xml.Name{Local: "Location"}
 }
 
 func (x *Location) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -315,8 +315,8 @@ type IntermediateLocation struct {
 	data *schema.IntermediateLocation
 }
 
-func (x IntermediateLocation) XMLName() string {
-	return "IntermediateLocation"
+func (IntermediateLocation) XMLName() xml.Name {
+	return xml.Name{Local: "IntermediateLocation"}
 }
 
 func (x *IntermediateLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

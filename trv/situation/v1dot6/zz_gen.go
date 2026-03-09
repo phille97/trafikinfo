@@ -27,8 +27,8 @@ type Situation struct {
 	data *schema.Situation
 }
 
-func (x Situation) XMLName() string {
-	return "Situation"
+func (Situation) XMLName() xml.Name {
+	return xml.Name{Local: "Situation"}
 }
 
 func (x *Situation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -175,8 +175,8 @@ type Deviation struct {
 	data *schema.Deviation
 }
 
-func (x Deviation) XMLName() string {
-	return "Deviation"
+func (Deviation) XMLName() xml.Name {
+	return xml.Name{Local: "Deviation"}
 }
 
 func (x *Deviation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -477,8 +477,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) XMLName() string {
-	return "Geometry"
+func (Geometry) XMLName() xml.Name {
+	return xml.Name{Local: "Geometry"}
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -524,8 +524,8 @@ type Image struct {
 	data *schema.Image
 }
 
-func (x Image) XMLName() string {
-	return "Image"
+func (Image) XMLName() xml.Name {
+	return xml.Name{Local: "Image"}
 }
 
 func (x *Image) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -557,8 +557,8 @@ type Schedule struct {
 	data *schema.Schedule
 }
 
-func (x Schedule) XMLName() string {
-	return "Schedule"
+func (Schedule) XMLName() xml.Name {
+	return xml.Name{Local: "Schedule"}
 }
 
 func (x *Schedule) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -601,8 +601,8 @@ type GeoPoint struct {
 	data *schema.GeoPoint
 }
 
-func (x GeoPoint) XMLName() string {
-	return "GeoPoint"
+func (GeoPoint) XMLName() xml.Name {
+	return xml.Name{Local: "GeoPoint"}
 }
 
 func (x *GeoPoint) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -634,8 +634,8 @@ type GeoLine struct {
 	data *schema.GeoLine
 }
 
-func (x GeoLine) XMLName() string {
-	return "GeoLine"
+func (GeoLine) XMLName() xml.Name {
+	return xml.Name{Local: "GeoLine"}
 }
 
 func (x *GeoLine) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -667,8 +667,8 @@ type RecurringTimePeriodOfDay struct {
 	data *schema.RecurringTimePeriodOfDay
 }
 
-func (x RecurringTimePeriodOfDay) XMLName() string {
-	return "RecurringTimePeriodOfDay"
+func (RecurringTimePeriodOfDay) XMLName() xml.Name {
+	return xml.Name{Local: "RecurringTimePeriodOfDay"}
 }
 
 func (x *RecurringTimePeriodOfDay) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
