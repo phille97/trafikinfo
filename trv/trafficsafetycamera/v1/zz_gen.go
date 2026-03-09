@@ -27,8 +27,8 @@ type TrafficSafetyCamera struct {
 	data *schema.TrafficSafetyCamera
 }
 
-func (x TrafficSafetyCamera) T() trv.ObjectType {
-	return T()
+func (x TrafficSafetyCamera) XMLName() string {
+	return "TrafficSafetyCamera"
 }
 
 func (x *TrafficSafetyCamera) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -122,8 +122,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) T() trv.ObjectType {
-	return T()
+func (x Geometry) XMLName() string {
+	return "Geometry"
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

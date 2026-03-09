@@ -27,8 +27,8 @@ type ReasonCodePublic struct {
 	data *schema.ReasonCodePublic
 }
 
-func (x ReasonCodePublic) T() trv.ObjectType {
-	return T()
+func (x ReasonCodePublic) XMLName() string {
+	return "ReasonCodePublic"
 }
 
 func (x *ReasonCodePublic) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

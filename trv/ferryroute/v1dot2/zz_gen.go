@@ -27,8 +27,8 @@ type FerryRoute struct {
 	data *schema.FerryRoute
 }
 
-func (x FerryRoute) T() trv.ObjectType {
-	return T()
+func (x FerryRoute) XMLName() string {
+	return "FerryRoute"
 }
 
 func (x *FerryRoute) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -183,8 +183,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) T() trv.ObjectType {
-	return T()
+func (x Geometry) XMLName() string {
+	return "Geometry"
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -218,8 +218,8 @@ type Type struct {
 	data *schema.Type
 }
 
-func (x Type) T() trv.ObjectType {
-	return T()
+func (x Type) XMLName() string {
+	return "Type"
 }
 
 func (x *Type) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -253,8 +253,8 @@ type Harbor struct {
 	data *schema.Harbor
 }
 
-func (x Harbor) T() trv.ObjectType {
-	return T()
+func (x Harbor) XMLName() string {
+	return "Harbor"
 }
 
 func (x *Harbor) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -304,8 +304,8 @@ type Timetable struct {
 	data *schema.Timetable
 }
 
-func (x Timetable) T() trv.ObjectType {
-	return T()
+func (x Timetable) XMLName() string {
+	return "Timetable"
 }
 
 func (x *Timetable) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -361,8 +361,8 @@ type StopType struct {
 	data *schema.StopType
 }
 
-func (x StopType) T() trv.ObjectType {
-	return T()
+func (x StopType) XMLName() string {
+	return "StopType"
 }
 
 func (x *StopType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -405,8 +405,8 @@ type Valid struct {
 	data *schema.Valid
 }
 
-func (x Valid) T() trv.ObjectType {
-	return T()
+func (x Valid) XMLName() string {
+	return "Valid"
 }
 
 func (x *Valid) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -440,8 +440,8 @@ type Period struct {
 	data *schema.Period
 }
 
-func (x Period) T() trv.ObjectType {
-	return T()
+func (x Period) XMLName() string {
+	return "Period"
 }
 
 func (x *Period) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -497,8 +497,8 @@ type Weekday struct {
 	data *schema.Weekday
 }
 
-func (x Weekday) T() trv.ObjectType {
-	return T()
+func (x Weekday) XMLName() string {
+	return "Weekday"
 }
 
 func (x *Weekday) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -532,8 +532,8 @@ type Schedule struct {
 	data *schema.Schedule
 }
 
-func (x Schedule) T() trv.ObjectType {
-	return T()
+func (x Schedule) XMLName() string {
+	return "Schedule"
 }
 
 func (x *Schedule) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -592,8 +592,8 @@ type Deviation struct {
 	data *schema.Deviation
 }
 
-func (x Deviation) T() trv.ObjectType {
-	return T()
+func (x Deviation) XMLName() string {
+	return "Deviation"
 }
 
 func (x *Deviation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -661,8 +661,8 @@ type DeviationType struct {
 	data *schema.DeviationType
 }
 
-func (x DeviationType) T() trv.ObjectType {
-	return T()
+func (x DeviationType) XMLName() string {
+	return "DeviationType"
 }
 
 func (x *DeviationType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

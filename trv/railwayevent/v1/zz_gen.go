@@ -27,8 +27,8 @@ type RailwayEvent struct {
 	data *schema.RailwayEvent
 }
 
-func (x RailwayEvent) T() trv.ObjectType {
-	return T()
+func (x RailwayEvent) XMLName() string {
+	return "RailwayEvent"
 }
 
 func (x *RailwayEvent) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -205,8 +205,8 @@ type SelectedSection struct {
 	data *schema.SelectedSection
 }
 
-func (x SelectedSection) T() trv.ObjectType {
-	return T()
+func (x SelectedSection) XMLName() string {
+	return "SelectedSection"
 }
 
 func (x *SelectedSection) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -262,8 +262,8 @@ type Location struct {
 	data *schema.Location
 }
 
-func (x Location) T() trv.ObjectType {
-	return T()
+func (x Location) XMLName() string {
+	return "Location"
 }
 
 func (x *Location) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -315,8 +315,8 @@ type IntermediateLocation struct {
 	data *schema.IntermediateLocation
 }
 
-func (x IntermediateLocation) T() trv.ObjectType {
-	return T()
+func (x IntermediateLocation) XMLName() string {
+	return "IntermediateLocation"
 }
 
 func (x *IntermediateLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

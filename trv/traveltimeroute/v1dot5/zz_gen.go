@@ -27,8 +27,8 @@ type TravelTimeRoute struct {
 	data *schema.TravelTimeRoute
 }
 
-func (x TravelTimeRoute) T() trv.ObjectType {
-	return T()
+func (x TravelTimeRoute) XMLName() string {
+	return "TravelTimeRoute"
 }
 
 func (x *TravelTimeRoute) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -222,8 +222,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) T() trv.ObjectType {
-	return T()
+func (x Geometry) XMLName() string {
+	return "Geometry"
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

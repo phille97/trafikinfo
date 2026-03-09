@@ -27,8 +27,8 @@ type OperativeEvent struct {
 	data *schema.OperativeEvent
 }
 
-func (x OperativeEvent) T() trv.ObjectType {
-	return T()
+func (x OperativeEvent) XMLName() string {
+	return "OperativeEvent"
 }
 
 func (x *OperativeEvent) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -218,8 +218,8 @@ type EventType struct {
 	data *schema.EventType
 }
 
-func (x EventType) T() trv.ObjectType {
-	return T()
+func (x EventType) XMLName() string {
+	return "EventType"
 }
 
 func (x *EventType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -253,8 +253,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) T() trv.ObjectType {
-	return T()
+func (x Geometry) XMLName() string {
+	return "Geometry"
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -288,8 +288,8 @@ type RailwaySection struct {
 	data *schema.RailwaySection
 }
 
-func (x RailwaySection) T() trv.ObjectType {
-	return T()
+func (x RailwaySection) XMLName() string {
+	return "RailwaySection"
 }
 
 func (x *RailwaySection) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -332,8 +332,8 @@ type RelatedEvent struct {
 	data *schema.RelatedEvent
 }
 
-func (x RelatedEvent) T() trv.ObjectType {
-	return T()
+func (x RelatedEvent) XMLName() string {
+	return "RelatedEvent"
 }
 
 func (x *RelatedEvent) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -367,8 +367,8 @@ type TrafficImpact struct {
 	data *schema.TrafficImpact
 }
 
-func (x TrafficImpact) T() trv.ObjectType {
-	return T()
+func (x TrafficImpact) XMLName() string {
+	return "TrafficImpact"
 }
 
 func (x *TrafficImpact) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -460,8 +460,8 @@ type Location struct {
 	data *schema.Location
 }
 
-func (x Location) T() trv.ObjectType {
-	return T()
+func (x Location) XMLName() string {
+	return "Location"
 }
 
 func (x *Location) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -513,8 +513,8 @@ type PublicMessage struct {
 	data *schema.PublicMessage
 }
 
-func (x PublicMessage) T() trv.ObjectType {
-	return T()
+func (x PublicMessage) XMLName() string {
+	return "PublicMessage"
 }
 
 func (x *PublicMessage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -575,8 +575,8 @@ type SelectedSection struct {
 	data *schema.SelectedSection
 }
 
-func (x SelectedSection) T() trv.ObjectType {
-	return T()
+func (x SelectedSection) XMLName() string {
+	return "SelectedSection"
 }
 
 func (x *SelectedSection) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -641,8 +641,8 @@ type SectionLocation struct {
 	data *schema.SectionLocation
 }
 
-func (x SectionLocation) T() trv.ObjectType {
-	return T()
+func (x SectionLocation) XMLName() string {
+	return "SectionLocation"
 }
 
 func (x *SectionLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

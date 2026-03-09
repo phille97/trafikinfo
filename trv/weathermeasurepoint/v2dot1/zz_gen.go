@@ -47,8 +47,8 @@ type WeatherMeasurepoint struct {
 	data *schema.WeatherMeasurepoint
 }
 
-func (x WeatherMeasurepoint) T() trv.ObjectType {
-	return T()
+func (x WeatherMeasurepoint) XMLName() string {
+	return "WeatherMeasurepoint"
 }
 
 func (x *WeatherMeasurepoint) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -163,8 +163,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) T() trv.ObjectType {
-	return T()
+func (x Geometry) XMLName() string {
+	return "Geometry"
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -198,8 +198,8 @@ type Observation struct {
 	data *schema.Observation
 }
 
-func (x Observation) T() trv.ObjectType {
-	return T()
+func (x Observation) XMLName() string {
+	return "Observation"
 }
 
 func (x *Observation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -300,8 +300,8 @@ type Weather struct {
 	data *schema.Weather
 }
 
-func (x Weather) T() trv.ObjectType {
-	return T()
+func (x Weather) XMLName() string {
+	return "Weather"
 }
 
 func (x *Weather) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -326,8 +326,8 @@ type SurfaceCondition struct {
 	data *schema.SurfaceCondition
 }
 
-func (x SurfaceCondition) T() trv.ObjectType {
-	return T()
+func (x SurfaceCondition) XMLName() string {
+	return "SurfaceCondition"
 }
 
 func (x *SurfaceCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -415,8 +415,8 @@ type AirCondition struct {
 	data *schema.AirCondition
 }
 
-func (x AirCondition) T() trv.ObjectType {
-	return T()
+func (x AirCondition) XMLName() string {
+	return "AirCondition"
 }
 
 func (x *AirCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -468,8 +468,8 @@ type WindCondition struct {
 	data *schema.WindCondition
 }
 
-func (x WindCondition) T() trv.ObjectType {
-	return T()
+func (x WindCondition) XMLName() string {
+	return "WindCondition"
 }
 
 func (x *WindCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -510,8 +510,8 @@ type DeicingChemical struct {
 	data *schema.DeicingChemical
 }
 
-func (x DeicingChemical) T() trv.ObjectType {
-	return T()
+func (x DeicingChemical) XMLName() string {
+	return "DeicingChemical"
 }
 
 func (x *DeicingChemical) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -536,8 +536,8 @@ type SubsurfaceCondition struct {
 	data *schema.SubsurfaceCondition
 }
 
-func (x SubsurfaceCondition) T() trv.ObjectType {
-	return T()
+func (x SubsurfaceCondition) XMLName() string {
+	return "SubsurfaceCondition"
 }
 
 func (x *SubsurfaceCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -564,8 +564,8 @@ type Celsius struct {
 	data *schema.Celsius
 }
 
-func (x Celsius) T() trv.ObjectType {
-	return T()
+func (x Celsius) XMLName() string {
+	return "Celsius"
 }
 
 func (x *Celsius) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -606,8 +606,8 @@ type Grip struct {
 	data *schema.Grip
 }
 
-func (x Grip) T() trv.ObjectType {
-	return T()
+func (x Grip) XMLName() string {
+	return "Grip"
 }
 
 func (x *Grip) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -648,8 +648,8 @@ type Millimeters struct {
 	data *schema.Millimeters
 }
 
-func (x Millimeters) T() trv.ObjectType {
-	return T()
+func (x Millimeters) XMLName() string {
+	return "Millimeters"
 }
 
 func (x *Millimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -690,8 +690,8 @@ type Snow struct {
 	data *schema.Snow
 }
 
-func (x Snow) T() trv.ObjectType {
-	return T()
+func (x Snow) XMLName() string {
+	return "Snow"
 }
 
 func (x *Snow) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -725,8 +725,8 @@ type Percentage struct {
 	data *schema.Percentage
 }
 
-func (x Percentage) T() trv.ObjectType {
-	return T()
+func (x Percentage) XMLName() string {
+	return "Percentage"
 }
 
 func (x *Percentage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -767,8 +767,8 @@ type Meters struct {
 	data *schema.Meters
 }
 
-func (x Meters) T() trv.ObjectType {
-	return T()
+func (x Meters) XMLName() string {
+	return "Meters"
 }
 
 func (x *Meters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -809,8 +809,8 @@ type MetersPerSecond struct {
 	data *schema.MetersPerSecond
 }
 
-func (x MetersPerSecond) T() trv.ObjectType {
-	return T()
+func (x MetersPerSecond) XMLName() string {
+	return "MetersPerSecond"
 }
 
 func (x *MetersPerSecond) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -851,8 +851,8 @@ type Degrees struct {
 	data *schema.Degrees
 }
 
-func (x Degrees) T() trv.ObjectType {
-	return T()
+func (x Degrees) XMLName() string {
+	return "Degrees"
 }
 
 func (x *Degrees) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -893,8 +893,8 @@ type GramPerSquareMeter struct {
 	data *schema.GramPerSquareMeter
 }
 
-func (x GramPerSquareMeter) T() trv.ObjectType {
-	return T()
+func (x GramPerSquareMeter) XMLName() string {
+	return "GramPerSquareMeter"
 }
 
 func (x *GramPerSquareMeter) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -935,8 +935,8 @@ type GroundCondition struct {
 	data *schema.GroundCondition
 }
 
-func (x GroundCondition) T() trv.ObjectType {
-	return T()
+func (x GroundCondition) XMLName() string {
+	return "GroundCondition"
 }
 
 func (x *GroundCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -970,8 +970,8 @@ type Aggregated struct {
 	data *schema.Aggregated
 }
 
-func (x Aggregated) T() trv.ObjectType {
-	return T()
+func (x Aggregated) XMLName() string {
+	return "Aggregated"
 }
 
 func (x *Aggregated) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -1011,8 +1011,8 @@ type IntegerCentimeters struct {
 	data *schema.IntegerCentimeters
 }
 
-func (x IntegerCentimeters) T() trv.ObjectType {
-	return T()
+func (x IntegerCentimeters) XMLName() string {
+	return "IntegerCentimeters"
 }
 
 func (x *IntegerCentimeters) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -1053,8 +1053,8 @@ type WindConditionAggregated struct {
 	data *schema.WindConditionAggregated
 }
 
-func (x WindConditionAggregated) T() trv.ObjectType {
-	return T()
+func (x WindConditionAggregated) XMLName() string {
+	return "WindConditionAggregated"
 }
 
 func (x *WindConditionAggregated) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -1095,8 +1095,8 @@ type PrecipitationConditionAggregated struct {
 	data *schema.PrecipitationConditionAggregated
 }
 
-func (x PrecipitationConditionAggregated) T() trv.ObjectType {
-	return T()
+func (x PrecipitationConditionAggregated) XMLName() string {
+	return "PrecipitationConditionAggregated"
 }
 
 func (x *PrecipitationConditionAggregated) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

@@ -10,7 +10,7 @@ import (
 
 func StreamResponse[T trv.Object](r io.Reader) iter.Seq2[T, error] {
 	var zero T
-	xmlLocalName := zero.T().Kind
+	xmlName := zero.XMLName()
 	return func(yield func(T, error) bool) {
 		decoder := xml.NewDecoder(r)
 		for {
@@ -37,7 +37,7 @@ func StreamResponse[T trv.Object](r io.Reader) iter.Seq2[T, error] {
 				if !yield(zero, &apiErr) {
 					return
 				}
-			case xmlLocalName:
+			case xmlName:
 				var u T
 				if err := decoder.DecodeElement(&u, &se); err != nil {
 					yield(u, err)

@@ -27,8 +27,8 @@ type TrainStation struct {
 	data *schema.TrainStation
 }
 
-func (x TrainStation) T() trv.ObjectType {
-	return T()
+func (x TrainStation) XMLName() string {
+	return "TrainStation"
 }
 
 func (x *TrainStation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -158,8 +158,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) T() trv.ObjectType {
-	return T()
+func (x Geometry) XMLName() string {
+	return "Geometry"
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

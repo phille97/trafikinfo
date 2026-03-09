@@ -27,8 +27,8 @@ type Parking struct {
 	data *schema.Parking
 }
 
-func (x Parking) T() trv.ObjectType {
-	return T()
+func (x Parking) XMLName() string {
+	return "Parking"
 }
 
 func (x *Parking) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -267,8 +267,8 @@ type Equipment struct {
 	data *schema.Equipment
 }
 
-func (x Equipment) T() trv.ObjectType {
-	return T()
+func (x Equipment) XMLName() string {
+	return "Equipment"
 }
 
 func (x *Equipment) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -300,8 +300,8 @@ type Facility struct {
 	data *schema.Facility
 }
 
-func (x Facility) T() trv.ObjectType {
-	return T()
+func (x Facility) XMLName() string {
+	return "Facility"
 }
 
 func (x *Facility) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -333,8 +333,8 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
-func (x Geometry) T() trv.ObjectType {
-	return T()
+func (x Geometry) XMLName() string {
+	return "Geometry"
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -366,8 +366,8 @@ type Operator struct {
 	data *schema.Operator
 }
 
-func (x Operator) T() trv.ObjectType {
-	return T()
+func (x Operator) XMLName() string {
+	return "Operator"
 }
 
 func (x *Operator) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -415,8 +415,8 @@ type ParkingAccess struct {
 	data *schema.ParkingAccess
 }
 
-func (x ParkingAccess) T() trv.ObjectType {
-	return T()
+func (x ParkingAccess) XMLName() string {
+	return "ParkingAccess"
 }
 
 func (x *ParkingAccess) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -448,8 +448,8 @@ type Photo struct {
 	data *schema.Photo
 }
 
-func (x Photo) T() trv.ObjectType {
-	return T()
+func (x Photo) XMLName() string {
+	return "Photo"
 }
 
 func (x *Photo) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -481,8 +481,8 @@ type TariffsAndPayment struct {
 	data *schema.TariffsAndPayment
 }
 
-func (x TariffsAndPayment) T() trv.ObjectType {
-	return T()
+func (x TariffsAndPayment) XMLName() string {
+	return "TariffsAndPayment"
 }
 
 func (x *TariffsAndPayment) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -514,8 +514,8 @@ type VehicleCharacteristics struct {
 	data *schema.VehicleCharacteristics
 }
 
-func (x VehicleCharacteristics) T() trv.ObjectType {
-	return T()
+func (x VehicleCharacteristics) XMLName() string {
+	return "VehicleCharacteristics"
 }
 
 func (x *VehicleCharacteristics) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

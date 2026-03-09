@@ -27,8 +27,8 @@ type Icon struct {
 	data *schema.Icon
 }
 
-func (x Icon) T() trv.ObjectType {
-	return T()
+func (x Icon) XMLName() string {
+	return "Icon"
 }
 
 func (x *Icon) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

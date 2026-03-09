@@ -13,7 +13,7 @@ go fmt ./regen.output/...
 rm -rf trv/*/
 mv regen.output/trv/* trv/
 
-rm -rf internal/trv/
-mv regen.output/internal/trv/ internal/trv/
+rm -rf internal/trv/*/
+mv regen.output/internal/trv/* internal/trv/
 
 rm -rf regen.output

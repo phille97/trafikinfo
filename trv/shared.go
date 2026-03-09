@@ -56,5 +56,5 @@ func (e *APIError) Error() string {
 }
 
 type Object interface {
-	T() ObjectType
+	XMLName() string
 }

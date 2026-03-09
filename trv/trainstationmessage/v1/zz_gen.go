@@ -44,8 +44,8 @@ type TrainStationMessage struct {
 	data *schema.TrainStationMessage
 }
 
-func (x TrainStationMessage) T() trv.ObjectType {
-	return T()
+func (x TrainStationMessage) XMLName() string {
+	return "TrainStationMessage"
 }
 
 func (x *TrainStationMessage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -199,8 +199,8 @@ type MonitorAttributes struct {
 	data *schema.MonitorAttributes
 }
 
-func (x MonitorAttributes) T() trv.ObjectType {
-	return T()
+func (x MonitorAttributes) XMLName() string {
+	return "MonitorAttributes"
 }
 
 func (x *MonitorAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -234,8 +234,8 @@ type PlatformSignAttributes struct {
 	data *schema.PlatformSignAttributes
 }
 
-func (x PlatformSignAttributes) T() trv.ObjectType {
-	return T()
+func (x PlatformSignAttributes) XMLName() string {
+	return "PlatformSignAttributes"
 }
 
 func (x *PlatformSignAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -269,8 +269,8 @@ type PublicAnnouncementAttributes struct {
 	data *schema.PublicAnnouncementAttributes
 }
 
-func (x PublicAnnouncementAttributes) T() trv.ObjectType {
-	return T()
+func (x PublicAnnouncementAttributes) XMLName() string {
+	return "PublicAnnouncementAttributes"
 }
 
 func (x *PublicAnnouncementAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -320,8 +320,8 @@ type TrackList struct {
 	data *schema.TrackList
 }
 
-func (x TrackList) T() trv.ObjectType {
-	return T()
+func (x TrackList) XMLName() string {
+	return "TrackList"
 }
 
 func (x *TrackList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -344,8 +344,8 @@ type PublicAnnouncementPlanList struct {
 	data *schema.PublicAnnouncementPlanList
 }
 
-func (x PublicAnnouncementPlanList) T() trv.ObjectType {
-	return T()
+func (x PublicAnnouncementPlanList) XMLName() string {
+	return "PublicAnnouncementPlanList"
 }
 
 func (x *PublicAnnouncementPlanList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -372,8 +372,8 @@ type PublicAnnouncementZoneList struct {
 	data *schema.PublicAnnouncementZoneList
 }
 
-func (x PublicAnnouncementZoneList) T() trv.ObjectType {
-	return T()
+func (x PublicAnnouncementZoneList) XMLName() string {
+	return "PublicAnnouncementZoneList"
 }
 
 func (x *PublicAnnouncementZoneList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -398,8 +398,8 @@ type PublicAnnouncementPlan struct {
 	data *schema.PublicAnnouncementPlan
 }
 
-func (x PublicAnnouncementPlan) T() trv.ObjectType {
-	return T()
+func (x PublicAnnouncementPlan) XMLName() string {
+	return "PublicAnnouncementPlan"
 }
 
 func (x *PublicAnnouncementPlan) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -449,8 +449,8 @@ type PublicAnnouncementOccasionList struct {
 	data *schema.PublicAnnouncementOccasionList
 }
 
-func (x PublicAnnouncementOccasionList) T() trv.ObjectType {
-	return T()
+func (x PublicAnnouncementOccasionList) XMLName() string {
+	return "PublicAnnouncementOccasionList"
 }
 
 func (x *PublicAnnouncementOccasionList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

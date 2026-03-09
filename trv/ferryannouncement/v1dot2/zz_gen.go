@@ -27,8 +27,8 @@ type FerryAnnouncement struct {
 	data *schema.FerryAnnouncement
 }
 
-func (x FerryAnnouncement) T() trv.ObjectType {
-	return T()
+func (x FerryAnnouncement) XMLName() string {
+	return "FerryAnnouncement"
 }
 
 func (x *FerryAnnouncement) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -174,8 +174,8 @@ type FromHarbor struct {
 	data *schema.FromHarbor
 }
 
-func (x FromHarbor) T() trv.ObjectType {
-	return T()
+func (x FromHarbor) XMLName() string {
+	return "FromHarbor"
 }
 
 func (x *FromHarbor) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -209,8 +209,8 @@ type ToHarbor struct {
 	data *schema.ToHarbor
 }
 
-func (x ToHarbor) T() trv.ObjectType {
-	return T()
+func (x ToHarbor) XMLName() string {
+	return "ToHarbor"
 }
 
 func (x *ToHarbor) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -244,8 +244,8 @@ type Route struct {
 	data *schema.Route
 }
 
-func (x Route) T() trv.ObjectType {
-	return T()
+func (x Route) XMLName() string {
+	return "Route"
 }
 
 func (x *Route) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -306,8 +306,8 @@ type Type struct {
 	data *schema.Type
 }
 
-func (x Type) T() trv.ObjectType {
-	return T()
+func (x Type) XMLName() string {
+	return "Type"
 }
 
 func (x *Type) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
