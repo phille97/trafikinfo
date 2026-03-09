@@ -8,15 +8,10 @@ import (
 	"github.com/phille97/trafikinfo/trv"
 )
 
-type StreamedResult[T trv.Object] struct {
-	Data  T
-	Error *trv.APIError
-}
-
-func StreamResult[T trv.Object](r io.Reader) iter.Seq2[StreamedResult[T], error] {
-	var u T
-	xmlLocalName := u.T().Kind
-	return func(yield func(StreamedResult[T], error) bool) {
+func StreamResponse[T trv.Object](r io.Reader) iter.Seq2[T, error] {
+	var zero T
+	xmlLocalName := zero.T().Kind
+	return func(yield func(T, error) bool) {
 		decoder := xml.NewDecoder(r)
 		for {
 			token, err := decoder.Token()
@@ -24,7 +19,7 @@ func StreamResult[T trv.Object](r io.Reader) iter.Seq2[StreamedResult[T], error]
 				return
 			}
 			if err != nil {
-				yield(StreamedResult[T]{}, err)
+				yield(zero, err)
 				return
 			}
 			se, ok := token.(xml.StartElement)
@@ -36,21 +31,19 @@ func StreamResult[T trv.Object](r io.Reader) iter.Seq2[StreamedResult[T], error]
 			case "ERROR":
 				var apiErr trv.APIError
 				if err := decoder.DecodeElement(&apiErr, &se); err != nil {
-					yield(StreamedResult[T]{}, err)
+					yield(zero, err)
 					return
 				}
-				if !yield(StreamedResult[T]{Error: &apiErr}, nil) {
+				if !yield(zero, &apiErr) {
 					return
 				}
 			case xmlLocalName:
 				var u T
 				if err := decoder.DecodeElement(&u, &se); err != nil {
-					if !yield(StreamedResult[T]{}, err) {
-						return
-					}
-					continue
+					yield(u, err)
+					return
 				}
-				if !yield(StreamedResult[T]{Data: u}, nil) {
+				if !yield(u, nil) {
 					return
 				}
 			}

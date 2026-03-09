@@ -2,8 +2,10 @@ package trafikinfo
 
 import (
 	"bytes"
+	"errors"
 	"testing"
 
+	"github.com/phille97/trafikinfo/trv"
 	wmp "github.com/phille97/trafikinfo/trv/weathermeasurepoint/v2dot1"
 )
 
@@ -334,16 +336,13 @@ const exampleResponseWithAPIError = `
 `
 
 func TestStreamResult(t *testing.T) {
-	results := StreamResult[wmp.WeatherMeasurepoint](bytes.NewBufferString(exampleResponse))
+	results := StreamResponse[wmp.WeatherMeasurepoint](bytes.NewBufferString(exampleResponse))
 	var data []wmp.WeatherMeasurepoint
 	for result, err := range results {
 		if err != nil {
 			t.Fatalf("unexpected error: %s", err)
 		}
-		if result.Error != nil {
-			t.Fatalf("unexpected API error: %s", result.Error)
-		}
-		data = append(data, result.Data)
+		data = append(data, result)
 	}
 
 	if len(data) != 2 {
@@ -360,21 +359,21 @@ func TestStreamResult(t *testing.T) {
 }
 
 func TestStreamResultAPIError(t *testing.T) {
-	results := StreamResult[wmp.WeatherMeasurepoint](bytes.NewBufferString(exampleResponseWithAPIError))
+	results := StreamResponse[wmp.WeatherMeasurepoint](bytes.NewBufferString(exampleResponseWithAPIError))
 	count := 0
-	for result, err := range results {
+	for _, err := range results {
 		count++
-		if err != nil {
-			t.Fatalf("unexpected error: %s", err)
+		var apiErr *trv.APIError
+		if !errors.As(err, &apiErr) {
+			t.Fatalf("expected API error, got %s", err)
 		}
-		if result.Error == nil {
-			t.Fatalf("expected API error, got nil")
+
+		if apiErr.Source != "Security" {
+			t.Errorf("expected API error source to be 'Security', got '%s'", apiErr.Source)
 		}
-		if result.Error.Source != "Security" {
-			t.Errorf("expected error source to be Security, got %s", result.Error.Source)
-		}
-		if result.Error.Message != "Invalid authentication" {
-			t.Errorf("expected error message to be Invalid authentication, got %s", result.Error.Message)
+
+		if apiErr.Message != "Invalid authentication" {
+			t.Errorf("expected API error message to be 'Invalid authentication', got '%s'", apiErr.Message)
 		}
 	}
 
