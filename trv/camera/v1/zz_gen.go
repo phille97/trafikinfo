@@ -27,6 +27,10 @@ type Camera struct {
 	data *schema.Camera
 }
 
+func (x Camera) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Camera) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Camera{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -189,57 +193,12 @@ func (x *Camera) ModifiedTime() *time.Time {
 	return x.data.ModifiedTime
 }
 
-func (x *Camera) CheckoutID() *string {
-	if x.data == nil {
-		return nil
-	}
-	return x.data.Checkoutid
-}
-
-func (x *Camera) Checkouts() *int64 {
-	if x.data == nil {
-		return nil
-	}
-	return x.data.Checkouts
-}
-
-func (x *Camera) LeasedUntil() *time.Time {
-	if x.data == nil {
-		return nil
-	}
-	return x.data.Leaseduntil
-}
-
-func (x *Camera) Acknowledged() *time.Time {
-	if x.data == nil {
-		return nil
-	}
-	return x.data.Acknowledged
-}
-
-func (x *Camera) StatusCode() *uint8 {
-	if x.data == nil {
-		return nil
-	}
-	return x.data.Statuscode
-}
-
-func (x *Camera) ItemsAcknowledged() *int64 {
-	if x.data == nil {
-		return nil
-	}
-	return x.data.Itemsacknowledged
-}
-
-func (x *Camera) ItemsLeft() *int64 {
-	if x.data == nil {
-		return nil
-	}
-	return x.data.Itemsleft
-}
-
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (x Geometry) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

@@ -37,6 +37,10 @@ type TrainAnnouncement struct {
 	data *schema.TrainAnnouncement
 }
 
+func (x TrainAnnouncement) T() trv.ObjectType {
+	return T()
+}
+
 func (x *TrainAnnouncement) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrainAnnouncement{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -409,6 +413,10 @@ type Booking struct {
 	data *schema.Booking
 }
 
+func (x Booking) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Booking) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Booking{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -438,6 +446,10 @@ type Deviation struct {
 	data *schema.Deviation
 }
 
+func (x Deviation) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Deviation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Deviation{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -465,6 +477,10 @@ func (x *Deviation) Description() *string {
 
 type FromLocation struct {
 	data *schema.FromLocation
+}
+
+func (x FromLocation) T() trv.ObjectType {
+	return T()
 }
 
 func (x *FromLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -502,6 +518,10 @@ func (x *FromLocation) Order() *int {
 
 type CompositIdentifierOperationalType struct {
 	data *schema.CompositIdentifierOperationalType
+}
+
+func (x CompositIdentifierOperationalType) T() trv.ObjectType {
+	return T()
 }
 
 func (x *CompositIdentifierOperationalType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -571,6 +591,10 @@ type OtherInformation struct {
 	data *schema.OtherInformation
 }
 
+func (x OtherInformation) T() trv.ObjectType {
+	return T()
+}
+
 func (x *OtherInformation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.OtherInformation{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -598,6 +622,10 @@ func (x *OtherInformation) Description() *string {
 
 type ProductInformation struct {
 	data *schema.ProductInformation
+}
+
+func (x ProductInformation) T() trv.ObjectType {
+	return T()
 }
 
 func (x *ProductInformation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -629,6 +657,10 @@ type Service struct {
 	data *schema.Service
 }
 
+func (x Service) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Service) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Service{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -656,6 +688,10 @@ func (x *Service) Description() *string {
 
 type ToLocation struct {
 	data *schema.ToLocation
+}
+
+func (x ToLocation) T() trv.ObjectType {
+	return T()
 }
 
 func (x *ToLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -695,6 +731,10 @@ type TrainComposition struct {
 	data *schema.TrainComposition
 }
 
+func (x TrainComposition) T() trv.ObjectType {
+	return T()
+}
+
 func (x *TrainComposition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrainComposition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -724,6 +764,10 @@ type TypeOfTraffic struct {
 	data *schema.TypeOfTraffic
 }
 
+func (x TypeOfTraffic) T() trv.ObjectType {
+	return T()
+}
+
 func (x *TypeOfTraffic) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TypeOfTraffic{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -751,6 +795,10 @@ func (x *TypeOfTraffic) Description() *string {
 
 type ViaFromLocation struct {
 	data *schema.ViaFromLocation
+}
+
+func (x ViaFromLocation) T() trv.ObjectType {
+	return T()
 }
 
 func (x *ViaFromLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -788,6 +836,10 @@ func (x *ViaFromLocation) Order() *int {
 
 type ViaToLocation struct {
 	data *schema.ViaToLocation
+}
+
+func (x ViaToLocation) T() trv.ObjectType {
+	return T()
 }
 
 func (x *ViaToLocation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

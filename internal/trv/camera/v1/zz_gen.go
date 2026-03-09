@@ -46,14 +46,7 @@ type Camera struct {
 	Geometry *Geometry `xml:"Geometry,omitempty"`
 	// EN: Specifies when the object is stored.
 	// SV: Anger när objektet är sparat.
-	ModifiedTime      *time.Time `xml:"ModifiedTime,omitempty"`
-	Checkoutid        *string    `xml:"checkoutid,attr,omitempty"`
-	Checkouts         *int64     `xml:"checkouts,attr,omitempty"`
-	Leaseduntil       *time.Time `xml:"leaseduntil,attr,omitempty"`
-	Acknowledged      *time.Time `xml:"acknowledged,attr,omitempty"`
-	Statuscode        *uint8     `xml:"statuscode,attr,omitempty"`
-	Itemsacknowledged *int64     `xml:"itemsacknowledged,attr,omitempty"`
-	Itemsleft         *int64     `xml:"itemsleft,attr,omitempty"`
+	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
 }
 
 type Geometry struct {

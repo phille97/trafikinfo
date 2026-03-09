@@ -27,6 +27,10 @@ type TrafficSafetyCamera struct {
 	data *schema.TrafficSafetyCamera
 }
 
+func (x TrafficSafetyCamera) T() trv.ObjectType {
+	return T()
+}
+
 func (x *TrafficSafetyCamera) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrafficSafetyCamera{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -116,6 +120,10 @@ func (x *TrafficSafetyCamera) ModifiedTime() *time.Time {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (x Geometry) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

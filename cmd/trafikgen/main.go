@@ -38,7 +38,7 @@ func main() {
 	case "generate":
 		generatorCmd.Parse(args[1:])
 		if *schemaDir == "" {
-			log.Fatal("shcema-dir must be set")
+			log.Fatal("schema-dir must be set")
 		}
 		if *outputDir == "" {
 			log.Fatal("output-dir must be set")

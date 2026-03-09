@@ -27,6 +27,10 @@ type TrainPosition struct {
 	data *schema.TrainPosition
 }
 
+func (x TrainPosition) T() trv.ObjectType {
+	return T()
+}
+
 func (x *TrainPosition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrainPosition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -121,6 +125,10 @@ type Train struct {
 	data *schema.Train
 }
 
+func (x Train) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Train) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Train{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -179,6 +187,10 @@ type Position struct {
 	data *schema.Position
 }
 
+func (x Position) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Position) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Position{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -208,6 +220,10 @@ func (x *Position) WGS84() *string {
 
 type Status struct {
 	data *schema.Status
+}
+
+func (x Status) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Status) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

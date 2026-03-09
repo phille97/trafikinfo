@@ -1,15 +1,15 @@
-// Package v1dot5 contains the type definitions for Situation v1.5.
+// Package v1dot6 contains the type definitions for Situation v1.6.
 //
 // All types have accessor methods to access fields which can be chained on nils.
 // This makes it possible to easily drill down into deeply nested data.
-package v1dot5
+package v1dot6
 
 import (
 	"encoding/xml"
 	"strings"
 	"time"
 
-	schema "github.com/phille97/trafikinfo/internal/trv/situation/v1dot5"
+	schema "github.com/phille97/trafikinfo/internal/trv/situation/v1dot6"
 	"github.com/phille97/trafikinfo/trv"
 )
 
@@ -18,13 +18,17 @@ import (
 func T() trv.ObjectType {
 	return trv.ObjectType{
 		Kind:      "Situation",
-		Version:   "1.5",
+		Version:   "1.6",
 		Namespace: "",
 	}
 }
 
 type Situation struct {
 	data *schema.Situation
+}
+
+func (x Situation) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Situation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -125,6 +129,13 @@ func (x *Situation) Acknowledged() *time.Time {
 	return x.data.Acknowledged
 }
 
+func (x *Situation) Rejected() *time.Time {
+	if x.data == nil {
+		return nil
+	}
+	return x.data.Rejected
+}
+
 func (x *Situation) StatusCode() *uint8 {
 	if x.data == nil {
 		return nil
@@ -146,8 +157,26 @@ func (x *Situation) ItemsLeft() *int64 {
 	return x.data.Itemsleft
 }
 
+func (x *Situation) Itemsrejected() *int64 {
+	if x.data == nil {
+		return nil
+	}
+	return x.data.Itemsrejected
+}
+
+func (x *Situation) Clearedto() *time.Time {
+	if x.data == nil {
+		return nil
+	}
+	return x.data.Clearedto
+}
+
 type Deviation struct {
 	data *schema.Deviation
+}
+
+func (x Deviation) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Deviation) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -173,6 +202,14 @@ func (x *Deviation) AffectedDirectionValue() *string {
 		return nil
 	}
 	return x.data.AffectedDirectionValue
+}
+
+// SV: Anger om objektet är inaktivt
+func (x *Deviation) Suspended() *bool {
+	if x.data == nil {
+		return nil
+	}
+	return x.data.Suspended
 }
 
 // SV: <div class="toggleTitle" xmlns="http://trafikverket.se/Situation.xsd">Länsnummer</div> <div class="toggle arrowR" xmlns="http://trafikverket.se/Situation.xsd"> </div> <div class="toggleContent" xmlns="http://trafikverket.se/Situation.xsd"> <table class="table table-condensed"> <tr> <td>0</td> <td>Alla län (kan förekomma för poster med Deviation.MessageType="Viktig trafikinformation" och meddelandet gäller då för hela Sverige)</td> </tr> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
@@ -440,6 +477,10 @@ type Geometry struct {
 	data *schema.Geometry
 }
 
+func (x Geometry) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Geometry{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -447,6 +488,22 @@ func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	}
 	x.data = res
 	return nil
+}
+
+// SV: Geometrisk punkt i koordinatsystem SWEREF99TM
+func (x *Geometry) SWEREF99TM() *string {
+	if x.data == nil {
+		return nil
+	}
+	return x.data.SWEREF99TM
+}
+
+// SV: Geometrisk punkt i koordinatsystem WGS84
+func (x *Geometry) WGS84() *string {
+	if x.data == nil {
+		return nil
+	}
+	return x.data.WGS84
 }
 
 func (x *Geometry) Point() *GeoPoint {
@@ -465,6 +522,10 @@ func (x *Geometry) Line() *GeoLine {
 
 type Image struct {
 	data *schema.Image
+}
+
+func (x Image) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Image) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -494,6 +555,10 @@ func (x *Image) URL() *string {
 
 type Schedule struct {
 	data *schema.Schedule
+}
+
+func (x Schedule) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Schedule) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -536,6 +601,10 @@ type GeoPoint struct {
 	data *schema.GeoPoint
 }
 
+func (x GeoPoint) T() trv.ObjectType {
+	return T()
+}
+
 func (x *GeoPoint) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.GeoPoint{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -565,6 +634,10 @@ type GeoLine struct {
 	data *schema.GeoLine
 }
 
+func (x GeoLine) T() trv.ObjectType {
+	return T()
+}
+
 func (x *GeoLine) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.GeoLine{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -592,6 +665,10 @@ func (x *GeoLine) WGS84() *string {
 
 type RecurringTimePeriodOfDay struct {
 	data *schema.RecurringTimePeriodOfDay
+}
+
+func (x RecurringTimePeriodOfDay) T() trv.ObjectType {
+	return T()
 }
 
 func (x *RecurringTimePeriodOfDay) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -627,7 +704,7 @@ func (x *RecurringTimePeriodOfDay) Start() *string {
 //
 //	import (
 //		 "encoding/xml"
-//		 api "github.com/phille97/trafikinfo/trv/situation/v1dot5"
+//		 api "github.com/phille97/trafikinfo/trv/situation/v1dot6"
 //	)
 //
 //	func main() {

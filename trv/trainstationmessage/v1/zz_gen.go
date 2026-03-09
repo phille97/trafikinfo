@@ -44,6 +44,10 @@ type TrainStationMessage struct {
 	data *schema.TrainStationMessage
 }
 
+func (x TrainStationMessage) T() trv.ObjectType {
+	return T()
+}
+
 func (x *TrainStationMessage) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrainStationMessage{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -173,8 +177,8 @@ func (x *TrainStationMessage) PublicAnnouncementAttributes() *PublicAnnouncement
 	return &PublicAnnouncementAttributes{data: x.data.PublicAnnouncementAttributes}
 }
 
-// SV: Anger att dataposten raderats
-// EN: Specifies if the element has been deleted
+// EN: Specifies if the object is deleted.
+// SV: Anger om objektet är raderat.
 func (x *TrainStationMessage) Deleted() *bool {
 	if x.data == nil {
 		return nil
@@ -182,8 +186,8 @@ func (x *TrainStationMessage) Deleted() *bool {
 	return x.data.Deleted
 }
 
-// SV: Tidpunkt då dataposten ändrades
-// EN: Time when the element wast last modified
+// EN: Specifies when the object is stored.
+// SV: Anger när objektet är sparat.
 func (x *TrainStationMessage) ModifiedTime() *time.Time {
 	if x.data == nil {
 		return nil
@@ -193,6 +197,10 @@ func (x *TrainStationMessage) ModifiedTime() *time.Time {
 
 type MonitorAttributes struct {
 	data *schema.MonitorAttributes
+}
+
+func (x MonitorAttributes) T() trv.ObjectType {
+	return T()
 }
 
 func (x *MonitorAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -226,6 +234,10 @@ type PlatformSignAttributes struct {
 	data *schema.PlatformSignAttributes
 }
 
+func (x PlatformSignAttributes) T() trv.ObjectType {
+	return T()
+}
+
 func (x *PlatformSignAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.PlatformSignAttributes{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -255,6 +267,10 @@ func (x *PlatformSignAttributes) TrackList() *TrackList {
 
 type PublicAnnouncementAttributes struct {
 	data *schema.PublicAnnouncementAttributes
+}
+
+func (x PublicAnnouncementAttributes) T() trv.ObjectType {
+	return T()
 }
 
 func (x *PublicAnnouncementAttributes) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -304,6 +320,10 @@ type TrackList struct {
 	data *schema.TrackList
 }
 
+func (x TrackList) T() trv.ObjectType {
+	return T()
+}
+
 func (x *TrackList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.TrackList{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -322,6 +342,10 @@ func (x *TrackList) Tracks() []string {
 
 type PublicAnnouncementPlanList struct {
 	data *schema.PublicAnnouncementPlanList
+}
+
+func (x PublicAnnouncementPlanList) T() trv.ObjectType {
+	return T()
 }
 
 func (x *PublicAnnouncementPlanList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -348,6 +372,10 @@ type PublicAnnouncementZoneList struct {
 	data *schema.PublicAnnouncementZoneList
 }
 
+func (x PublicAnnouncementZoneList) T() trv.ObjectType {
+	return T()
+}
+
 func (x *PublicAnnouncementZoneList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.PublicAnnouncementZoneList{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -368,6 +396,10 @@ func (x *PublicAnnouncementZoneList) PublicAnnouncementZones() []string {
 
 type PublicAnnouncementPlan struct {
 	data *schema.PublicAnnouncementPlan
+}
+
+func (x PublicAnnouncementPlan) T() trv.ObjectType {
+	return T()
 }
 
 func (x *PublicAnnouncementPlan) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -415,6 +447,10 @@ func (x *PublicAnnouncementPlan) PublicAnnouncementOccasionList() *PublicAnnounc
 
 type PublicAnnouncementOccasionList struct {
 	data *schema.PublicAnnouncementOccasionList
+}
+
+func (x PublicAnnouncementOccasionList) T() trv.ObjectType {
+	return T()
 }
 
 func (x *PublicAnnouncementOccasionList) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

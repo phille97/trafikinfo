@@ -21,13 +21,13 @@ var (
 	schemaPath = "/apb/prod/schema/%s/%s/data?annotations=true"
 	trvSchemas = map[string][]string{
 		// Choo choo motherfucker
-		"Road.Infrastructure.RailCrossing": {"1.5"},
-		"Rail.TrafficInfo.ReasonCode":      {"1.0"},
-		"TrainAnnouncement":                {"1.9"},
-		"TrainMessage":                     {"1.7"},
-		"TrainPosition":                    {"1.1"},
-		"TrainStation":                     {"1.4"},
-		"TrainStationMessage":              {"1.0"},
+		"Road.Infrastructure.RailCrossing":     {"1.5"},
+		"Rail.TrafficInfo.ReasonCode":          {"1.0"},
+		"TrainAnnouncement":                    {"1.9"},
+		"ols.open.RailwayEvent":                {"1.0"},
+		"TrainPosition":                        {"1.1"},
+		"TrainStation":                         {"1.4"},
+		"Rail.TrafficInfo.TrainStationMessage": {"1.0"},
 		// Road surface
 		"Road.PavementInfo.MeasurementData100": {"1"},
 		"Road.PavementInfo.MeasurementData20":  {"1"},
@@ -39,7 +39,7 @@ var (
 		"Road.Infrastructure.Icon":                {"1.1"},
 		"Road.Infrastructure.Parking":             {"1.4"},
 		"Road.TrafficInfo.RoadCondition":          {"1.2"},
-		"Road.TrafficInfo.Situation":              {"1.5"},
+		"Road.TrafficInfo.Situation":              {"1.6"},
 		"Road.TrafficInfo.TrafficFlow":            {"1.4"},
 		"Road.Infrastructure.TrafficSafetyCamera": {"1.0"},
 		"Road.TrafficInfo.TravelTimeRoute":        {"1.5"},
@@ -48,6 +48,8 @@ var (
 		// Toot toot
 		"FerryAnnouncement": {"1.2"},
 		"FerryRoute":        {"1.2"},
+		// and what about the rest?
+		"ols.open.OperativeEvent": {"1.0"},
 	}
 )
 

@@ -27,6 +27,10 @@ type RoadGeometry struct {
 	data *schema.RoadGeometry
 }
 
+func (x RoadGeometry) T() trv.ObjectType {
+	return T()
+}
+
 func (x *RoadGeometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadGeometry{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -112,6 +116,10 @@ type Direction struct {
 	data *schema.Direction
 }
 
+func (x Direction) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Direction{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -139,6 +147,10 @@ func (x *Direction) Value() *string {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (x Geometry) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

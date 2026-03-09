@@ -27,6 +27,10 @@ type MeasurementData100 struct {
 	data *schema.MeasurementData100
 }
 
+func (x MeasurementData100) T() trv.ObjectType {
+	return T()
+}
+
 func (x *MeasurementData100) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.MeasurementData100{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -207,6 +211,10 @@ type Direction struct {
 	data *schema.Direction
 }
 
+func (x Direction) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Direction{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -236,6 +244,10 @@ func (x *Direction) Value() *string {
 
 type MeasurementDataType struct {
 	data *schema.MeasurementDataType
+}
+
+func (x MeasurementDataType) T() trv.ObjectType {
+	return T()
 }
 
 func (x *MeasurementDataType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

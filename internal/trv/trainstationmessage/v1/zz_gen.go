@@ -44,11 +44,11 @@ type TrainStationMessage struct {
 	MonitorAttributes            *MonitorAttributes            `xml:"MonitorAttributes,omitempty"`
 	PlatformSignAttributes       *PlatformSignAttributes       `xml:"PlatformSignAttributes,omitempty"`
 	PublicAnnouncementAttributes *PublicAnnouncementAttributes `xml:"PublicAnnouncementAttributes,omitempty"`
-	// SV: Anger att dataposten raderats
-	// EN: Specifies if the element has been deleted
+	// EN: Specifies if the object is deleted.
+	// SV: Anger om objektet är raderat.
 	Deleted *bool `xml:"Deleted,omitempty"`
-	// SV: Tidpunkt då dataposten ändrades
-	// EN: Time when the element wast last modified
+	// EN: Specifies when the object is stored.
+	// SV: Anger när objektet är sparat.
 	ModifiedTime *time.Time `xml:"ModifiedTime,omitempty"`
 }
 

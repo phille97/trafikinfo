@@ -27,6 +27,10 @@ type RoadData struct {
 	data *schema.RoadData
 }
 
+func (x RoadData) T() trv.ObjectType {
+	return T()
+}
+
 func (x *RoadData) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadData{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -241,6 +245,10 @@ type Direction struct {
 	data *schema.Direction
 }
 
+func (x Direction) T() trv.ObjectType {
+	return T()
+}
+
 func (x *Direction) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.Direction{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -270,6 +278,10 @@ func (x *Direction) Value() *string {
 
 type BearingCapacity struct {
 	data *schema.BearingCapacity
+}
+
+func (x BearingCapacity) T() trv.ObjectType {
+	return T()
 }
 
 func (x *BearingCapacity) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -303,6 +315,10 @@ type AADTMeasurementMethod struct {
 	data *schema.AADTMeasurementMethod
 }
 
+func (x AADTMeasurementMethod) T() trv.ObjectType {
+	return T()
+}
+
 func (x *AADTMeasurementMethod) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.AADTMeasurementMethod{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -332,6 +348,10 @@ func (x *AADTMeasurementMethod) Value() *string {
 
 type RoadOwner struct {
 	data *schema.RoadOwner
+}
+
+func (x RoadOwner) T() trv.ObjectType {
+	return T()
 }
 
 func (x *RoadOwner) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
@@ -365,6 +385,10 @@ type RoadCategory struct {
 	data *schema.RoadCategory
 }
 
+func (x RoadCategory) T() trv.ObjectType {
+	return T()
+}
+
 func (x *RoadCategory) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadCategory{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -396,6 +420,10 @@ type RoadType struct {
 	data *schema.RoadType
 }
 
+func (x RoadType) T() trv.ObjectType {
+	return T()
+}
+
 func (x *RoadType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadType{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -425,6 +453,10 @@ func (x *RoadType) Value() *string {
 
 type Vagunderhallsklass struct {
 	data *schema.Vagunderhallsklass
+}
+
+func (x Vagunderhallsklass) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Vagunderhallsklass) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {

@@ -101,6 +101,10 @@ const publicStruct = `type %s struct {
 	data *schema.%s
 }
 
+func (x %s) T() trv.ObjectType {
+	return T()
+}
+
 func (x *%s) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.%s{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -162,6 +166,7 @@ func (n *Node) PublicRender(w io.Writer, name string) {
 
 	io.WriteString(w, fmt.Sprintf(
 		publicStruct,
+		n.Name,
 		n.Name,
 		n.Name,
 		n.Name,

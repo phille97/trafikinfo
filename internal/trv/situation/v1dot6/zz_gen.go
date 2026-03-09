@@ -1,5 +1,5 @@
-// Package v1dot5 contains the type definitions for Situation v1.5.
-package v1dot5
+// Package v1dot6 contains the type definitions for Situation v1.6.
+package v1dot6
 
 import (
 	"time"
@@ -27,9 +27,12 @@ type Situation struct {
 	Checkouts         *int64     `xml:"checkouts,attr,omitempty"`
 	Leaseduntil       *time.Time `xml:"leaseduntil,attr,omitempty"`
 	Acknowledged      *time.Time `xml:"acknowledged,attr,omitempty"`
+	Rejected          *time.Time `xml:"rejected,attr,omitempty"`
 	Statuscode        *uint8     `xml:"statuscode,attr,omitempty"`
 	Itemsacknowledged *int64     `xml:"itemsacknowledged,attr,omitempty"`
 	Itemsleft         *int64     `xml:"itemsleft,attr,omitempty"`
+	Itemsrejected     *int64     `xml:"itemsrejected,attr,omitempty"`
+	Clearedto         *time.Time `xml:"clearedto,attr,omitempty"`
 }
 
 type Deviation struct {
@@ -37,6 +40,8 @@ type Deviation struct {
 	AffectedDirection *string `xml:"AffectedDirection,omitempty"`
 	// SV: <div class="toggleTitle" xmlns="http://trafikverket.se/Situation.xsd">Påverkad riktningsvärde</div> <div class="toggle arrowR" xmlns="http://trafikverket.se/Situation.xsd"> </div> <div class="toggleContent" xmlns="http://trafikverket.se/Situation.xsd"> <table class="table table-condensed"> <tr> <td>BothDirections</td> <td>Båda riktningarna är påverkade</td> </tr> <tr> <td>OneDirection</td> <td>En rikting påverkad. I de fall Deviation.Geometry.Line är definierad så är dess koordinater ordnade efter riktingen.</td> </tr> </table> </div>
 	AffectedDirectionValue *string `xml:"AffectedDirectionValue,omitempty"`
+	// SV: Anger om objektet är inaktivt
+	Suspended *bool `xml:"Suspended,omitempty"`
 	// SV: <div class="toggleTitle" xmlns="http://trafikverket.se/Situation.xsd">Länsnummer</div> <div class="toggle arrowR" xmlns="http://trafikverket.se/Situation.xsd"> </div> <div class="toggleContent" xmlns="http://trafikverket.se/Situation.xsd"> <table class="table table-condensed"> <tr> <td>0</td> <td>Alla län (kan förekomma för poster med Deviation.MessageType="Viktig trafikinformation" och meddelandet gäller då för hela Sverige)</td> </tr> <tr> <td>1</td> <td>Stockholms län</td> </tr> <tr> <td>2</td> <td> DEPRECATED<br /> Användes tidigare för Stockholms län </td> </tr> <tr> <td>3</td> <td>Uppsala län</td> </tr> <tr> <td>4</td> <td>Södermanlands län</td> </tr> <tr> <td>5</td> <td>Östergötlands län</td> </tr> <tr> <td>6</td> <td>Jönköpings län</td> </tr> <tr> <td>7</td> <td>Kronobergs län</td> </tr> <tr> <td>8</td> <td>Kalmar län</td> </tr> <tr> <td>9</td> <td>Gotlands län</td> </tr> <tr> <td>10</td> <td>Blekinge län</td> </tr> <tr> <td>12</td> <td>Skåne län</td> </tr> <tr> <td>13</td> <td>Hallands län</td> </tr> <tr> <td>14</td> <td>Västra Götalands län</td> </tr> <tr> <td>17</td> <td>Värmlands län</td> </tr> <tr> <td>18</td> <td>Örebro län</td> </tr> <tr> <td>19</td> <td>Västmanlands län</td> </tr> <tr> <td>20</td> <td>Dalarnas län</td> </tr> <tr> <td>21</td> <td>Gävleborgs län</td> </tr> <tr> <td>22</td> <td>Västernorrlands län</td> </tr> <tr> <td>23</td> <td>Jämtlands län</td> </tr> <tr> <td>24</td> <td>Västerbottens län</td> </tr> <tr> <td>25</td> <td>Norrbottens län</td> </tr> </table> </div>
 	CountyNo []int `xml:"CountyNo,omitempty"`
 	// SV: Källa till datat
@@ -101,6 +106,10 @@ type Deviation struct {
 }
 
 type Geometry struct {
+	// SV: Geometrisk punkt i koordinatsystem SWEREF99TM
+	SWEREF99TM *string `xml:"SWEREF99TM,omitempty"`
+	// SV: Geometrisk punkt i koordinatsystem WGS84
+	WGS84 *string   `xml:"WGS84,omitempty"`
 	Point *GeoPoint `xml:"Point,omitempty"`
 	Line  *GeoLine  `xml:"Line,omitempty"`
 }

@@ -27,6 +27,10 @@ type RoadCondition struct {
 	data *schema.RoadCondition
 }
 
+func (x RoadCondition) T() trv.ObjectType {
+	return T()
+}
+
 func (x *RoadCondition) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	res := &schema.RoadCondition{}
 	if err := d.DecodeElement(res, &start); err != nil {
@@ -191,6 +195,10 @@ func (x *RoadCondition) ModifiedTime() *time.Time {
 
 type Geometry struct {
 	data *schema.Geometry
+}
+
+func (x Geometry) T() trv.ObjectType {
+	return T()
 }
 
 func (x *Geometry) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
